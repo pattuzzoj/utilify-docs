@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress';
-import { en } from './en/en';
 import { pt } from './pt/pt';
-import { es } from './es/es';
+// import { en } from './en/en';
+// import { es } from './es/es';
 
 export default defineConfig({
   head: [['link', { rel: 'icon', href: '../logo.png' }]],
@@ -9,21 +9,13 @@ export default defineConfig({
   description: "A practical library of utility functions",
   lastUpdated: true,
   cleanUrls: true,
-  rewrites: {
-    'en/:rest*': ':rest*'
-  },
+  // rewrites: {
+  //   'en/:rest*': ':rest*'
+  // },
   locales: {
     root: {
-      label: "English",
-      ...en
-    },
-    pt: {
       label: "Português",
       ...pt
-    },
-    es: {
-      label: "Español",
-      ...es
     }
   },
   themeConfig: {
@@ -42,5 +34,6 @@ export default defineConfig({
   },
   markdown: {
     lineNumbers: true
-  }
+  },
+  ignoreDeadLinks: true
 })
