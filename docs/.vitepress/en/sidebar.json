@@ -1,0 +1,254 @@
+[
+  {
+    "text": "Array",
+    "link": "/en/array",
+    "collapsed": true,
+    "items": [
+      { "text": "after", "link": "/en/array/after" },
+      { "text": "before", "link": "/en/array/before" },
+      { "text": "chunk", "link": "/en/array/chunk" },
+      { "text": "difference", "link": "/en/array/difference" },
+      { "text": "first", "link": "/en/array/first" },
+      { "text": "flattenArr", "link": "/en/array/flattenArr" },
+      { "text": "getRandom", "link": "/en/array/getRandom" },
+      { "text": "isIterable", "link": "/en/array/isIterable" },
+      { "text": "last", "link": "/en/array/last" },
+      { "text": "rotate", "link": "/en/array/rotate" },
+      { "text": "sanitizeArr", "link": "/en/array/sanitizeArr" },
+      { "text": "shuffle", "link": "/en/array/shuffle" },
+      { "text": "swap", "link": "/en/array/swap" },
+      { "text": "union", "link": "/en/array/union" },
+      { "text": "unique", "link": "/en/array/unique" }
+    ]
+  },
+  {
+    "text": "Browser",
+    "link": "/en/browser",
+    "collapsed": true,
+    "items": [
+      { "text": "getLanguage", "link": "/en/browser/getLanguage" },
+      { "text": "getTheme", "link": "/en/browser/getTheme" },
+      { "text": "isCookieEnabled", "link": "/en/browser/isCookieEnabled" },
+      { "text": "isCryptoAvailable", "link": "/en/browser/isCryptoAvailable" },
+      { "text": "isFullscreenEnabled", "link": "/en/browser/isFullscreenEnabled" },
+      { "text": "isOnline", "link": "/en/browser/isOnline" },
+      { "text": "isTouchDevice", "link": "/en/browser/isTouchDevice" },
+      { "text": "toggleFullscreen", "link": "/en/browser/toggleFullscreen" }
+    ]
+  },
+  {
+    "text": "Colors",
+    "link": "/en/colors",
+    "collapsed": true,
+    "items": [
+      { "text": "hexToHsl", "link": "/en/colors/hexToHsl" },
+      { "text": "hexToRgb", "link": "/en/colors/hexToRgb" },
+      { "text": "hslToHex", "link": "/en/colors/hslToHex" },
+      { "text": "hslToRgb", "link": "/en/colors/hslToRgb" },
+      { "text": "isHex", "link": "/en/colors/isHex" },
+      { "text": "isHsl", "link": "/en/colors/isHsl" },
+      { "text": "isRgb", "link": "/en/colors/isRgb" },
+      { "text": "rgbToHex", "link": "/en/colors/rgbToHex" },
+      { "text": "rgbToHsl", "link": "/en/colors/rgbToHsl" }
+    ]
+  },
+  {
+    "text": "Crypto",
+    "link": "/en/crypto",
+    "collapsed": true,
+    "items": [
+      { "text": "hash", "link": "/en/crypto/hash" },
+      { "text": "randomUUID", "link": "/en/crypto/randomUUID" }
+    ]
+  },
+  {
+    "text": "Date",
+    "link": "/en/date",
+    "collapsed": true,
+    "items": [
+      { "text": "adjustDate", "link": "/en/date/adjustDate" },
+      { "text": "adjustTimezone", "link": "/en/date/adjustTimezone" },
+      { "text": "convertTime", "link": "/en/date/convertTime" },
+      { "text": "convertDate", "link": "/en/date/convertDate" },
+      { "text": "formatDate", "link": "/en/date/formatDate" },
+      { "text": "formatDuration", "link": "/en/date/formatDuration" },
+      { "text": "formatTime", "link": "/en/date/formatTime" },
+      { "text": "isLeapYear", "link": "/en/date/isLeapYear" },
+      { "text": "isValidDate", "link": "/en/date/isValidDate" },
+      { "text": "isValidDateString", "link": "/en/date/isValidDateString" },
+      { "text": "isWeekday", "link": "/en/date/isWeekday" },
+      { "text": "isWeekend", "link": "/en/date/isWeekend" },
+      { "text": "parseDate", "link": "/en/date/parseDate" }
+    ]
+  },
+  {
+    "text": "Environment",
+    "link": "vironment",
+    "collapsed": true,
+    "items": [
+      { "text": "getOS", "link": "vironment/getOS" },
+      { "text": "isBrowser", "link": "vironment/isBrowser" },
+      { "text": "isBun", "link": "vironment/isBun" },
+      { "text": "isDedicatedWorker", "link": "vironment/isDedicatedWorker" },
+      { "text": "isDeno", "link": "vironment/isDeno" },
+      { "text": "isMobile", "link": "vironment/isMobile" },
+      { "text": "isNode", "link": "vironment/isNode" },
+      { "text": "isServer", "link": "vironment/isServer" },
+      { "text": "isServiceWorker", "link": "vironment/isServiceWorker" },
+      { "text": "isSharedWorker", "link": "vironment/isSharedWorker" },
+      { "text": "isWebWorker", "link": "vironment/isWebWorker" }
+    ]
+  },
+  {
+    "text": "Function",
+    "link": "/en/function",
+    "collapsed": true,
+    "items": [
+      { "text": "compose", "link": "/en/function/compose" },
+      { "text": "debounce", "link": "/en/function/debounce" },
+      { "text": "defer", "link": "/en/function/defer" },
+      { "text": "fallback", "link": "/en/function/fallback" },
+      { "text": "guard", "link": "/en/function/guard" },
+      { "text": "identity", "link": "/en/function/identity" },
+      { "text": "lock", "link": "/en/function/lock" },
+      { "text": "memo", "link": "/en/function/memo" },
+      { "text": "noop", "link": "/en/function/noop" },
+      { "text": "once", "link": "/en/function/once" },
+      { "text": "parallel", "link": "/en/function/parallel" },
+      { "text": "partialLeft", "link": "/en/function/partialLeft" },
+      { "text": "partialRight", "link": "/en/function/partialRight" },
+      { "text": "pipe", "link": "/en/function/pipe" },
+      { "text": "rate", "link": "/en/function/rate" },
+      { "text": "sleep", "link": "/en/function/sleep" },
+      { "text": "throttle", "link": "/en/function/throttle" }
+    ]
+  },
+  {
+    "text": "Math",
+    "link": "/en/math",
+    "collapsed": true,
+    "items": [
+      { "text": "average", "link": "/en/math/average" },
+      { "text": "clamp", "link": "/en/math/clamp" },
+      { "text": "divisors", "link": "/en/math/divisors" },
+      { "text": "factorial", "link": "/en/math/factorial" },
+      { "text": "fibonacci", "link": "/en/math/fibonacci" },
+      { "text": "frequency", "link": "/en/math/frequency" },
+      { "text": "isBetween", "link": "/en/math/isBetween" },
+      { "text": "isEven", "link": "/en/math/isEven" },
+      { "text": "isInteger", "link": "/en/math/isInteger" },
+      { "text": "isOdd", "link": "/en/math/isOdd" },
+      { "text": "isPrime", "link": "/en/math/isPrime" },
+      { "text": "random", "link": "/en/math/random" },
+      { "text": "round", "link": "/en/math/round" },
+      { "text": "sum", "link": "/en/math/sum" },
+      { "text": "sumOfDigits", "link": "/en/math/sumOfDigits" }
+    ]
+  },
+  {
+    "text": "Object",
+    "link": "/en/object",
+    "collapsed": true,
+    "items": [
+      { "text": "clone", "link": "/en/object/clone" },
+      { "text": "deepClone", "link": "/en/object/deepClone" },
+      { "text": "deepFreeze", "link": "/en/object/deepFreeze" },
+      { "text": "deepMerge", "link": "/en/object/deepMerge" },
+      { "text": "flattenObj", "link": "/en/object/flattenObj" },
+      { "text": "freeze", "link": "/en/object/freeze" },
+      { "text": "interpolate", "link": "/en/object/interpolate" },
+      { "text": "isDeepEqual", "link": "/en/object/isDeepEqual" },
+      { "text": "isEqual", "link": "/en/object/isEqual" },
+      { "text": "isEqualLength", "link": "/en/object/isEqualLength" },
+      { "text": "merge", "link": "/en/object/merge" },
+      { "text": "omit", "link": "/en/object/omit" },
+      { "text": "pick", "link": "/en/object/pick" },
+      { "text": "sanitizeObj", "link": "/en/object/sanitizeObj" },
+      { "text": "unflattenObj", "link": "/en/object/unflattenObj" }
+    ]
+  },
+  {
+    "text": "Regex",
+    "link": "/en/regex",
+    "collapsed": true,
+    "items": [
+      { "text": "isAlpha", "link": "/en/regex/isAlpha" },
+      { "text": "isAlphanumeric", "link": "/en/regex/isAlphanumeric" },
+      { "text": "isBase64", "link": "/en/regex/isBase64" },
+      { "text": "isCreditCard", "link": "/en/regex/isCreditCard" },
+      { "text": "isDecimal", "link": "/en/regex/isDecimal" },
+      { "text": "isNumeric", "link": "/en/regex/isNumeric" },
+      { "text": "isEmail", "link": "/en/regex/isEmail" },
+      { "text": "isEmptyString", "link": "/en/regex/isEmptyString" },
+      { "text": "isIPV4", "link": "/en/regex/isIPV4" },
+      { "text": "isIPV6", "link": "/en/regex/isIPV6" },
+      { "text": "isLowerCase", "link": "/en/regex/isLowerCase" },
+      { "text": "isNegative", "link": "/en/regex/isNegative" },
+      { "text": "isSlug", "link": "/en/regex/isSlug" },
+      { "text": "isUpperCase", "link": "/en/regex/isUpperCase" },
+      { "text": "isURL", "link": "/en/regex/isURL" },
+      { "text": "isUUID", "link": "/en/regex/isUUID" }
+    ]
+  },
+  {
+    "text": "String",
+    "link": "/en/string",
+    "collapsed": true,
+    "items": [
+      { "text": "capitalize", "link": "/en/string/capitalize" },
+      { "text": "invertCase", "link": "/en/string/invertCase" },
+      { "text": "maskString", "link": "/en/string/maskString" },
+      { "text": "removeAccents", "link": "/en/string/removeAccents" },
+      { "text": "sanitizeStr", "link": "/en/string/sanitizeStr" },
+      { "text": "slugify", "link": "/en/string/slugify" },
+      { "text": "toCamelCase", "link": "/en/string/toCamelCase" },
+      { "text": "toKebabCase", "link": "/en/string/toKebabCase" },
+      { "text": "toPascalCase", "link": "/en/string/toPascalCase" },
+      { "text": "toSnakeCase", "link": "/en/string/toSnakeCase" },
+      { "text": "truncate", "link": "/en/string/truncate" },
+      { "text": "wordCount", "link": "/en/string/wordCount" }
+    ]
+  },
+  {
+    "text": "Types",
+    "link": "/en/types",
+    "collapsed": true,
+    "items": [
+      { "text": "getInstanceType", "link": "/en/types/getInstanceType" },
+      { "text": "getType", "link": "/en/types/getType" },
+      { "text": "isArray", "link": "/en/types/isArray" },
+      { "text": "isAsync", "link": "/en/types/isAsync" },
+      { "text": "isBigint", "link": "/en/types/isBigint" },
+      { "text": "isBoolean", "link": "/en/types/isBoolean" },
+      { "text": "isDate", "link": "/en/types/isDate" },
+      { "text": "isEqualType", "link": "/en/types/isEqualType" },
+      { "text": "isFalsy", "link": "/en/types/isFalsy" },
+      { "text": "isFunction", "link": "/en/types/isFunction" },
+      { "text": "isJSON", "link": "/en/types/isJSON" },
+      { "text": "isMap", "link": "/en/types/isMap" },
+      { "text": "isNull", "link": "/en/types/isNull" },
+      { "text": "isNumber", "link": "/en/types/isNumber" },
+      { "text": "isObject", "link": "/en/types/isObject" },
+      { "text": "isPrimitive", "link": "/en/types/isPrimitive" },
+      { "text": "isPromise", "link": "/en/types/isPromise" },
+      { "text": "isRegExp", "link": "/en/types/isRegExp" },
+      { "text": "isSet", "link": "/en/types/isSet" },
+      { "text": "isString", "link": "/en/types/isString" },
+      { "text": "isSymbol", "link": "/en/types/isSymbol" },
+      { "text": "isTruthy", "link": "/en/types/isTruthy" },
+      { "text": "isUndefined", "link": "/en/types/isUndefined" }
+    ]
+  },
+  {
+    "text": "Utils",
+    "link": "/en/utils",
+    "collapsed": true,
+    "items": [
+      { "text": "benchmark", "link": "/en/utils/benchmark" },
+      { "text": "djb2", "link": "/en/utils/djb2" },
+      { "text": "flatten", "link": "/en/utils/flatten" },
+      { "text": "isEmpty", "link": "/en/utils/isEmpty" },
+      { "text": "sanitize", "link": "/en/utils/sanitize" }
+    ]
+  }
+]

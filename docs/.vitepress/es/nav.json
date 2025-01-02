@@ -1,0 +1,23 @@
+[
+  { "text": "Home", "link": "/es" },
+  { "text": "Introdução", "link": "/es/introduction" },
+  {
+    "text": "Docs",
+    "items": [
+      { "text": "Array", "link": "/es/array" },
+      { "text": "Browser", "link": "/es/browser" },
+      { "text": "Colors", "link": "/es/colors" },
+      { "text": "Crypto", "link": "/es/crypto" },
+      { "text": "Date", "link": "/es/date" },
+      { "text": "Environment", "link": "/es/environment" },
+      { "text": "Function", "link": "/es/function" },
+      { "text": "Math", "link": "/es/math" },
+      { "text": "Object", "link": "/es/object" },
+      { "text": "Regex", "link": "/es/regex" },
+      { "text": "String", "link": "/es/string" },
+      { "text": "Types", "link": "/es/types" },
+      { "text": "Utils", "link": "/es/utils" }
+    ]
+  },
+  { "text": "License", "link": "/es/license" }
+]
