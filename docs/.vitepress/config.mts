@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress';
-import { pt } from './pt/pt';
-import { en } from './en/en';
+import { pt } from './pt';
+import { en } from './en';
 
 export default defineConfig({
   head: [['link', { rel: 'icon', href: '../logo.png' }]],
