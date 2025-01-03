@@ -1,39 +1,56 @@
-# isArray
+# isArray  
+Verifica se o valor fornecido é um array. A função retorna `true` se o valor for um array, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isArray(value: unknown): boolean
-```
-
-A função `isArray` verifica se o valor fornecido é uma matriz (`Array`).
-
-## Assinatura
-
-```typescript
-function isArray(value: unknown): boolean;
+function isArray(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for uma matriz, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for um array, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando arrays
 ```typescript
-console.log(isArray([1, 2, 3])); // true
-console.log(isArray("string")); // false
-console.log(isArray({ key: "value" })); // false
-console.log(isArray(undefined)); // false
+isArray([1, 2, 3]); // true
+isArray(["apple", "banana"]); // true
+```
+
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isArray(null); // false
+isArray(42); // false
+isArray("Hello"); // false
+isArray({}); // false
 ```
 
 ## Notas
+- A função utiliza `Array.isArray`, que é a maneira recomendada e mais confiável de verificar se um valor é um array, já que pode distinguir arrays de objetos genéricos e outros tipos.
 
-- A função utiliza o método nativo `Array.isArray` para realizar a verificação de forma eficiente e confiável.
-- É segura para verificar valores de qualquer tipo, incluindo `null` e `undefined`. 
+## Código Fonte
+::: code-group
+```typescript
+function isArray(value: any): boolean {
+  return Array.isArray(value);
+}
+```
+
+```javascript
+function isArray(value) {
+  return Array.isArray(value);
+}
+```
+:::
 
 ## Referências
-
-- [Array.isArray() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+- [MDN: `Array.isArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)

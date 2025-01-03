@@ -1,39 +1,58 @@
-# isMap
+# isMap  
+Verifica se o valor fornecido é uma instância de `Map`. A função retorna `true` se o valor for um objeto do tipo `Map`, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isMap(value: unknown): boolean
-```
-
-A função `isMap` verifica se o valor fornecido é uma instância de `Map`.
-
-## Assinatura
-
-```typescript
-function isMap(value: unknown): boolean;
+function isMap(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for uma instância de `Map`, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for uma instância de `Map`, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando instâncias de `Map`
 ```typescript
-console.log(isMap(new Map())); // true
-console.log(isMap(new Set())); // false
-console.log(isMap({})); // false
-console.log(isMap([1, 2, 3])); // false
+const map = new Map();
+isMap(map); // true
+```
+
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isMap(new Map([["key", "value"]])); // true
+isMap(42); // false
+isMap("Hello"); // false
+isMap([]); // false
+isMap({}); // false
 ```
 
 ## Notas
+- A função utiliza `instanceof Map`, que é a maneira recomendada e confiável de verificar se o valor é uma instância da classe `Map`.
 
-- A função utiliza o operador `instanceof` para verificar se o valor é uma instância de `Map`.
-- É útil para garantir que o valor é do tipo `Map` e não de outro tipo de estrutura de dados semelhante.
+## Código Fonte
+::: code-group
+
+```typescript
+function isMap(value: any): boolean {
+  return value instanceof Map;
+}
+```
+
+```javascript
+function isMap(value) {
+  return value instanceof Map;
+}
+```
+:::
 
 ## Referências
-
-- [Map - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+- [MDN: `instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)

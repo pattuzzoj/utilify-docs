@@ -1,7 +1,7 @@
 # isInteger
 
 ```typescript
-export default function isInteger(value: number): boolean {
+function isInteger(value: number): boolean {
   return Number.isInteger(value);
 }
 ```

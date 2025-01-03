@@ -1,39 +1,59 @@
-# isUndefined
+# isUndefined  
+Verifica se o valor fornecido é `undefined`. A função retorna `true` se o valor for do tipo `undefined`, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isUndefined(value: unknown): boolean
-```
-
-A função `isUndefined` verifica se o valor fornecido é do tipo `undefined`.
-
-## Assinatura
-
-```typescript
-function isUndefined(value: unknown): boolean;
+function isUndefined(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for do tipo `undefined`, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for `undefined`, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando `undefined`
 ```typescript
-console.log(isUndefined(undefined)); // true
-console.log(isUndefined(null)); // false
-console.log(isUndefined(123)); // false
-console.log(isUndefined("hello")); // false
+isUndefined(undefined); // true
+```
+
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isUndefined(null); // false
+isUndefined(42); // false
+isUndefined("Hello"); // false
+isUndefined({}); // false
 ```
 
 ## Notas
+- A função utiliza o operador `typeof`, que é uma forma segura de verificar o tipo de uma variável em JavaScript, garantindo que o valor seja estritamente `undefined`.
 
-- A função utiliza o operador `typeof` para verificar se o valor é do tipo `undefined`.
-- O operador `typeof` é uma maneira eficiente de verificar se um valor é `undefined`, já que retorna `"undefined"` para valores desse tipo.
+## Dependências
+Nenhuma.
+
+## Código Fonte
+::: code-group
+
+```typescript
+function isUndefined(value: any): boolean {
+  return typeof value === "undefined";
+}
+```
+
+```javascript
+function isUndefined(value) {
+  return typeof value === "undefined";
+}
+```
+:::
 
 ## Referências
-
-- [undefined - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+- [MDN: `typeof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)

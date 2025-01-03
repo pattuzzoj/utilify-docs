@@ -1,7 +1,7 @@
 # isDeno
 
 ```typescript
-export default function isDeno(): boolean {
+function isDeno(): boolean {
   return typeof Deno === 'object' && 'version' in Deno;
 }
 ```

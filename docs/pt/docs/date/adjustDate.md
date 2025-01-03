@@ -5,7 +5,7 @@ import { isValidDate } from ".";
 
 type TimeUnit = "milliseconds" | "seconds" | "minutes" | "hours" | "days" | "months" | "years";
 
-export default function adjustDate(date: Date, amount: number, unit: TimeUnit): Date {
+function adjustDate(date: Date, amount: number, unit: TimeUnit): Date {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return new Date(NaN);

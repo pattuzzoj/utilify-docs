@@ -1,7 +1,7 @@
 # isDedicatedWorker
 
 ```typescript
-export default function isDedicatedWorker(): boolean {
+function isDedicatedWorker(): boolean {
   return getType(self) === "dedicatedworkerglobalscope";
 }
 ```

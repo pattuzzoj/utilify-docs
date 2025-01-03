@@ -4,7 +4,7 @@
 import { isObject } from "../types";
 import { freeze } from ".";
 
-export default function deepFreeze(obj: Record<string, any>): Record<string, any> {
+function deepFreeze(obj: Record<string, any>): Record<string, any> {
   const freezedObj = freeze(obj);
 
   for (const key in freezedObj) {

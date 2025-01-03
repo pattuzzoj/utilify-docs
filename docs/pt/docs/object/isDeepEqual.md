@@ -3,9 +3,9 @@
 ```typescript
 import { isEqualType } from "../types";
 
-export default function isDeepEqual(value1: Record<string, any>, value2: Record<string, any>): boolean;
-export default function isDeepEqual(value1: unknown[], value2: unknown[]): boolean;
-export default function isDeepEqual(value1: any, value2: any): boolean {
+function isDeepEqual(value1: Record<string, any>, value2: Record<string, any>): boolean;
+function isDeepEqual(value1: unknown[], value2: unknown[]): boolean;
+function isDeepEqual(value1: any, value2: any): boolean {
   const keys1 = Object.keys(value1);
   const keys2 = Object.keys(value2);
 

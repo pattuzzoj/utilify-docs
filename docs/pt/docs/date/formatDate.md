@@ -9,7 +9,7 @@ import { isValidDate } from ".";
 
 type DateFormat = "DMY" | "MDY" | "YMD";
 
-export default function formatDate(date: Date, format: DateFormat, separator: string = "/"): string | undefined {
+function formatDate(date: Date, format: DateFormat, separator: string = "/"): string | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

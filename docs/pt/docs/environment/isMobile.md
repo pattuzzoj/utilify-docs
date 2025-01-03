@@ -3,7 +3,7 @@
 ```typescript
 import { isServer } from '.';
 
-export default function isMobile(): boolean | undefined {
+function isMobile(): boolean | undefined {
   if (isServer()) return;
 
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

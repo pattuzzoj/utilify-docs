@@ -1,7 +1,7 @@
 # noop
 
 ```typescript
-export default function noop(): void {}
+function noop(): void {}
 ```
 
 A função `noop` (No Operation) é uma função que não realiza nenhuma operação. É frequentemente usada como um valor de retorno padrão ou como um "callback" em situações onde nenhuma ação é desejada ou necessária.

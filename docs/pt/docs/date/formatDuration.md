@@ -1,7 +1,7 @@
 # formatDuration
 
 ```typescript
-export default function formatDuration(time: number, format: string = "hh:mm:ss"): string {
+function formatDuration(time: number, format: string = "hh:mm:ss"): string {
   let totalMilliseconds = 0;
 
   if (typeof time === "number") {

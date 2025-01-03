@@ -1,7 +1,7 @@
 # debounce
 
 ```typescript
-export default function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void {
+function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void {
   let timerId: number;
 
   return (...args: any[]): void => {

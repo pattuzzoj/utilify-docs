@@ -1,40 +1,59 @@
-# isNumber
+# isNumber  
+Verifica se o valor fornecido é do tipo `number`. A função retorna `true` se o valor for um número, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isNumber(value: unknown): boolean
-```
-
-A função `isNumber` verifica se o valor fornecido é do tipo `number`.
-
-## Assinatura
-
-```typescript
-function isNumber(value: unknown): boolean;
+function isNumber(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for do tipo `number`, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for um número, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando números
 ```typescript
-console.log(isNumber(42)); // true
-console.log(isNumber(3.14)); // true
-console.log(isNumber("string")); // false
-console.log(isNumber(NaN)); // true
-console.log(isNumber(undefined)); // false
+isNumber(42); // true
+isNumber(3.14); // true
+```
+
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isNumber("Hello"); // false
+isNumber([]); // false
+isNumber({}); // false
+isNumber(null); // false
+isNumber(undefined); // false
 ```
 
 ## Notas
+- A função utiliza o operador `typeof`, que é a forma padrão e confiável de verificar se o valor é do tipo `number` em JavaScript.
+- `NaN` (Not-a-Number) também é considerado do tipo `number` em JavaScript, mas pode ser tratado separadamente, se necessário.
 
-- A função utiliza o operador `typeof` para verificar o tipo do valor.
-- Isso garante que apenas valores do tipo primitivo `number`, incluindo `NaN` (que é considerado um número em JavaScript), sejam reconhecidos.
+## Código Fonte
+::: code-group
+
+```typescript
+function isNumber(value: any): boolean {
+  return typeof value === "number";
+}
+```
+
+```javascript
+function isNumber(value) {
+  return typeof value === "number";
+}
+```
+:::
 
 ## Referências
-
-- [typeof - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: `typeof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)

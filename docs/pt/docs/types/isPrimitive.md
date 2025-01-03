@@ -1,43 +1,66 @@
-# isPrimitive
+# isPrimitive  
+Verifica se o valor fornecido é um valor primitivo. Valores primitivos incluem `null`, `undefined`, `boolean`, `number`, `string`, `symbol`, e `bigint`. A função retorna `true` se o valor for considerado primitivo, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isPrimitive(value: unknown): boolean
-```
-
-A função `isPrimitive` verifica se o valor fornecido é um tipo primitivo. Tipos primitivos incluem `string`, `number`, `boolean`, `symbol`, `undefined` e `null`.
-
-## Assinatura
-
-```typescript
-function isPrimitive(value: unknown): boolean;
+function isPrimitive(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for um tipo primitivo (incluindo `null`), ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for primitivo, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando valores primitivos
 ```typescript
-console.log(isPrimitive(42)); // true
-console.log(isPrimitive("string")); // true
-console.log(isPrimitive(true)); // true
-console.log(isPrimitive(undefined)); // true
-console.log(isPrimitive(null)); // true
-console.log(isPrimitive({})); // false
-console.log(isPrimitive([])); // false
-console.log(isPrimitive(function() {})); // false
+isPrimitive(42); // true
+isPrimitive("Hello"); // true
+isPrimitive(true); // true
+isPrimitive(Symbol("desc")); // true
+isPrimitive(null); // true
+```
+
+### Exemplo 2: Verificando valores não primitivos
+```typescript
+isPrimitive(undefined); // true
+isPrimitive({}); // false
+isPrimitive([]); // false
+isPrimitive(function() {}); // false
+isPrimitive(new Date()); // false
 ```
 
 ## Notas
+- A função verifica se o valor é um tipo que não seja um objeto ou função. O `null` é tratado separadamente porque é tecnicamente um objeto em JavaScript, mas é considerado um valor primitivo.
+- A verificação de `typeof` é feita de forma que valores como objetos e funções sejam filtrados.
 
-- A função utiliza o operador `typeof` para verificar se o valor é um tipo primitivo. Caso o valor seja um objeto ou função, ele será considerado como não primitivo.
-- O valor `null` é tratado como primitivo, pois em JavaScript, `typeof null` retorna `"object"`, mas conceitualmente é considerado um tipo primitivo.
+## Dependências
+Nenhuma.
+
+## Código Fonte
+::: code-group
+
+```typescript
+function isPrimitive(value: any): boolean {
+  return value === null || typeof value !== "object" && typeof value !== "function";
+}
+```
+
+```javascript
+function isPrimitive(value) {
+  return value === null || typeof value !== "object" && typeof value !== "function";
+}
+```
+:::
 
 ## Referências
-
-- [typeof - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: `typeof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: `null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)

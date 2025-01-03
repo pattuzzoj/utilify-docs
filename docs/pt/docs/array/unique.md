@@ -1,14 +1,7 @@
 # unique
-
-```typescript
-function unique<T>(arr: T[]): T[] {
-  return [...new Set(arr)];
-}
-```
-
 A função `unique` retorna um novo array contendo apenas os elementos únicos do array original. É útil para remover duplicatas de um array.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
 function unique<T>(arr: T[]): T[];
@@ -16,11 +9,15 @@ function unique<T>(arr: T[]): T[];
 
 ### Parâmetros
 
-- **`arr`** (`T[]`): O array original.
+| Nome  | Tipo   | Descrição           |
+|-------|--------|---------------------|
+| `arr` | `T[]`  | O array original.   |
 
 ### Retorno
 
-- **`T[]`**: Um novo array contendo apenas os elementos únicos do array original.
+| Tipo   | Descrição                                           |
+|--------|-----------------------------------------------------|
+| `T[]`  | Um novo array contendo apenas os elementos únicos.  |
 
 ## Exemplos
 
@@ -32,3 +29,21 @@ console.log(unique(["a", "b", "a", "c"])); // ["a", "b", "c"]
 ## Notas
 
 - A ordem dos elementos no array retornado é determinada pela sua primeira aparição no array de entrada.
+
+## Código Fonte
+::: code-group
+```typescript
+function unique<T>(arr: T[]): T[] {
+  return [...new Set(arr)];
+}
+```
+
+```javascript
+function unique(arr) {
+  return [...new Set(arr)];
+}
+```
+:::
+
+## Referências
+- [MDN - Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)

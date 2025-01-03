@@ -1,40 +1,90 @@
-# isObject
+# isObject  
+Verifica se o valor fornecido é um **objeto simples (Plain Object)** ou se é um **objeto criado a partir de uma classe personalizada** (não built-in). A função retorna `true` para objetos simples, instâncias de classes personalizadas ou objetos criados com `new` de classes que não sejam nativas do JavaScript, como `Object`, mas não para tipos como `Date`, `Map`, `Set`, etc.
 
+## Sintaxe
 ```typescript
-function isObject(value: unknown): boolean
-```
-
-A função `isObject` verifica se o valor fornecido é do tipo `object`, utilizando a função `getType` para determinar o tipo exato.
-
-## Assinatura
-
-```typescript
-function isObject(value: unknown): boolean;
+function isObject(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for do tipo `object`, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for um objeto simples ou uma instância de uma classe personalizada, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando objetos simples
 ```typescript
-console.log(isObject({})); // true
-console.log(isObject([])); // true (arrays são considerados objetos em JavaScript)
-console.log(isObject(null)); // false (null não é um objeto, apesar de ser considerado assim por algumas verificações)
-console.log(isObject("string")); // false
-console.log(isObject(42)); // false
+const obj = { key: "value" };
+isObject(obj); // true (objeto simples)
+
+const obj2 = new Object();
+isObject(obj2); // true (objeto simples criado com new Object())
+```
+
+### Exemplo 2: Verificando instâncias de classes personalizadas
+```typescript
+class CustomClass {}
+const customObj = new CustomClass();
+isObject(customObj); // true (instância de classe personalizada)
+```
+
+### Exemplo 3: Verificando outros tipos de valor
+```typescript
+isObject([]); // true (arrays são objetos em JavaScript)
+isObject(function() {}); // true (funções são objetos em JavaScript)
+isObject(null); // false (null não é considerado um objeto)
+isObject(undefined); // false (undefined não é considerado um objeto)
+```
+
+### Exemplo 4: Verificando objetos de classes built-in
+```typescript
+isObject(new Date()); // false (instâncias de Date não são consideradas como objetos criados por classes personalizadas)
+isObject(new Map()); // false (instâncias de Map não são consideradas como objetos criados por classes personalizadas)
+isObject(new Set()); // false (instâncias de Set não são consideradas como objetos criados por classes personalizadas)
+```
+
+### Exemplo 5: Verificando tipos primitivos
+```typescript
+isObject("Hello"); // false (string não é um objeto)
+isObject(42); // false (número não é um objeto)
 ```
 
 ## Notas
+- A função `isObject` verifica se o valor é um tipo de objeto, incluindo objetos simples e instâncias de classes personalizadas.
+- **Objetos simples** são aqueles criados com a notação literal `{}` ou com `new Object()`.
+- **Instâncias de classes personalizadas** são criadas a partir de classes definidas pelo usuário, como `new CustomClass()`.
+- Para valores como `null`, tipos primitivos (como `number`, `string`, `boolean`), ou instâncias de tipos built-in (como `Date`, `Map`, `Set`), a função retorna `false`.
 
-- A função utiliza a função `getType` para verificar o tipo do valor. A função `getType` provavelmente retorna uma string representando o tipo exato do valor, permitindo distinguir entre diferentes tipos de objetos, como arrays e objetos literais.
-- A função considera arrays como objetos, o que é um comportamento esperado em JavaScript, onde arrays também são instâncias de `object`.
+## Dependências
+[getType](./getType.md): Utilizada para obter o tipo do valor.
+
+## Código Fonte
+::: code-group
+
+```typescript
+import getType from "./getType";
+
+function isObject(value: any): boolean {
+  return getType(value) === "object";
+}
+```
+
+```javascript
+import getType from "./getType";
+
+function isObject(value) {
+  return getType(value) === "object";
+}
+```
+:::
 
 ## Referências
-
-- [typeof - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: `Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)

@@ -3,7 +3,7 @@
 ```typescript
 import { isValidDate } from ".";
 
-export default function adjustTimezone(date: Date, timezoneOffset: number): Date {
+function adjustTimezone(date: Date, timezoneOffset: number): Date {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return new Date(NaN);

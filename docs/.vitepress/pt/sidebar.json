@@ -229,6 +229,7 @@
       { "text": "isNull", "link": "/pt/docs/types/isNull" },
       { "text": "isNumber", "link": "/pt/docs/types/isNumber" },
       { "text": "isObject", "link": "/pt/docs/types/isObject" },
+      { "text": "isPlainObject", "link": "/pt/docs/types/isPlainObject" },
       { "text": "isPrimitive", "link": "/pt/docs/types/isPrimitive" },
       { "text": "isPromise", "link": "/pt/docs/types/isPromise" },
       { "text": "isRegExp", "link": "/pt/docs/types/isRegExp" },

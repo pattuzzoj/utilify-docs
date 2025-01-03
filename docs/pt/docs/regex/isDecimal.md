@@ -1,7 +1,7 @@
 # isDecimal
 
 ```typescript
-export default function isDecimal(str: string): boolean {
+function isDecimal(str: string): boolean {
   return /^\d+[.,]\d+$/.test(str);
 }
 ```

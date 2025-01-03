@@ -1,20 +1,8 @@
 # swap
 
-```typescript
-function swap<T>(arr: T[], pivot: number, partner: number): T[] {
-  const swapedArr = Array.from(arr);
-  [swapedArr[pivot], swapedArr[partner]] = [
-    swapedArr[partner],
-    swapedArr[pivot],
-  ];
-
-  return swapedArr;
-}
-```
-
 A função `swap` retorna um novo array com os elementos nos índices especificados trocados. É útil para trocar as posições de dois elementos em um array.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
 function swap<T>(arr: T[], pivot: number, partner: number): T[];
@@ -22,13 +10,17 @@ function swap<T>(arr: T[], pivot: number, partner: number): T[];
 
 ### Parâmetros
 
-- **`arr`** (`T[]`): O array original.
-- **`pivot`** (`number`): O índice do primeiro elemento a ser trocado.
-- **`partner`** (`number`): O índice do segundo elemento a ser trocado.
+| Nome     | Tipo     | Descrição                                               |
+|----------|----------|---------------------------------------------------------|
+| `arr`    | `T[]`    | O array original.                                       |
+| `pivot`  | `number` | O índice do primeiro elemento a ser trocado.            |
+| `partner`| `number` | O índice do segundo elemento a ser trocado.             |
 
 ### Retorno
 
-- **`T[]`**: Um novo array com os elementos nos índices especificados trocados.
+| Tipo   | Descrição                                                  |
+|--------|------------------------------------------------------------|
+| `T[]`  | Um novo array com os elementos nos índices especificados trocados. |
 
 ## Exemplos
 
@@ -40,6 +32,33 @@ console.log(swap([1, 2, 3, 4], 1, 3)); // [1, 4, 3, 2]
 
 - O array original não é modificado.
 - Se qualquer um dos índices estiver fora dos limites, a função lançará um erro.
+
+## Código Fonte
+
+::: code-group
+```typescript
+function swap<T>(arr: T[], pivot: number, partner: number): T[] {
+  const swapedArr = Array.from(arr);
+  [swapedArr[pivot], swapedArr[partner]] = [
+    swapedArr[partner],
+    swapedArr[pivot],
+  ];
+
+  return swapedArr;
+}
+```
+```javascript
+function swap(arr, pivot, partner) {
+  const swapedArr = Array.from(arr);
+  [swapedArr[pivot], swapedArr[partner]] = [
+    swapedArr[partner],
+    swapedArr[pivot],
+  ];
+
+  return swapedArr;
+}
+```
+:::
 
 ## Referências
 

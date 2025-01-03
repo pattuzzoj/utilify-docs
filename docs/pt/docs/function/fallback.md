@@ -1,7 +1,7 @@
 # fallback
 
 ```typescript
-export default function fallback<T>(callback: () => T, fallback: () => T): T {
+function fallback<T>(callback: () => T, fallback: () => T): T {
   try {
     const result = callback();
 

@@ -1,7 +1,7 @@
 # sumOfDigits
 
 ```typescript
-export default function sumOfDigits(num: number): number {
+function sumOfDigits(num: number): number {
   return num
     .toString()
     .split('')

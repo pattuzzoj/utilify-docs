@@ -1,39 +1,61 @@
-# isRegExp
+# isRegExp  
+Verifica se o valor fornecido é uma instância de `RegExp`. A função retorna `true` se o valor for um objeto `RegExp`, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isRegExp(value: unknown): boolean
-```
-
-A função `isRegExp` verifica se o valor fornecido é uma instância de `RegExp` (expressão regular).
-
-## Assinatura
-
-```typescript
-function isRegExp(value: unknown): boolean;
+function isRegExp(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for uma instância de `RegExp`, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for um `RegExp`, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando `RegExp`
 ```typescript
-console.log(isRegExp(/abc/)); // true
-console.log(isRegExp(new RegExp("abc"))); // true
-console.log(isRegExp("abc")); // false
-console.log(isRegExp({})); // false
+const regex = /abc/;
+isRegExp(regex); // true
+```
+
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isRegExp(undefined); // false
+isRegExp(null); // false
+isRegExp(42); // false
+isRegExp("Hello"); // false
+isRegExp({}); // false
 ```
 
 ## Notas
+- A função utiliza o operador `instanceof`, que é utilizado para verificar se um objeto é uma instância de uma classe, nesse caso, a classe `RegExp`.
 
-- A função utiliza o operador `instanceof` para verificar se o valor é uma instância de `RegExp`.
-- O `instanceof` garante que a verificação é realizada de forma precisa, considerando que `RegExp` é uma função construtora e tem comportamentos e propriedades específicos.
+## Dependências
+Nenhuma.
+
+## Código Fonte
+::: code-group
+
+```typescript
+function isRegExp(value: any): boolean {
+  return value instanceof RegExp;
+}
+```
+
+```javascript
+function isRegExp(value) {
+  return value instanceof RegExp;
+}
+```
+:::
 
 ## Referências
-
-- [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+- [MDN: `instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)

@@ -1,7 +1,7 @@
 # djb2
 
 ```typescript
-export default function djb2(str: string): string {
+function djb2(str: string): string {
   let hash = 5381;
 
   for (let i = 0; i < str.length; i++) {

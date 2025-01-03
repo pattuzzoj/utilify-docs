@@ -1,7 +1,7 @@
 # rate
 
 ```typescript
-export default function rate(callback: (...args: any[]) => void, limit: number, interval: number): (...args: any[]) => boolean {
+function rate(callback: (...args: any[]) => void, limit: number, interval: number): (...args: any[]) => boolean {
   let calls = 0;
 
   return (...args: any[]): boolean => {

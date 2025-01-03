@@ -1,4 +1,4 @@
-# Funções Utilitárias de Ambiente
+# Utilitários Environment
 
 A categoria **Environment** contém funções utilitárias que ajudam a detectar e identificar o ambiente em que o código está sendo executado, seja no navegador, servidor, ou dentro de diferentes tipos de workers. As funções dessa categoria são úteis para fornecer comportamentos específicos dependendo do ambiente de execução.
 

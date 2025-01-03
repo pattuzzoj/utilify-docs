@@ -1,14 +1,8 @@
 # isIterable
 
-```typescript
-function isIterable(obj: any): boolean {
-  return obj != null && typeof obj[Symbol.iterator] === 'function';
-}
-```
-
 A função `isIterable` verifica se o objeto é iterável.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isIterable(obj: any): boolean;
@@ -16,22 +10,41 @@ function isIterable(obj: any): boolean;
 
 ### Parâmetros
 
-- **`obj`** (`any`): O objeto a ser verificado.
+| Nome  | Tipo    | Descrição                                          |
+|-------|---------|----------------------------------------------------|
+| `obj` | `any`   | O objeto a ser verificado.                         |
 
 ### Retorno
 
-- **`boolean`**: `true` se o objeto for iterável, caso contrário `false`.
+| Tipo    | Descrição                                           |
+|---------|-----------------------------------------------------|
+| `boolean` | `true` se o objeto for iterável, caso contrário `false`. |
 
 ## Exemplos
 
 ```typescript
 console.log(isIterable([1, 2, 3])); // true
-console.log(isIterable(123)); // false
+console.log(isIterable(123));       // false
 ```
 
 ## Notas
 
 - A função verifica se o objeto possui a propriedade `Symbol.iterator`.
+
+## Código Fonte
+
+::: code-group
+```typescript
+function isIterable(obj: any): boolean {
+  return obj != null && typeof obj[Symbol.iterator] === 'function';
+}
+```
+```javascript
+function isIterable(obj) {
+  return obj != null && typeof obj[Symbol.iterator] === 'function';
+}
+```
+:::
 
 ## Referências
 

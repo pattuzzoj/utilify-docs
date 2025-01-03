@@ -1,24 +1,24 @@
-# Funções Utilitárias para Objetos
+# Utilitários Object
 
 A categoria de **funções utilitárias para objetos** inclui uma série de funções práticas para manipulação, comparação e transformação de objetos. Essas funções são essenciais para lidar com estruturas de dados em JavaScript/TypeScript e podem simplificar muitas operações comuns no desenvolvimento de software.
 
 ## [clone](./clone.md)
 ```typescript
-export default function clone<T extends Record<string, any>>(value: T): T;
-export default function clone<T extends unknown[]>(value: T): T;
+function clone<T extends Record<string, any>>(value: T): T;
+function clone<T extends unknown[]>(value: T): T;
 ```
 Cria uma cópia rasa de um objeto ou array, copiando suas propriedades diretamente.
 
 ## [deepClone](./deepClone.md)
 ```typescript
-export default function deepClone<T extends Record<string, any>>(value: T): T;
-export default function deepClone<T extends unknown[]>(value: T): T;
+function deepClone<T extends Record<string, any>>(value: T): T;
+function deepClone<T extends unknown[]>(value: T): T;
 ```
 Cria uma cópia profunda de um objeto ou array, incluindo todas as suas propriedades aninhadas.
 
 ## [deepFreeze](./deepFreeze.md)
 ```typescript
-export default function deepFreeze(obj: Record<string, any>): Record<string, any>;
+function deepFreeze(obj: Record<string, any>): Record<string, any>;
 ```
 Congela profundamente um objeto, tornando suas propriedades e suas propriedades aninhadas imutáveis.
 

@@ -3,7 +3,7 @@
 ```typescript
 import { isObject } from "../types";
 
-export default function flattenObj(obj: Record<string, any>, separator: string = ".", path: string = ''): Record<string, any> {
+function flattenObj(obj: Record<string, any>, separator: string = ".", path: string = ''): Record<string, any> {
   let flatObj: Record<string, any> = {};
 
   for (const key in obj) {

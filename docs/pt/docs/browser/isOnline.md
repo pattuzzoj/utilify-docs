@@ -1,15 +1,5 @@
 # isOnline
 
-```typescript
-import { isServer } from '../environment';
-
-export default function isOnline(): boolean | undefined {
-  if (isServer()) return;
-
-  return navigator.onLine;
-}
-```
-
 A função `isOnline` verifica se o navegador está online.
 
 ## Assinatura
@@ -18,13 +8,12 @@ A função `isOnline` verifica se o navegador está online.
 function isOnline(): boolean | undefined;
 ```
 
-### Parâmetros
-
-Nenhum.
-
 ### Retorno
 
-- **`boolean | undefined`**: `true` se o navegador estiver online, `false` caso contrário, ou `undefined` se executado no servidor.
+| Tipo              | Descrição                                                       |
+|-------------------|---------------------------------------------------------------|
+| `boolean`         | `true` se o navegador estiver online, `false` caso contrário.  |
+| `undefined`       | Se executado no servidor, a função retornará `undefined`.      |
 
 ## Exemplos
 
@@ -35,6 +24,32 @@ console.log(isOnline()); // true ou false
 ## Notas
 
 - Se executado no servidor, a função retornará `undefined`.
+
+## Dependências
+
+- [`isServer`](../environment/isServer.md): A função `isServer` é usada para verificar se o código está sendo executado no servidor.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import { isServer } from '@utilify/environment';
+
+function isOnline(): boolean | undefined {
+  if (isServer()) return;
+
+  return navigator.onLine;
+}
+```
+
+```javascript
+function isOnline() {
+  if (isServer()) return;
+
+  return navigator.onLine;
+}
+```
+:::
 
 ## Referências
 

@@ -1,43 +1,67 @@
-# isTruthy
+# isTruthy  
+Verifica se o valor fornecido é considerado "verdadeiro" em um contexto booleano, ou seja, se não for um valor "falsy". Para isso, a função utiliza a função `isFalsy` para identificar se o valor é "falsy" e retorna o oposto disso.
 
+## Sintaxe
 ```typescript
-function isTruthy(value: unknown): boolean
-```
-
-A função `isTruthy` verifica se o valor fornecido é considerado "verdadeiro" em um contexto booleano. Ela usa a função `isFalsy` para determinar se o valor é "falso" e inverte o resultado.
-
-## Assinatura
-
-```typescript
-function isTruthy(value: unknown): boolean;
+function isTruthy(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo       | Descrição                                 |
+|-----------|------------|-------------------------------------------|
+| `value`   | `any`  | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for considerado verdadeiro (não falsy), ou `false` caso contrário.
+| Tipo     | Descrição                                   |
+|----------|---------------------------------------------|
+| `boolean`| Retorna `true` se o valor não for "falsy", caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando valores "truthy"
 ```typescript
-console.log(isTruthy(1)); // true
-console.log(isTruthy("hello")); // true
-console.log(isTruthy([])); // true
-console.log(isTruthy(0)); // false
-console.log(isTruthy(false)); // false
-console.log(isTruthy(null)); // false
-console.log(isTruthy(undefined)); // false
-console.log(isTruthy("")); // false
+isTruthy("Hello"); // true
+isTruthy(42); // true
+isTruthy([]); // true
+isTruthy({}); // true
+```
+
+### Exemplo 2: Verificando valores "falsy"
+```typescript
+isTruthy(null); // false
+isTruthy(undefined); // false
+isTruthy(0); // false
+isTruthy(""); // false
 ```
 
 ## Notas
+- A função `isTruthy` é basicamente uma inversão da função `isFalsy`, ou seja, retorna `true` para todos os valores que são avaliados como "truthy" em JavaScript, e `false` para os valores "falsy".
+- A função depende de uma implementação prévia de `isFalsy`, que lida com a verificação dos valores "falsy".
 
-- A função `isTruthy` utiliza a função `isFalsy` para verificar se o valor é "falsy" (valores como `0`, `false`, `null`, `undefined`, `NaN`, e strings vazias), e inverte o resultado para determinar se o valor é "truthy".
-- Um valor é considerado "truthy" se ele não for um valor "falsy".
+## Dependências
+[`isFalsy`](./isFalsy.md) ([`@utilify/boolean`](./)): Verifica se um valor é "falsy".
+
+## Código Fonte
+::: code-group
+
+```typescript
+import isFalsy from "./isFalsy";
+
+function isTruthy(value: any): boolean {
+  return !isFalsy(value);
+}
+```
+
+```javascript
+import isFalsy from "./isFalsy";
+
+function isTruthy(value) {
+  return !isFalsy(value);
+}
+```
+:::
 
 ## Referências
-
-- [Falsy values - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#Falsy_values)
+- [MDN: Falsy values](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#making_comparisons)

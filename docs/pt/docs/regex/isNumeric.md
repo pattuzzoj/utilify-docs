@@ -1,7 +1,7 @@
 # isNumeric
 
 ```typescript
-export default function isNumeric(str: string): boolean {
+function isNumeric(str: string): boolean {
   return /^[0-9]+$/.test(str);
 }
 ```

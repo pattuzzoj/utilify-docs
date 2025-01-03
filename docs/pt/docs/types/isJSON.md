@@ -1,41 +1,66 @@
-# isJSON
+# isJSON  
+Verifica se a string fornecida é um JSON válido. A função tenta fazer o parsing da string usando `JSON.parse`. Se o parsing for bem-sucedido, a função retorna `true`, indicando que a string é um JSON válido. Caso contrário, retorna `false`.
 
+## Sintaxe
 ```typescript
 function isJSON(value: string): boolean
 ```
 
-A função `isJSON` verifica se uma string é um JSON válido.
-
-## Assinatura
-
-```typescript
-function isJSON(value: string): boolean;
-```
-
 ### Parâmetros
 
-- **`value`** (`string`): A string a ser verificada.
+| Parâmetro | Tipo     | Descrição                              |
+|-----------|----------|----------------------------------------|
+| `value`   | `string` | A string a ser verificada.             |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se a string for um JSON válido, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se a string for um JSON válido, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando JSON válidos
 ```typescript
-console.log(isJSON('{"key":"value"}')); // true
-console.log(isJSON('[1, 2, 3]')); // true
-console.log(isJSON('Invalid JSON')); // false
-console.log(isJSON('42')); // true (números são JSON válidos)
-console.log(isJSON('')); // false
+isJSON('{"name": "John", "age": 30}'); // true
+isJSON('{"key": "value"}'); // true
+```
+
+### Exemplo 2: Verificando JSON inválidos
+```typescript
+isJSON('{"name": "John", "age": 30'); // false (erro de sintaxe no JSON)
+isJSON('Hello, world!'); // false (não é JSON)
 ```
 
 ## Notas
+- A função utiliza `JSON.parse` para tentar converter a string em um objeto JSON. Se a string não for um JSON válido, o método lança uma exceção, que é capturada no `catch`, retornando `false`.
+- É importante notar que a função verifica apenas se a string é um JSON válido em termos de sintaxe. Não valida tipos ou a estrutura dos dados dentro do JSON.
 
-- A função utiliza o método `JSON.parse` para validar o JSON.
-- Qualquer erro gerado pelo método `JSON.parse` faz com que a função retorne `false`.
-- Strings vazias ou com formatos inválidos não são consideradas JSON válidos.
+## Código Fonte
+::: code-group
+
+```typescript
+function isJSON(value: string): boolean {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+```
+
+```javascript
+function isJSON(value) {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+```
+:::
 
 ## Referências
-
-- [JSON.parse() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+- [MDN: `JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)

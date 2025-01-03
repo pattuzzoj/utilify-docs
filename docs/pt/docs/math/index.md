@@ -1,4 +1,4 @@
-# Funções Utilitárias de Matemática
+# Utilitários Math
 
 As funções utilitárias de matemática fornecem métodos para realizar operações comuns e complexas de matemática. Abaixo estão as funções disponíveis nesta categoria, incluindo suas assinaturas e descrições.
 

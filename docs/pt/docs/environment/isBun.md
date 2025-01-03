@@ -1,7 +1,7 @@
 # isBun
 
 ```typescript
-export default function isBun(): boolean {
+function isBun(): boolean {
   return typeof Bun === 'object' && 'version' in Bun;
 }
 ```

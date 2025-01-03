@@ -7,7 +7,7 @@ Segue a documentação revisada com o código fonte incluído:
 ```typescript
 import { isValidDate } from ".";
 
-export default function isWeekend(date: Date): boolean | undefined {
+function isWeekend(date: Date): boolean | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

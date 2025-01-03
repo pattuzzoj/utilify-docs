@@ -1,7 +1,7 @@
 # divisors
 
 ```typescript
-export default function divisors(num: number): number[] {
+function divisors(num: number): number[] {
   const divisors = [1];
   const limit = Math.sqrt(num);
 

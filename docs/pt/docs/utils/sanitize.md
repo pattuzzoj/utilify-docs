@@ -6,10 +6,10 @@ import { sanitizeStr } from "../string";
 import { sanitizeArr } from "../array";
 import { sanitizeObj } from "../object";
 
-export default function sanitize(str: string, values: string[], replace?: string): string;
-export default function sanitize<T>(arr: T[], values: T[], replace?: T): T[];
-export default function sanitize(obj: Record<string, any>, values: any[], replace?: any): Record<string, any>;
-export default function sanitize(value: any, values: any[], replace?: any): any {
+function sanitize(str: string, values: string[], replace?: string): string;
+function sanitize<T>(arr: T[], values: T[], replace?: T): T[];
+function sanitize(obj: Record<string, any>, values: any[], replace?: any): Record<string, any>;
+function sanitize(value: any, values: any[], replace?: any): any {
   const type = getType(value);
   const sanitizeHandlers: Record<string, any> = {
     "string": sanitizeStr,

@@ -1,9 +1,9 @@
 # getOS
 
 ```typescript
-import { isServer } from '.';
+import { isServer } from './';
 
-export default function getOS(): string | undefined {
+function getOS(): string | undefined {
 	if (!isServer()) return;
 
 	if ('userAgentData' in navigator) {

@@ -1,14 +1,6 @@
 # isCryptoAvailable
 
-```typescript
-import { getType } from '../types';
-
-export default function isCryptoAvailable(): boolean | undefined {
-  return getType(crypto) === 'crypto';
-}
-```
-
-A função `isCryptoAvailable` verifica se a API Web Crypto está disponível.
+A função `isCryptoAvailable` verifica se a API Web Crypto está disponível no navegador.
 
 ## Assinatura
 
@@ -16,13 +8,12 @@ A função `isCryptoAvailable` verifica se a API Web Crypto está disponível.
 function isCryptoAvailable(): boolean | undefined;
 ```
 
-### Parâmetros
-
-Nenhum.
-
 ### Retorno
 
-- **`boolean | undefined`**: `true` se a API Web Crypto estiver disponível, `false` caso contrário.
+| Tipo            | Descrição                                               |
+|-----------------|---------------------------------------------------------|
+| `boolean`       | `true` se a API Web Crypto estiver disponível, `false` caso contrário. |
+| `undefined`     | Se a função for executada no servidor.                 |
 
 ## Exemplos
 
@@ -32,7 +23,33 @@ console.log(isCryptoAvailable()); // true ou false
 
 ## Notas
 
-- Esta função não verifica se é executada no servidor.
+- Se executado no servidor, a função retornará `undefined`.
+
+## Dependências
+
+- [`isServer`](../environment/isServer.md): A função `isServer` é usada para verificar se o código está sendo executado no servidor.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import { isServer } from '@utilify/environment';
+
+export default function isCryptoAvailable(): boolean | undefined {
+  if (isServer()) return;
+
+  return window?.crypto !== undefined;
+}
+```
+
+```javascript
+function isCryptoAvailable() {
+  if (isServer()) return;
+
+  return window?.crypto !== undefined;
+}
+```
+:::
 
 ## Referências
 

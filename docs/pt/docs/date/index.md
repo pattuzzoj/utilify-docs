@@ -1,4 +1,4 @@
-# Funções Utilitárias de Datas
+# Utilitários Date
 
 As funções utilitárias de datas ajudam a simplificar operações comuns relacionadas à manipulação, formatação e validação de objetos `Date` no JavaScript. Abaixo está uma visão geral das funções disponíveis nesta categoria.
 

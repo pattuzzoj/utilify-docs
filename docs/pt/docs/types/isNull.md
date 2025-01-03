@@ -1,39 +1,57 @@
-# isNull
+# isNull  
+Verifica se o valor fornecido é `null`. A função retorna `true` se o valor for `null`, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isNull(value: unknown): boolean
-```
-
-A função `isNull` verifica se o valor fornecido é `null`.
-
-## Assinatura
-
-```typescript
-function isNull(value: unknown): boolean;
+function isNull(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for `null`, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for `null`, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando `null`
 ```typescript
-console.log(isNull(null)); // true
-console.log(isNull(undefined)); // false
-console.log(isNull(0)); // false
-console.log(isNull("")); // false
+isNull(null); // true
+```
+
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isNull(42); // false
+isNull("Hello"); // false
+isNull([]); // false
+isNull({}); // false
+isNull(undefined); // false
 ```
 
 ## Notas
+- A função utiliza o operador de comparação estrita `===`, que verifica se o valor é exatamente igual a `null` sem fazer conversões de tipo.
 
-- A função utiliza o operador de igualdade estrita (`===`) para comparar o valor com `null`, garantindo que somente o valor exato `null` seja considerado.
-- Diferentemente do operador `==`, o `===` não faz conversões de tipo, o que torna a verificação mais precisa.
+## Código Fonte
+::: code-group
+
+```typescript
+function isNull(value: any): boolean {
+  return value === null;
+}
+```
+
+```javascript
+function isNull(value) {
+  return value === null;
+}
+```
+:::
 
 ## Referências
-
-- [null - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
+- [MDN: `null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)

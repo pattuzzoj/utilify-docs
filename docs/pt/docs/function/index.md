@@ -1,4 +1,4 @@
-# Funções Utilitárias de Funções
+# Utilitários Function
 
 As funções utilitárias de funções fornecem diversas ferramentas para manipulação e controle de funções, como controle de execução, cache de resultados e composição de funções. Abaixo está uma visão geral das funções disponíveis nesta categoria, incluindo suas assinaturas e descrições.
 

@@ -3,7 +3,7 @@
 ```typescript
 type TimeUnit = "milliseconds" | "seconds" | "minutes" | "hours" | "days";
 
-export default function convertTime(time: number, from: TimeUnit, to: TimeUnit): number {
+function convertTime(time: number, from: TimeUnit, to: TimeUnit): number {
   const conversionFactors: Record<TimeUnit, number> = {
     milliseconds: 1,
     seconds: 1000,

@@ -1,32 +1,19 @@
 # getTheme
 
-```typescript
-import { isServer } from '../environment';
-
-export default function getTheme(): string | undefined {
-  if (isServer()) return;
-
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
-}
-```
-
 A função `getTheme` retorna a preferência de tema atual do usuário.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
 function getTheme(): string | undefined;
 ```
 
-### Parâmetros
-
-Nenhum.
-
 ### Retorno
 
-- **`string | undefined`**: A preferência de tema (`'dark'` ou `'light'`), ou `undefined` se executado no servidor.
+| Tipo              | Descrição                                                       |
+|-------------------|---------------------------------------------------------------|
+| `string`          | A preferência de tema do usuário: `'dark'` ou `'light'`.         |
+| `undefined`       | Se a função for executada no servidor, retornará `undefined`.    |
 
 ## Exemplos
 
@@ -37,6 +24,36 @@ console.log(getTheme()); // 'dark' ou 'light' dependendo da preferência do usu�
 ## Notas
 
 - Se executado no servidor, a função retornará `undefined`.
+
+## Dependências
+
+- [`isServer`](../environment/isServer.md): A função `isServer` é usada para verificar se o código está sendo executado no servidor.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import { isServer } from '@utilify/environment';
+
+function getTheme(): string | undefined {
+  if (isServer()) return undefined;
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+}
+```
+
+```javascript
+function getTheme() {
+  if (isServer()) return undefined;
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+}
+```
+:::
 
 ## Referências
 

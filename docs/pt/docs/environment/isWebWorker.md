@@ -3,7 +3,7 @@
 ```typescript
 import { getType } from "../types";
 
-export default function isWebWorker(): boolean {
+function isWebWorker(): boolean {
   return getType(self) === "dedicatedworkerglobalscope" || getType(self) === "sharedworkerglobalscope" || getType(self) === "serviceworkerglobalscope";
 }
 ```

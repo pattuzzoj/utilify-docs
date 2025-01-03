@@ -3,7 +3,7 @@
 ```typescript
 import { average } from "../math";
 
-export default function benchmark(callback: () => void | Promise<void>, iterations: number = 1): Promise<number> {
+function benchmark(callback: () => void | Promise<void>, iterations: number = 1): Promise<number> {
   return new Promise(async (resolve) => {
     const times: number[] = [];
 

@@ -1,14 +1,8 @@
 # before
 
-```typescript
-function before<T>(arr: T[], index: number): T[] {
-  return arr.slice(0, index);
-}
-```
+A função `before` retorna um novo array contendo todos os elementos antes do índice especificado. Ela é útil para extrair uma submatriz até um ponto específico.
 
-A função `before` retorna uma nova matriz contendo todos os elementos antes do índice especificado. É útil para obter uma submatriz até um ponto específico.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function before<T>(arr: T[], index: number): T[];
@@ -16,24 +10,55 @@ function before<T>(arr: T[], index: number): T[];
 
 ### Parâmetros
 
-- **`arr`** (`T[]`): A matriz original da qual os elementos serão extraídos.
-- **`index`** (`number`): O índice antes do qual os elementos serão incluídos na nova matriz. Deve ser um número inteiro.
+| Nome   | Tipo         | Descrição                                                        |
+|--------|--------------|-------------------------------------------------------------------|
+| `arr`  | `T[]`        | O array original do qual os elementos serão extraídos.            |
+| `index`| `number`     | O índice antes do qual os elementos serão incluídos no novo array. |
 
 ### Retorno
 
-- **`T[]`**: Uma nova matriz contendo todos os elementos antes do índice especificado. Se o índice for menor ou igual a zero, uma matriz vazia será retornada.
+| Tipo    | Descrição                                                                 |
+|---------|--------------------------------------------------------------------------|
+| `T[]`   | Um novo array que contém todos os elementos antes do índice especificado. |
 
 ## Exemplos
 
 ```typescript
-console.log(before([1, 2, 3, 4, 5], 2)); // [1, 2]
-console.log(before([1, 2, 3, 4, 5], 0)); // []
+const data = [1, 2, 3, 4, 5];
+
+// Elementos antes do índice 2
+console.log(before(data, 2)); // [1, 2]
+
+// Elementos antes do índice 0
+console.log(before(data, 0)); // []
+
+// Índice fora de alcance
+console.log(before(data, 10)); // [1, 2, 3, 4, 5]
+
+// Índice negativo
+console.log(before(data, -1)); // []
 ```
 
 ## Notas
 
-- Se o índice for menor ou igual a zero, uma matriz vazia será retornada.
+- Se o índice for menor ou igual a zero, um array vazio será retornado.
 - Se o índice for negativo, ele será tratado como zero.
+
+## Código Fonte
+
+::: code-group
+```typescript
+function before<T>(arr: T[], index: number): T[] {
+  return arr.slice(0, index);
+}
+```
+
+```javascript
+function before(arr, index) {
+  return arr.slice(0, index);
+}
+```
+:::
 
 ## Referências
 

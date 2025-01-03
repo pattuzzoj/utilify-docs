@@ -1,7 +1,7 @@
 # unflattenObj
 
 ```typescript
-export default function unflattenObj(obj: Record<string, any>, separator: string = "."): Record<string, any> {
+function unflattenObj(obj: Record<string, any>, separator: string = "."): Record<string, any> {
   let unflatObj = {} as any;
   const regex = new RegExp(`${separator}`);
 

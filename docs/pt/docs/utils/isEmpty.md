@@ -4,7 +4,7 @@
 import { isEmptyString } from "../regex";
 import { getType } from "../types";
 
-export default function isEmpty(value: unknown): boolean {
+function isEmpty(value: unknown): boolean {
   const type = getType(value);
 
   switch (type) {

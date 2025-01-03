@@ -3,7 +3,7 @@
 ```typescript
 import { getType } from "../types";
 
-export default function isBrowser(): boolean {
+function isBrowser(): boolean {
   return getType(window) === "window";
 }
 ```

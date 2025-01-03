@@ -1,7 +1,7 @@
 # isNode
 
 ```typescript
-export default function isNode(): boolean {
+function isNode(): boolean {
   return typeof global !== "undefined" && typeof process !== "undefined";
 }
 ```

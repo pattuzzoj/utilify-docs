@@ -3,7 +3,7 @@
 ```typescript
 import { isValidDate } from ".";
 
-export default function formatTime(date: Date, format: string): string | undefined {
+function formatTime(date: Date, format: string): string | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

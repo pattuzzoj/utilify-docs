@@ -1,46 +1,60 @@
-# isFunction
+# isFunction  
+Verifica se o valor fornecido é uma função. A função retorna `true` se o valor for uma função, e `false` caso contrário.
 
-### Código-fonte
-
+## Sintaxe
 ```typescript
-export default function isFunction(value: unknown): boolean {
-  return typeof value === "function";
-}
-```
-
-**Descrição**:  
-A função `isFunction` verifica se o valor fornecido é uma função.
-
-## Assinatura
-
-```typescript
-function isFunction(value: unknown): boolean;
+function isFunction(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for uma função, caso contrário, retorna `false`.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for uma função, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando funções
 ```typescript
-console.log(isFunction(function() {})); // true
-console.log(isFunction(123)); // false
+function myFunction() {}
+isFunction(myFunction); // true
+
+const arrowFunction = () => {};
+isFunction(arrowFunction); // true
 ```
 
-### Explicação dos Exemplos
-
-1. **`isFunction(function() {})`**: Verifica se a função anônima é uma função.
-2. **`isFunction(123)`**: Verifica se o número 123 é uma função.
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isFunction(42); // false
+isFunction("Hello"); // false
+isFunction([]); // false
+isFunction({}); // false
+```
 
 ## Notas
+- A função utiliza o operador `typeof`, que é a maneira mais direta e confiável de verificar se um valor é do tipo `function`.
 
-- A função retorna `false` para qualquer valor que não seja uma função.
+## Código Fonte
+::: code-group
+
+```typescript
+function isFunction(value: any): boolean {
+  return typeof value === "function";
+}
+```
+
+```javascript
+function isFunction(value) {
+  return typeof value === "function";
+}
+```
+:::
 
 ## Referências
-
-- [MDN Web Docs: typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: `typeof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)

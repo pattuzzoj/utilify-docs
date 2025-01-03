@@ -1,30 +1,19 @@
 # isCookieEnabled
 
-```typescript
-import { isServer } from '../environment';
-
-export default function isCookieEnabled(): boolean | undefined {
-  if (isServer()) return;
-
-  return navigator.cookieEnabled;
-}
-```
-
 A função `isCookieEnabled` verifica se os cookies estão habilitados no navegador.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isCookieEnabled(): boolean | undefined;
 ```
 
-### Parâmetros
-
-Nenhum.
-
 ### Retorno
 
-- **`boolean | undefined`**: `true` se os cookies estiverem habilitados, `false` caso contrário, ou `undefined` se executado no servidor.
+| Tipo              | Descrição                                                      |
+|-------------------|----------------------------------------------------------------|
+| `boolean`         | `true` se os cookies estão habilitados, `false` caso contrário. |
+| `undefined`       | Se a função for executada no servidor, retornará `undefined`.   |
 
 ## Exemplos
 
@@ -35,6 +24,32 @@ console.log(isCookieEnabled()); // true ou false
 ## Notas
 
 - Se executado no servidor, a função retornará `undefined`.
+
+## Dependências
+
+- [`isServer`](../environment/isServer.md): A função `isServer` é usada para verificar se o código está sendo executado no servidor.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import { isServer } from '@utilify/environment';
+
+function isCookieEnabled(): boolean | undefined {
+  if (isServer()) return undefined;
+
+  return navigator.cookieEnabled;
+}
+```
+
+```javascript
+function isCookieEnabled() {
+  if (isServer()) return undefined;
+
+  return navigator.cookieEnabled;
+}
+```
+:::
 
 ## Referências
 

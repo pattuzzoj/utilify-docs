@@ -3,7 +3,7 @@
 ```typescript
 import { isObject } from "../types";
 
-export default function interpolate<T extends Record<string, any>>(obj: T, data: Record<string, any>): T {
+function interpolate<T extends Record<string, any>>(obj: T, data: Record<string, any>): T {
   const result: T = {} as T;
 
   for (const key in obj) {

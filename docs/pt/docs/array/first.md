@@ -1,14 +1,8 @@
 # first
 
-```typescript
-function first<T>(array: T[], n?: number): T[] {
-  return n ? array.slice(0, n) : array.slice(0, 1);
-}
-```
-
 A função `first` retorna um novo array contendo os primeiros `n` elementos do array original. Se `n` não for fornecido, retorna o primeiro elemento.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
 function first<T>(array: T[], n?: number): T[];
@@ -16,24 +10,43 @@ function first<T>(array: T[], n?: number): T[];
 
 ### Parâmetros
 
-- **`array`** (`T[]`): O array original.
-- **`n`** (`number`, opcional): O número de elementos a serem retornados do início do array.
+| Nome   | Tipo           | Descrição                                                                 |
+|--------|----------------|---------------------------------------------------------------------------|
+| `array`| `T[]`          | O array original.                                                         |
+| `n`    | `number` (opcional) | O número de elementos a serem retornados do início do array. Se não fornecido, retorna o primeiro elemento. |
 
 ### Retorno
 
-- **`T[]`**: Um novo array contendo os primeiros `n` elementos do array original. Se `n` não for fornecido, retorna o primeiro elemento.
+| Tipo   | Descrição                                                                         |
+|--------|-----------------------------------------------------------------------------------|
+| `T[]`  | Um novo array contendo os primeiros `n` elementos do array original. Se `n` não for fornecido, retorna o primeiro elemento. |
 
 ## Exemplos
 
 ```typescript
 console.log(first([1, 2, 3, 4], 2)); // [1, 2]
-console.log(first([1, 2, 3, 4])); // [1]
+console.log(first([1, 2, 3, 4]));    // [1]
 ```
 
 ## Notas
 
 - Se `n` for maior que o comprimento do array, o array inteiro será retornado.
 - Se `n` não for fornecido, a função retorna o primeiro elemento do array.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function first<T>(arr: T[], index: number = 1): T[] {
+  return arr.slice(0, index);
+}
+```
+```javascript
+export default function first(arr, index = 1) {
+  return arr.slice(0, index);
+}
+```
+:::
 
 ## Referências
 

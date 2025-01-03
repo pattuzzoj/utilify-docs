@@ -1,4 +1,4 @@
-# Funções Utilitárias de String
+# Utilitários String
 
 As funções utilitárias de string fornecem uma variedade de métodos para manipulação de texto, como transformação, contagem de palavras, sanitização e formatação.
 

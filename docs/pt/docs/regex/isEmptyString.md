@@ -1,7 +1,7 @@
 # isEmptyString
 
 ```typescript
-export default function isEmptyString(str: string): boolean {
+function isEmptyString(str: string): boolean {
   return /^\s*$/.test(str);
 }
 ```

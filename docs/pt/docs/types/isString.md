@@ -1,39 +1,59 @@
-# isString
+# isString  
+Verifica se o valor fornecido é do tipo `string`. A função retorna `true` se o valor for uma `string`, e `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isString(value: unknown): boolean
-```
-
-A função `isString` verifica se o valor fornecido é do tipo `string`.
-
-## Assinatura
-
-```typescript
-function isString(value: unknown): boolean;
+function isString(value: any): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`unknown`): O valor a ser verificado.
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `any`     | O valor a ser verificado. Pode ser de qualquer tipo. |
 
-### Valor de Retorno
+### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for do tipo `string`, ou `false` caso contrário.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean`| Retorna `true` se o valor for uma `string`, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Verificando `string`
 ```typescript
-console.log(isString("hello")); // true
-console.log(isString("123")); // true
-console.log(isString(123)); // false
-console.log(isString([1, 2, 3])); // false
+isString("Hello"); // true
+```
+
+### Exemplo 2: Verificando outros tipos de valor
+```typescript
+isString(undefined); // false
+isString(null); // false
+isString(42); // false
+isString({}); // false
 ```
 
 ## Notas
+- A função utiliza o operador `typeof`, que é a forma padrão e recomendada para verificar o tipo de dados primitivos como `string` em JavaScript.
 
-- A função utiliza o operador `typeof` para verificar se o valor é uma string.
-- O `typeof` é útil aqui, pois retorna `"string"` para valores do tipo `string`, o que facilita a verificação.
+## Dependências
+Nenhuma.
+
+## Código Fonte
+::: code-group
+
+```typescript
+function isString(value: any): boolean {
+  return typeof value === "string";
+}
+```
+
+```javascript
+function isString(value) {
+  return typeof value === "string";
+}
+```
+:::
 
 ## Referências
-
-- [typeof - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: `typeof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)

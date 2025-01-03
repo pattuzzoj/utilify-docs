@@ -1,7 +1,7 @@
 # isPrime
 
 ```typescript
-export default function isPrime(num: number): boolean {
+function isPrime(num: number): boolean {
   if(num === 1) return false;
   if(num === 2) return true;
   if(num % 2 === 0) return false;

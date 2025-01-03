@@ -1,13 +1,5 @@
 # isHsl
 
-```typescript
-function isHsl(hsl: string): boolean {
-  return /^(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%(?:\s*,\s*(0|0?\.\d{1,2}|1(?:\.0{1,2})?))?$/.test(
-    hsl
-  );
-}
-```
-
 A função `isHsl` verifica se uma string fornecida é uma cor HSL ou HSLA válida.
 
 ## Assinatura
@@ -18,11 +10,15 @@ function isHsl(hsl: string): boolean;
 
 ### Parâmetros
 
-- **`hsl`** (`string`): A string a ser verificada.
+| Nome  | Tipo    | Descrição                                          |
+|-------|---------|----------------------------------------------------|
+| `hsl` | `string`| A string a ser verificada, representando uma cor HSL ou HSLA. |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se a string for uma cor HSL ou HSLA válida, caso contrário `false`.
+| Tipo    | Descrição                                                   |
+|---------|-------------------------------------------------------------|
+| `boolean` | Retorna `true` se a string for uma cor HSL ou HSLA válida, caso contrário `false`. |
 
 ## Exemplos
 
@@ -35,6 +31,24 @@ console.log(isHsl("120, 100%, 50%, 1.5")); // false
 ## Notas
 
 - A função suporta formatos HSL e HSLA.
+
+## Código Fonte
+
+::: code-group
+```typescript
+function isHsl(hsl: string): boolean {
+  return /^(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%(?:\s*,\s*(0|0?\.\d{1,2}|1(?:\.0{1,2})?))?$/.test(
+    hsl
+  );
+}
+```
+
+```javascript
+function isHsl(hsl) {
+  return /^(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%(?:\s*,\s*(0|0?\.\d{1,2}|1(?:\.0{1,2})?))?$/.test(hsl);
+}
+```
+:::
 
 ## Referências
 

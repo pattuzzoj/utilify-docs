@@ -1,14 +1,8 @@
 # getRandom
 
-```typescript
-function getRandom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-```
-
 A função `getRandom` retorna um elemento aleatório do array.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
 function getRandom<T>(arr: T[]): T;
@@ -16,11 +10,15 @@ function getRandom<T>(arr: T[]): T;
 
 ### Parâmetros
 
-- **`arr`** (`T[]`): O array do qual um elemento aleatório será selecionado.
+| Nome  | Tipo     | Descrição                                               |
+|-------|----------|---------------------------------------------------------|
+| `arr` | `T[]`    | O array do qual um elemento aleatório será selecionado. |
 
 ### Retorno
 
-- **`T`**: Um elemento aleatório do array.
+| Tipo   | Descrição                                               |
+|--------|---------------------------------------------------------|
+| `T`    | Um elemento aleatório do array.                         |
 
 ## Exemplos
 
@@ -31,6 +29,21 @@ console.log(getRandom([1, 2, 3, 4, 5])); // Pode retornar qualquer elemento do a
 ## Notas
 
 - A função usa `Math.random` e `Math.floor` para selecionar um índice aleatório do array.
+
+## Código Fonte
+
+::: code-group
+```typescript
+function getRandom<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+```
+```javascript
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+```
+:::
 
 ## Referências
 

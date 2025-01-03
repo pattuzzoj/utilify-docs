@@ -1,5 +1,46 @@
-# getInstanceType
+# getInstanceType  
+Retorna o nome do tipo de uma instância de objeto. A função verifica se o valor é um objeto não nulo e, em seguida, retorna o nome da classe construtora (em minúsculas) do objeto. Se o valor não for um objeto válido, a função exibe um erro e retorna `undefined`.
 
+## Sintaxe
+```typescript
+function getInstanceType(value: object): string | undefined
+```
+
+### Parâmetros
+
+| Parâmetro | Tipo      | Descrição                               |
+|-----------|-----------|-----------------------------------------|
+| `value`   | `object`  | O valor a ser verificado. Deve ser um objeto não nulo. |
+
+### Retorno
+
+| Tipo                   | Descrição                                    |
+|------------------------|----------------------------------------------|
+| `string | undefined`    | Retorna o nome da classe do objeto em minúsculas, ou `undefined` se o valor não for um objeto válido. |
+
+## Exemplos
+
+### Exemplo 1: Verificando objetos válidos
+```typescript
+class MyClass {}
+const myObj = new MyClass();
+getInstanceType(myObj); // "myclass"
+```
+
+### Exemplo 2: Verificando valores inválidos
+```typescript
+getInstanceType(null); // Logs: "Value must be a non-null object." | undefined
+getInstanceType(42); // Logs: "Value must be a non-null object." | undefined
+getInstanceType("Hello"); // Logs: "Value must be a non-null object." | undefined
+```
+
+## Notas
+- A função usa `constructor.name` para obter o nome da classe construtora, que é transformado para minúsculas. 
+- Caso o valor não seja um objeto válido (null ou outro tipo não-objeto), a função exibe uma mensagem de erro no console e retorna `undefined`.
+- Para verificar se o valor é um objeto, a função usa `typeof value !== "object"` e `value === null`.
+
+## Código Fonte
+::: code-group
 ```typescript
 function getInstanceType(value: object): string | undefined {
   if (value === null || typeof value !== "object") {
@@ -10,48 +51,18 @@ function getInstanceType(value: object): string | undefined {
   return value.constructor.name.toLowerCase();
 }
 ```
- 
-A função `getInstanceType` retorna o tipo da instância de um objeto como uma string em letras minúsculas. Útil para identificar o tipo específico de um objeto em tempo de execução.
 
-## Assinatura
+```javascript
+function getInstanceType(value) {
+  if (value === null || typeof value !== "object") {
+    console.error("Value must be a non-null object.");
+    return;
+  }
 
-```typescript
-function getInstanceType(value: object): string | undefined;
+  return value.constructor.name.toLowerCase();
+}
 ```
-
-### Parâmetros
-
-- **`value`** (`object`): O objeto do qual se deseja obter o tipo da instância.
-
-### Retorno
-
-- **`string | undefined`**: O nome do tipo da instância em letras minúsculas, ou `undefined` se o valor não for um objeto válido.
-
-## Exemplos
-
-```typescript
-const date = new Date();
-console.log(getInstanceType(date)); // "date"
-
-const arr = new Array();
-console.log(getInstanceType(arr)); // "array"
-
-console.log(getInstanceType(null)); // undefined (e mostra erro no console)
-```
-
-### Explicação dos Exemplos
-
-1. **`getInstanceType(date)`**: Retorna "date" pois o objeto é uma instância de Date.
-2. **`getInstanceType(arr)`**: Retorna "array" pois o objeto é uma instância de Array.
-3. **`getInstanceType(null)`**: Retorna undefined e mostra um erro no console pois null não é um objeto válido.
-
-## Notas
-
-- A função exibe um erro no console e retorna `undefined` se o valor fornecido for `null` ou não for um objeto.
-- O tipo retornado está sempre em letras minúsculas.
-- Utiliza a propriedade `constructor.name` do objeto para determinar seu tipo.
+:::
 
 ## Referências
-
-- [MDN Web Docs: Object.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor)
-- [MDN Web Docs: typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [MDN: `constructor`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor)

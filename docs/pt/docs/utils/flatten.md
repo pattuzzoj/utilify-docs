@@ -5,9 +5,9 @@ import { flattenArr } from "../array";
 import { flattenObj } from "../object";
 import { isArray, isObject } from "../types";
 
-export default function flatten<T>(arr: T[], depth: number): FlatArray<T[], number>[];
-export default function flatten(obj: Record<string, any>, separator: string): Record<string, any>;
-export default function flatten(value: any, depthOrSeparator: any): any {
+function flatten<T>(arr: T[], depth: number): FlatArray<T[], number>[];
+function flatten(obj: Record<string, any>, separator: string): Record<string, any>;
+function flatten(value: any, depthOrSeparator: any): any {
   if (isObject(value)) {
     return flattenObj(value, depthOrSeparator ?? ".");
   } else if (isArray(value)) {

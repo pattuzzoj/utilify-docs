@@ -1,7 +1,7 @@
 # isValidDate
 
 ```typescript
-export default function isValidDate(date: Date): boolean {
+function isValidDate(date: Date): boolean {
   return date instanceof Date && !isNaN(date.getTime());
 }
 ```

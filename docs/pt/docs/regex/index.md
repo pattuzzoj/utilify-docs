@@ -1,4 +1,4 @@
-# Funções Utilitárias de Regex
+# Utilitários Regex
 
 As funções utilitárias de regex fornecem métodos para verificar padrões e validar diferentes tipos de strings, como e-mails, IPs, URLs e mais.
 

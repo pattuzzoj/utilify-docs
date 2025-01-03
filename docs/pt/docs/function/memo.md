@@ -3,7 +3,7 @@
 ```typescript
 import { djb2 } from "../utils";
 
-export default function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...args: any[]) => any {
+function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...args: any[]) => any {
   const cache = new Map();
 
   return (...args: any[]): any => {
