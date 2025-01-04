@@ -16,7 +16,8 @@ function getInstanceType(value: object): string | undefined
 
 | Type                   | Description                                      |
 |------------------------|--------------------------------------------------|
-| `string | undefined`    | Returns the name of the object's class in lowercase, or `undefined` if the value is not a valid object. |
+| `string` | Returns the name of the object's class in lowercase |
+| `undefined` | Returns `undefined` if the value is not a valid object |
 
 ## Examples
 
