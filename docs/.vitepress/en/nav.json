@@ -1,23 +1,23 @@
 [
   { "text": "Home", "link": "/" },
-  { "text": "Introdução", "link": "/en/docs/introduction/" },
+  { "text": "Introdução", "link": "/docs/introduction/" },
   {
     "text": "Docs",
     "items": [
-      { "text": "Array", "link": "/en/docs/array/" },
-      { "text": "Browser", "link": "/en/docs/browser/" },
-      { "text": "Colors", "link": "/en/docs/colors/" },
-      { "text": "Crypto", "link": "/en/docs/crypto/" },
-      { "text": "Date", "link": "/en/docs/date/" },
-      { "text": "Environment", "link": "/en/docs/environment/" },
-      { "text": "Function", "link": "/en/docs/function/" },
-      { "text": "Math", "link": "/en/docs/math/" },
-      { "text": "Object", "link": "/en/docs/object/" },
-      { "text": "Regex", "link": "/en/docs/regex/" },
-      { "text": "String", "link": "/en/docs/string/" },
-      { "text": "Types", "link": "/en/docs/types/" },
-      { "text": "Utils", "link": "/en/docs/utils/" }
+      { "text": "Array", "link": "/docs/array/" },
+      { "text": "Browser", "link": "/docs/browser/" },
+      { "text": "Colors", "link": "/docs/colors/" },
+      { "text": "Crypto", "link": "/docs/crypto/" },
+      { "text": "Date", "link": "/docs/date/" },
+      { "text": "Environment", "link": "/docs/environment/" },
+      { "text": "Function", "link": "/docs/function/" },
+      { "text": "Math", "link": "/docs/math/" },
+      { "text": "Object", "link": "/docs/object/" },
+      { "text": "Regex", "link": "/docs/regex/" },
+      { "text": "String", "link": "/docs/string/" },
+      { "text": "Types", "link": "/docs/types/" },
+      { "text": "Utils", "link": "/docs/utils/" }
     ]
   },
-  { "text": "License", "link": "/en/docs/license/" }
+  { "text": "License", "link": "/docs/license/" }
 ]
