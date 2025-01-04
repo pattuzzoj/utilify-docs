@@ -1,16 +1,8 @@
 # isBrowser
 
-```typescript
-import { getType } from "../types";
+A função `isBrowser` verifica se o código está sendo executado em um ambiente de navegador, verificando a existência dos objetos `window` e `document`.
 
-function isBrowser(): boolean {
-  return getType(window) === "window";
-}
-```
-
-Verifica se o código está sendo executado em um ambiente de navegador, retornando `true` se o ambiente for um navegador, e `false` caso contrário. A função utiliza a função `getType` para determinar o tipo do objeto `window`, que é exclusivo do navegador.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isBrowser(): boolean;
@@ -18,19 +10,38 @@ function isBrowser(): boolean;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o código estiver sendo executado no navegador, e `false` caso contrário.
+| Tipo     | Descrição                                                   |
+|----------|-------------------------------------------------------------|
+| `boolean`| Retorna `true` se o código estiver sendo executado em um navegador, caso contrário retorna `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isBrowser()); // true se executado no navegador, false caso contrário
+console.log(isBrowser()); // true se estiver rodando no navegador, false se estiver em um servidor ou outro ambiente
 ```
 
 ## Notas
 
-- A função depende da verificação do tipo do objeto `window`, que é característico de ambientes de navegador.
-- Não será válida em ambientes como o Node.js, onde o objeto `window` não está presente.
+- A função verifica a presença dos objetos `window` e `document`, que são típicos de ambientes de navegador.
+- Retorna `false` se o código estiver sendo executado em um ambiente que não seja de navegador, como um servidor.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isBrowser(): boolean {
+  return typeof window !== "undefined" && typeof document !== "undefined";
+}
+```
+
+```javascript
+export default function isBrowser() {
+  return typeof window !== "undefined" && typeof document !== "undefined";
+}
+```
+:::
 
 ## Referências
 
-- [Window - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+- [Window - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Window)
+- [Document - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Document)

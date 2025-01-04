@@ -1,37 +1,37 @@
 # getOS
 
-A função `getOS` detecta o sistema operacional do dispositivo em que o código está sendo executado, com base no `userAgent` ou nas propriedades da API `navigator` quando disponíveis.
+The `getOS` function detects the operating system of the device on which the code is running, based on the `userAgent` or the `navigator` API properties when available.
 
-## Sintaxe
+## Syntax
 
 ```typescript
 function getOS(): string | undefined;
 ```
 
-### Retorno
+### Return
 
-| Tipo      | Descrição                                              |
+| Type      | Description                                              |
 |-----------|----------------------------------------------------------|
-| `string`  | Retorna o nome do sistema operacional, como "Android", "iOS", "Linux", "Windows", "macOS" ou "Unknown". |
-| `undefined` | Retorna `undefined` caso o código não esteja sendo executado em um servidor. |
+| `string`  | Returns the name of the operating system, such as "Android", "iOS", "Linux", "Windows", "macOS", or "Unknown". |
+| `undefined` | Returns `undefined` if the code is not being executed on a server. |
 
-## Exemplos
+## Examples
 
 ```typescript
-console.log(getOS()); // Exemplo: "Android", "iOS", "macOS", etc.
+console.log(getOS()); // Example: "Android", "iOS", "macOS", etc.
 ```
 
-## Notas
+## Notes
 
-- A função usa a API `userAgentData` para obter informações detalhadas sobre o sistema operacional, quando disponível.
-- Caso `userAgentData` não esteja presente, a função recorre ao valor `navigator.userAgent` para fazer a detecção do sistema operacional.
-- A função também verifica se o código está sendo executado em um servidor, retornando `undefined` nesse caso.
+- The function uses the `userAgentData` API to obtain detailed information about the operating system when available.
+- If `userAgentData` is not present, the function falls back to the `navigator.userAgent` value for operating system detection.
+- The function also checks if the code is running on a server, returning `undefined` in that case.
 
-## Dependências
+## Dependencies
 
-- [`isServer`](./isServer.md): A função `isServer` é usada para determinar se o código está sendo executado no servidor.
+- [`isServer`](./isServer.md): The `isServer` function is used to determine whether the code is running on the server.
 
-## Código Fonte
+## Source Code
 
 ::: code-group
 ```typescript
@@ -79,7 +79,7 @@ export default function getOS() {
 ```
 :::
 
-## Referências
+## References
 
 - [navigator.userAgent - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgent)
 - [navigator.userAgentData - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgentData)

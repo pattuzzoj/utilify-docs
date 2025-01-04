@@ -1,14 +1,8 @@
 # isDeno
 
-```typescript
-function isDeno(): boolean {
-  return typeof Deno === 'object' && 'version' in Deno;
-}
-```
+A função `isDeno` verifica se o ambiente de execução atual é o [Deno](https://deno.land), um runtime seguro para JavaScript e TypeScript.
 
-Verifica se o código está sendo executado no ambiente **Deno**. Retorna `true` se a variável `Deno` existir e tiver a propriedade `version`, indicando que o ambiente é **Deno**, e `false` caso contrário.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isDeno(): boolean;
@@ -16,19 +10,38 @@ function isDeno(): boolean;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o código estiver sendo executado no ambiente **Deno**, e `false` caso contrário.
+| Tipo      | Descrição                                                         |
+|-----------|-------------------------------------------------------------------|
+| `boolean` | Retorna `true` se o runtime for Deno, caso contrário, `false`.    |
 
 ## Exemplos
 
 ```typescript
-console.log(isDeno()); // true se executado no Deno, false caso contrário
+console.log(isDeno()); // true se estiver rodando no Deno, false caso contrário
 ```
 
 ## Notas
 
-- **Deno** é um ambiente de execução JavaScript/TypeScript de próxima geração, semelhante ao Node.js, mas com um foco maior em segurança e simplicidade. Ele expõe a variável global `Deno`, que contém propriedades como `version`.
-- A função verifica especificamente a existência de `version` dentro de `Deno` como uma forma de identificar esse ambiente.
+- A função utiliza o objeto global `Deno` para determinar se o runtime é o Deno. Especificamente, verifica se `Deno` existe e possui a propriedade `version`.
+- Útil para executar código específico para Deno ou para identificar o ambiente de execução.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isDeno(): boolean {
+  return typeof Deno === 'object' && Object.hasOwn(Deno, 'version');
+}
+```
+
+```javascript
+export default function isDeno() {
+  return typeof Deno === 'object' && Object.hasOwn(Deno, 'version');
+}
+```
+:::
 
 ## Referências
 
-- [Deno](https://docs.deno.com/)
+- [Documentação do Deno](https://deno.land/manual)
+- [Object.hasOwn - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn)

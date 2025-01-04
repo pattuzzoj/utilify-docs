@@ -1,14 +1,8 @@
 # isNode
 
-```typescript
-function isNode(): boolean {
-  return typeof global !== "undefined" && typeof process !== "undefined";
-}
-```
+A função `isNode` verifica se o ambiente de execução atual é o [Node.js](https://nodejs.org/).
 
-Verifica se o código está sendo executado em um ambiente **Node.js**. Retorna `true` se estiver no ambiente Node.js, baseado na presença dos objetos globais `global` e `process`.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isNode(): boolean;
@@ -16,8 +10,9 @@ function isNode(): boolean;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o código estiver sendo executado no ambiente Node.js.
-- **`false`**: Se o código não estiver em um ambiente Node.js, retorna `false`.
+| Tipo      | Descrição                                              |
+|-----------|--------------------------------------------------------|
+| `boolean` | Retorna `true` se o ambiente de execução for Node.js; caso contrário, `false`. |
 
 ## Exemplos
 
@@ -27,9 +22,26 @@ console.log(isNode()); // true se executado no Node.js, false caso contrário
 
 ## Notas
 
-- A função verifica a presença dos objetos globais `global` e `process`, que são específicos do ambiente Node.js.
-- Em ambientes de navegador ou outros ambientes não-Node.js, a função retornará `false`.
+- A função verifica a existência dos objetos `global` e `process`, que são exclusivos de ambientes Node.js.
+- Útil para distinguir entre Node.js e outros ambientes JavaScript, como navegadores ou Deno.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isNode(): boolean {
+  return typeof global !== "undefined" && typeof process !== "undefined";
+}
+```
+
+```javascript
+export default function isNode() {
+  return typeof global !== "undefined" && typeof process !== "undefined";
+}
+```
+:::
 
 ## Referências
 
-- [Node](https://nodejs.org/)
+- [Objetos Globais do Node.js](https://nodejs.org/api/globals.html)
+- [Objeto Process do Node.js](https://nodejs.org/api/process.html)

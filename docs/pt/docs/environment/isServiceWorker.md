@@ -1,16 +1,8 @@
 # isServiceWorker
 
-```typescript
-import { getType } from "../types";
+A função `isServiceWorker` verifica se o código está sendo executado dentro de um **Service Worker**, que é um tipo de trabalhador web utilizado para tarefas em segundo plano, como cache, notificações e funcionalidade offline.
 
-function isServiceWorker(): boolean {
-  return getType(self) === "serviceworkerglobalscope";
-}
-```
-
-Verifica se o código está sendo executado dentro de um **Service Worker**. Retorna `true` se o ambiente for um Service Worker, ou `false` caso contrário.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isServiceWorker(): boolean;
@@ -18,21 +10,37 @@ function isServiceWorker(): boolean;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o código estiver sendo executado dentro de um Service Worker.
-- **`false`**: Se o código não estiver em um Service Worker, retorna `false`.
+| Tipo     | Descrição                                                   |
+|----------|-------------------------------------------------------------|
+| `boolean`| Retorna `true` se o código estiver sendo executado dentro de um **Service Worker**, caso contrário, retorna `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isServiceWorker()); // true se executado dentro de um Service Worker
+console.log(isServiceWorker()); // true se dentro de um Service Worker, false caso contrário
 ```
 
 ## Notas
 
-- A função usa a utilitária `getType` para verificar o tipo de `self` e determinar se o código está sendo executado em um Service Worker.
-- Esta função é útil para distinguir entre ambientes de execução, como Service Worker e outras áreas, como o contexto de uma página web.
+- Um **Service Worker** é um tipo especial de trabalhador web que opera separadamente da página da web e permite que você lide com solicitações de rede, faça cache de recursos e crie tarefas em segundo plano.
+- A função verifica a presença de `ServiceWorkerGlobalScope` e o contexto de `self` para determinar se o código está sendo executado em um ambiente de service worker.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isServiceWorker(): boolean {
+  return typeof ServiceWorkerGlobalScope !== 'undefined' && self instanceof ServiceWorkerGlobalScope;
+}
+```
+
+```javascript
+export default function isServiceWorker() {
+  return typeof ServiceWorkerGlobalScope !== 'undefined' && self instanceof ServiceWorkerGlobalScope;
+}
+```
+:::
 
 ## Referências
 
-- [ServiceWorkerGlobalScope - MDN](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope)
-- [self - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/self)
+- [Service Worker - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/ServiceWorkerGlobalScope)

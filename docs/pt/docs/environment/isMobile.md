@@ -1,18 +1,8 @@
 # isMobile
 
-```typescript
-import { isServer } from '.';
+A função `isMobile` verifica se o código está sendo executado em um dispositivo móvel com base no agente do usuário (`userAgent`).
 
-function isMobile(): boolean | undefined {
-  if (isServer()) return;
-
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-```
-
-Detecta se o dispositivo do usuário é um **dispositivo móvel** com base no `userAgent` do navegador. Se a função for chamada no servidor, ela retorna `undefined`, pois a detecção só é possível no cliente.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isMobile(): boolean | undefined;
@@ -20,20 +10,51 @@ function isMobile(): boolean | undefined;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o dispositivo for um dispositivo móvel, baseado no `userAgent` do navegador.
-- **`undefined`**: Se a função for executada no servidor, retornará `undefined`.
+| Tipo         | Descrição                                                       |
+|--------------|-----------------------------------------------------------------|
+| `boolean`    | Retorna `true` se for detectado um dispositivo móvel, ou `false` caso contrário. |
+| `undefined`  | Retorna `undefined` se o código estiver sendo executado no servidor. |
 
 ## Exemplos
 
 ```typescript
-console.log(isMobile()); // true se o dispositivo for móvel, false caso contrário
+console.log(isMobile()); // true em dispositivos móveis, false em desktops, undefined no servidor
 ```
+
+## Dependências
+
+- [`isServer`](./isServer.md): Verifica se o código está sendo executado no servidor.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import isServer from './isServer';
+
+export default function isMobile(): boolean | undefined {
+  if (isServer()) return;
+
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+```
+
+```javascript
+import isServer from './isServer';
+
+export default function isMobile() {
+  if (isServer()) return;
+
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+```
+:::
 
 ## Notas
 
-- A função utiliza a expressão regular para testar o `userAgent` do navegador em busca de termos comuns a dispositivos móveis.
-- A função usa a função `isServer()` para garantir que a detecção do dispositivo só ocorra no ambiente do cliente, retornando `undefined` no servidor.
+1. A função retorna `undefined` caso esteja rodando no lado do servidor (Node.js ou outro ambiente sem `navigator`).
+2. O regex cobre uma ampla gama de dispositivos móveis comuns.
+3. Dependendo do uso, pode ser mais robusto verificar também por dimensões de tela, além de apenas o `userAgent`.
 
 ## Referências
 
-- [Navigator.userAgent - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgent)
+- [navigator.userAgent - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Navigator/userAgent)

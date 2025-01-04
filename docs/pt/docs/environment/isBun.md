@@ -1,14 +1,8 @@
 # isBun
 
-```typescript
-function isBun(): boolean {
-  return typeof Bun === 'object' && 'version' in Bun;
-}
-```
+A função `isBun` verifica se o ambiente de execução atual é o [Bun](https://bun.sh), um runtime moderno para JavaScript.
 
-Verifica se o código está sendo executado em um ambiente Bun, retornando `true` se o ambiente for Bun e `false` caso contrário. A função checa a presença do objeto global `Bun` e a propriedade `version`, que são características desse ambiente de execução.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isBun(): boolean;
@@ -16,19 +10,38 @@ function isBun(): boolean;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o código estiver sendo executado no Bun, e `false` caso contrário.
+| Tipo      | Descrição                                                           |
+|-----------|---------------------------------------------------------------------|
+| `boolean` | Retorna `true` se o runtime for Bun, caso contrário, `false`.       |
 
 ## Exemplos
 
 ```typescript
-console.log(isBun()); // true se executado no Bun, false caso contrário
+console.log(isBun()); // true se estiver rodando no Bun, false caso contrário
 ```
 
 ## Notas
 
-- A função verifica a existência do objeto global `Bun` e sua propriedade `version`, que são exclusivos do ambiente Bun.
-- Esta abordagem não se aplica a outros ambientes como Node.js ou navegadores, onde o objeto `Bun` não está presente.
+- A função utiliza o objeto global `Bun` para determinar se o runtime é o Bun. Especificamente, verifica se `Bun` existe e possui a propriedade `version`.
+- Útil para otimizações ou funcionalidades específicas do runtime.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isBun(): boolean {
+  return typeof Bun === 'object' && Object.hasOwn(Bun, 'version');
+}
+```
+
+```javascript
+export default function isBun() {
+  return typeof Bun === 'object' && Object.hasOwn(Bun, 'version');
+}
+```
+:::
 
 ## Referências
 
-- [Bun](https://bun.sh)
+- [Documentação do Bun](https://bun.sh/docs)
+- [Object.hasOwn - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn)

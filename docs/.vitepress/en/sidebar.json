@@ -83,7 +83,7 @@
   },
   {
     "text": "Environment",
-    "link": "vironment",
+    "link": "/en/docs/environment",
     "collapsed": true,
     "items": [
       { "text": "getOS", "link": "vironment/getOS" },

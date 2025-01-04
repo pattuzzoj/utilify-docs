@@ -1,18 +1,8 @@
 # isServer
 
-```typescript
-import isBun from "./isBun";
-import isDeno from "./isDeno";
-import isNode from "./isNode";
+A função `isServer` verifica se o código está sendo executado em um ambiente de servidor, seja Node.js, Deno, Bun, ou qualquer outro ambiente onde o objeto `window` não esteja presente (como servidores).
 
-function isServer(): boolean {
-  return isNode() || isDeno() || isBun();
-}
-```
-
-Verifica se o código está sendo executado em um ambiente de servidor. Retorna `true` se o ambiente for **Node.js**, **Deno**, ou **Bun**, ou `false` caso contrário.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isServer(): boolean;
@@ -20,22 +10,45 @@ function isServer(): boolean;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o código estiver sendo executado em um ambiente de servidor (Node.js, Deno, ou Bun).
-- **`false`**: Se o código não estiver em um desses ambientes de servidor, retorna `false`.
+| Tipo      | Descrição                                              |
+|-----------|--------------------------------------------------------|
+| `boolean` | Retorna `true` se o código estiver sendo executado no servidor; caso contrário, `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isServer()); // true se executado no Node.js, Deno, ou Bun
+console.log(isServer()); // true se executado no servidor, false caso contrário
 ```
 
 ## Notas
 
-- A função utiliza outras funções utilitárias (`isNode`, `isDeno`, `isBun`) para identificar o ambiente de execução.
-- Esta função é útil para realizar verificações de ambiente e garantir que o código seja executado apenas no servidor.
+- A função utiliza as funções `isNode`, `isDeno`, `isBun` para verificar os ambientes Node.js, Deno e Bun, respectivamente.
+- Também verifica se o objeto `window` não está definido, o que indica que o código não está rodando em um navegador.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import isBun from "./isBun";
+import isDeno from "./isDeno";
+import isNode from "./isNode";
+
+export default function isServer(): boolean {
+  return isNode() || isDeno() || isBun() || typeof window === "undefined";
+}
+```
+
+```javascript
+import isBun from "./isBun";
+import isDeno from "./isDeno";
+import isNode from "./isNode";
+
+export default function isServer() {
+  return isNode() || isDeno() || isBun() || typeof window === "undefined";
+}
+```
+:::
 
 ## Referências
 
-- [Bun](https://bun.sh)
-- [Deno](https://docs.deno.com/)
-- [Node](https://nodejs.org/)
+- [Global Object `window`](https://developer.mozilla.org/en-US/docs/Web/API/Window)

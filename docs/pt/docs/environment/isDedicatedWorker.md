@@ -1,14 +1,8 @@
 # isDedicatedWorker
 
-```typescript
-function isDedicatedWorker(): boolean {
-  return getType(self) === "dedicatedworkerglobalscope";
-}
-```
+A função `isDedicatedWorker` verifica se o código está sendo executado dentro de um **Dedicated Worker**, ou seja, em um ambiente de execução de worker dedicado no JavaScript.
 
-Verifica se o código está sendo executado em um **Dedicated Worker**, retornando `true` se estiver e `false` caso contrário. A função faz essa verificação usando a função `getType` para identificar o tipo do objeto global `self`, que representa o escopo global do worker.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function isDedicatedWorker(): boolean;
@@ -16,19 +10,37 @@ function isDedicatedWorker(): boolean;
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o código estiver sendo executado em um **Dedicated Worker**, e `false` caso contrário.
+| Tipo     | Descrição                                                   |
+|----------|-------------------------------------------------------------|
+| `boolean`| Retorna `true` se o código estiver sendo executado dentro de um **Dedicated Worker**, caso contrário retorna `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isDedicatedWorker()); // true se executado dentro de um Dedicated Worker, false caso contrário
+console.log(isDedicatedWorker()); // true se estiver dentro de um Dedicated Worker, false caso contrário
 ```
 
 ## Notas
 
-- A função utiliza a função `getType` para identificar o tipo do escopo global. No caso de um **Dedicated Worker**, o tipo será `dedicatedworkerglobalscope`.
-- A função não detecta **Service Workers** ou **Shared Workers**.
+- Um **Dedicated Worker** é um tipo de Web Worker que executa tarefas em segundo plano sem bloquear o thread principal.
+- A função verifica a presença do tipo `DedicatedWorkerGlobalScope` e o contexto de `self` para determinar se o código está rodando em um ambiente de worker dedicado.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isDedicatedWorker(): boolean {
+  return typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
+}
+```
+
+```javascript
+export default function isDedicatedWorker() {
+  return typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
+}
+```
+:::
 
 ## Referências
 
-- [DedicatedWorkerGlobalScope - MDN](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope)
+- [Dedicated Worker - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/DedicatedWorkerGlobalScope)
