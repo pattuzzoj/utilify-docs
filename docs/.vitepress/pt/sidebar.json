@@ -28,11 +28,12 @@
     "items": [
       { "text": "getLanguage", "link": "/pt/docs/browser/getLanguage" },
       { "text": "getTheme", "link": "/pt/docs/browser/getTheme" },
+      { "text": "hash", "link": "/pt/docs/browser/hash" },
       { "text": "isCookieEnabled", "link": "/pt/docs/browser/isCookieEnabled" },
-      { "text": "isCryptoAvailable", "link": "/pt/docs/browser/isCryptoAvailable" },
       { "text": "isFullscreenEnabled", "link": "/pt/docs/browser/isFullscreenEnabled" },
       { "text": "isOnline", "link": "/pt/docs/browser/isOnline" },
       { "text": "isTouchDevice", "link": "/pt/docs/browser/isTouchDevice" },
+      { "text": "randomUUID", "link": "/pt/docs/browser/randomUUID" },
       { "text": "toggleFullscreen", "link": "/pt/docs/browser/toggleFullscreen" }
     ]
   },
@@ -50,15 +51,6 @@
       { "text": "isRgb", "link": "/pt/docs/colors/isRgb" },
       { "text": "rgbToHex", "link": "/pt/docs/colors/rgbToHex" },
       { "text": "rgbToHsl", "link": "/pt/docs/colors/rgbToHsl" }
-    ]
-  },
-  {
-    "text": "Crypto",
-    "link": "/pt/docs/crypto",
-    "collapsed": true,
-    "items": [
-      { "text": "hash", "link": "/pt/docs/crypto/hash" },
-      { "text": "randomUUID", "link": "/pt/docs/crypto/randomUUID" }
     ]
   },
   {
