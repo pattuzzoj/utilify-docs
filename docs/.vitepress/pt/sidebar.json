@@ -1,11 +1,12 @@
 [
   {
     "text": "Introdução",
-    "link": "/pt/introducao",
+    "link": "/pt/introduction",
     "collapsed": false,
     "items": [
-      { "text": "Por que Utilify", "link": "/pt/introducao/por-que-utilify" },
-      { "text": "Instalação", "link": "/pt/introducao/instalacao" }
+      { "text": "Por que Utilify?", "link": "/pt/introduction/why-utilify" },
+      { "text": "Instalação", "link": "/pt/introduction/installation" },
+      { "text": "Visão Geral", "link": "/pt/introduction/overview" }
     ]
   },
   {

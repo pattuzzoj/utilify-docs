@@ -12,7 +12,7 @@ hero:
       link: /introduction
     - theme: alt
       text: Install
-      link: https://www.npmjs.com/
+      link: /introduction/installation
 
 features:
   - icon: 🔒

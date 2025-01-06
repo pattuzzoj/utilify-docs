@@ -1,13 +1,12 @@
 [
-  { "text": "Home", "link": "/" },
-  { "text": "Introdução", "link": "/pt/docs/introduction" },
+  { "text": "Introdução", "link": "/pt/introduction" },
+  { "text": "Visão Geral", "link": "/pt/introduction/overview" },
   {
     "text": "Docs",
     "items": [
       { "text": "Array", "link": "/pt/docs/array" },
       { "text": "Browser", "link": "/pt/docs/browser" },
       { "text": "Colors", "link": "/pt/docs/colors" },
-      { "text": "Crypto", "link": "/pt/docs/crypto" },
       { "text": "Date", "link": "/pt/docs/date" },
       { "text": "Environment", "link": "/pt/docs/environment" },
       { "text": "Function", "link": "/pt/docs/function" },
@@ -18,6 +17,5 @@
       { "text": "Types", "link": "/pt/docs/types" },
       { "text": "Utils", "link": "/pt/docs/utils" }
     ]
-  },
-  { "text": "License", "link": "/pt/license" }
+  }
 ]

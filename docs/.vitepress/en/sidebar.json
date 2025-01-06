@@ -4,8 +4,9 @@
     "link": "/pt/introduction",
     "collapsed": false,
     "items": [
-      { "text": "Why Utilify", "link": "/pt/introduction/why-utilify" },
-      { "text": "Installation", "link": "/pt/introduction/intallation" }
+      { "text": "Why Utilify?", "link": "/introduction/why-utilify" },
+      { "text": "Installation", "link": "/introduction/installation" },
+      { "text": "Overview", "link": "/introduction/overview" }
     ]
   },
   {
@@ -37,7 +38,7 @@
     "items": [
       { "text": "getLanguage", "link": "/docs/browser/getLanguage" },
       { "text": "getTheme", "link": "/docs/browser/getTheme" },
-      { "text": "hash", "link": "/en/docs/browser/hash" },
+      { "text": "hash", "link": "/docs/browser/hash" },
       { "text": "isCookieEnabled", "link": "/docs/browser/isCookieEnabled" },
       { "text": "isFullscreenEnabled", "link": "/docs/browser/isFullscreenEnabled" },
       { "text": "isOnline", "link": "/docs/browser/isOnline" },

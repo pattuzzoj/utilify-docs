@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: Começar
-      link: /introduction
+      link: /pt/introduction
     - theme: alt
       text: Instalar
-      link: https://www.npmjs.com/
+      link: /introduction/installation
 
 features:
   - icon: 🔒
