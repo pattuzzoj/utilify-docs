@@ -17,5 +17,6 @@
       { "text": "Types", "link": "/pt/docs/types" },
       { "text": "Utils", "link": "/pt/docs/utils" }
     ]
-  }
+  },
+  { "text": "Licença", "link": "/pt/license" }
 ]
