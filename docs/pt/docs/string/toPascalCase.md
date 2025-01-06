@@ -1,40 +1,65 @@
 # toPascalCase
 
+A função `toPascalCase` converte uma string para o formato PascalCase, onde cada palavra começa com a letra maiúscula e todos os espaços entre as palavras são removidos.
+
+## Sintaxe
+
 ```typescript
-function toPascalCase(str: string): string {
+function toPascalCase(str: string): string
+```
+
+### Parâmetros
+
+| Nome  | Tipo     | Descrição                                          |
+|-------|----------|----------------------------------------------------|
+| str   | `string` | A string a ser convertida para o formato PascalCase. |
+
+### Retorno
+
+| Tipo    | Descrição                                      |
+|---------|------------------------------------------------|
+| `string` | A string convertida para o formato PascalCase.  |
+
+## Exemplos
+
+```typescript
+import toPascalCase from "./toPascalCase";
+
+console.log(toPascalCase("hello world"));         // Saída: "HelloWorld"
+console.log(toPascalCase("java script is fun"));  // Saída: "JavaScriptIsFun"
+console.log(toPascalCase("singleword"));          // Saída: "Singleword"
+console.log(toPascalCase("  extra spaces here ")); // Saída: "ExtraSpacesHere"
+```
+
+## Notas
+
+- A função utiliza `trim()` para remover os espaços no início e no final da string.
+- Ela divide a string em palavras usando `split(" ")`, capitaliza a primeira letra de cada palavra com `toUpperCase()` e junta as palavras de volta.
+- Por fim, remove qualquer espaço restante usando `replace(/\s+/g, "")`.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function toPascalCase(str: string): string {
   return str.trim().split(" ").map((str) => {
     return str[0].toUpperCase().concat(str.slice(1));
   }).join(" ").replace(/\s+/g, "");
 }
 ```
 
-A função `toPascalCase` converte uma string para o formato PascalCase, onde cada palavra começa com uma letra maiúscula e as palavras são concatenadas sem espaços.
-
-## Assinatura
-
-```typescript
-function toPascalCase(str: string): string;
+```javascript
+export default function toPascalCase(str) {
+  return str.trim().split(" ").map((str) => {
+    return str[0].toUpperCase().concat(str.slice(1));
+  }).join(" ").replace(/\s+/g, "");
+}
 ```
+::: 
 
-### Parâmetros
-
-- **`str`** (`string`): A string a ser convertida para PascalCase.
-
-### Retorno
-
-- **`string`**: A string convertida para o formato PascalCase.
-
-## Exemplos
-
-```typescript
-console.log(toPascalCase("hello world")); // "HelloWorld"
-console.log(toPascalCase("this is a test")); // "ThisIsATest"
-```
-
-## Notas
-
-- A função remove espaços em branco e converte a primeira letra de cada palavra para maiúscula antes de realizar a transformação.
-  
 ## Referências
 
-- [String.prototype.replace() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+- [String.prototype.trim()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/trim)
+- [String.prototype.split()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+- [String.prototype.toUpperCase()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+- [String.prototype.replace()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/replace)

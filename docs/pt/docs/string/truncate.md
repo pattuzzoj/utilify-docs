@@ -1,39 +1,58 @@
 # truncate
 
-```typescript
-function truncate(text: string, size: number): string {
-  return text.slice(0, size).concat("...");
-}
-```
+A função `truncate` trunca uma string até um tamanho especificado e adiciona "..." no final, caso a string exceda esse tamanho.
 
-A função `truncate` corta uma string para o comprimento especificado e adiciona "..." no final, indicando que o texto foi truncado.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function truncate(text: string, size: number): string;
+function truncate(text: string, size: number): string
 ```
 
 ### Parâmetros
 
-- **`text`** (`string`): O texto original que será truncado.
-- **`size`** (`number`): O comprimento máximo da string após a truncagem.
+| Nome  | Tipo     | Descrição                                          |
+|-------|----------|----------------------------------------------------|
+| text  | `string` | A string a ser truncada.                           |
+| size  | `number` | O comprimento máximo da string antes de truncá-la. |
 
 ### Retorno
 
-- **`string`**: A string truncada com "..." no final, se o comprimento original for maior que o valor especificado.
+| Tipo    | Descrição                                      |
+|---------|------------------------------------------------|
+| `string` | A string truncada, com "..." adicionado, se a string exceder o comprimento especificado. |
 
 ## Exemplos
 
 ```typescript
-console.log(truncate("Hello, world!", 5)); // "Hello..."
-console.log(truncate("This is a test string.", 10)); // "This is a ..."
+import truncate from "./truncate";
+
+console.log(truncate("Hello, World!", 5));        // Saída: "Hello..."
+console.log(truncate("JavaScript", 4));            // Saída: "Java..."
+console.log(truncate("Short", 10));                // Saída: "Short"
+console.log(truncate("Another test example", 7)); // Saída: "Anothe..."
 ```
 
 ## Notas
 
-- Se o comprimento da string for menor ou igual ao valor de `size`, a string original será retornada sem modificação.
+- A função utiliza `slice(0, size)` para extrair a substring até o tamanho especificado.
+- Se a string exceder o tamanho especificado, `"..."` será concatenado à string truncada.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function truncate(text: string, size: number): string {
+  return text.slice(0, size).concat("...");
+}
+```
+
+```javascript
+export default function truncate(text, size) {
+  return text.slice(0, size).concat("...");
+}
+```
+::: 
 
 ## Referências
 
-- [String.prototype.slice() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
+- [String.prototype.slice()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/slice)

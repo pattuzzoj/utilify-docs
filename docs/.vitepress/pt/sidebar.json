@@ -183,10 +183,8 @@
       { "text": "isEmptyString", "link": "/pt/docs/regex/isEmptyString" },
       { "text": "isIPV4", "link": "/pt/docs/regex/isIPV4" },
       { "text": "isIPV6", "link": "/pt/docs/regex/isIPV6" },
-      { "text": "isLowerCase", "link": "/pt/docs/regex/isLowerCase" },
       { "text": "isNegative", "link": "/pt/docs/regex/isNegative" },
       { "text": "isSlug", "link": "/pt/docs/regex/isSlug" },
-      { "text": "isUpperCase", "link": "/pt/docs/regex/isUpperCase" },
       { "text": "isURL", "link": "/pt/docs/regex/isURL" },
       { "text": "isUUID", "link": "/pt/docs/regex/isUUID" }
     ]
@@ -198,9 +196,10 @@
     "items": [
       { "text": "capitalize", "link": "/pt/docs/string/capitalize" },
       { "text": "invertCase", "link": "/pt/docs/string/invertCase" },
+      { "text": "isLowerCase", "link": "/pt/docs/string/isLowerCase" },
+      { "text": "isUpperCase", "link": "/pt/docs/string/isUpperCase" },
       { "text": "maskString", "link": "/pt/docs/string/maskString" },
       { "text": "removeAccents", "link": "/pt/docs/string/removeAccents" },
-      { "text": "sanitizeStr", "link": "/pt/docs/string/sanitizeStr" },
       { "text": "slugify", "link": "/pt/docs/string/slugify" },
       { "text": "toCamelCase", "link": "/pt/docs/string/toCamelCase" },
       { "text": "toKebabCase", "link": "/pt/docs/string/toKebabCase" },

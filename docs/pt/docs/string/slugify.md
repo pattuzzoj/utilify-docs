@@ -1,47 +1,75 @@
 # slugify
 
-```typescript
-function slugify(str: string): string {
-  return str
-    .trim()
-    .replace(/[!@#$%^&*()\-=+[\]{}|\\~;:'",.<>?\/]/g, "")
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-}
-```
+A função `slugify` converte uma string para um formato de URL amigável, removendo caracteres especiais, transformando tudo em minúsculas, e substituindo os espaços por hífens.
 
-A função `slugify` converte uma string em um formato adequado para ser usada em URLs, removendo caracteres especiais e substituindo espaços por hífens. Isso é útil para criar slugs amigáveis em URLs.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function slugify(str: string): string;
+function slugify(str: string): string
 ```
 
 ### Parâmetros
 
-- **`str`** (`string`): A string a ser transformada em slug.
+| Nome  | Tipo     | Descrição                                          |
+|-------|----------|----------------------------------------------------|
+| str   | `string` | A string a ser convertida para o formato slug.     |
 
 ### Retorno
 
-- **`string`**: A string convertida em slug.
+| Tipo    | Descrição                                      |
+|---------|------------------------------------------------|
+| `string` | A string convertida para o formato slug.       |
 
 ## Exemplos
 
 ```typescript
-console.log(slugify("Hello World!")); // "hello-world"
-console.log(slugify("This is a test.")); // "this-is-a-test"
+import slugify from "./slugify";
+
+console.log(slugify("Hello World!"));            // Saída: "hello-world"
+console.log(slugify("JavaScript is fun!"));      // Saída: "javascript-is-fun"
+console.log(slugify("  Extra spaces here!  "));  // Saída: "extra-spaces-here"
+console.log(slugify("Título com acentuação!"));  // Saída: "titulo-com-acentuacao"
 ```
 
 ## Notas
 
-- A função remove caracteres especiais usando uma expressão regular.
-- Converte a string para minúsculas e substitui espaços por hífens.
-- Remove acentos usando a normalização Unicode (`NFD`).
+- A função utiliza `trim()` para remover os espaços no início e no final da string.
+- Em seguida, utiliza `replace(/[!@#$%^&*()\-=+[\]{}|\\~;:'",.<>?\/]/g, "")` para remover caracteres especiais.
+- Transforma toda a string para minúsculas com `toLowerCase()`.
+- Substitui os espaços por hífens com `replace(/\s+/g, '-')`.
+- Normaliza a string com `normalize('NFD')` e remove os acentos com `replace(/[\u0300-\u036f]/g, '')`.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function slugify(str: string): string {
+  return str
+  .trim()
+  .replace(/[!@#$%^&*()\-=+[\]{}|\\~;:'",.<>?\/]/g, "")
+  .toLowerCase()
+  .replace(/\s+/g, '-')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '');
+}
+```
+
+```javascript
+export default function slugify(str) {
+  return str
+  .trim()
+  .replace(/[!@#$%^&*()\-=+[\]{}|\\~;:'",.<>?\/]/g, "")
+  .toLowerCase()
+  .replace(/\s+/g, '-')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '');
+}
+```
+::: 
 
 ## Referências
 
-- [String.prototype.replace() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
-- [String.prototype.normalize() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
+- [String.prototype.trim()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/trim)
+- [String.prototype.replace()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+- [String.prototype.toLowerCase()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
+- [String.prototype.normalize()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)

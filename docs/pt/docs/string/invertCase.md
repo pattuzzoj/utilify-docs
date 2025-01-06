@@ -1,11 +1,53 @@
 # invertCase
 
+A função `invertCase` inverte a caixa de cada caractere em uma string. Ela converte as letras minúsculas em maiúsculas e as maiúsculas em minúsculas, deixando os caracteres não alfabéticos inalterados.
+
+## Sintaxe
+
 ```typescript
-function invertCase(str: string): string {
+function invertCase(str: string): string
+```
+
+### Parâmetros
+
+| Nome  | Tipo     | Descrição                                      |
+|-------|----------|------------------------------------------------|
+| str   | `string` | A string cuja caixa dos caracteres será invertida. |
+
+### Retorno
+
+| Tipo    | Descrição                                      |
+|---------|------------------------------------------------|
+| `string` | A string com a caixa de cada caractere invertida. |
+
+## Exemplos
+
+```typescript
+import invertCase from "./invertCase";
+
+console.log(invertCase("Hello World"));  // Saída: "hELLO wORLD"
+console.log(invertCase("JavaScript"));   // Saída: "jAVAsCRIPT"
+console.log(invertCase("12345"));        // Saída: "12345" (sem alteração)
+```
+
+## Notas
+
+- A função utiliza `split("")` para dividir a string em um array de caracteres.
+- Em seguida, usa o método `map()` para verificar cada caractere, utilizando `isLowerCase` e `isUpperCase` para determinar se deve ser convertido para maiúscula ou minúscula, respectivamente.
+- O resultado é então reunido de volta em uma string usando `join("")`.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import isLowerCase from "./isLowerCase";
+import isUpperCase from "./isUpperCase";
+
+export default function invertCase(str: string): string {
   return str.split("").map((str) => {
-    if(isLowerCase(str)) {
+    if (isLowerCase(str)) {
       return str.toUpperCase();
-    } else if(isUpperCase(str)) {
+    } else if (isUpperCase(str)) {
       return str.toLowerCase();
     }
 
@@ -14,35 +56,26 @@ function invertCase(str: string): string {
 }
 ```
 
-A função `invertCase` recebe uma string e retorna uma nova string onde todas as letras maiúsculas são convertidas para minúsculas e todas as letras minúsculas são convertidas para maiúsculas. Caracteres não alfabéticos são mantidos inalterados.
+```javascript
+import isLowerCase from "./isLowerCase";
+import isUpperCase from "./isUpperCase";
 
-## Assinatura
+export default function invertCase(str) {
+  return str.split("").map((str) => {
+    if (isLowerCase(str)) {
+      return str.toUpperCase();
+    } else if (isUpperCase(str)) {
+      return str.toLowerCase();
+    }
 
-```typescript
-function invertCase(str: string): string;
+    return str;
+  }).join("");
+}
 ```
-
-### Parâmetros
-
-- **`str`** (`string`): A string cuja capitalização será invertida.
-
-### Retorno
-
-- **`string`**: A nova string com as letras maiúsculas e minúsculas invertidas.
-
-## Exemplos
-
-```typescript
-console.log(invertCase("Hello World")); // "hELLO wORLD"
-console.log(invertCase("JavaScript"));  // "jAVAsCRIPT"
-console.log(invertCase("12345"));       // "12345" (caracteres não alfabéticos são inalterados)
-```
-
-## Notas
-
-- Apenas caracteres alfabéticos (letras) têm sua capitalização invertida. Caracteres não alfabéticos, como números e símbolos, são deixados inalterados.
+::: 
 
 ## Referências
 
-- [String.prototype.split() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
-- [String.prototype.map() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- [String.prototype.split()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+- [String.prototype.toUpperCase()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+- [String.prototype.toLowerCase()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)

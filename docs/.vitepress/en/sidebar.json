@@ -183,10 +183,8 @@
       { "text": "isEmptyString", "link": "/docs/regex/isEmptyString" },
       { "text": "isIPV4", "link": "/docs/regex/isIPV4" },
       { "text": "isIPV6", "link": "/docs/regex/isIPV6" },
-      { "text": "isLowerCase", "link": "/docs/regex/isLowerCase" },
       { "text": "isNegative", "link": "/docs/regex/isNegative" },
       { "text": "isSlug", "link": "/docs/regex/isSlug" },
-      { "text": "isUpperCase", "link": "/docs/regex/isUpperCase" },
       { "text": "isURL", "link": "/docs/regex/isURL" },
       { "text": "isUUID", "link": "/docs/regex/isUUID" }
     ]
@@ -198,9 +196,10 @@
     "items": [
       { "text": "capitalize", "link": "/docs/string/capitalize" },
       { "text": "invertCase", "link": "/docs/string/invertCase" },
+      { "text": "isLowerCase", "link": "/docs/string/isLowerCase" },
+      { "text": "isUpperCase", "link": "/docs/string/isUpperCase" },
       { "text": "maskString", "link": "/docs/string/maskString" },
       { "text": "removeAccents", "link": "/docs/string/removeAccents" },
-      { "text": "sanitizeStr", "link": "/docs/string/sanitizeStr" },
       { "text": "slugify", "link": "/docs/string/slugify" },
       { "text": "toCamelCase", "link": "/docs/string/toCamelCase" },
       { "text": "toKebabCase", "link": "/docs/string/toKebabCase" },
