@@ -1,50 +1,56 @@
 # isOdd
 
-```typescript
-function isOdd(value: number): boolean {
-  return value % 2 !== 0;
-}
-```
+A função `isOdd` verifica se um número é ímpar. Ela retorna `true` se o número não for divisível por 2 (ou seja, o resto da divisão for diferente de zero), e `false` caso contrário.
 
-A função `isOdd` verifica se o valor fornecido é um número ímpar.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isOdd(value: number): boolean;
+function isOdd(value: number): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`number`): O número que será verificado.
+| Nome  | Tipo     | Descrição                                      |
+|-------|----------|------------------------------------------------|
+| value | `number` | O número a ser verificado se é ímpar.          |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for um número ímpar, caso contrário, retorna `false`.
+| Tipo    | Descrição                                       |
+|---------|-------------------------------------------------|
+| `boolean` | `true` se o número for ímpar, `false` caso contrário. |
 
 ## Exemplos
 
 ```typescript
-import { isOdd } from "./isOdd";
+import isOdd from "./isOdd";
 
-console.log(isOdd(3)); 
-// true
-
-console.log(isOdd(4)); 
-// false
-
-console.log(isOdd(0)); 
-// false
-
-console.log(isOdd(-1)); 
-// true
+console.log(isOdd(3));  // Saída: true
+console.log(isOdd(4));  // Saída: false
+console.log(isOdd(0));  // Saída: false
 ```
 
 ## Notas
 
-- A função utiliza a operação de módulo para verificar se o número é ímpar.
-- Números negativos ímpares também retornarão `true`.
+- A função utiliza o operador de módulo (`%`) para verificar se o número não é divisível por 2 sem deixar resto.
+- A entrada deve ser um número inteiro.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isOdd(value: number): boolean {
+  return value % 2 !== 0;
+}
+```
+
+```javascript
+export default function isOdd(value) {
+  return value % 2 !== 0;
+}
+```
+::: 
 
 ## Referências
 
-- [Operador de Módulo - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#modulo)
+- [Operador de Módulo](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Modulo)

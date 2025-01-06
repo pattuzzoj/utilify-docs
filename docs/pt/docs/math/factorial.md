@@ -1,7 +1,45 @@
 # factorial
 
+A função `factorial` calcula o fatorial de um número inteiro positivo. O fatorial de um número \( n \) é o produto de todos os inteiros de \( 1 \) até \( n \). Para \( n = 0 \), o resultado é definido como \( 1 \).
+
+## Sintaxe
+
 ```typescript
-function factorial(value: number): number {
+function factorial(value: number): number
+```
+
+### Parâmetros
+
+| Nome  | Tipo     | Descrição                                |
+|-------|----------|------------------------------------------|
+| value | `number` | O número inteiro positivo para calcular o fatorial. |
+
+### Retorno
+
+| Tipo    | Descrição                                       |
+|---------|-------------------------------------------------|
+| `number`| O fatorial do número de entrada.                |
+
+## Exemplos
+
+```typescript
+import factorial from "./factorial";
+
+console.log(factorial(5)); // Saída: 120 (5 * 4 * 3 * 2 * 1)
+console.log(factorial(0)); // Saída: 1 (fatorial de 0 é definido como 1)
+console.log(factorial(3)); // Saída: 6 (3 * 2 * 1)
+```
+
+## Notas
+
+- O valor de entrada deve ser um número inteiro não negativo. Para valores negativos, a função pode retornar resultados inesperados ou gerar erros, dependendo do contexto.
+- Para otimizar cálculos frequentes, considere usar memoização ou uma abordagem recursiva dependendo do caso de uso.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function factorial(value: number): number {
   let result = 1;
 
   for (let num = value; num >= 1; num--) {
@@ -12,37 +50,20 @@ function factorial(value: number): number {
 }
 ```
 
-A função `factorial` calcula o fatorial de um número não negativo fornecido. O fatorial de um número `n` é o produto de todos os inteiros positivos de `1` a `n` (denotado como `n!`).
+```javascript
+export default function factorial(value) {
+  let result = 1;
 
-## Assinatura
+  for (let num = value; num >= 1; num--) {
+    result *= num;
+  }
 
-```typescript
-function factorial(value: number): number;
+  return result;
+}
 ```
-
-### Parâmetros
-
-- **`value`** (`number`): Um número inteiro não negativo cujo fatorial será calculado.
-
-### Retorno
-
-- **`number`**: O valor do fatorial calculado para o número fornecido. Retorna `1` se o número for `0` ou `1`.
-
-## Exemplos
-
-```typescript
-import { factorial } from "./factorial";
-
-console.log(factorial(5)); // 120 (5 * 4 * 3 * 2 * 1)
-console.log(factorial(0)); // 1 (por definição, 0! = 1)
-console.log(factorial(3)); // 6 (3 * 2 * 1)
-```
-
-## Notas
-
-- Por definição, o fatorial de `0` é igual a `1` (`0! = 1`).
-- A função assume que o parâmetro fornecido é um número inteiro não negativo.
+::: 
 
 ## Referências
 
-- [Fatorial - Wikipedia](https://pt.wikipedia.org/wiki/Fatorial)
+- [Operador de Multiplicação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Multiplication)  
+- [Estruturas de Repetição](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for)

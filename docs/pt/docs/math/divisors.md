@@ -1,7 +1,45 @@
 # divisors
 
+A função `divisors` calcula todos os divisores de um número, incluindo `1` e o próprio número. Os divisores são retornados em ordem crescente.
+
+## Sintaxe
+
 ```typescript
-function divisors(num: number): number[] {
+function divisors(num: number): number[]
+```
+
+### Parâmetros
+
+| Nome | Tipo     | Descrição                           |
+|------|----------|-------------------------------------|
+| num  | `number` | O número cujo divisores serão calculados. |
+
+### Retorno
+
+| Tipo       | Descrição                                               |
+|------------|---------------------------------------------------------|
+| `number[]` | Um array com todos os divisores do número, ordenados em ordem crescente. |
+
+## Exemplos
+
+```typescript
+import divisors from "./divisors";
+
+console.log(divisors(12)); // Saída: [1, 2, 3, 4, 6, 12]
+console.log(divisors(7));  // Saída: [1, 7]
+console.log(divisors(28)); // Saída: [1, 2, 4, 7, 14, 28]
+```
+
+## Notas
+
+- A função utiliza a raiz quadrada do número para otimizar o cálculo dos divisores.
+- Se o número for um quadrado perfeito, a raiz quadrada será incluída apenas uma vez no resultado.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function divisors(num: number): number[] {
   const divisors = [1];
   const limit = Math.sqrt(num);
 
@@ -21,37 +59,30 @@ function divisors(num: number): number[] {
 }
 ```
 
-A função `divisors` retorna todos os divisores de um número fornecido, incluindo `1` e o próprio número, ordenados em ordem crescente.
+```javascript
+export default function divisors(num) {
+  const divisors = [1];
+  const limit = Math.sqrt(num);
 
-## Assinatura
+  for (let index = 2; index <= limit; index++) {
+    if (num % index === 0) {
+      divisors.push(index);
 
-```typescript
-function divisors(num: number): number[];
+      if (index !== num / index) {
+        divisors.push(num / index);
+      }
+    }
+  }
+
+  divisors.push(num);
+
+  return divisors.sort((a, b) => a - b);
+}
 ```
-
-### Parâmetros
-
-- **`num`** (`number`): O número cujo os divisores serão calculados.
-
-### Retorno
-
-- **`number[]`**: Um array contendo todos os divisores do número fornecido, em ordem crescente.
-
-## Exemplos
-
-```typescript
-import { divisors } from "./divisors";
-
-console.log(divisors(12)); // [1, 2, 3, 4, 6, 12]
-console.log(divisors(28)); // [1, 2, 4, 7, 14, 28]
-console.log(divisors(13)); // [1, 13]
-```
-
-## Notas
-
-- A função utiliza a propriedade de simetria dos divisores para melhorar a eficiência, iterando apenas até a raiz quadrada do número.
-- Para números primos, o retorno será `[1, num]`.
+::: 
 
 ## Referências
 
-- [Divisores - Wikipedia](https://pt.wikipedia.org/wiki/Divisor)
+- [Array.prototype.push()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/push)  
+- [Math.sqrt()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt)  
+- [Array.prototype.sort()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)

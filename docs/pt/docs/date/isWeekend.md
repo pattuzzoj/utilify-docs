@@ -1,13 +1,58 @@
-Segue a documentação revisada com o código fonte incluído:
+# isWeekend  
+Verifica se a data fornecida representa um final de semana (sábado ou domingo). A função retorna `undefined` se a data fornecida for inválida.
 
----
+## Sintaxe
+```typescript
+isWeekend(date: Date): boolean | undefined
+```
 
-# isWeekend
+### Parâmetros
+
+| Parâmetro | Tipo    | Descrição                                                  |
+|-----------|---------|------------------------------------------------------------|
+| `date`    | `Date`  | O objeto `Date` a ser verificado.                           |
+
+### Retorno
+
+| Tipo        | Descrição                                                  |
+|-------------|------------------------------------------------------------|
+| `boolean`   | Retorna `true` se a data for no final de semana (sábado ou domingo), caso contrário, retorna `false`. |
+| `undefined` | Retorna `undefined` se a data fornecida for inválida.       |
+
+## Exemplos
+
+### Exemplo 1: Data no final de semana
+```typescript
+const dataFinalDeSemana = new Date("2025-01-04"); // Sábado
+console.log(isWeekend(dataFinalDeSemana)); // true
+```
+
+### Exemplo 2: Data em um dia de semana
+```typescript
+const dataDiaDeSemana = new Date("2025-01-06"); // Segunda-feira
+console.log(isWeekend(dataDiaDeSemana)); // false
+```
+
+### Exemplo 3: Data inválida
+```typescript
+const dataInvalida = new Date("data inválida");
+console.log(isWeekend(dataInvalida)); // undefined
+```
+
+## Notas
+- A função utiliza `isValidDate` para garantir que a data fornecida seja válida antes de verificar se é um final de semana.
+- Ela verifica se o dia é `0` (domingo) ou `6` (sábado) com base no método `getDay()` do objeto `Date`.
+
+## Dependências
+[isValidDate](./isValidDate.md): Função utilizada para validar a data fornecida.
+
+## Código Fonte
+::: code-group
 
 ```typescript
-import { isValidDate } from ".";
+import isValidDate from "./isValidDate";
 
-function isWeekend(date: Date): boolean | undefined {
+export default function isWeekend(date: Date): boolean | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;
@@ -19,40 +64,21 @@ function isWeekend(date: Date): boolean | undefined {
 }
 ```
 
-A função `isWeekend` verifica se uma data fornecida cai em um fim de semana (sábado ou domingo).
+```javascript
+import isValidDate from "./isValidDate";
 
-## Assinatura
+export default function isWeekend(date) {
+  if (!isValidDate(date)) {
+    console.error("Invalid date");
+    return;
+  };
 
-```typescript
-function isWeekend(date: Date): boolean | undefined;
+  const day = date.getDay();
+
+  return 0 === day || day === 6;
+}
 ```
-
-### Parâmetros
-
-- **`date`** (`Date`): O objeto `Date` a ser verificado. Deve representar uma data válida.
-
-### Retorno
-
-- **`boolean | undefined`**:
-  - Retorna `true` se a data cair em um sábado ou domingo.
-  - Retorna `false` se a data não cair em um fim de semana.
-  - Retorna `undefined` se o argumento fornecido não for uma data válida.
-
-## Exemplos
-
-```typescript
-console.log(isWeekend(new Date("2024-12-30"))); // false (segunda-feira)
-console.log(isWeekend(new Date("2024-12-29"))); // true (domingo)
-console.log(isWeekend(new Date("invalid-date"))); // undefined (e registra "Invalid date" no console)
-```
-
-## Notas
-
-- A função utiliza `isValidDate` para garantir que o objeto `Date` fornecido seja válido antes de verificar o dia da semana.
-- Um erro será registrado no console caso o argumento fornecido seja inválido.
-- A validação evita erros ao acessar métodos em objetos `Date` inválidos.
+:::
 
 ## Referências
-
-- [Date.getDay() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getDay)
-- [Date - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- [MDN: `Date.prototype.getDay`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getDay)

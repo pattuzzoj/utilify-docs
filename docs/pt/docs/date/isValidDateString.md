@@ -1,46 +1,62 @@
-# isValidDateString
+# isValidDateString  
+Verifica se a string fornecida pode ser convertida em uma data válida. A função tenta criar uma data a partir da string e retorna `true` se a data for válida, ou `false` caso contrário.
 
+## Sintaxe
 ```typescript
-function isValidDateString(date: string) {
-  return !isNaN(new Date(date).getTime());
-}
-```
-
-A função `isValidDateString` verifica se uma string fornecida representa uma data válida.
-
-## Assinatura
-
-```typescript
-function isValidDateString(date: string): boolean;
+isValidDateString(date: string): boolean
 ```
 
 ### Parâmetros
 
-- **`date`** (`string`): Uma string que representa a data a ser validada.
+| Parâmetro | Tipo    | Descrição                                  |
+|-----------|---------|--------------------------------------------|
+| `date`    | `string`| A string que será verificada como uma data. |
 
 ### Retorno
 
-- **`boolean`**: 
-  - `true` se a string representa uma data válida.
-  - `false` caso contrário.
+| Tipo      | Descrição                                        |
+|-----------|--------------------------------------------------|
+| `boolean` | Retorna `true` se a string for uma data válida, caso contrário, retorna `false`. |
 
 ## Exemplos
 
+### Exemplo 1: Data válida
 ```typescript
-console.log(isValidDateString("2024-12-31")); // true
-console.log(isValidDateString("2024-02-29")); // true (ano bissexto)
-console.log(isValidDateString("not-a-date")); // false
-console.log(isValidDateString("2024-13-01")); // false (mês inválido)
-console.log(isValidDateString("")); // false
+isValidDateString("2025-01-05"); // true
+```
+
+### Exemplo 2: Data inválida
+```typescript
+isValidDateString("data inválida"); // false
+```
+
+### Exemplo 3: Data com formato incomum, mas válida
+```typescript
+isValidDateString("01/05/2025"); // true
 ```
 
 ## Notas
+- A função utiliza o construtor `Date` para tentar converter a string em uma data.
+- Se a conversão resultar em um valor inválido, a função retorna `false`.
+- A função verifica a validade da data com base no comportamento do método `getTime()`, que retorna `NaN` se a data não for válida.
 
-- A função utiliza o construtor `Date` do JavaScript para tentar criar uma instância da data fornecida.
-- Datas inválidas resultam em um `NaN` quando `getTime()` é chamado, o que a função detecta e retorna `false`.
-- A precisão da validação depende do suporte e comportamento do motor JavaScript para o formato de string de data.
+## Código Fonte
+::: code-group
+
+```typescript
+export default function isValidDateString(date: string): boolean {
+  return !isNaN(new Date(date).getTime());
+}
+```
+
+```javascript
+export default function isValidDateString(date) {
+  return !isNaN(new Date(date).getTime());
+}
+```
+:::
 
 ## Referências
-
-- [Date() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-- [Number.isNaN() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN)
+- [MDN: `Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- [MDN: `Date.prototype.getTime`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime)
+- [MDN: `isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN)

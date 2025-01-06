@@ -1,37 +1,76 @@
-# parseDate
+# parseDate  
+Converte uma string representando uma data para um objeto `Date`. A função valida a string antes de tentar realizar o parsing, retornando `undefined` se a data for inválida.
 
-A função `parseDate` converte uma string de data válida em um objeto `Date`. Se a string fornecida não for uma data válida, a função registra um erro no console e retorna `undefined`.
-
-## Assinatura
-
+## Sintaxe
 ```typescript
-function parseDate(date: string): Date | undefined;
+parseDate(date: string): Date | undefined
 ```
 
 ### Parâmetros
 
-- **`date`** (`string`): A string representando a data que será convertida em um objeto `Date`. Deve ser uma string válida que pode ser analisada como uma data.
+| Parâmetro | Tipo    | Descrição                                                         |
+|-----------|---------|-------------------------------------------------------------------|
+| `date`    | `string`| A string representando a data a ser convertida para um objeto `Date`. |
 
 ### Retorno
 
-- **`Date | undefined`**: 
-  - Retorna um objeto `Date` correspondente à string de data fornecida, caso seja válida.
-  - Retorna `undefined` se a string não for uma data válida.
+| Tipo       | Descrição                                              |
+|------------|--------------------------------------------------------|
+| `Date`     | Retorna um objeto `Date` correspondente à string fornecida. |
+| `undefined`| Retorna `undefined` se a string fornecida não for uma data válida. |
 
 ## Exemplos
 
+### Exemplo 1: String de data válida
 ```typescript
-console.log(parseDate("2024-12-30T10:30:00")); // Date object: Mon Dec 30 2024 10:30:00
-console.log(parseDate("invalid-date")); // undefined (e registra "Invalid date" no console)
+const validDateString = "2025-01-05T12:00:00Z";
+const parsedDate = parseDate(validDateString);
+console.log(parsedDate); // A data correspondente à string fornecida
+```
+
+### Exemplo 2: String de data inválida
+```typescript
+const invalidDateString = "invalid date string";
+const parsedDate = parseDate(invalidDateString);
+console.log(parsedDate); // undefined
 ```
 
 ## Notas
+- A função utiliza a função auxiliar `isValidDateString` para validar a string antes de tentar convertê-la para um objeto `Date`.
+- Se a string não for válida, a função retorna `undefined` e exibe uma mensagem de erro no console.
 
-- A função depende de `isValidDateString` para verificar se a string fornecida é válida antes de criar o objeto `Date`.
-- Um erro será registrado no console para strings de data inválidas.
-- A validação prévia evita criar objetos `Date` inválidos que resultem em valores `Invalid Date`.
+## Dependências
+[isValidDateString](./isValidDateString.md): Função utilizada para validar a string de data fornecida.
+
+## Código Fonte
+::: code-group
+
+```typescript
+import isValidDateString from "./isValidDateString";
+
+export default function parseDate(date: string): Date | undefined {
+  if (!isValidDateString(date)) {
+    console.error("Data inválida");
+    return;
+  }
+  
+  return new Date(date);
+}
+```
+
+```javascript
+import isValidDateString from "./isValidDateString";
+
+export default function parseDate(date) {
+  if (!isValidDateString(date)) {
+    console.error("Data inválida");
+    return;
+  }
+  
+  return new Date(date);
+}
+```
+:::
 
 ## Referências
-
-- [Date - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-- [Date.parse() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
+- [MDN: `Date`](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Date)

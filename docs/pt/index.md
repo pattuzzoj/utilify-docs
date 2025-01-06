@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Utilis"
+  name: "Utilify"
   text: "Utilitários Essenciais"
   tagline: "Impulsione seu desenvolvimento com funções utilitárias confiáveis, seguras por tipo e eficientes para JavaScript e TypeScript"
   actions:
@@ -37,7 +37,7 @@ features:
 
   - icon: 📦
     title: Fácil de Instalar
-    details: Adicione rapidamente o Utilis ao seu projeto com npm ou yarn e comece a usá-lo imediatamente.
+    details: Adicione rapidamente o Utilis ao seu projeto com npm, yarn ou pnpm e comece a usá-lo imediatamente.
 
   - icon: 📚
     title: Bem Documentado

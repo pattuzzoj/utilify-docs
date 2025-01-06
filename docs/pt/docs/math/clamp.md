@@ -1,7 +1,47 @@
 # clamp
 
+A função `clamp` restringe um número a um intervalo especificado. Se o valor exceder o limite máximo, ela retorna o valor máximo. Se o valor estiver abaixo do limite mínimo, ela retorna o valor mínimo. Caso contrário, retorna o valor original.
+
+## Sintaxe
+
 ```typescript
-function clamp(value: number, min: number, max: number): number {
+function clamp(value: number, min: number, max: number): number
+```
+
+### Parâmetros
+
+| Nome  | Tipo     | Descrição                           |
+|-------|----------|-------------------------------------|
+| value | `number` | O número a ser restringido.         |
+| min   | `number` | O valor mínimo permitido.           |
+| max   | `number` | O valor máximo permitido.           |
+
+### Retorno
+
+| Tipo    | Descrição                                        |
+|---------|--------------------------------------------------|
+| `number`| O valor restringido, limitado ao intervalo dado.|
+
+## Exemplos
+
+```typescript
+import clamp from "./clamp";
+
+console.log(clamp(5, 1, 10));  // Saída: 5 (dentro do intervalo)
+console.log(clamp(-3, 1, 10)); // Saída: 1 (abaixo do intervalo, limitado ao mínimo)
+console.log(clamp(15, 1, 10)); // Saída: 10 (acima do intervalo, limitado ao máximo)
+```
+
+## Notas
+
+- A função assume que `min` é menor ou igual a `max`. Se essa condição for violada, o comportamento pode ser imprevisível.
+- Útil para garantir que valores permaneçam dentro de limites seguros ou esperados.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function clamp(value: number, min: number, max: number): number {
   if (value >= max) {
     return max;
   } else if (value <= min) {
@@ -12,41 +52,19 @@ function clamp(value: number, min: number, max: number): number {
 }
 ```
 
-A função `clamp` limita um valor a um intervalo especificado, garantindo que ele não seja menor que o limite mínimo ou maior que o limite máximo.
+```javascript
+export default function clamp(value, min, max) {
+  if (value >= max) {
+    return max;
+  } else if (value <= min) {
+    return min;
+  }
 
-## Assinatura
-
-```typescript
-function clamp(value: number, min: number, max: number): number;
+  return value;
+}
 ```
-
-### Parâmetros
-
-- **`value`** (`number`): O valor a ser limitado.
-- **`min`** (`number`): O limite inferior do intervalo.
-- **`max`** (`number`): O limite superior do intervalo.
-
-### Retorno
-
-- **`number`**: O valor limitado ao intervalo definido por `min` e `max`.
-
-## Exemplos
-
-```typescript
-import { clamp } from "./clamp";
-
-console.log(clamp(5, 1, 10)); // 5
-console.log(clamp(-5, 0, 100)); // 0
-console.log(clamp(150, 0, 100)); // 100
-```
-
-## Notas
-
-- Se o valor for menor que o limite inferior (`min`), será retornado o valor de `min`.
-- Se o valor for maior que o limite superior (`max`), será retornado o valor de `max`.
-- Caso o valor esteja dentro do intervalo, ele será retornado sem alterações.
+::: 
 
 ## Referências
 
-- [Math.min() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min)
-- [Math.max() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max)
+- [Operadores de Comparação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)

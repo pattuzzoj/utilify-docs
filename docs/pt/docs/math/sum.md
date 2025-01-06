@@ -1,45 +1,56 @@
 # sum
 
-```typescript
-function sum(values: number[]): number {
-  return values.reduce((total, value) => total + value, 0);
-}
-```
+A função `sum` calcula a soma de todos os números em um array. Ela retorna o total da soma dos valores fornecidos.
 
-A função `sum` retorna a soma de todos os elementos em um array de números. Ela utiliza o método `reduce()` para acumular o total somando cada valor presente no array.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function sum(values: number[]): number;
+function sum(values: number[]): number
 ```
 
 ### Parâmetros
 
-- **`values`** (`number[]`): Um array de números a serem somados.
+| Nome   | Tipo       | Descrição                                          |
+|--------|------------|----------------------------------------------------|
+| values | `number[]` | Um array de números a ser somado.                  |
 
 ### Retorno
 
-- **`number`**: A soma de todos os valores no array.
+| Tipo    | Descrição                                      |
+|---------|------------------------------------------------|
+| `number` | A soma de todos os números no array.           |
 
 ## Exemplos
 
 ```typescript
-console.log(sum([1, 2, 3, 4, 5])); 
-// Exemplo: 15 (a soma de 1 + 2 + 3 + 4 + 5)
+import sum from "./sum";
 
-console.log(sum([10, 20, 30])); 
-// Exemplo: 60 (a soma de 10 + 20 + 30)
-
-console.log(sum([0, 0, 0])); 
-// Exemplo: 0 (a soma de 0 + 0 + 0)
+console.log(sum([1, 2, 3, 4]));  // Saída: 10
+console.log(sum([10, -5, 5]));   // Saída: 10
+console.log(sum([0, 0, 0]));     // Saída: 0
 ```
 
 ## Notas
 
-- Se o array estiver vazio, a função retornará 0, já que esse é o valor inicial da soma no `reduce()`.
-- O `reduce()` é utilizado para iterar sobre os elementos e acumular o resultado da soma.
+- A função utiliza o método `reduce()` para acumular a soma dos valores no array, começando com um valor inicial de 0.
+- Essa função funciona com arrays de números e retornará 0 caso o array esteja vazio.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function sum(values: number[]): number {
+  return values.reduce((total, value) => total + value, 0);
+}
+```
+
+```javascript
+export default function sum(values) {
+  return values.reduce((total, value) => total + value, 0);
+}
+```
+::: 
 
 ## Referências
 
-- [Array.prototype.reduce() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+- [Array.prototype.reduce()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)

@@ -1,5 +1,14 @@
 [
   {
+    "text": "Introduction",
+    "link": "/pt/introduction",
+    "collapsed": false,
+    "items": [
+      { "text": "Why Utilify", "link": "/pt/introduction/why-utilify" },
+      { "text": "Installation", "link": "/pt/introduction/intallation" }
+    ]
+  },
+  {
     "text": "Array",
     "link": "/docs/array",
     "collapsed": true,
@@ -60,8 +69,8 @@
     "items": [
       { "text": "adjustDate", "link": "/docs/date/adjustDate" },
       { "text": "adjustTimezone", "link": "/docs/date/adjustTimezone" },
-      { "text": "convertTime", "link": "/docs/date/convertTime" },
-      { "text": "convertDate", "link": "/docs/date/convertDate" },
+      { "text": "convertTimeUnit", "link": "/docs/date/convertTimeUnit" },
+      { "text": "convertDateTo", "link": "/docs/date/convertDateTo" },
       { "text": "formatDate", "link": "/docs/date/formatDate" },
       { "text": "formatDuration", "link": "/docs/date/formatDuration" },
       { "text": "formatTime", "link": "/docs/date/formatTime" },

@@ -1,50 +1,56 @@
 # isInteger
 
-```typescript
-function isInteger(value: number): boolean {
-  return Number.isInteger(value);
-}
-```
+A função `isInteger` verifica se um valor dado é um número inteiro. Ela retorna `true` se o valor for um número inteiro e `false` caso contrário.
 
-A função `isInteger` verifica se o valor fornecido é um número inteiro.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isInteger(value: number): boolean;
+function isInteger(value: number): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`number`): O número que será verificado.
+| Nome  | Tipo     | Descrição                                      |
+|-------|----------|------------------------------------------------|
+| value | `number` | O valor a ser verificado se é um número inteiro. |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o valor for um número inteiro, caso contrário, retorna `false`.
+| Tipo    | Descrição                                      |
+|---------|------------------------------------------------|
+| `boolean` | `true` se o valor for um número inteiro, `false` caso contrário. |
 
 ## Exemplos
 
 ```typescript
-import { isInteger } from "./isInteger";
+import isInteger from "./isInteger";
 
-console.log(isInteger(4)); 
-// true
-
-console.log(isInteger(7.5)); 
-// false
-
-console.log(isInteger(0)); 
-// true
-
-console.log(isInteger(-3)); 
-// true
+console.log(isInteger(4));     // Saída: true
+console.log(isInteger(4.5));   // Saída: false
+console.log(isInteger(-3));    // Saída: true
 ```
 
 ## Notas
 
-- A função utiliza `Number.isInteger` para verificar se o valor é um número inteiro.
-- Valores como números decimais ou NaN retornarão `false`.
+- A função utiliza `Number.isInteger()` para determinar se o valor é um número inteiro.
+- A função retorna `false` para números não inteiros (por exemplo, números de ponto flutuante) e valores não numéricos.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isInteger(value: number): boolean {
+  return Number.isInteger(value);
+}
+```
+
+```javascript
+export default function isInteger(value) {
+  return Number.isInteger(value);
+}
+```
+::: 
 
 ## Referências
 
-- [Number.isInteger() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger)
+- [Number.isInteger()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger)

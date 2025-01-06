@@ -1,44 +1,67 @@
 # average
 
-```typescript
-import { sum } from ".";
+A função `average` calcula a média aritmética de um array de números. Se o array estiver vazio, a função retorna `0`.
 
-function average(values: number[]): number {
-  return values.length ? (sum(values) / values.length) : 0;
-}
-```
-
-A função `average` calcula a média aritmética de um conjunto de números fornecido como entrada. Se o array estiver vazio, a função retorna `0`.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function average(values: number[]): number;
+function average(values: number[]): number
 ```
 
 ### Parâmetros
 
-- **`values`** (`number[]`): Um array contendo números cujos valores serão usados para calcular a média.
+| Nome   | Tipo      | Descrição                     |
+|--------|-----------|-------------------------------|
+| values | `number[]`| Um array de números a ser processado. |
 
 ### Retorno
 
-- **`number`**: O valor médio calculado ou `0` se o array estiver vazio.
+| Tipo    | Descrição                                     |
+|---------|-----------------------------------------------|
+| `number`| A média aritmética dos números no array.      |
+| `0`     | Retornado se o array estiver vazio.           |
 
 ## Exemplos
 
 ```typescript
-import { average } from "./average";
+import average from "./average";
 
-console.log(average([1, 2, 3, 4, 5])); // 3
-console.log(average([10, 20, 30])); // 20
-console.log(average([])); // 0
+const values = [10, 20, 30];
+console.log(average(values)); // Saída: 20
+
+console.log(average([])); // Saída: 0
 ```
 
 ## Notas
 
 - A função utiliza a função `sum` para calcular a soma dos números no array.
-- Se o array não contiver elementos, a média será retornada como `0`.
+- Certifique-se de que todos os elementos do array sejam números para evitar resultados inesperados.
+
+## Dependências
+
+- [sum](./sum.md): Responsável por calcular a soma dos elementos do array.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import sum from "./sum";
+
+export default function average(values: number[]): number {
+  return values.length ? (sum(values) / values.length) : 0;
+}
+```
+
+```javascript
+import sum from "./sum";
+
+export default function average(values) {
+  return values.length ? (sum(values) / values.length) : 0;
+}
+```
+::: 
 
 ## Referências
 
-- [Array.prototype.reduce() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+- [Array.prototype.length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length)  
+- [Divisão em JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Division)

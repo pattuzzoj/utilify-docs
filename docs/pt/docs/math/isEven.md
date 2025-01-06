@@ -1,50 +1,56 @@
 # isEven
 
-```typescript
-function isEven(value: number): boolean {
-  return value % 2 === 0;
-}
-```
+A função `isEven` verifica se um número é par. Ela retorna `true` se o número for divisível por 2, ou seja, se o resto da divisão por 2 for igual a zero, e `false` caso contrário.
 
-A função `isEven` verifica se um número é par.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isEven(value: number): boolean;
+function isEven(value: number): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`number`): O número que será verificado.
+| Nome  | Tipo     | Descrição                                      |
+|-------|----------|------------------------------------------------|
+| value | `number` | O número a ser verificado se é par.            |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o número for par, caso contrário, retorna `false`.
+| Tipo    | Descrição                                       |
+|---------|-------------------------------------------------|
+| `boolean` | `true` se o número for par, `false` caso contrário. |
 
 ## Exemplos
 
 ```typescript
-import { isEven } from "./isEven";
+import isEven from "./isEven";
 
-console.log(isEven(4)); 
-// true
-
-console.log(isEven(7)); 
-// false
-
-console.log(isEven(0)); 
-// true
-
-console.log(isEven(-2)); 
-// true
+console.log(isEven(4));  // Saída: true
+console.log(isEven(7));  // Saída: false
+console.log(isEven(0));  // Saída: true (0 é considerado par)
 ```
 
 ## Notas
 
-- Um número é considerado par se o resto de sua divisão por 2 for zero.
-- A função suporta números inteiros positivos, negativos e zero.
+- A função utiliza o operador de módulo (`%`) para verificar se o número é divisível por 2 sem deixar resto.
+- A entrada deve ser um número inteiro.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isEven(value: number): boolean {
+  return value % 2 === 0;
+}
+```
+
+```javascript
+export default function isEven(value) {
+  return value % 2 === 0;
+}
+```
+::: 
 
 ## Referências
 
-- [Arithmetic Operators - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#remainder)
+- [Operador de Módulo](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Modulo)

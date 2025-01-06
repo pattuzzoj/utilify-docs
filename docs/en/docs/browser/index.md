@@ -1,4 +1,4 @@
-# Browser Utilities <Badge type="tip" text="1.1.0" />
+# Browser Utilities <Badge type="tip" text="2.0.1" />
 
 The **browser utility functions** provide a variety of methods for interacting with the browser environment. These functions help simplify common operations, such as checking the connection state, detecting touch devices, generating secure hashes, and more.
 

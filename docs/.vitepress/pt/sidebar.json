@@ -1,5 +1,14 @@
 [
   {
+    "text": "Introdução",
+    "link": "/pt/introducao",
+    "collapsed": false,
+    "items": [
+      { "text": "Por que Utilify", "link": "/pt/introducao/por-que-utilify" },
+      { "text": "Instalação", "link": "/pt/introducao/instalacao" }
+    ]
+  },
+  {
     "text": "Array",
     "link": "/pt/docs/array",
     "collapsed": true,
@@ -60,8 +69,8 @@
     "items": [
       { "text": "adjustDate", "link": "/pt/docs/date/adjustDate" },
       { "text": "adjustTimezone", "link": "/pt/docs/date/adjustTimezone" },
-      { "text": "convertTime", "link": "/pt/docs/date/convertTime" },
-      { "text": "convertDate", "link": "/pt/docs/date/convertDate" },
+      { "text": "convertTimeUnit", "link": "/pt/docs/date/convertTimeUnit" },
+      { "text": "convertDateTo", "link": "/pt/docs/date/convertDateTo" },
       { "text": "formatDate", "link": "/pt/docs/date/formatDate" },
       { "text": "formatDuration", "link": "/pt/docs/date/formatDuration" },
       { "text": "formatTime", "link": "/pt/docs/date/formatTime" },

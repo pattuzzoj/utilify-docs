@@ -1,4 +1,4 @@
-# Utilitários do Navegador <Badge type="tip" text="1.1.0" />
+# Utilitários do Navegador <Badge type="tip" text="2.0.1" />
 
 As **funções utilitárias do navegador** fornecem diversos métodos para interagir com o ambiente do navegador. Essas funções ajudam a simplificar operações comuns, como verificar o estado da conexão, detectar dispositivos de toque, gerar hashes seguros e muito mais.
 

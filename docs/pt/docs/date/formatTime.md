@@ -1,9 +1,71 @@
-# formatTime
+# formatTime  
+Formata uma instância de `Date` em uma string com base no formato especificado. O formato padrão é `"hh:mm:ss"`.
 
+## Sintaxe
 ```typescript
-import { isValidDate } from ".";
+formatTime(date: Date, format?: string): string | undefined
+```
 
-function formatTime(date: Date, format: string): string | undefined {
+### Parâmetros
+
+| Parâmetro   | Tipo     | Descrição                                                                                  |
+|-------------|----------|----------------------------------------------------------------------------------------------|
+| `date`      | `Date`   | O objeto de data que será formatado.                                                         |
+| `format`    | `string` | (Opcional) O formato desejado para a string de saída. Tokens suportados incluem `hh`, `mm`, `ss`, `ms` e `a`. Valor padrão: `"hh:mm:ss"`. |
+
+### Retorno
+
+| Tipo          | Descrição                                                                                           |
+|---------------|------------------------------------------------------------------------------------------------------|
+| `string`      | A string de data formatada com base no formato fornecido.                                             |
+| `undefined`   | Retorna `undefined` se a data fornecida for inválida.                                                |
+
+## Exemplos
+
+### Exemplo 1: Usando o formato padrão
+```typescript
+formatTime(new Date("2025-01-01T15:30:45")); 
+// Saída: "15:30:45"
+```
+
+### Exemplo 2: Formatação com AM/PM
+```typescript
+formatTime(new Date("2025-01-01T15:30:45"), "hh:mm a"); 
+// Saída: "3:30 PM"
+```
+
+### Exemplo 3: Incluindo milissegundos
+```typescript
+formatTime(new Date("2025-01-01T15:30:45.123"), "hh:mm:ss.ms"); 
+// Saída: "15:30:45.123"
+```
+
+### Exemplo 4: Data inválida
+```typescript
+formatTime(new Date("invalid-date"), "hh:mm:ss");
+// Saída: undefined e log: "Invalid date"
+```
+
+## Notas
+- Tokens disponíveis para formatação:
+  - `hh`: Horas (formato de 12 horas ou 24 horas dependendo do uso de `a` no formato).
+  - `mm`: Minutos (sempre com dois dígitos).
+  - `ss`: Segundos (sempre com dois dígitos).
+  - `ms`: Milissegundos (sempre com três dígitos).
+  - `a`: Indica o período de tempo (`AM` ou `PM`) para formatos de 12 horas.
+- Caso o parâmetro `format` não seja fornecido, será utilizado o formato padrão `"hh:mm:ss"`.
+- A função usa `isValidDate` para verificar a validade do objeto `Date`.
+
+## Dependências
+- [isValidDate](./isValidDate.md): Garante que o valor fornecido seja uma instância válida de `Date`.
+
+## Código Fonte
+::: code-group
+typescript
+```typescript
+import isValidDate from "./isValidDate";
+
+export default function formatTime(date: Date, format: string = "hh:mm:ss"): string | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;
@@ -26,50 +88,36 @@ function formatTime(date: Date, format: string): string | undefined {
 }
 ```
 
-A função `formatTime` formata uma instância de `Date` em uma string de hora, ajustando para o formato desejado, incluindo suporte para a notação AM/PM, caso especificado.
+javascript
+```javascript
+import isValidDate from "./isValidDate";
 
-## Assinatura
+export default function formatTime(date, format = "hh:mm:ss") {
+  if (!isValidDate(date)) {
+    console.error("Invalid date");
+    return;
+  }
 
-```typescript
-function formatTime(date: Date, format: string): string | undefined;
+  const useAMPM = format.search("a") !== -1;
+  const hours = String(useAMPM ? date.getHours() % 12 || 12 : date.getHours());
+	const minutes = String(date.getMinutes()).padStart(2, "0");
+	const seconds = String(date.getSeconds()).padStart(2, "0");
+  const milliseconds = String(date.getMilliseconds()).padStart(3, "0");
+  const period = date.getHours() >= 12 ? "PM" : "AM";
+
+  return format
+  .toLowerCase()
+  .replace("hh", hours)
+  .replace("mm", minutes)
+  .replace("ss", seconds)
+  .replace("ms", milliseconds)
+  .replace("a", period);
+}
 ```
-
-### Parâmetros
-
-- **`date`** (`Date`): A data e hora que será formatada.
-- **`format`** (`string`): O formato desejado para a hora. O formato pode incluir os seguintes tokens:
-  - **`hh`**: Horas (em formato 12 horas).
-  - **`mm`**: Minutos (dois dígitos).
-  - **`ss`**: Segundos (dois dígitos).
-  - **`ms`**: Milissegundos (três dígitos).
-  - **`a`**: AM ou PM (quando presente, ajusta o horário para um formato de 12 horas).
-
-### Retorno
-
-- **`string`**: A hora formatada de acordo com o padrão especificado.
-- **`undefined`**: Caso a data seja inválida.
-
-## Exemplos
-
-```typescript
-const date = new Date("2024-01-15T15:30:45.123Z");
-
-console.log(formatTime(date, "hh:mm:ss")); // "03:30:45"
-console.log(formatTime(date, "hh:mm:ss.ms")); // "03:30:45.123"
-console.log(formatTime(date, "hh:mm:ss a")); // "03:30:45 PM"
-console.log(formatTime(date, "hh:mm:ss a ms")); // "03:30:45 PM 123"
-console.log(formatTime(date, "HH:mm:ss")); // "15:30:45"
-console.log(formatTime(new Date(NaN), "hh:mm:ss")); // Logs error: "Invalid date"
-```
-
-## Notas
-
-- O uso do `padStart` garante que os minutos, segundos e milissegundos sempre tenham o número correto de dígitos.
-- O parâmetro de formatação é insensível a maiúsculas e minúsculas.
+:::
 
 ## Referências
-
-- [Date.prototype.getHours() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getHours)
-- [Date.prototype.getMinutes() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMinutes)
-- [Date.prototype.getSeconds() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getSeconds)
-- [Date.prototype.getMilliseconds() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMilliseconds)
+- [MDN: `Date.prototype.getHours`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getHours)
+- [MDN: `Date.prototype.getMinutes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMinutes)
+- [MDN: `Date.prototype.getSeconds`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getSeconds)
+- [MDN: `String.prototype.padStart`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)

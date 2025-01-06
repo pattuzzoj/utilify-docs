@@ -1,52 +1,58 @@
 # isBetween
 
-```typescript
-function isBetween(value: number, min: number, max: number): boolean {
-  return min <= value && value <= max;
-}
-```
+A função `isBetween` verifica se um número dado está entre dois outros números (inclusive). Ela retorna `true` se o valor estiver dentro do intervalo, incluindo os limites, e `false` caso contrário.
 
-A função `isBetween` verifica se um número está dentro de um intervalo inclusivo definido pelos limites mínimo e máximo.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isBetween(value: number, min: number, max: number): boolean;
+function isBetween(value: number, min: number, max: number): boolean
 ```
 
 ### Parâmetros
 
-- **`value`** (`number`): O número que será verificado.
-- **`min`** (`number`): O limite inferior do intervalo.
-- **`max`** (`number`): O limite superior do intervalo.
+| Nome  | Tipo     | Descrição                                          |
+|-------|----------|----------------------------------------------------|
+| value | `number` | O número a ser verificado se está entre `min` e `max`. |
+| min   | `number` | O valor mínimo do intervalo.                       |
+| max   | `number` | O valor máximo do intervalo.                       |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se o valor estiver dentro do intervalo inclusivo `[min, max]`, caso contrário, retorna `false`.
+| Tipo    | Descrição                                       |
+|---------|-------------------------------------------------|
+| `boolean` | `true` se o valor estiver entre `min` e `max` (inclusive), `false` caso contrário. |
 
 ## Exemplos
 
 ```typescript
-import { isBetween } from "./isBetween";
+import isBetween from "./isBetween";
 
-console.log(isBetween(5, 1, 10)); 
-// true
-
-console.log(isBetween(15, 1, 10)); 
-// false
-
-console.log(isBetween(10, 1, 10)); 
-// true
-
-console.log(isBetween(1, 1, 10)); 
-// true
+console.log(isBetween(5, 1, 10));  // Saída: true
+console.log(isBetween(0, 1, 10));  // Saída: false
+console.log(isBetween(10, 10, 10)); // Saída: true
 ```
 
 ## Notas
 
-- O intervalo `[min, max]` é inclusivo, ou seja, os limites são considerados parte do intervalo.
-- Certifique-se de que os valores de `min` e `max` estão ordenados corretamente para evitar resultados inesperados.
+- A função verifica se o valor está inclusivamente dentro do intervalo definido por `min` e `max`.
+- A ordem de `min` e `max` não importa, pois a comparação é feita de maneira que funciona independentemente da ordem.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isBetween(value: number, min: number, max: number): boolean {
+  return min <= value && value <= max;
+}
+```
+
+```javascript
+export default function isBetween(value, min, max) {
+  return min <= value && value <= max;
+}
+```
+::: 
 
 ## Referências
 
-- [Comparison Operators - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
+- [Operadores de Comparação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Comparison)
