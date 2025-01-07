@@ -1,10 +1,10 @@
-# Utilitários Crypto <Badge type="tip" text="1.0.0" />
+# Utilitários - Crypto <Badge type="tip" text="1.0.0" />
 
-As **funções utilitárias de criptografia** fornecem uma variedade de métodos para operações criptográficas. Essas funções ajudam a simplificar operações comuns, como hashing e geração de valores aleatórios, entre outras.
+A categoria **Crypto** contém funções que facilitam a geração de hashes criptográficos e a criação de identificadores únicos. Essas funções são úteis para garantir segurança e integridade dos dados em aplicações web e de back-end.
 
 ## Instalação
 
-Para instalar as funções utilitárias de criptografia, use um dos seguintes comandos, dependendo do seu gerenciador de pacotes:
+Para instalar o pacote **Crypto**, utilize um dos comandos abaixo:
 
 ::: code-group
 
@@ -22,36 +22,46 @@ pnpm add @utilify/crypto
 
 :::
 
-Após a instalação, você pode importar as funções no seu projeto, utilizando ESM ou CJS.
-
-## Uso
-
-Esta biblioteca suporta tanto o sistema de módulos ESM quanto CJS.
+Importe as funções no seu projeto:
 
 ::: code-group
 
 ```typescript [esm]
-import { hash, randomUUID } from '@utilify/crypto';
+import { djb2, hash, randomUUID } from '@utilify/crypto';
 ```
 
 ```javascript [cjs]
-const { hash, randomUUID } = require('@utilify/crypto');
+const { djb2, hash, randomUUID } = require('@utilify/crypto');
 ```
 
 :::
 
 ## Visão Geral
 
-Aqui está uma visão geral das funções disponíveis no pacote de utilitários de criptografia:
+### [djb2](./djb2.md)
+
+```typescript
+function djb2(str: string): string;
+```
+
+Calcula o **hash DJB2** de uma string. O algoritmo DJB2 é uma forma rápida e eficiente de gerar um hash a partir de uma entrada de texto.
 
 ### [hash](./hash.md)
+
 ```typescript
-function hash(data: string, algorithm: string): string
+async function hash(
+  data: string | ArrayBuffer | DataView,
+  algorithm: 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512',
+  output: 'hex' | 'base64' | 'buffer' = 'buffer'
+): Promise<string | ArrayBuffer | undefined>;
 ```
-Retorna o hash dos dados fornecidos usando o algoritmo especificado.
+
+Gera um hash criptográfico dos dados fornecidos, usando o algoritmo e formato de saída especificados.
 
 ### [randomUUID](./randomUUID.md)
+
 ```typescript
-function randomUUID(): string | undefined
+function randomUUID(): string | undefined;
 ```
-Gera um UUID aleatório usando a API Web Crypto.
+
+Gera um UUID seguro utilizando a API Web Crypto do navegador. Retorna `undefined` se a API não estiver disponível.

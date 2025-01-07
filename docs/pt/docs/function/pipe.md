@@ -1,14 +1,8 @@
 # pipe
 
-```typescript
-function pipe<T>(...callbacks: ((value: T) => T)[]): (value: T) => T {
-  return (value: T): T => callbacks.reduce((currentValue, callback) => callback(currentValue), value);
-}
-```
+A função `pipe` compõe uma sequência de funções que processam um valor em ordem. Ela recebe um valor inicial e aplica cada função na sequência, passando o resultado de uma para a próxima.
 
-A função `pipe` permite encadear várias funções, passando o resultado de cada função como entrada para a próxima, criando uma sequência de transformações.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function pipe<T>(...callbacks: ((value: T) => T)[]): (value: T) => T;
@@ -16,28 +10,66 @@ function pipe<T>(...callbacks: ((value: T) => T)[]): (value: T) => T;
 
 ### Parâmetros
 
-- **`...callbacks`** (`((value: T) => T)[]`): Uma sequência de funções que serão aplicadas ao valor de entrada. Cada função recebe o valor de entrada e retorna um novo valor, que é passado para a próxima função.
+| Nome          | Tipo                          | Descrição                                                       |
+|---------------|-------------------------------|-----------------------------------------------------------------|
+| `...callbacks` | `((value: T) => T)[]`         | Uma lista de funções a serem aplicadas sequencialmente ao valor.|
 
 ### Retorno
 
-- **`(value: T) => T`**: Retorna uma nova função que, quando chamada, aplica todas as funções passadas na sequência, em ordem, ao valor fornecido.
+| Tipo              | Descrição                                               |
+|-------------------|---------------------------------------------------------|
+| `(value: T) => T` | Uma função composta que aplica as funções fornecidas.    |
 
 ## Exemplos
 
+### Exemplo 1: Transformações Numéricas Simples
 ```typescript
-const addOne = (x: number) => x + 1;
-const multiplyByTwo = (x: number) => x * 2;
+import pipe from "./pipe";
 
-const transform = pipe(addOne, multiplyByTwo);
+const somar = (x: number) => x + 2;
+const multiplicar = (x: number) => x * 3;
 
-console.log(transform(2)); // 6 (2 + 1 = 3, 3 * 2 = 6)
+const transformar = pipe(somar, multiplicar);
+
+console.log(transformar(5)); // Saída: 21
 ```
+
+- O valor inicial `5` é passado pela função `somar`, resultando em `7`.
+- Em seguida, `7` é passado pela função `multiplicar`, resultando em `21`.
+
+### Exemplo 2: Transformações de String
+```typescript
+const paraMaiusculas = (s: string) => s.toUpperCase();
+const adicionarExclamacao = (s: string) => `${s}!`;
+
+const gritar = pipe(paraMaiusculas, adicionarExclamacao);
+
+console.log(gritar("olá")); // Saída: "OLÁ!"
+```
+
+- A string `"olá"` é primeiro convertida para maiúsculas e depois recebe `"!"` no final.
 
 ## Notas
 
-- A função `pipe` aplica as funções de forma sequencial. O resultado de uma função é passado como entrada para a próxima.
-- É uma maneira funcional de compor transformações simples e reutilizáveis em uma operação mais complexa.
+- `pipe` processa as funções da esquerda para a direita, tornando a ordem das operações clara.
+- Se nenhuma função for passada, a função retornada apenas devolve o valor de entrada sem alterações.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function pipe<T>(...callbacks: ((value: T) => T)[]): (value: T) => T {
+  return (value: T): T => callbacks.reduce((currentValue, callback) => callback(currentValue), value);
+}
+```
+
+```javascript
+export default function pipe(...callbacks) {
+  return (value) => callbacks.reduce((currentValue, callback) => callback(currentValue), value);
+}
+```
+:::
 
 ## Referências
 
-- [Array.prototype.reduce() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+- [Array.prototype.reduce()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)

@@ -1,14 +1,8 @@
 # identity
 
-```typescript
-function identity<T>(value: T): T {
-  return value;
-}
-```
+A função `identity` retorna o valor recebido como argumento sem modificá-lo. É útil em cenários onde você precisa garantir que o valor seja passado sem alterações.
 
-A função `identity` simplesmente retorna o valor fornecido, sem qualquer modificação. Ela é útil em situações em que você precisa de uma função que apenas retorne o argumento original, frequentemente usada em composições ou como valor de fallback.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function identity<T>(value: T): T;
@@ -16,32 +10,61 @@ function identity<T>(value: T): T;
 
 ### Parâmetros
 
-- **`value`** (`T`): O valor que será retornado pela função.
+| Nome   | Tipo       | Descrição                                 |
+|--------|------------|-------------------------------------------|
+| `value`| `T`        | O valor que será retornado sem alterações. |
 
 ### Retorno
 
-- **`T`**: O valor fornecido, sem modificações.
+| Tipo | Descrição                                            |
+|------|------------------------------------------------------|
+| `T`  | O mesmo valor que foi passado para a função.         |
 
 ## Exemplos
 
+### Exemplo 1: Retorno de um número
+
 ```typescript
-console.log(identity(5)); // 5
-console.log(identity("Hello")); // "Hello"
-console.log(identity([1, 2, 3])); // [1, 2, 3]
+const result = identity(42);
+console.log(result); // Saída: 42
 ```
 
-**Saída esperada:**
+### Exemplo 2: Retorno de uma string
+
+```typescript
+const result = identity("Hello, World!");
+console.log(result); // Saída: "Hello, World!"
 ```
-5
-"Hello"
-[1, 2, 3]
+
+### Exemplo 3: Usando com tipos genéricos
+
+```typescript
+const result = identity([1, 2, 3]);
+console.log(result); // Saída: [1, 2, 3]
 ```
 
 ## Notas
 
-- A função `identity` é útil em contextos onde uma função é necessária, mas o comportamento desejado é simplesmente retornar o valor original.
-- Pode ser utilizada em composições de funções ou como valor padrão em métodos de alta ordem.
+- A função `identity` é frequentemente utilizada como uma função de identidade em programação funcional, sendo particularmente útil em casos onde você precisa passar uma função que não altere o valor, mas que satisfaça a assinatura de função.
+- A função é genérica e pode ser utilizada com qualquer tipo de dado.
+
+## Código
+
+::: code-group
+```typescript
+export default function identity<T>(value: T): T {
+  return value;
+}
+```
+
+```javascript
+export default function identity(value) {
+  return value;
+}
+```
+:::
 
 ## Referências
 
-- [Function.prototype - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
+- [Funções em JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Funções)
+- [Generics em TypeScript](https://www.typescriptlang.org/docs/handbook/2/generics.html)

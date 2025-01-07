@@ -1,75 +1,70 @@
-Aqui está a documentação revisada com a seção de dependências separada, conforme solicitado:
-
 # hash
 
-A função `hash` gera um hash criptográfico dos dados fornecidos usando o algoritmo especificado.
+A função `hash` gera um hash criptográfico para um dado de entrada utilizando a API Web Crypto.
 
 ## Assinatura
 
 ```typescript
-function hash(
+async function hash(
   data: string | ArrayBuffer | DataView,
-  algorithm: Algorithm,
-  output: HashOutput = 'buffer'
-): Promise<string | ArrayBuffer | null>;
+  algorithm: 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512',
+  output: 'hex' | 'base64' | 'buffer' = 'buffer'
+): Promise<string | ArrayBuffer | undefined>;
 ```
 
 ### Parâmetros
 
-| Nome      | Tipo                              | Descrição                                                                                         |
-|-----------|-----------------------------------|---------------------------------------------------------------------------------------------------|
-| `data`    | `string | ArrayBuffer | DataView`    | Os dados a serem hashados.                                                                       |
-| `algorithm` | `Algorithm`                      | O algoritmo de hash a ser usado (`'SHA-1'`, `'SHA-256'`, `'SHA-384'`, `'SHA-512'`).               |
-| `output`  | `HashOutput`                      | O formato de saída desejado (`'hex'`, `'base64'`, `'buffer'`). O valor padrão é `'buffer'`.        |
+| Nome       | Tipo                              | Descrição                                                                 |
+|------------|-----------------------------------|---------------------------------------------------------------------------|
+| `data`     | `string | ArrayBuffer | DataView` | O dado de entrada a ser hasheado.                                         |
+| `algorithm`| `'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512'` | O algoritmo de hashing a ser utilizado.                                  |
+| `output`   | `'hex' | 'base64' | 'buffer'`   | O formato do retorno do hash (`buffer` é o padrão).                      |
 
 ### Retorno
 
-| Formato de Saída | Tipo                     | Descrição                                                   |
-|------------------|--------------------------|-------------------------------------------------------------|
-| `'hex'`          | `Promise<string>`         | O hash gerado em formato hexadecimal.                       |
-| `'base64'`       | `Promise<string>`         | O hash gerado em formato Base64.                            |
-| `'buffer'`       | `Promise<ArrayBuffer>`    | O hash gerado em formato de buffer.                         |
-| `Não Disponível` | `Promise<null>`           | Se a API Web Crypto não estiver disponível, retorna `null`. |
+| Tipo                    | Descrição                                                                 |
+|-------------------------|-------------------------------------------------------------------------|
+| `string`               | O hash formatado como string no formato `hex` ou `base64`.             |
+| `ArrayBuffer`           | O hash como um `ArrayBuffer` se o formato for `buffer`.               |
+| `undefined`            | Caso a função seja executada no servidor.                             |
 
 ## Exemplos
 
 ```typescript
-hash('hello', 'SHA-256', 'hex').then(console.log); 
-// '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
+import hash from './hash';
 
-hash('hello', 'SHA-256', 'base64').then(console.log); 
-// 'Mjy0e+9/Iu7muXwPpc37kpxZcU2ElBd2ZHTfD5rS8R0='
+(async () => {
+  const data = 'Hello, World!';
+  console.log(await hash(data, 'SHA-256', 'hex'));    // Retorna o hash em formato hexadecimal
+  console.log(await hash(data, 'SHA-512', 'base64')); // Retorna o hash em formato base64
+  console.log(await hash(data, 'SHA-1'));             // Retorna o hash como ArrayBuffer
+})();
 ```
 
 ## Notas
 
-- A função depende da API Web Crypto do navegador. Se a API não estiver disponível, será retornado `null`.
-- O valor de retorno será uma `Promise`. O tipo de dado retornado pela `Promise` pode ser:
-  - `string` para formatos `'hex'` ou `'base64'`.
-  - `ArrayBuffer` para o formato `'buffer'`.
+- Se executado no servidor, a função retornará `undefined`.
+- O algoritmo especificado deve ser suportado pela API Web Crypto.
 
 ## Dependências
 
-- [`isCryptoAvailable`](../browser/isCryptoAvailable.md): A função `isCryptoAvailable` é usada para verificar se a API Web Crypto está disponível no ambiente, garantindo que a função `hash` funcione corretamente.
+- [`isServer`](../environment/isServer.md): Verifica se o código está sendo executado no servidor.
 
 ## Código Fonte
 
 ::: code-group
 ```typescript
-import { isCryptoAvailable } from '@utilify/browser';
+import { isServer } from '@utilify/environment';
 
 type Algorithm = 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512';
 type HashOutput = 'hex' | 'base64' | 'buffer';
 
-async function hash(
+export default async function hash(
   data: string | ArrayBuffer | DataView,
   algorithm: Algorithm,
   output: HashOutput = 'buffer'
-): Promise<string | ArrayBuffer | null> {
-  if (!isCryptoAvailable()) {
-    console.error('Crypto API is not Available');
-    return null;
-  }
+): Promise<string | ArrayBuffer | undefined> {
+  if (isServer()) return;
 
   const buffer: Uint8Array | ArrayBuffer | DataView = typeof data === 'string' ? new TextEncoder().encode(data) : data;
   const hashBuffer = await crypto.subtle.digest(algorithm, buffer);
@@ -87,14 +82,13 @@ async function hash(
 ```
 
 ```javascript
-function hash(data, algorithm, output = 'buffer') {
-  if (!isCryptoAvailable()) {
-    console.error('Crypto API is not Available');
-    return null;
-  }
+import { isServer } from '@utilify/environment';
+
+async function hash(data, algorithm, output = 'buffer') {
+  if (isServer()) return;
 
   const buffer = typeof data === 'string' ? new TextEncoder().encode(data) : data;
-  const hashBuffer = crypto.subtle.digest(algorithm, buffer);
+  const hashBuffer = await crypto.subtle.digest(algorithm, buffer);
 
   if (output === 'base64') {
     return btoa(String.fromCharCode(...new Uint8Array(hashBuffer)));
@@ -111,5 +105,6 @@ function hash(data, algorithm, output = 'buffer') {
 
 ## Referências
 
-- [SubtleCrypto.digest() - MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest)
-- [isCryptoAvailable - GitHub](https://github.com/Utilify/utils/blob/main/packages/browser/src/isCryptoAvailable.ts)
+- [Web Crypto API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
+- [TextEncoder - MDN](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder)
+- [ArrayBuffer - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)

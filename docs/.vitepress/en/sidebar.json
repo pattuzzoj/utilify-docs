@@ -1,7 +1,7 @@
 [
   {
     "text": "Introduction",
-    "link": "/pt/introduction",
+    "link": "/introduction",
     "collapsed": false,
     "items": [
       { "text": "Why Utilify?", "link": "/introduction/why-utilify" },
@@ -38,12 +38,10 @@
     "items": [
       { "text": "getLanguage", "link": "/docs/browser/getLanguage" },
       { "text": "getTheme", "link": "/docs/browser/getTheme" },
-      { "text": "hash", "link": "/docs/browser/hash" },
       { "text": "isCookieEnabled", "link": "/docs/browser/isCookieEnabled" },
       { "text": "isFullscreenEnabled", "link": "/docs/browser/isFullscreenEnabled" },
       { "text": "isOnline", "link": "/docs/browser/isOnline" },
       { "text": "isTouchDevice", "link": "/docs/browser/isTouchDevice" },
-      { "text": "randomUUID", "link": "/en/docs/browser/randomUUID" },
       { "text": "toggleFullscreen", "link": "/docs/browser/toggleFullscreen" }
     ]
   },
@@ -61,6 +59,16 @@
       { "text": "isRgb", "link": "/docs/colors/isRgb" },
       { "text": "rgbToHex", "link": "/docs/colors/rgbToHex" },
       { "text": "rgbToHsl", "link": "/docs/colors/rgbToHsl" }
+    ]
+  },
+  {
+    "text": "Crypto",
+    "link": "/docs/crypto",
+    "collapsed": true,
+    "items": [
+      { "text": "hash", "link": "/docs/crypto/hash" },
+      { "text": "randomUUID", "link": "/docs/crypto/randomUUID" },
+      { "text": "djb2", "link": "/docs/crypto/djb2" }
     ]
   },
   {
@@ -106,6 +114,7 @@
     "link": "/docs/function",
     "collapsed": true,
     "items": [
+      { "text": "benchmark", "link": "/docs/function/benchmark" },
       { "text": "compose", "link": "/docs/function/compose" },
       { "text": "debounce", "link": "/docs/function/debounce" },
       { "text": "defer", "link": "/docs/function/defer" },
@@ -235,18 +244,6 @@
       { "text": "isSymbol", "link": "/docs/types/isSymbol" },
       { "text": "isTruthy", "link": "/docs/types/isTruthy" },
       { "text": "isUndefined", "link": "/docs/types/isUndefined" }
-    ]
-  },
-  {
-    "text": "Utils",
-    "link": "/docs/utils",
-    "collapsed": true,
-    "items": [
-      { "text": "benchmark", "link": "/docs/utils/benchmark" },
-      { "text": "djb2", "link": "/docs/utils/djb2" },
-      { "text": "flatten", "link": "/docs/utils/flatten" },
-      { "text": "isEmpty", "link": "/docs/utils/isEmpty" },
-      { "text": "sanitize", "link": "/docs/utils/sanitize" }
     ]
   }
 ]

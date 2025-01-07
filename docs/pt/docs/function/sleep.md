@@ -1,42 +1,61 @@
 # sleep
 
-```typescript
-async function sleep(timeout: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, timeout));
-}
-```
+A função `sleep` cria uma pausa assíncrona no código por um período de tempo especificado.
 
-A função `sleep` permite criar uma pausa (delay) na execução do código por um tempo especificado. Isso é útil para retardar a execução de funções assíncronas, como em testes, simulação de tempo de espera ou delays em animações.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function sleep(timeout: number): Promise<void>;
+function sleep(timeout: number): Promise<void>
 ```
 
 ### Parâmetros
 
-- **`timeout`** (`number`): O tempo de espera, em milissegundos, que a execução será suspensa antes de continuar.
+| Nome     | Tipo     | Descrição                          |
+|----------|----------|------------------------------------|
+| timeout  | `number` | O tempo de espera em milissegundos.|
 
 ### Retorno
 
-- **`Promise<void>`**: Retorna uma `Promise` que resolve após o tempo especificado de delay.
+| Tipo          | Descrição                    |
+|---------------|------------------------------|
+| `Promise<void>` | Promessa resolvida após o tempo especificado.|
 
 ## Exemplos
 
 ```typescript
-console.log("Before sleep");
+import sleep from "./sleep";
 
-await sleep(2000); // Pausa por 2 segundos
+async function exemplo() {
+  console.log("Esperando 2 segundos...");
+  await sleep(2000);
+  console.log("Pausa concluída!");
+}
 
-console.log("After sleep");
+exemplo();
 ```
 
 ## Notas
 
-- A função `sleep` é assíncrona, o que significa que ela pode ser usada com `await` em funções assíncronas para criar pausas sem bloquear o fluxo de execução.
-- O tempo é especificado em milissegundos (1 segundo = 1000 milissegundos).
+- Útil em contextos onde uma pausa temporária é necessária, como em testes ou para simular atrasos em chamadas de API.
+- Como `sleep` retorna uma promessa, é necessário usar `await` ou trabalhar com `.then` para manipular a pausa corretamente.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default async function sleep(timeout: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+}
+```
+
+```javascript
+export default async function sleep(timeout) {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+}
+```
+:::
 
 ## Referências
 
-- [setTimeout() - MDN](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+- [setTimeout()](https://developer.mozilla.org/pt-BR/docs/Web/API/setTimeout)
+- [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise)

@@ -1,6 +1,6 @@
 # randomUUID
 
-A função `randomUUID` gera um UUID aleatório utilizando a API Web Crypto.
+A função `randomUUID` gera um identificador único usando a API Web Crypto.
 
 ## Assinatura
 
@@ -10,48 +10,46 @@ function randomUUID(): string | undefined;
 
 ### Retorno
 
-| Tipo                 | Descrição                                                                |
-|----------------------|--------------------------------------------------------------------------|
-| `string`             | Um UUID aleatório gerado utilizando a API Web Crypto.                    |
-| `undefined`          | Caso a API Web Crypto não esteja disponível, retorna `undefined`.       |
+| Tipo        | Descrição                                                        |
+|-------------|------------------------------------------------------------------|
+| `string`    | Uma string UUID única gerada pelo navegador.                     |
+| `undefined` | Se a função for executada no servidor, retornará `undefined`.    |
 
 ## Exemplos
 
 ```typescript
-console.log(randomUUID()); // '3b241101-e2bb-4255-8caf-4136c566a962'
+import randomUUID from './randomUUID';
+
+console.log(randomUUID()); // ex.: '123e4567-e89b-12d3-a456-426614174000'
 ```
 
 ## Notas
 
-- Se a API Web Crypto não estiver disponível, a função registrará um erro no console e retornará `undefined`.
-- A função depende da API Web Crypto, sendo necessário um ambiente que a suporte.
+- Se executado no servidor, a função retornará `undefined`.
+- A função depende do método `crypto.randomUUID()` da API Web Crypto.
 
 ## Dependências
 
-- [`isCryptoAvailable`](../browser/isCryptoAvailable.md): A função `isCryptoAvailable` é usada para verificar se a API Web Crypto está disponível no ambiente, garantindo que a função `hash` funcione corretamente.
+- [`isServer`](../environment/isServer.md): Verifica se o código está sendo executado no servidor.
 
 ## Código Fonte
 
 ::: code-group
 ```typescript
-import { isCryptoAvailable } from '@utilify/browser';
+import { isServer } from '@utilify/environment';
 
-function randomUUID(): string | undefined {
-  if (!isCryptoAvailable()) {
-    console.error("Crypto API is not available");
-    return;
-  }
+export default function randomUUID(): string | undefined {
+  if (isServer()) return;
 
   return crypto.randomUUID();
 }
 ```
 
 ```javascript
+import { isServer } from '@utilify/environment';
+
 function randomUUID() {
-  if (!isCryptoAvailable()) {
-    console.error("Crypto API is not available");
-    return;
-  }
+  if (isServer()) return;
 
   return crypto.randomUUID();
 }
@@ -60,5 +58,4 @@ function randomUUID() {
 
 ## Referências
 
-- [crypto.randomUUID() - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)
-- [isCryptoAvailable - GitHub](https://github.com/Utilify/utils/blob/main/packages/browser/src/isCryptoAvailable.ts)
+- [Web Crypto API: randomUUID() - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)

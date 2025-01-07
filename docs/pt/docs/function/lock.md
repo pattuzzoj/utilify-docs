@@ -1,7 +1,65 @@
 # lock
 
+A função `lock` garante que uma função de retorno de chamada (callback) assíncrona seja executada apenas uma vez por vez, evitando execuções simultâneas. Se a função de retorno de chamada já estiver em execução, as novas invocações serão ignoradas até que a execução atual seja concluída.
+
+## Sintaxe
+
 ```typescript
-function lock(callback: (...args: any[]) => Promise<void>): (...args: any[]) => void {
+function lock(callback: (...args: any[]) => Promise<void>): (...args: any[]) => void;
+```
+
+### Parâmetros
+
+| Nome      | Tipo                         | Descrição                                                            |
+|-----------|------------------------------|------------------------------------------------------------------------|
+| `callback`| `(...args: any[]) => Promise<void>` | A função de retorno de chamada assíncrona que será bloqueada. Ela retorna um `Promise` e aceita qualquer número de argumentos. |
+
+### Retorno
+
+| Tipo                                | Descrição                                                         |
+|-------------------------------------|---------------------------------------------------------------------|
+| `(...args: any[]) => void`          | Uma função embrulhada que pode ser invocada várias vezes, mas a função de retorno de chamada só será executada uma vez de cada vez. |
+
+## Exemplos
+
+### Exemplo 1: Bloqueando uma função assíncrona
+
+```typescript
+async function tarefa() {
+  console.log("Tarefa iniciada");
+  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulando trabalho assíncrono
+  console.log("Tarefa finalizada");
+}
+
+const tarefaBloqueada = lock(tarefa);
+
+tarefaBloqueada(); // Saída: Tarefa iniciada -> Tarefa finalizada
+tarefaBloqueada(); // Nenhuma saída, ignorada pois a tarefa está bloqueada
+```
+
+### Exemplo 2: Tratando erros na função bloqueada
+
+```typescript
+async function tarefaComErro() {
+  console.log("Tarefa iniciada");
+  throw new Error("Algo deu errado");
+}
+
+const tarefaComErroBloqueada = lock(tarefaComErro);
+
+tarefaComErroBloqueada(); // Saída: Tarefa iniciada -> Callback execution error: Error: Algo deu errado
+```
+
+## Notas
+
+- A função `lock` é útil em situações onde múltiplas invocações de uma função assíncrona podem causar problemas (por exemplo, condições de corrida).
+- Ela utiliza uma variável de controle (`isLocked`) para rastrear se a função está sendo executada, garantindo que não haja execuções simultâneas.
+
+## Código
+
+::: code-group
+```typescript
+export default function lock(callback: (...args: any[]) => Promise<void>): (...args: any[]) => void {
   let isLocked = false;
 
   return async (...args: any[]): Promise<void> => {
@@ -20,51 +78,28 @@ function lock(callback: (...args: any[]) => Promise<void>): (...args: any[]) => 
 }
 ```
 
-A função `lock` cria um mecanismo para garantir que uma função assíncrona (callback) seja executada de forma exclusiva, ou seja, ela bloqueia a execução de chamadas subsequentes até que a execução atual tenha sido concluída. Isso é útil quando é necessário evitar condições de corrida ou chamadas concorrentes de uma função.
+```javascript
+export default function lock(callback) {
+  let isLocked = false;
 
-## Assinatura
+  return async (...args) => {
+    if (isLocked) return;
 
-```typescript
-function lock(callback: (...args: any[]) => Promise<void>): (...args: any[]) => void;
+    isLocked = true;
+
+    try {
+      await callback(...args);
+    } catch (error) {
+      console.error("Callback execution error:", error);
+    } finally {
+      isLocked = false;
+    }
+  }
+}
 ```
-
-### Parâmetros
-
-- **`callback`** (`(...args: any[]) => Promise<void>`): A função assíncrona que será executada de forma bloqueada. Deve retornar uma `Promise`.
-
-### Retorno
-
-- **`(...args: any[]) => void`**: Retorna uma nova função que, quando chamada, garantirá que o `callback` seja executado de forma exclusiva. Caso o `callback` ainda esteja sendo executado, novas invocações serão ignoradas até que a execução atual termine.
-
-## Exemplos
-
-```typescript
-const fetchData = async (id: number) => {
-  console.log(`Fetching data for ${id}...`);
-  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate async operation
-  console.log(`Data for ${id} fetched.`);
-};
-
-const lockedFetchData = lock(fetchData);
-
-lockedFetchData(1); // Fetches data for 1
-lockedFetchData(2); // Ignored, as the previous fetch is still running
-setTimeout(() => lockedFetchData(3), 1500); // Fetches data for 3 after the previous one finishes
-```
-
-**Saída esperada:**
-```
-Fetching data for 1...
-Data for 1 fetched.
-Fetching data for 3...
-Data for 3 fetched.
-```
-
-## Notas
-
-- A função `lock` pode ser útil quando há a necessidade de evitar que funções assíncronas sejam chamadas simultaneamente, como ao acessar recursos compartilhados ou realizar operações que não podem ser executadas em paralelo.
-- A execução da função é bloqueada até que a `Promise` retornada pelo `callback` seja resolvida, garantindo que apenas uma execução do `callback` aconteça por vez.
+:::
 
 ## Referências
 
-- [Promises - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+- [Funções assíncronas](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/async_function)
+- [Promessas em JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Using_promises)

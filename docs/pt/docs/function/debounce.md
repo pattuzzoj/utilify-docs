@@ -1,7 +1,65 @@
 # debounce
 
+A função `debounce` garante que uma função de callback seja executada apenas após um atraso especificado, limitando a frequência com que pode ser acionada em rápida sucessão. Isso é útil em cenários como limitar chamadas de API ou o tratamento de entradas do usuário.
+
+## Sintaxe
+
 ```typescript
-function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void {
+function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void;
+```
+
+### Parâmetros
+
+| Nome        | Tipo                      | Descrição                                       |
+|-------------|---------------------------|-------------------------------------------------|
+| `callback`  | `(...args: any[]) => void` | A função que será executada após o atraso.      |
+| `delay`     | `number`                  | O atraso (em milissegundos) antes que o callback seja acionado. O valor padrão é 300ms. |
+
+### Retorno
+
+| Tipo         | Descrição                                   |
+|--------------|---------------------------------------------|
+| `(...args: any[]) => void` | Uma versão "debounced" da função de callback fornecida. |
+
+## Exemplos
+
+### Exemplo 1: Uso básico de debounce
+
+```typescript
+const log = (message: string): void => {
+  console.log(message);
+};
+
+const debouncedLog = debounce(log, 1000);
+
+debouncedLog('Olá');  // Não será logado imediatamente
+debouncedLog('Mundo');  // Cancela a chamada anterior e loga 'Mundo' após 1000ms
+```
+
+### Exemplo 2: Debounce para entrada do usuário
+
+```typescript
+const handleSearchInput = (query: string): void => {
+  console.log(`Procurando por: ${query}`);
+};
+
+const debouncedSearch = debounce(handleSearchInput, 500);
+
+// A função de busca só será acionada após 500ms de ausência de digitação
+debouncedSearch('maçã');
+debouncedSearch('torta de maçã');  // Esta chamada cancela a anterior
+```
+
+## Notas
+
+- `debounce` é útil em cenários onde você deseja limitar a taxa com que uma função é executada, como ao lidar com pressionamentos de tecla ou eventos de redimensionamento.
+- A função só será acionada após o usuário parar de invocar a função por um período de tempo especificado.
+
+## Código
+
+::: code-group
+```typescript
+export default function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void {
   let timerId: number;
 
   return (...args: any[]): void => {
@@ -11,40 +69,19 @@ function debounce(callback: (...args: any[]) => void, delay: number = 300): (...
 }
 ```
 
-A função `debounce` permite controlar a frequência de execução de uma função, garantindo que ela seja executada apenas após um certo período de tempo após a última chamada. Isso é útil para melhorar o desempenho em casos como eventos de digitação ou rolagem.
+```javascript
+export default function debounce(callback, delay = 300) {
+  let timerId;
 
-## Assinatura
-
-```typescript
-function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void;
+  return (...args) => {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => callback(...args), delay);
+  };
+}
 ```
-
-### Parâmetros
-
-- **`callback`** (`(...args: any[]) => void`): A função que será executada após o atraso especificado.
-- **`delay`** (`number`): O tempo de espera (em milissegundos) antes que o `callback` seja executado após a última invocação. O valor padrão é `300`.
-
-### Retorno
-
-- **`(...args: any[]) => void`**: Retorna uma função que, quando chamada, vai adiar a execução do `callback` até que o tempo especificado por `delay` tenha passado desde a última chamada.
-
-## Exemplos
-
-```typescript
-const logMessage = (message: string) => console.log(message);
-
-const debouncedLogMessage = debounce(logMessage, 500);
-
-debouncedLogMessage("Hello"); // A execução será adiada por 500ms
-debouncedLogMessage("World"); // Somente após 500ms após o último "World" ser chamado
-```
-
-## Notas
-
-- A função `debounce` é ideal para eventos de alta frequência como `scroll`, `resize`, e `input` em formulários.
-- O `callback` será executado apenas depois de o tempo especificado em `delay` ter passado sem novas invocações da função resultante.
-- Se a função resultante for chamada repetidamente antes que o `delay` expire, o contador de tempo será resetado.
+:::
 
 ## Referências
 
-- [setTimeout() - MDN](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+- [setTimeout](https://developer.mozilla.org/pt-BR/docs/Web/API/setTimeout)
+- [clearTimeout](https://developer.mozilla.org/pt-BR/docs/Web/API/clearTimeout)

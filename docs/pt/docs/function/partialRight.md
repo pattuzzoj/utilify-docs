@@ -1,14 +1,8 @@
 # partialRight
 
-```typescript
-function partialRight<T>(callback: (...args: any[]) => T, ...partial: any[]): (...args: any[]) => T {
-  return (...args: any[]): T => callback(...args, ...partial);
-}
-```
+A função `partialRight` cria uma nova função aplicando parcialmente argumentos no final da lista de argumentos da função original. Quando a nova função é chamada, os argumentos fornecidos são usados antes dos argumentos parcialmente aplicados.
 
-A função `partialRight` cria uma nova função que aplica parcialmente os últimos argumentos fornecidos para a função original, deixando os outros argumentos para serem fornecidos posteriormente.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function partialRight<T>(callback: (...args: any[]) => T, ...partial: any[]): (...args: any[]) => T;
@@ -16,28 +10,67 @@ function partialRight<T>(callback: (...args: any[]) => T, ...partial: any[]): (.
 
 ### Parâmetros
 
-- **`callback`** (`(...args: any[]) => T`): A função à qual os argumentos parciais serão aplicados.
-- **`...partial`** (`any[]`): Os argumentos que serão aplicados à função original, à direita (no final da lista de argumentos).
+| Nome        | Tipo                      | Descrição                                                         |
+|-------------|---------------------------|---------------------------------------------------------------------|
+| `callback`  | `(...args: any[]) => T`   | A função original à qual os argumentos serão parcialmente aplicados. |
+| `...partial`| `any[]`                   | Argumentos a serem parcialmente aplicados no final.                |
 
 ### Retorno
 
-- **`(...args: any[]) => T`**: Retorna uma nova função que, quando chamada, combina os novos argumentos fornecidos no momento da invocação com os argumentos parciais já fornecidos e executa a função original.
+| Tipo                      | Descrição                                                  |
+|---------------------------|------------------------------------------------------------|
+| `(...args: any[]) => T` | Uma nova função com os argumentos parcialmente aplicados.  |
 
 ## Exemplos
 
+### Exemplo 1: Soma de números
 ```typescript
-const greet = (greeting: string, name: string) => `${greeting}, ${name}!`;
+import partialRight from "./partialRight";
 
-const greetWithJohn = partialRight(greet, 'John');
+const soma = (x: number, y: number, z: number) => x + y + z;
 
-console.log(greetWithJohn('Hello')); // 'Hello, John!'
+const somaComDez = partialRight(soma, 10);
+
+console.log(somaComDez(5, 3)); // Saída: 18
 ```
+
+- A função `soma` original recebe três argumentos.
+- `partialRight` cria uma nova função que fixa o último argumento (`z = 10`).
+- Ao chamar a nova função com `5` e `3`, eles são atribuídos a `x` e `y`, respectivamente, resultando em `5 + 3 + 10 = 18`.
+
+### Exemplo 2: Manipulação de strings
+```typescript
+const concatenar = (a: string, b: string, c: string) => `${a}${b}${c}`;
+
+const adicionarExclamacao = partialRight(concatenar, "!");
+
+console.log(adicionarExclamacao("Olá", "Mundo")); // Saída: "OláMundo!"
+```
+
+- A função `concatenar` recebe três strings e as junta.
+- Usando `partialRight`, o ponto de exclamação (`"!"`) é fixado como o último argumento.
 
 ## Notas
 
-- A função `partialRight` aplica os argumentos parciais à direita, ou seja, no final da lista de argumentos fornecidos.
-- Esta abordagem é útil para criar versões de funções com argumentos predefinidos no final, evitando a necessidade de repetir esses argumentos em chamadas subsequentes.
+- `partialRight` é especialmente útil quando os argumentos finais são mais previsíveis ou fixos.
+- A ordem dos argumentos passados na execução e os parcialmente aplicados é significativa.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function partialRight<T>(callback: (...args: any[]) => T, ...partial: any[]): (...args: any[]) => T {
+  return (...args: any[]): T => callback(...args, ...partial);
+}
+```
+
+```javascript
+export default function partialRight(callback, ...partial) {
+  return (...args) => callback(...args, ...partial);
+}
+```
+:::
 
 ## Referências
 
-- [Function.prototype.apply() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+- [Currying e Aplicação Parcial](https://developer.mozilla.org/pt-BR/docs/Glossary/Currying)

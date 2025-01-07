@@ -1,4 +1,4 @@
-# Utilitários do Navegador <Badge type="tip" text="2.0.1" />
+# Utilitários - Browser <Badge type="tip" text="3.0.0" />
 
 As **funções utilitárias do navegador** fornecem diversos métodos para interagir com o ambiente do navegador. Essas funções ajudam a simplificar operações comuns, como verificar o estado da conexão, detectar dispositivos de toque, gerar hashes seguros e muito mais.
 
@@ -31,11 +31,11 @@ Esta biblioteca suporta tanto o sistema de módulos ESM quanto CJS.
 ::: code-group
 
 ```typescript [esm]
-import { getLanguage, getTheme, isOnline, hash } from '@utilify/browser';
+import { getLanguage, getTheme, isOnline } from '@utilify/browser';
 ```
 
 ```javascript [cjs]
-const { getLanguage, getTheme, isOnline, hash } = require('@utilify/browser');
+const { getLanguage, getTheme, isOnline } = require('@utilify/browser');
 ```
 
 :::
@@ -55,16 +55,6 @@ Retorna o código de idioma do navegador.
 function getTheme(): string | undefined  
 ```  
 Retorna a preferência de tema atual do usuário.
-
-### [hash](./hash.md)  
-```typescript  
-async function hash(
-  data: string | ArrayBuffer | DataView,
-  algorithm: 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512',
-  output: 'hex' | 'base64' | 'buffer' = 'buffer'
-): Promise<string | ArrayBuffer | undefined>
-```  
-Gera um hash criptográfico dos dados fornecidos usando o algoritmo e formato de saída especificados.
 
 ### [isCookieEnabled](./isCookieEnabled.md)  
 ```typescript  
@@ -89,12 +79,6 @@ Verifica se o navegador está online.
 function isTouchDevice(): boolean | undefined  
 ```  
 Verifica se o dispositivo suporta eventos de toque.
-
-### [randomUUID](./randomUUID.md)  
-```typescript  
-function randomUUID(): string | undefined  
-```  
-Gera um UUID seguro usando a API Web Crypto do navegador. Retorna `undefined` se a API não estiver disponível.
 
 ### [toggleFullscreen](./toggleFullscreen.md)  
 ```typescript  

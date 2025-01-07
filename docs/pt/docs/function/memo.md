@@ -1,30 +1,8 @@
 # memo
 
-```typescript
-import { djb2 } from "../utils";
+A função `memo` é utilizada para armazenar em cache os resultados de uma função com base nos argumentos passados. Isso ajuda a evitar recomputações desnecessárias, melhorando o desempenho. O cache pode ser opcionalmente configurado para expirar após um tempo especificado.
 
-function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...args: any[]) => any {
-  const cache = new Map();
-
-  return (...args: any[]): any => {
-    const key = djb2(JSON.stringify(args));
-
-    if(!cache.has(key)) {
-      cache.set(key, callback(...args));
-
-      if(cacheTimeout) {
-        setTimeout(() => cache.delete(key), cacheTimeout);
-      }
-    }
-    
-    return cache.get(key);
-  }
-}
-```
-
-A função `memo` implementa um cache de resultados de funções para melhorar o desempenho, armazenando o valor retornado para chamadas subsequentes com os mesmos argumentos. Se o mesmo conjunto de argumentos for fornecido, o valor é retornado do cache, evitando a execução do `callback` novamente. Isso é útil para funções com cálculos dispendiosos ou chamadas de rede.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...args: any[]) => any;
@@ -32,36 +10,99 @@ function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...arg
 
 ### Parâmetros
 
-- **`callback`** (`(...args: any[]) => any`): A função cujo resultado será memorizado.
-- **`cacheTimeout`** (`number`, opcional): O tempo (em milissegundos) após o qual o valor em cache será removido. Se não fornecido, o cache não expira.
+| Nome           | Tipo                  | Descrição                                                                                     |
+|-----------------|-----------------------|-----------------------------------------------------------------------------------------------|
+| `callback`      | `(...args: any[]) => any` | A função cujos resultados serão armazenados em cache.                                         |
+| `cacheTimeout`  | `number` (opcional)   | Tempo em milissegundos após o qual o cache será invalidado para uma chamada específica.       |
 
 ### Retorno
 
-- **`(...args: any[]) => any`**: Retorna uma função que, quando chamada com um conjunto de argumentos, verifica se o resultado já foi calculado e está armazenado no cache. Caso contrário, executa o `callback` e armazena o resultado.
+| Tipo             | Descrição                                             |
+|------------------|-------------------------------------------------------|
+| `(...args: any[]) => any` | Uma nova função que utiliza o cache para otimizar chamadas repetidas. |
 
 ## Exemplos
 
+### Exemplo 1: Uso básico do cache
+
 ```typescript
-const expensiveOperation = (x: number) => {
-  console.log("Performing expensive operation...");
-  return x * 2;
+import memo from "@utilify/utils";
+
+const soma = (a: number, b: number) => {
+  console.log("Executando soma...");
+  return a + b;
 };
 
-const memoizedOperation = memo(expensiveOperation, 5000);
+const somaMemo = memo(soma);
 
-console.log(memoizedOperation(2)); // "Performing expensive operation..." seguido por 4
-console.log(memoizedOperation(2)); // 4 (do cache, sem log)
-setTimeout(() => console.log(memoizedOperation(2)), 6000); // "Performing expensive operation..." seguido por 4, após 6 segundos
+console.log(somaMemo(1, 2)); // Executa soma e retorna 3
+console.log(somaMemo(1, 2)); // Retorna 3 sem executar novamente
 ```
 
-## Notas
+### Exemplo 2: Configurando um timeout para o cache
 
-- A chave do cache é gerada com base na string JSON dos argumentos usando a função `djb2`. Isso permite que qualquer conjunto de argumentos seja transformado em uma chave única para o cache.
-- O `cacheTimeout` permite controlar a duração do cache, removendo as entradas após o tempo especificado.
-- Caso o `cacheTimeout` não seja especificado, o cache persiste até que a função seja redefinida ou a memória seja liberada.
+```typescript
+const somaMemoComTimeout = memo(soma, 5000);
+
+console.log(somaMemoComTimeout(1, 2)); // Executa soma e retorna 3
+setTimeout(() => {
+  console.log(somaMemoComTimeout(1, 2)); // Recalcula após 5 segundos
+}, 6000);
+```
+
+## Dependências
+
+- [djb2](./djb2.md): Função utilizada para gerar um hash único com base nos argumentos.
+
+## Código Fonte
+
+::: code-group
+```typescript
+import { djb2 } from "@utilify/utils";
+
+export default function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...args: any[]) => any {
+  const cache = new Map();
+
+  return (...args: any[]): any => {
+    const key = djb2(JSON.stringify(args));
+
+    if (!cache.has(key)) {
+      cache.set(key, callback(...args));
+
+      if (cacheTimeout) {
+        setTimeout(() => cache.delete(key), cacheTimeout);
+      }
+    }
+
+    return cache.get(key);
+  };
+}
+```
+
+```javascript
+import { djb2 } from "@utilify/utils";
+
+export default function memo(callback, cacheTimeout) {
+  const cache = new Map();
+
+  return (...args) => {
+    const key = djb2(JSON.stringify(args));
+
+    if (!cache.has(key)) {
+      cache.set(key, callback(...args));
+
+      if (cacheTimeout) {
+        setTimeout(() => cache.delete(key), cacheTimeout);
+      }
+    }
+
+    return cache.get(key);
+  };
+}
+```
+:::
 
 ## Referências
 
-- [JSON.stringify() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
-- [Map - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-- [setTimeout() - MDN](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+- [Map](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Map): Objeto utilizado para armazenar os dados em cache.
+- [JSON.stringify()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify): Método usado para converter os argumentos em uma string para geração do hash.

@@ -1,12 +1,8 @@
 # noop
 
-```typescript
-function noop(): void {}
-```
+A função `noop` (No Operation) é uma função de marcador de posição que não realiza nenhuma ação quando chamada. Geralmente, é utilizada como função padrão ou stub em situações onde uma função é necessária, mas nenhuma ação precisa ser executada.
 
-A função `noop` (No Operation) é uma função que não realiza nenhuma operação. É frequentemente usada como um valor de retorno padrão ou como um "callback" em situações onde nenhuma ação é desejada ou necessária.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function noop(): void;
@@ -14,26 +10,47 @@ function noop(): void;
 
 ### Parâmetros
 
-- **Nenhum**.
+- Nenhum
 
 ### Retorno
 
-- **`void`**: A função não retorna nenhum valor, pois seu propósito é simplesmente não fazer nada.
+| Tipo  | Descrição                                 |
+|-------|-------------------------------------------|
+| `void`| Esta função não retorna nada.             |
 
 ## Exemplos
 
-```typescript
-noop(); // Não faz nada
+### Exemplo 1: Usando `noop` como uma função padrão
 
-const handleEvent = noop; // Atribui a função noop a um manipulador de evento
+```typescript
+const callback = noop;
+callback(); // Não faz nada
+```
+
+### Exemplo 2: Passando `noop` em ouvintes de eventos onde nenhuma ação é necessária
+
+```typescript
+const button = document.getElementById("button");
+button.addEventListener("click", noop); // Nenhuma ação será tomada ao clicar no botão
 ```
 
 ## Notas
 
-- `noop` é útil quando um valor de função é necessário mas nenhuma ação é desejada.
-- Frequentemente usada em callbacks ou placeholders.
-- Pode ser útil para evitar erros em funções que exigem um callback, mas que não precisam fazer nada.
+- `noop` é útil em situações onde uma função é requerida sintaticamente, mas nenhuma funcionalidade real precisa ser implementada.
+- É tipicamente utilizada para melhorar a performance, evitando definições de funções desnecessárias ou fornecendo um valor de fallback para parâmetros de callback opcionais.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function noop(): void {}
+```
+
+```javascript
+export default function noop() {}
+```
+:::
 
 ## Referências
 
-- [Noop Function - Wikipedia](https://en.wikipedia.org/wiki/NOP)
+- [Function.prototype](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Function)

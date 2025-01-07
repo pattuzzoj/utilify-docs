@@ -1,63 +1,90 @@
 # fallback
 
+A função `fallback` executa uma função principal (`callback`) e retorna seu resultado. Caso o `callback` lance uma exceção, uma função secundária (`fallback`) é executada, retornando um valor seguro como alternativa.
+
+## Sintaxe
+
 ```typescript
-function fallback<T>(callback: () => T, fallback: () => T): T {
+function fallback<T, U = T>(callback: () => T, fallback: () => U): T | U;
+```
+
+### Parâmetros
+
+| Nome        | Tipo               | Descrição                                                                  |
+|-------------|--------------------|----------------------------------------------------------------------------|
+| `callback`  | `() => T`          | A função principal a ser executada.                                        |
+| `fallback`  | `() => U`          | A função de fallback executada caso o `callback` lance uma exceção.        |
+
+### Retorno
+
+| Tipo      | Descrição                                                                |
+|-----------|--------------------------------------------------------------------------|
+| `T`       | O resultado da execução do `callback`, caso não haja erros.              |
+| `U`       | O resultado do `fallback`, caso o `callback` lance uma exceção.          |
+
+## Exemplos
+
+### Exemplo 1: Fornecendo um valor alternativo
+
+```typescript
+function operacaoArriscada() {
+  if (Math.random() > 0.5) {
+    throw new Error("Operação falhou");
+  }
+  return "Sucesso!";
+}
+
+function valorPadrao() {
+  return "Valor alternativo";
+}
+
+const resultado = fallback(operacaoArriscada, valorPadrao);
+console.log(resultado); // Saída: "Sucesso!" ou "Valor alternativo"
+```
+
+### Exemplo 2: Lidando com exceções de forma segura
+
+```typescript
+const parseJson = (str: string) => JSON.parse(str);
+const jsonInvalido = "{ invalido: true }";
+
+const resultadoSeguro = fallback(
+  () => parseJson(jsonInvalido),
+  () => ({ erro: "JSON inválido" })
+);
+
+console.log(resultadoSeguro); // Saída: { erro: "JSON inválido" }
+```
+
+## Notas
+
+- Esta função é útil para manipular operações que podem lançar exceções de forma segura.
+- A função `fallback` será executada somente se o `callback` lançar uma exceção.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function fallback<T, U = T>(callback: () => T, fallback: () => U): T | U {
   try {
-    const result = callback();
-
-    if (typeof result != "undefined") {
-      return result;
-    }
-
-    throw new Error();
-  } catch (error) {
+    return callback();
+  } catch {
     return fallback();
   }
 }
 ```
 
-A função `fallback` tenta executar uma função `callback` e, caso ocorra um erro ou o resultado seja `undefined`, executa uma função de substituição `fallback`. É útil quando você deseja garantir um valor seguro, mesmo quando a execução de uma função pode falhar.
-
-## Assinatura
-
-```typescript
-function fallback<T>(callback: () => T, fallback: () => T): T;
+```javascript
+export default function fallback(callback, fallback) {
+  try {
+    return callback();
+  } catch {
+    return fallback();
+  }
+}
 ```
+:::
 
-### Parâmetros
-
-- **`callback`** (`() => T`): A função que será executada inicialmente para gerar o valor.
-- **`fallback`** (`() => T`): A função que será executada se a função `callback` falhar ou retornar `undefined`.
-
-### Retorno
-
-- **`T`**: Retorna o valor gerado pela função `callback`, ou o valor gerado pela função `fallback` caso a execução de `callback` falhe ou retorne `undefined`.
-
-## Exemplos
-
-```typescript
-const getData = () => {
-  const data = null; // Simulando um erro
-  if (!data) throw new Error("Data not found");
-  return data;
-};
-
-const fallbackData = () => "Fallback data";
-
-const result = fallback(getData, fallbackData);
-console.log(result); // "Fallback data"
-```
-
-**Saída esperada:**
-```
-Fallback data
-```
-
-## Notas
-
-- A função `fallback` é útil para fornecer valores de reserva em caso de falhas ou erros na execução de uma função.
-- Ela pode ser usada para garantir que sempre haja um valor retornado, evitando erros inesperados em fluxos de dados críticos.
-  
 ## Referências
 
-- [try...catch - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
+- [try...catch](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/try...catch)

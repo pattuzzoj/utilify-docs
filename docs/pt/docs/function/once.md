@@ -1,24 +1,8 @@
 # once
 
-```typescript
-function once<T>(callback: (...args: any[]) => T): (...args: any[]) => T {
-  let called = false;
-  let result: T;
+A função `once` garante que uma função seja chamada apenas uma vez, independentemente de quantas vezes for invocada. Ela retorna uma nova função que, na primeira chamada, executa o callback fornecido e armazena o resultado. Nas chamadas subsequentes, ela retorna o mesmo resultado da primeira execução.
 
-  return (...args: any[]): T => {
-    if(!called) {
-      called = true;
-      result = callback(...args);
-    };
-
-    return result;
-  }
-}
-```
-
-A função `once` cria uma função que executa o callback fornecido apenas uma vez, independentemente de quantas vezes a função resultante seja chamada. Na primeira chamada, o callback é executado e seu resultado é retornado nas chamadas subsequentes.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function once<T>(callback: (...args: any[]) => T): (...args: any[]) => T;
@@ -26,28 +10,90 @@ function once<T>(callback: (...args: any[]) => T): (...args: any[]) => T;
 
 ### Parâmetros
 
-- **`callback`** (`(...args: any[]) => T`): A função que será chamada apenas uma vez. O resultado dessa função será retornado para chamadas subsequentes.
+| Nome        | Tipo                                    | Descrição                                                       |
+|-------------|-----------------------------------------|-------------------------------------------------------------------|
+| `callback`  | `(...args: any[]) => T`                 | A função que será executada apenas uma vez.                      |
 
 ### Retorno
 
-- **`(...args: any[]) => T`**: Retorna uma nova função que executa o `callback` apenas na primeira chamada, retornando o resultado nas chamadas subsequentes.
+| Tipo               | Descrição                                             |
+|--------------------|-------------------------------------------------------|
+| `(...args: any[]) => T` | Uma função que, na primeira chamada, executa `callback`, mas nas chamadas subsequentes, retorna o resultado da primeira execução. |
 
 ## Exemplos
 
+### Exemplo 1: Executando uma função uma única vez
+
 ```typescript
-const increment = (x: number) => x + 1;
+import once from "./once";
 
-const onceIncrement = once(increment);
+let count = 0;
+const incrementOnce = once(() => count++);
 
-console.log(onceIncrement(5)); // 6
-console.log(onceIncrement(10)); // 6
+console.log(incrementOnce()); // 1
+console.log(incrementOnce()); // 1
+console.log(incrementOnce()); // 1
 ```
+
+- A função `incrementOnce` só executa o incremento na primeira chamada.
+- Nas chamadas subsequentes, ela retorna o mesmo valor de `count`, sem executar o callback.
+
+### Exemplo 2: Chamando uma função assíncrona uma única vez
+
+```typescript
+const fetchData = once(async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+  return response.json();
+});
+
+fetchData().then(data => console.log(data)); // Executa o fetch e retorna os dados
+fetchData().then(data => console.log(data)); // Retorna os dados do primeiro fetch sem fazer nova requisição
+```
+
+- A função `fetchData` executa a requisição HTTP apenas uma vez.
+- Nas chamadas subsequentes, o mesmo resultado da primeira execução é retornado.
 
 ## Notas
 
-- O `callback` será executado apenas na primeira invocação, e o valor retornado será reutilizado nas chamadas subsequentes.
-- Pode ser útil quando você precisa garantir que uma operação seja executada apenas uma vez, como em inicializações ou configurações de estado.
+- O resultado da primeira execução é memorizado e retornado nas chamadas subsequentes.
+- `once` é útil em situações onde uma operação precisa ser realizada apenas uma vez, como em inicializações ou carregamento de dados.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function once<T>(callback: (...args: any[]) => T): (...args: any[]) => T {
+  let called = false;
+  let result: T;
+
+  return (...args: any[]): T => {
+    if (!called) {
+      called = true;
+      result = callback(...args);
+    }
+
+    return result;
+  }
+}
+```
+
+```javascript
+export default function once(callback) {
+  let called = false;
+  let result;
+
+  return (...args) => {
+    if (!called) {
+      called = true;
+      result = callback(...args);
+    }
+
+    return result;
+  };
+}
+```
+:::
 
 ## Referências
 
-- [Function.prototype.call - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+- [Function.prototype](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Function)

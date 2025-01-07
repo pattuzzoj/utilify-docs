@@ -64,6 +64,16 @@
     ]
   },
   {
+    "text": "Crypto",
+    "link": "/pt/docs/crypto",
+    "collapsed": true,
+    "items": [
+      { "text": "hash", "link": "/pt/docs/crypto/hash" },
+      { "text": "randomUUID", "link": "/pt/docs/crypto/randomUUID" },
+      { "text": "djb2", "link": "/pt/docs/crypto/djb2" }
+    ]
+  },
+  {
     "text": "Date",
     "link": "/pt/docs/date",
     "collapsed": true,
@@ -106,6 +116,7 @@
     "link": "/pt/docs/function",
     "collapsed": true,
     "items": [
+      { "text": "benchmark", "link": "/pt/docs/function/benchmark" },
       { "text": "compose", "link": "/pt/docs/function/compose" },
       { "text": "debounce", "link": "/pt/docs/function/debounce" },
       { "text": "defer", "link": "/pt/docs/function/defer" },

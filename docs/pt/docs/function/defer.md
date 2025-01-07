@@ -1,14 +1,8 @@
 # defer
 
-```typescript
-function defer(callback: () => void): void {
-  Promise.resolve().then(callback);
-}
-```
+A função `defer` executa uma função de callback assim que o evento atual da pilha de chamadas for finalizado, utilizando a resolução de uma Promise. Isso garante que a execução do código seja postergada até que o JavaScript tenha completado a execução do código síncrono atual.
 
-A função `defer` permite agendar a execução de uma função para o próximo ciclo de eventos, ou seja, ela garante que a função será executada de forma assíncrona, após o ciclo de execução atual.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
 function defer(callback: () => void): void;
@@ -16,36 +10,76 @@ function defer(callback: () => void): void;
 
 ### Parâmetros
 
-- **`callback`** (`() => void`): A função que será executada no próximo ciclo de eventos.
+| Nome       | Tipo                  | Descrição                                    |
+|------------|-----------------------|----------------------------------------------|
+| `callback` | `() => void`           | A função que será executada de forma assíncrona. |
 
 ### Retorno
 
-- **`void`**: A função não retorna nenhum valor.
+| Tipo       | Descrição                                          |
+|------------|----------------------------------------------------|
+| `void`     | Não retorna nada. A função `callback` será chamada em uma próxima fase da fila de execução. |
 
 ## Exemplos
 
+### Exemplo 1: Uso básico de defer
+
 ```typescript
-console.log("Antes");
+console.log('Antes');
 
 defer(() => {
-  console.log("Executado depois do ciclo atual");
+  console.log('Executado depois');
 });
 
-console.log("Depois");
+console.log('Depois');
 ```
 
-**Saída esperada:**
+**Saída:**
 ```
 Antes
 Depois
-Executado depois do ciclo atual
+Executado depois
 ```
+
+### Exemplo 2: Defer para atraso na execução
+
+```typescript
+const delayedAction = () => {
+  console.log('Ação adiada');
+};
+
+defer(delayedAction);
+```
+
+**Saída:**
+```
+Ação adiada
+```
+
+A função `delayedAction` será executada após a execução do código atual na pilha.
 
 ## Notas
 
-- A função `defer` é útil quando você deseja garantir que uma função seja executada após o ciclo de execução atual, permitindo que outras operações ou eventos sejam processados primeiro.
-- Ela utiliza a resolução de uma promessa para garantir que a execução seja adiada.
+- `defer` utiliza a Promise para agendar a execução da função, garantindo que ela ocorra de forma assíncrona, após a execução do código síncrono atual.
+- Isso é útil quando você deseja garantir que uma função seja chamada apenas depois que o restante do código síncrono for executado.
+
+## Código
+
+::: code-group
+```typescript
+export default function defer(callback: () => void): void {
+  Promise.resolve().then(callback);
+}
+```
+
+```javascript
+export default function defer(callback) {
+  Promise.resolve().then(callback);
+}
+```
+:::
 
 ## Referências
 
-- [Promise.resolve() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
+- [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [then](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
