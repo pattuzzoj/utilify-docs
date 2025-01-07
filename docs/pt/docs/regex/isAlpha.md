@@ -1,39 +1,60 @@
 # isAlpha
 
-```typescript
-function isAlpha(str: string): boolean {
-  return /^[a-zA-Z]+$/.test(str);
-}
-```
+A função `isAlpha` verifica se uma string contém apenas caracteres alfabéticos (letras maiúsculas e minúsculas).
 
-Verifica se a string contém apenas caracteres alfabéticos (A-Z, a-z).
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isAlpha(str: string): boolean;
+function isAlpha(value: string): boolean
 ```
 
 ### Parâmetros
 
-- **`str`** (`string`): A string que será verificada.
+| Nome | Tipo     | Descrição                              |
+|------|----------|----------------------------------------|
+| value  | `string` | A string a ser validada como alfabética. |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se a string contiver apenas caracteres alfabéticos, caso contrário, retorna `false`.
+| Tipo     | Descrição                                  |
+|----------|--------------------------------------------|
+| `boolean` | Retorna `true` se a string contiver apenas letras, caso contrário retorna `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isAlpha("Hello")); // true
-console.log(isAlpha("Hello123")); // false
-console.log(isAlpha("123")); // false
+import isAlpha from "./isAlpha";
+
+console.log(isAlpha("abcABC"));      // Saída: true
+console.log(isAlpha("abc"));         // Saída: true
+console.log(isAlpha("ABC"));         // Saída: true
+console.log(isAlpha("abc123"));      // Saída: false
+console.log(isAlpha("123"));         // Saída: false
+console.log(isAlpha("hello world")); // Saída: false
 ```
 
 ## Notas
 
-- A função verifica apenas caracteres alfabéticos, sem considerar números, espaços ou caracteres especiais.
+- A função verifica se a string contém apenas caracteres do alfabeto inglês (maiúsculos ou minúsculos).
+- Caracteres especiais, números ou espaços irão resultar em `false`.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isAlpha(value: string): boolean {
+  return /^[a-zA-Z]+$/.test(value);
+}
+```
+
+```javascript
+export default function isAlpha(value) {
+  return /^[a-zA-Z]+$/.test(value);
+}
+```
+:::
 
 ## Referências
 
-- [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+- [Expressões Regulares](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [string.prototype.test()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)

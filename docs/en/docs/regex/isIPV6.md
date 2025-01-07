@@ -1,43 +1,43 @@
 # isIPV6
 
-A função `isIPV6` verifica se uma string é um endereço IPv6 válido.
+The `isIPV6` function checks if a given string is a valid IPv6 address.
 
-## Sintaxe
+## Syntax
 
 ```typescript
 function isIPV6(value: string): boolean
 ```
 
-### Parâmetros
+### Parameters
 
-| Nome | Tipo     | Descrição                                |
+| Name | Type     | Description                              |
 |------|----------|------------------------------------------|
-| value  | `string` | A string a ser validada como um endereço IPv6. |
+| value  | `string` | The string to be validated as an IPv6 address. |
 
-### Retorno
+### Returns
 
-| Tipo     | Descrição                                   |
-|----------|---------------------------------------------|
-| `boolean` | Retorna `true` se a string representar um endereço IPv6 válido, caso contrário, retorna `false`. |
+| Type      | Description                                   |
+|-----------|-----------------------------------------------|
+| `boolean` | Returns `true` if the string represents a valid IPv6 address, otherwise `false`. |
 
-## Exemplos
+## Examples
 
 ```typescript
 import isIPV6 from "./isIPV6";
 
-console.log(isIPV6("2001:0db8:85a3:0000:0000:8a2e:0370:7334")); // Saída: true
-console.log(isIPV6("2001:0db8:85a3::8a2e:0370:7334"));         // Saída: true
-console.log(isIPV6("192.168.1.1"));                         // Saída: false
-console.log(isIPV6("::1"));                                 // Saída: true
+console.log(isIPV6("2001:0db8:85a3:0000:0000:8a2e:0370:7334")); // Output: true
+console.log(isIPV6("2001:0db8:85a3::8a2e:0370:7334"));         // Output: true
+console.log(isIPV6("192.168.1.1"));                         // Output: false
+console.log(isIPV6("::1"));                                 // Output: true
 ```
 
-## Notas
+## Notes
 
-- A função utiliza uma expressão regular para verificar o formato válido de um endereço IPv6.
-- Ela suporta tanto endereços IPv6 completos quanto versões comprimidas (com `::`).
-- A função também lida com endereços IPv6 embutidos com endereços IPv4.
+- The function uses a regular expression to check for a valid IPv6 format.
+- It supports both full IPv6 addresses and compressed versions (with `::`).
+- The function also handles IPv6 addresses with embedded IPv4 addresses.
 
-## Código Fonte
+## Source Code
 
 ::: code-group
 ```typescript
@@ -53,7 +53,7 @@ export default function isIPV6(value) {
 ```
 ::: 
 
-## Referências
+## References
 
-- [Expressões Regulares](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guia/Express%C3%B5es_Regulares)
-- [string.prototype.test()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Refer%C3%AAncia/Objetos/RegExp/test)
+- [Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [string.prototype.test()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)

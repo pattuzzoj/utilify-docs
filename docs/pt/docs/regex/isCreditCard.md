@@ -1,40 +1,58 @@
 # isCreditCard
 
-```typescript
-function isCreditCard(str: string): boolean {
-  return /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/.test(str);
-}
-```
+A função `isCreditCard` verifica se uma string fornecida é um número de cartão de crédito válido, de acordo com formatos comuns, incluindo Visa, MasterCard, American Express, Discover e outros.
 
-Verifica se a string fornecida é um número de cartão de crédito válido, de acordo com diferentes bandeiras de cartões.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isCreditCard(str: string): boolean;
+function isCreditCard(value: string): boolean
 ```
 
 ### Parâmetros
 
-- **`str`** (`string`): A string que será verificada.
+| Nome | Tipo     | Descrição                                           |
+|------|----------|-----------------------------------------------------|
+| value  | `string` | A string a ser verificada quanto ao formato válido de número de cartão de crédito. |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se a string representar um número de cartão de crédito válido, de acordo com as bandeiras mais comuns, caso contrário, retorna `false`.
+| Tipo     | Descrição                                           |
+|----------|-----------------------------------------------------|
+| `boolean` | Retorna `true` se a string for um número de cartão de crédito válido, caso contrário, retorna `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isCreditCard("4111111111111111")); // true (Visa)
-console.log(isCreditCard("5105105105105100")); // true (MasterCard)
-console.log(isCreditCard("6011512345678901")); // true (Discover)
-console.log(isCreditCard("1234567890123456")); // false
+import isCreditCard from "./isCreditCard";
+
+console.log(isCreditCard("4111111111111111"));  // Saída: true (Visa)
+console.log(isCreditCard("5105105105105100"));  // Saída: true (MasterCard)
+console.log(isCreditCard("378282246310005"));   // Saída: true (American Express)
+console.log(isCreditCard("1234567890123456"));  // Saída: false
 ```
 
 ## Notas
 
-- A função utiliza uma expressão regular para verificar a estrutura do número do cartão de crédito, abrangendo diferentes bandeiras como Visa, MasterCard, American Express, Discover, entre outras.
+- Esta função usa uma expressão regular para validar uma variedade de tipos de cartões de crédito, verificando seus prefixos e tamanhos.
+- Ela não verifica a validade real do cartão (ou seja, não realiza uma verificação contra um banco de dados ou usa o algoritmo de Luhn).
+
+## Código
+
+::: code-group
+```typescript
+export default function isCreditCard(value: string): boolean {
+  return /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/.test(value);
+}
+```
+
+```javascript
+export default function isCreditCard(value) {
+  return /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/.test(value);
+}
+```
+:::
 
 ## Referências
 
-- [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+- [Número de cartão de crédito](https://pt.wikipedia.org/wiki/Número_de_cartão_de_crédito)
+- [RegExp.prototype.test()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)

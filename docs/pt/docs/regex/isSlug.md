@@ -1,40 +1,62 @@
 # isSlug
 
-```typescript
-function isSlug(str: string): boolean
-```
-Verifica se a string fornecida está no formato de "slug", ou seja, uma string composta por letras minúsculas, números e separada por hífens.
+A função `isSlug` verifica se uma string fornecida é um slug válido.
 
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isSlug(str: string): boolean;
+function isSlug(value: string): boolean
 ```
 
 ### Parâmetros
 
-- **`str`** (`string`): A string a ser verificada.
+| Nome | Tipo     | Descrição                          |
+|------|----------|------------------------------------|
+| value  | `string` | A string a ser validada como slug. |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se a string estiver no formato de slug (letras minúsculas, números e separação por hífens). Retorna `false` caso contrário.
+| Tipo      | Descrição                                   |
+|-----------|---------------------------------------------|
+| `boolean` | Retorna `true` se a string for um slug válido, caso contrário, `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isSlug("my-slug")); // true
-console.log(isSlug("my_slug")); // false
-console.log(isSlug("my-slug-123")); // true
-console.log(isSlug("My-Slug")); // false
-console.log(isSlug("123-abc")); // true
+import isSlug from "./isSlug";
+
+console.log(isSlug("slug-valido")); // Saída: true
+console.log(isSlug("slug-valido-123")); // Saída: true
+console.log(isSlug("Slug Inválido")); // Saída: false
+console.log(isSlug("slug_invalido")); // Saída: false
+console.log(isSlug("slug--invalido")); // Saída: false
 ```
 
 ## Notas
 
-- A função permite letras minúsculas (a-z), números (0-9) e hífens entre palavras.
-- Não permite caracteres especiais, espaços ou letras maiúsculas.
-- Um "slug" válido começa e termina com uma letra ou número e pode ter um ou mais hífens como separadores.
+- Um slug válido:
+  - Contém apenas letras minúsculas (`a-z`), números (`0-9`) e hifens (`-`).
+  - Não contém hifens consecutivos.
+  - Não começa ou termina com um hifen.
+- A função utiliza uma expressão regular para validar o formato do slug.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isSlug(value: string): boolean {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
+}
+```
+
+```javascript
+export default function isSlug(value) {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
+}
+```
+::: 
 
 ## Referências
 
-- [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [Expressões Regulares](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [string.prototype.test()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)

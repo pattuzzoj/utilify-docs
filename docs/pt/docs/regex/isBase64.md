@@ -1,40 +1,58 @@
 # isBase64
 
-```typescript
-function isBase64(str: string): boolean {
-  return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(str);
-}
-```
+A função `isBase64` verifica se uma string está no formato Base64 válido.
 
-Verifica se a string fornecida está no formato Base64.
-
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isBase64(str: string): boolean;
+function isBase64(value: string): boolean
 ```
 
 ### Parâmetros
 
-- **`str`** (`string`): A string que será verificada.
+| Nome | Tipo     | Descrição                                      |
+|------|----------|------------------------------------------------|
+| value  | `string` | A string a ser verificada como Base64.          |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se a string estiver no formato Base64, caso contrário, retorna `false`.
+| Tipo     | Descrição                                      |
+|----------|------------------------------------------------|
+| `boolean` | Retorna `true` se a string for um Base64 válido, caso contrário, retorna `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isBase64("U29tZSBzdHJpbmc=")); // true
-console.log(isBase64("Invalid base64")); // false
-console.log(isBase64("c3RyaW5n")); // true
-console.log(isBase64("Not_Base64@123")); // false
+import isBase64 from "./isBase64";
+
+console.log(isBase64("U29mdHdhcmU="));    // Saída: true
+console.log(isBase64("U29m^dhd2Y="));     // Saída: false
+console.log(isBase64("YWJjZA=="));        // Saída: true
+console.log(isBase64("abc123"));          // Saída: false
 ```
 
 ## Notas
 
-- A função utiliza uma expressão regular para validar se a string segue a sintaxe comum de Base64, incluindo os caracteres alfanuméricos e o uso de `+`, `/`, e os preenchimentos `=`.
+- A função utiliza uma expressão regular para verificar se a string segue o padrão de codificação Base64.
+- Base64 é utilizado para representar dados binários em formato de texto, incluindo símbolos como `+`, `/`, e o caractere `=` no final para preenchimento.
+
+## Código
+
+::: code-group
+```typescript
+export default function isBase64(value: string): boolean {
+  return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(value);
+}
+```
+
+```javascript
+export default function isBase64(value) {
+  return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(value);
+}
+```
+:::
 
 ## Referências
 
-- [Base64 - MDN](https://developer.mozilla.org/en-US/docs/Glossary/Base64)
+- [Base64 - Wikipedia](https://en.wikipedia.org/wiki/Base64)
+- [RegExp.prototype.test()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)

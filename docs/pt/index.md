@@ -12,7 +12,7 @@ hero:
       link: /pt/introduction
     - theme: alt
       text: Instalar
-      link: /introduction/installation
+      link: /pt/introduction/installation
 
 features:
   - icon: 🔒

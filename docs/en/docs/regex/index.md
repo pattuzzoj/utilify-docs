@@ -1,12 +1,12 @@
-# **Utilitários Regex** <Badge type="tip" text="1.0.0" />
+# **Regex Utilities** <Badge type="tip" text="1.0.0" />
 
-As funções utilitárias de regex fornecem métodos para validação de padrões comuns, como endereços de email, URLs, UUIDs, entre outros.
+The **Regex Utilities** provide methods for validating common patterns such as email addresses, URLs, UUIDs, and more.
 
 ---
 
-## **Instalação**
+## **Installation**
 
-Para instalar o pacote de utilitários regex, utilize o comando apropriado:
+To install the regex utilities package, use the appropriate command:
 
 ::: code-group
 
@@ -24,7 +24,7 @@ pnpm add @utilify/regex
 
 :::
 
-Importe as funções no seu projeto:
+Import the functions into your project:
 
 ::: code-group
 
@@ -40,13 +40,13 @@ const { isAlpha, isAlphanumeric, isEmail, isURL } = require('@utilify/regex');
 
 ---
 
-## **Funções Disponíveis**
+## **Available Functions**
 
 ### [isAlpha](./isAlpha.md)
 ```typescript
 function isAlpha(value: string): boolean;
 ```
-Verifica se a string contém apenas letras (a-z e A-Z).
+Checks if the string contains only letters (a-z and A-Z).
 
 ---
 
@@ -54,7 +54,7 @@ Verifica se a string contém apenas letras (a-z e A-Z).
 ```typescript
 function isAlphanumeric(value: string): boolean;
 ```
-Verifica se a string contém apenas letras e números (a-z, A-Z, 0-9).
+Checks if the string contains only letters and numbers (a-z, A-Z, 0-9).
 
 ---
 
@@ -62,7 +62,7 @@ Verifica se a string contém apenas letras e números (a-z, A-Z, 0-9).
 ```typescript
 function isBase64(value: string): boolean;
 ```
-Verifica se a string está codificada no formato Base64.
+Checks if the string is encoded in Base64 format.
 
 ---
 
@@ -70,7 +70,7 @@ Verifica se a string está codificada no formato Base64.
 ```typescript
 function isCreditCard(value: string): boolean;
 ```
-Verifica se a string segue o padrão de um número de cartão de crédito válido.
+Checks if the string follows the pattern of a valid credit card number.
 
 ---
 
@@ -78,7 +78,7 @@ Verifica se a string segue o padrão de um número de cartão de crédito válid
 ```typescript
 function isEmail(value: string): boolean;
 ```
-Verifica se a string é um endereço de email válido.
+Checks if the string is a valid email address.
 
 ---
 
@@ -86,7 +86,7 @@ Verifica se a string é um endereço de email válido.
 ```typescript
 function isIPV4(value: string): boolean;
 ```
-Verifica se a string é um endereço IP no formato IPv4.
+Checks if the string is an IPv4 address.
 
 ---
 
@@ -94,7 +94,7 @@ Verifica se a string é um endereço IP no formato IPv4.
 ```typescript
 function isIPV6(value: string): boolean;
 ```
-Verifica se a string é um endereço IP no formato IPv6.
+Checks if the string is an IPv6 address.
 
 ---
 
@@ -102,7 +102,7 @@ Verifica se a string é um endereço IP no formato IPv6.
 ```typescript
 function isSlug(value: string): boolean;
 ```
-Verifica se a string está no formato de um slug amigável para URLs.
+Checks if the string is in a URL-friendly slug format.
 
 ---
 
@@ -110,7 +110,7 @@ Verifica se a string está no formato de um slug amigável para URLs.
 ```typescript
 function isURL(value: string): boolean;
 ```
-Verifica se a string é uma URL válida.
+Checks if the string is a valid URL.
 
 ---
 
@@ -118,4 +118,4 @@ Verifica se a string é uma URL válida.
 ```typescript
 function isUUID(value: string): boolean;
 ```
-Verifica se a string segue o formato de um UUID válido.
+Checks if the string follows the format of a valid UUID.

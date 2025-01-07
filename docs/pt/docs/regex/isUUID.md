@@ -1,39 +1,58 @@
 # isUUID
 
-```typescript
-function isUUID(str: string): boolean
-```
-Verifica se a string fornecida corresponde ao formato de um UUID (Universally Unique Identifier) versão 4.
+A função `isUUID` verifica se uma string fornecida é um UUID válido (agnóstico à versão).
 
-## Assinatura
+## Sintaxe
 
 ```typescript
-function isUUID(str: string): boolean;
+function isUUID(value: string): boolean
 ```
 
 ### Parâmetros
 
-- **`str`** (`string`): A string a ser verificada como um UUID.
+| Nome | Tipo     | Descrição                                  |
+|------|----------|--------------------------------------------|
+| value  | `string` | A string a ser validada como um UUID.      |
 
 ### Retorno
 
-- **`boolean`**: Retorna `true` se a string corresponder ao formato de um UUID válido, caso contrário, retorna `false`.
+| Tipo      | Descrição                                           |
+|-----------|-----------------------------------------------------|
+| `boolean` | Retorna `true` se a string for um UUID válido, caso contrário, `false`. |
 
 ## Exemplos
 
 ```typescript
-console.log(isUUID("123e4567-e89b-12d3-a456-426614174000")); // true
-console.log(isUUID("123e4567-e89b-12d3-a456-42661417400Z")); // false
-console.log(isUUID("123e4567e89b12d3a4564266141740000")); // false
-console.log(isUUID("abcd1234-ab12-34cd-56ef-7890ab123456")); // true
+import isUUID from "./isUUID";
+
+console.log(isUUID("123e4567-e89b-12d3-a456-426614174000")); // Saída: true
+console.log(isUUID("nao-e-um-uuid")); // Saída: false
+console.log(isUUID("123e4567-e89b-12d3-a456")); // Saída: false
 ```
 
 ## Notas
 
-- A função verifica se a string segue o formato padrão de UUID, que é `8-4-4-4-12` caracteres hexadecimais, separados por hífens.
-- Essa verificação não garante que o UUID seja válido em termos de unicidade ou de estar presente em um banco de dados, apenas assegura que a string siga o formato de um UUID.
+- Um UUID é uma string de 36 caracteres no formato `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
+- A função é agnóstica à versão do UUID e não valida versões específicas.
+- A validação é realizada usando uma expressão regular que corresponde ao padrão de UUID.
+
+## Código Fonte
+
+::: code-group
+```typescript
+export default function isUUID(value: string): boolean {
+  return /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/.test(value);
+}
+```
+
+```javascript
+export default function isUUID(value) {
+  return /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/.test(value);
+}
+```
+::: 
 
 ## Referências
 
-- [UUID - MDN](https://developer.mozilla.org/en-US/docs/Glossary/UUID)
-- [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [Expressões Regulares](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [string.prototype.test()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)

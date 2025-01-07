@@ -178,13 +178,9 @@
       { "text": "isAlphanumeric", "link": "/docs/regex/isAlphanumeric" },
       { "text": "isBase64", "link": "/docs/regex/isBase64" },
       { "text": "isCreditCard", "link": "/docs/regex/isCreditCard" },
-      { "text": "isDecimal", "link": "/docs/regex/isDecimal" },
-      { "text": "isNumeric", "link": "/docs/regex/isNumeric" },
       { "text": "isEmail", "link": "/docs/regex/isEmail" },
-      { "text": "isEmptyString", "link": "/docs/regex/isEmptyString" },
       { "text": "isIPV4", "link": "/docs/regex/isIPV4" },
       { "text": "isIPV6", "link": "/docs/regex/isIPV6" },
-      { "text": "isNegative", "link": "/docs/regex/isNegative" },
       { "text": "isSlug", "link": "/docs/regex/isSlug" },
       { "text": "isURL", "link": "/docs/regex/isURL" },
       { "text": "isUUID", "link": "/docs/regex/isUUID" }
