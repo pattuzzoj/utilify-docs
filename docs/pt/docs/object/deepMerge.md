@@ -1,14 +1,83 @@
 # deepMerge
+A função `deepMerge` faz a mesclagem profunda de múltiplos objetos ou arrays em um único objeto ou array, mesclando recursivamente quaisquer objetos ou arrays internos.
+
+## Sintaxe
 
 ```typescript
-import { isArray, isObject } from "../types";
+deepMerge(...values: Record<string, any>[]): Record<string, any>;
+deepMerge(...values: any[][]): any[];
+deepMerge(...values: any[]): any;
+```
 
-function deepMerge(...values: Record<string, any>[]): Record<string, any>;
-function deepMerge(...values: unknown[][]): unknown[];
-function deepMerge(...values: any[]): any {
+### Parâmetros
+
+| Parâmetro | Tipo                          | Descrição                                                   |
+|-----------|-------------------------------|-------------------------------------------------------------|
+| `values`  | `Record<string, any>[]`        | Uma lista de objetos ou arrays a serem mesclados profundamente. |
+| `values`  | `any[][]`                      | Uma lista de arrays a serem mesclados profundamente.        |
+| `values`  | `any[]`                        | Uma lista de valores a serem mesclados profundamente, que podem incluir objetos ou arrays. |
+
+### Retorno
+
+| Tipo                          | Descrição                                                   |
+|-------------------------------|-------------------------------------------------------------|
+| `Record<string, any>`          | Um objeto profundamente mesclado com todas as propriedades dos objetos fornecidos. |
+| `any[]`                        | Um array profundamente mesclado com todos os valores dos arrays fornecidos. |
+
+## Exemplos
+
+### Exemplo 1: Mesclando Objetos Profundamente
+```typescript
+const obj1 = { nome: "Alice", endereco: { cidade: "Wonderland" } };
+const obj2 = { idade: 25, endereco: { pais: "Fictionland" } };
+
+const objMesclado = deepMerge(obj1, obj2);
+
+console.log(objMesclado);
+// { nome: "Alice", idade: 25, endereco: { cidade: "Wonderland", pais: "Fictionland" } }
+```
+
+### Exemplo 2: Mesclando Arrays Profundamente
+```typescript
+const arr1 = [1, 2, [3, 4]];
+const arr2 = [5, 6, [7, 8]];
+
+const arrMesclado = deepMerge(arr1, arr2);
+
+console.log(arrMesclado);
+// [1, 2, [3, 4], 5, 6, [7, 8]]
+```
+
+### Exemplo 3: Mesclando Objetos e Arrays Aninhados
+```typescript
+const obj1 = { dados: [1, 2], info: { nome: "Alice" } };
+const obj2 = { dados: [3, 4], info: { idade: 25 } };
+
+const mesclado = deepMerge(obj1, obj2);
+
+console.log(mesclado);
+// { dados: [3, 4], info: { nome: "Alice", idade: 25 } }
+```
+
+## Notas
+- Esta função mescla recursivamente objetos e arrays. Se for encontrado um objeto ou array em uma chave, ele será mesclado recursivamente.
+- Utiliza `Array.isArray()` para verificar se o valor é um array e `isPlainObject` de `@utilify/types` para verificar se o valor é um objeto plano.
+
+## Dependências
+- [`@utilify/types`](./types.md): Fornece a função `isPlainObject` para verificar se um valor é um objeto plano.
+
+## Código Fonte
+::: code-group
+
+```typescript
+import { isPlainObject } from '@utilify/types';
+
+export default function deepMerge(...values: Record<string, any>[]): Record<string, any>;
+export default function deepMerge(...values: any[][]): any[];
+export default function deepMerge(...values: any[]): any {
   return values.reduce((merged, obj) => {
     for (const key in obj) {
-      if (isArray(obj[key]) || isObject(obj[key])) {
+      if(Array.isArray(obj[key]) || isPlainObject(obj[key])) {
         merged[key] = deepMerge(merged[key], obj[key]);
       } else {
         merged[key] = obj[key];
@@ -16,53 +85,27 @@ function deepMerge(...values: any[]): any {
     }
 
     return merged;
-  }, isArray(values[0]) ? [] : {});
+  }, Array.isArray(values[0]) ? [] : {});
 }
 ```
 
-A função `deepMerge` realiza a mesclagem recursiva de múltiplos objetos ou arrays, combinando suas propriedades de forma que, se houver propriedades aninhadas (como objetos ou arrays), essas também sejam mescladas de maneira profunda.
+```javascript
+function deepMerge(...values) {
+  return values.reduce((merged, obj) => {
+    for (const key in obj) {
+      if (Array.isArray(obj[key]) || isPlainObject(obj[key])) {
+        merged[key] = deepMerge(merged[key], obj[key]);
+      } else {
+        merged[key] = obj[key];
+      }
+    }
 
-## Assinatura
-
-```typescript
-function deepMerge(...values: Record<string, any>[]): Record<string, any>;
-function deepMerge(...values: unknown[][]): unknown[];
+    return merged;
+  }, Array.isArray(values[0]) ? [] : {});
+}
 ```
-
-## Parâmetros
-
-- **`values`** (`Record<string, any>[]` ou `unknown[][]`): Uma lista de objetos ou arrays que serão mesclados. Caso o parâmetro seja um objeto ou array aninhado, ele será recursivamente mesclado com os outros valores.
-
-## Retorno
-
-- **`Record<string, any>` ou `unknown[]`**: O objeto ou array resultante da mesclagem dos valores fornecidos, com as propriedades combinadas. Se os valores passados forem arrays, o resultado será um array, caso contrário, será um objeto.
-
-## Exemplos
-
-```typescript
-const obj1 = { a: 1, b: { x: 10, y: 20 } };
-const obj2 = { b: { y: 30, z: 40 }, c: 3 };
-const obj3 = { b: { z: 50 }, d: 4 };
-
-const merged = deepMerge(obj1, obj2, obj3);
-console.log(merged); 
-// { a: 1, b: { x: 10, y: 30, z: 50 }, c: 3, d: 4 }
-
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
-
-const mergedArr = deepMerge(arr1, arr2);
-console.log(mergedArr); 
-// [1, 2, 3, 4, 5, 6]
-```
-
-## Notas
-
-- **Recursividade**: A função mescla objetos e arrays de forma profunda, o que significa que ela lida com objetos aninhados e arrays dentro de objetos ou arrays, mesclando-os recursivamente.
-- **Sobrescrita**: Se duas propriedades tiverem o mesmo nome, o valor da última propriedade será utilizado. No caso de objetos, essa propriedade será mesclada de forma recursiva.
-- **Arrays e Objetos**: Se os parâmetros fornecidos são arrays, o resultado será um array mesclado. Se forem objetos, o resultado será um objeto mesclado.
+:::
 
 ## Referências
-
-- [Array.prototype.reduce() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
-- [Object.assign() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+- [Array.isArray()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+- [`isPlainObject`](./types.md)

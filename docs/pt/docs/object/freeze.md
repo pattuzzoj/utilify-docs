@@ -1,44 +1,74 @@
 # freeze
+A função `freeze` congela um objeto, impedindo a modificação de suas propriedades.
+
+## Sintaxe
 
 ```typescript
-function freeze(obj: Record<string, any>): Record<string, any> {
+freeze(obj: Record<string, any>): Record<string, any>;
+```
+
+### Parâmetros
+
+| Parâmetro | Tipo                          | Descrição                                                   |
+|-----------|-------------------------------|-------------------------------------------------------------|
+| `obj`     | `Record<string, any>`          | O objeto a ser congelado.                                    |
+
+### Retorno
+
+| Tipo                          | Descrição                                                   |
+|-------------------------------|-------------------------------------------------------------|
+| `Record<string, any>`          | O objeto congelado, onde suas propriedades não podem ser modificadas. |
+
+## Exemplos
+
+### Exemplo 1: Congelando um Objeto
+```typescript
+const obj = { nome: "Alice", idade: 30 };
+const frozenObj = freeze(obj);
+
+console.log(frozenObj);
+// { nome: "Alice", idade: 30 }
+
+frozenObj.idade = 31;  // Não será possível modificar
+console.log(frozenObj.idade);
+// 30
+```
+
+### Exemplo 2: Congelando um Objeto com Propriedades Aninhadas
+```typescript
+const obj = { nome: "Alice", endereco: { cidade: "Wonderland" } };
+const frozenObj = freeze(obj);
+
+console.log(frozenObj);
+// { nome: "Alice", endereco: { cidade: "Wonderland" } }
+
+frozenObj.endereco.cidade = "Fictionland";  // Não será possível modificar
+console.log(frozenObj.endereco.cidade);
+// "Wonderland"
+```
+
+## Notas
+- `Object.freeze()` congela apenas o objeto em nível superficial, ou seja, as propriedades do objeto não podem ser modificadas, mas se houver objetos aninhados, esses objetos não são congelados recursivamente.
+- Para congelar profundamente um objeto, deve-se usar uma função como `deepFreeze`.
+
+## Dependências
+Nenhuma dependência externa.
+
+## Código Fonte
+::: code-group
+
+```typescript
+export default function freeze(obj: Record<string, any>): Record<string, any> {
   return Object.freeze(obj);
 }
 ```
 
-A função `freeze` congela um objeto, impedindo a modificação de suas propriedades e a adição de novas propriedades.
-
-## Assinatura
-
-```typescript
-function freeze(obj: Record<string, any>): Record<string, any>;
+```javascript
+function freeze(obj) {
+  return Object.freeze(obj);
+}
 ```
-
-## Parâmetros
-
-- **`obj`** (`Record<string, any>`): O objeto que será congelado, impedindo alterações em suas propriedades.
-
-## Retorno
-
-- **`Record<string, any>`**: O objeto congelado, que não pode ser alterado (nenhuma propriedade pode ser adicionada, removida ou modificada).
-
-## Exemplos
-
-```typescript
-const obj = { a: 1, b: 2 };
-const frozenObj = freeze(obj);
-
-frozenObj.a = 3; // Não tem efeito
-frozenObj.c = 4; // Não é adicionado
-console.log(frozenObj); // { a: 1, b: 2 }
-```
-
-## Notas
-
-- **Congelamento superficial**: A função congela o objeto apenas na superfície. Se o objeto contiver propriedades que são objetos, essas propriedades não serão congeladas (o congelamento é apenas no nível do objeto principal).
-  
-- **Objetos aninhados**: Para congelar objetos aninhados de forma recursiva, é necessário usar uma função como `deepFreeze`, que aplica o congelamento a todos os níveis do objeto.
+:::
 
 ## Referências
-
-- [Object.freeze() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+- [Object.freeze()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)

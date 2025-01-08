@@ -1,14 +1,71 @@
 # deepFreeze
+A função `deepFreeze` congela profundamente um objeto e todos os seus objetos internos, impedindo modificações em suas propriedades.
+
+## Sintaxe
 
 ```typescript
-import { isObject } from "../types";
-import { freeze } from ".";
+deepFreeze(obj: Record<string, any>): Record<string, any>;
+```
 
-function deepFreeze(obj: Record<string, any>): Record<string, any> {
-  const freezedObj = freeze(obj);
+### Parâmetros
+
+| Parâmetro | Tipo                          | Descrição                                                   |
+|-----------|-------------------------------|-------------------------------------------------------------|
+| `obj`     | `Record<string, any>`          | O objeto a ser congelado profundamente.                      |
+
+### Retorno
+
+| Tipo                          | Descrição                                                   |
+|-------------------------------|-------------------------------------------------------------|
+| `Record<string, any>`          | O objeto congelado, com todas as suas propriedades e subobjetos imutáveis. |
+
+## Exemplos
+
+### Exemplo 1: Congelando um Objeto
+```typescript
+const pessoa = { nome: "Alice", endereco: { cidade: "Wonderland" } };
+const pessoaCongelada = deepFreeze(pessoa);
+
+pessoaCongelada.nome = "Bob"; // Não pode modificar
+console.log(pessoaCongelada.nome); // "Alice"
+```
+
+### Exemplo 2: Congelando um Objeto com Subobjetos
+```typescript
+const usuario = { id: 1, nome: "Alice", endereco: { cidade: "Wonderland" } };
+const usuarioCongelado = deepFreeze(usuario);
+
+usuarioCongelado.endereco.cidade = "New Wonderland"; // Não pode modificar
+console.log(usuarioCongelado.endereco.cidade); // "Wonderland"
+```
+
+### Exemplo 3: Tentando Modificar após Congelar
+```typescript
+const produto = { nome: "Livro", preco: 29.99 };
+const produtoCongelado = deepFreeze(produto);
+
+produtoCongelado.preco = 35.00; // Não pode modificar
+console.log(produtoCongelado.preco); // 29.99
+```
+
+## Notas
+- Esta função congela profundamente o objeto, impedindo que qualquer alteração seja feita tanto no objeto original quanto nos objetos internos.
+- Usa `Object.freeze()` para congelar o objeto e `isPlainObject` de `@utilify/types` para verificar se uma propriedade do objeto é um objeto plano, para então congelá-lo também.
+
+## Dependências
+- [`@utilify/types`](./types.md): Fornece a função `isPlainObject` para verificar se um valor é um objeto plano.
+
+## Código Fonte
+::: code-group
+
+```typescript
+import { isPlainObject } from '@utilify/types';
+
+export default function deepFreeze(obj: Record<string, any>): Record<string, any> {
+  const freezedObj = Object.freeze(obj);
 
   for (const key in freezedObj) {
-    if (isObject(obj[key])) {
+    if (isPlainObject(obj[key])) {
       deepFreeze(obj[key]);
     }
   }
@@ -17,43 +74,21 @@ function deepFreeze(obj: Record<string, any>): Record<string, any> {
 }
 ```
 
-A função `deepFreeze` aplica o método `freeze` de forma recursiva em um objeto, congelando o objeto e suas propriedades (e propriedades aninhadas) para garantir que seus valores não possam ser alterados após a criação. Isso impede que qualquer parte do objeto ou seus objetos internos sejam modificados, tornando-os imutáveis.
+```javascript
+function deepFreeze(obj) {
+  const freezedObj = Object.freeze(obj);
 
-## Assinatura
+  for (const key in freezedObj) {
+    if (isPlainObject(obj[key])) {
+      deepFreeze(obj[key]);
+    }
+  }
 
-```typescript
-function deepFreeze(obj: Record<string, any>): Record<string, any>;
+  return freezedObj;
+}
 ```
-
-## Parâmetros
-
-- **`obj`** (`Record<string, any>`): O objeto que será congelado. Este objeto e suas propriedades aninhadas serão imutáveis após a execução da função.
-
-## Retorno
-
-- **`Record<string, any>`**: O objeto congelado, onde tanto o objeto original quanto suas propriedades e subpropriedades (se forem objetos) são congelados, impedindo modificações.
-
-## Exemplos
-
-```typescript
-const obj = { a: 1, b: { c: 2, d: [3, 4] } };
-const frozenObj = deepFreeze(obj);
-
-console.log(frozenObj); // { a: 1, b: { c: 2, d: [3, 4] } }
-frozenObj.a = 2; // Não terá efeito, pois o objeto foi congelado
-console.log(frozenObj.a); // 1
-
-frozenObj.b.c = 3; // Não terá efeito, pois o objeto interno também foi congelado
-console.log(frozenObj.b.c); // 2
-```
-
-## Notas
-
-- **Imutabilidade**: Ao aplicar `deepFreeze`, tanto o objeto original quanto todos os objetos aninhados se tornam imutáveis. Isso significa que não será possível alterar os valores das propriedades ou adicionar novas propriedades.
-- **Recursividade**: A função percorre todas as propriedades do objeto e aplica `freeze` a elas, garantindo que a imutabilidade se propague para objetos e arrays internos.
-- **Limitações**: `deepFreeze` não congela propriedades não enumeráveis ou símbolos, e não impede mudanças em objetos que não sejam manipulados diretamente (como objetos de protótipo).
+:::
 
 ## Referências
-
-- [Object.freeze() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
-- [Recursão em JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion)
+- [Object.freeze()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+- [`isPlainObject`](./types.md)

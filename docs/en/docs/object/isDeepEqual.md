@@ -1,7 +1,7 @@
 # isDeepEqual
-A função `isDeepEqual` compara dois valores de forma recursiva para verificar se são profundamente iguais, considerando tanto os valores primitivos quanto objetos e arrays aninhados.
+The `isDeepEqual` function performs a deep comparison between two values, checking if they are equal by comparing their properties recursively for objects and arrays, and using strict comparison for primitive values.
 
-## Sintaxe
+## Syntax
 
 ```typescript
 isDeepEqual(value1: Record<string, any>, value2: Record<string, any>): boolean;
@@ -9,22 +9,22 @@ isDeepEqual(value1: any[], value2: any[]): boolean;
 isDeepEqual(value1: any, value2: any): boolean;
 ```
 
-### Parâmetros
+### Parameters
 
-| Parâmetro  | Tipo                           | Descrição                                                          |
+| Parameter  | Type                           | Description                                                        |
 |------------|--------------------------------|--------------------------------------------------------------------|
-| `value1`   | `Record<string, any> \| any[]`  | O primeiro valor a ser comparado. Pode ser um objeto ou array.     |
-| `value2`   | `Record<string, any> \| any[]`  | O segundo valor a ser comparado. Pode ser um objeto ou array.     |
+| `value1`   | `Record<string, any> \| any[]`  | The first value to be compared. Can be an object or an array.     |
+| `value2`   | `Record<string, any> \| any[]`  | The second value to be compared. Can be an object or an array.    |
 
-### Retorno
+### Return
 
-| Tipo     | Descrição                                                          |
+| Type     | Description                                                        |
 |----------|--------------------------------------------------------------------|
-| `boolean`| `true` se os valores forem profundamente iguais, caso contrário, `false`. |
+| `boolean`| `true` if the values are deeply equal, otherwise `false`.          |
 
-## Exemplos
+## Examples
 
-### Exemplo 1: Comparando objetos planos
+### Example 1: Comparing flat objects
 ```typescript
 const obj1 = { name: 'Alice', age: 30 };
 const obj2 = { name: 'Alice', age: 30 };
@@ -32,7 +32,7 @@ const obj2 = { name: 'Alice', age: 30 };
 console.log(isDeepEqual(obj1, obj2));  // true
 ```
 
-### Exemplo 2: Comparando objetos com valores diferentes
+### Example 2: Comparing objects with different values
 ```typescript
 const obj1 = { name: 'Alice', age: 30 };
 const obj2 = { name: 'Bob', age: 30 };
@@ -40,7 +40,7 @@ const obj2 = { name: 'Bob', age: 30 };
 console.log(isDeepEqual(obj1, obj2));  // false
 ```
 
-### Exemplo 3: Comparando objetos aninhados
+### Example 3: Comparing nested objects
 ```typescript
 const obj1 = { name: 'Alice', address: { city: 'Wonderland', zip: '1234' } };
 const obj2 = { name: 'Alice', address: { city: 'Wonderland', zip: '1234' } };
@@ -48,7 +48,7 @@ const obj2 = { name: 'Alice', address: { city: 'Wonderland', zip: '1234' } };
 console.log(isDeepEqual(obj1, obj2));  // true
 ```
 
-### Exemplo 4: Comparando arrays
+### Example 4: Comparing arrays
 ```typescript
 const arr1 = [1, 2, 3];
 const arr2 = [1, 2, 3];
@@ -56,7 +56,7 @@ const arr2 = [1, 2, 3];
 console.log(isDeepEqual(arr1, arr2));  // true
 ```
 
-### Exemplo 5: Comparando arrays com objetos aninhados
+### Example 5: Comparing arrays with nested objects
 ```typescript
 const arr1 = [{ name: 'Alice' }, { age: 30 }];
 const arr2 = [{ name: 'Alice' }, { age: 30 }];
@@ -64,16 +64,16 @@ const arr2 = [{ name: 'Alice' }, { age: 30 }];
 console.log(isDeepEqual(arr1, arr2));  // true
 ```
 
-## Notas
-- A função realiza uma comparação profunda de objetos e arrays, verificando recursivamente todas as propriedades e valores.
-- Para valores primitivos, utiliza `Object.is` para garantir uma comparação precisa, incluindo o tratamento especial de valores como `NaN` e `-0` vs `+0`.
+## Notes
+- This function performs a deep comparison, checking all properties recursively for objects and arrays.
+- For primitive values, it uses `Object.is` for precise comparison, handling special cases like `NaN` and `-0` vs `+0`.
 
-## Dependências
-- Nenhuma.
+## Dependencies
+- None.
 
-## Código Fonte
+## Code
 ::: code-group
-
+typescript
 ```typescript
 export default function isDeepEqual(value1: Record<string, any>, value2: Record<string, any>): boolean;
 export default function isDeepEqual(value1: any[], value2: any[]): boolean;
@@ -105,6 +105,7 @@ export default function isDeepEqual(value1: any, value2: any): boolean {
 }
 ```
 
+javascript
 ```javascript
 function isDeepEqual(value1, value2) {
   const keys1 = Object.keys(value1);
@@ -135,5 +136,5 @@ function isDeepEqual(value1, value2) {
 ```
 :::
 
-## Referências
+## References
 - [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)

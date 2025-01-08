@@ -1,10 +1,10 @@
-# Type Utilities <Badge type="tip" text="1.0.0" />
+# Types <Badge type="tip" text="1.0.0" />
 
-**Type utility functions** provide methods to check, compare, and manipulate data types. They help identify if a value is of a specific type, such as checking if a value is a number, string, function, or a primitive value, as well as other useful checks.
+**Types utility functions** provide methods to check, compare, and manipulate data types. They help identify if a value is of a specific type, such as checking if a value is a number, string, function, or a primitive value, as well as other useful checks.
 
 ## Installation
 
-To install the type utility functions, use one of the following commands, depending on your package manager:
+To install the types utility functions, use one of the following commands, depending on your package manager:
 
 ::: code-group
 ```bash [npm]

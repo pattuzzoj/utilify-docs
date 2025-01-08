@@ -1,29 +1,29 @@
 # sanitizeObj
-A função `sanitizeObj` percorre um objeto e substitui valores específicos por um valor de substituição fornecido.
+The `sanitizeObj` function traverses an object and replaces specific values with a given replacement value.
 
-## Sintaxe
+## Syntax
 
 ```typescript
 sanitizeObj(obj: Record<string, any>, values: any[], replace?: any): Record<string, any>;
 ```
 
-### Parâmetros
+### Parameters
 
-| Parâmetro  | Tipo                         | Descrição                                                                 |
-|------------|------------------------------|---------------------------------------------------------------------------|
-| `obj`      | `Record<string, any>`         | O objeto que será sanitizado, onde os valores específicos serão substituídos. |
-| `values`   | `any[]`                       | Um array com os valores a serem substituídos no objeto.                   |
-| `replace`  | `any`                         | O valor que substituirá os valores encontrados no objeto (opcional).      |
+| Parameter  | Type                         | Description                                                              |
+|------------|------------------------------|--------------------------------------------------------------------------|
+| `obj`      | `Record<string, any>`         | The object to be sanitized, where specific values will be replaced.      |
+| `values`   | `any[]`                       | An array containing the values to be replaced in the object.             |
+| `replace`  | `any`                         | The value that will replace the found values in the object (optional).   |
 
-### Retorno
+### Return
 
-| Tipo                         | Descrição                                                    |
-|------------------------------|--------------------------------------------------------------|
-| `Record<string, any>`         | O objeto sanitizado, com os valores substituídos.            |
+| Type                         | Description                                                   |
+|------------------------------|---------------------------------------------------------------|
+| `Record<string, any>`         | The sanitized object with the replaced values.                |
 
-## Exemplos
+## Examples
 
-### Exemplo 1: Substituindo valores em um objeto
+### Example 1: Replacing values in an object
 ```typescript
 const obj = { name: "Alice", age: 30, country: "USA" };
 const result = sanitizeObj(obj, ["USA"], "Canada");
@@ -32,7 +32,7 @@ console.log(result);
 // { name: "Alice", age: 30, country: "Canada" }
 ```
 
-### Exemplo 2: Substituindo valores em objetos aninhados
+### Example 2: Replacing values in nested objects
 ```typescript
 const obj = { user: { name: "Alice", country: "USA" }, address: { city: "New York" } };
 const result = sanitizeObj(obj, ["USA"], "Canada");
@@ -41,7 +41,7 @@ console.log(result);
 // { user: { name: "Alice", country: "Canada" }, address: { city: "New York" } }
 ```
 
-### Exemplo 3: Substituindo valores com um valor customizado
+### Example 3: Replacing values with a custom value
 ```typescript
 const obj = { name: "Alice", age: 30, country: "USA" };
 const result = sanitizeObj(obj, [30], "Unknown");
@@ -50,14 +50,14 @@ console.log(result);
 // { name: "Alice", age: "Unknown", country: "USA" }
 ```
 
-## Notas
-- Se o parâmetro `replace` for fornecido, ele substituirá os valores encontrados em `values` dentro do objeto.
-- A função também lida com objetos aninhados e aplica as substituições recursivamente.
+## Notes
+- If the `replace` parameter is provided, it will replace the values found in the `values` array within the object.
+- The function also handles nested objects and applies replacements recursively.
 
-## Dependências
-- [isPlainObject](./types.md): Verifica se o valor é um objeto simples.
+## Dependencies
+- [isPlainObject](./types.md): Checks if the value is a plain object.
 
-## Código Fonte
+## Source Code
 ::: code-group
 
 ```typescript
@@ -103,5 +103,5 @@ function sanitizeObj(obj, values, replace) {
 ```
 :::
 
-## Referências
+## References
 - [isPlainObject](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)

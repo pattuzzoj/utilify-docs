@@ -13,13 +13,13 @@ Choose the package manager you use in your project and follow one of the two ins
 If you want access to all the functionalities of **Utilify** at once, simply install the **@utilify/core** package. This includes all the utilities, so you don’t need to select individual packages.
 
 ::: code-group
-```bash
+```bash [npm]
 npm install @utilify/core
 ```
-```bash
+```bash [yarn]
 yarn add @utilify/core
 ```
-```bash
+```bash [pnpm]
 pnpm add @utilify/core
 ```
 :::
@@ -33,17 +33,17 @@ To learn more about each package, check the [Package Overview](./overview).
 Example of installing individual packages:
 
 ::: code-group
-```bash
+```bash [npm]
 npm install @utilify/array
 npm install @utilify/browser
 # And other packages as needed
 ```
-```bash
+```bash [yarn]
 yarn add @utilify/array
 yarn add @utilify/browser
 # And other packages as needed
 ```
-```bash
+```bash [pnpm]
 pnpm add @utilify/array
 pnpm add @utilify/browser
 # And other packages as needed

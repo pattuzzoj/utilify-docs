@@ -1,9 +1,70 @@
 # merge
+A função `merge` combina múltiplos objetos ou arrays em um único. Ela pode mesclar objetos em um único objeto ou arrays em um único array.
+
+## Sintaxe
 
 ```typescript
-function merge(...values: Record<string, any>[]): Record<string, any>;
-function merge(...values: unknown[][]): unknown[];
-function merge(...values: any[]): any {
+merge(...values: Record<string, any>[]): Record<string, any>;
+merge(...values: any[][]): any[];
+merge(...values: any[]): any;
+```
+
+### Parâmetros
+
+| Parâmetro | Tipo                          | Descrição                                                   |
+|-----------|-------------------------------|-------------------------------------------------------------|
+| `values`  | `Record<string, any>[]`         | Um array de objetos a serem mesclados em um único objeto.    |
+| `values`  | `any[][]`                      | Um array de arrays a serem mesclados em um único array.      |
+| `values`  | `any[]`                        | Vários objetos ou arrays a serem mesclados, o primeiro determina o tipo de retorno. |
+
+### Retorno
+
+| Tipo                       | Descrição                                              |
+|----------------------------|----------------------------------------------------------|
+| `Record<string, any>`       | Se o primeiro argumento for um objeto, retorna um objeto mesclado. |
+| `any[]`                     | Se o primeiro argumento for um array, retorna um array mesclado. |
+| `any`                       | O resultado mesclado, o tipo depende da entrada.         |
+
+## Exemplos
+
+### Exemplo 1: Mesclando Objetos
+```typescript
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+const objMesclado = merge(obj1, obj2);
+console.log(objMesclado); // { a: 1, b: 2, c: 3, d: 4 }
+```
+
+### Exemplo 2: Mesclando Arrays
+```typescript
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const arrMesclado = merge(arr1, arr2);
+console.log(arrMesclado); // [1, 2, 3, 4]
+```
+
+### Exemplo 3: Mesclando Tipos Mistos
+```typescript
+const obj = { a: 1 };
+const arr = [2, 3];
+const misturado = merge(obj, arr);
+console.log(misturado); // { a: 1, 0: 2, 1: 3 }
+```
+
+## Notas
+- A função lida de maneira diferente com a mesclagem de objetos e arrays. Ao mesclar objetos, ela combina as propriedades, e ao mesclar arrays, ela as concatena.
+- Se o tipo de entrada for misto (ex.: um array e um objeto), o tipo resultante será um objeto que combina ambos.
+
+## Dependências
+Nenhuma.
+
+## Código Fonte
+::: code-group
+
+```typescript
+export default function merge(...values: Record<string, any>[]): Record<string, any>;
+export default function merge(...values: any[][]): any[];
+export default function merge(...values: any[]): any {
   return values.reduce((merged, obj) => {
     for (const key in obj) {
       merged[key] = obj[key];
@@ -14,42 +75,19 @@ function merge(...values: any[]): any {
 }
 ```
 
-A função `merge` combina múltiplos objetos ou arrays em um único valor. No caso de objetos, as propriedades são combinadas, e no caso de arrays, os elementos são concatenados.
+```javascript
+function merge(...values) {
+  return values.reduce((merged, obj) => {
+    for (const key in obj) {
+      merged[key] = obj[key];
+    }
 
-## Assinatura
-
-```typescript
-function merge(...values: Record<string, any>[]): Record<string, any>;
-function merge(...values: unknown[][]): unknown[];
-function merge(...values: any[]): any;
+    return merged;
+  }, Array.isArray(values[0]) ? [] : {});
+}
 ```
-
-## Parâmetros
-
-- **`values`** (`Record<string, any>[] | unknown[][]`): Um ou mais objetos ou arrays a serem combinados.
-
-## Retorno
-
-- **`Record<string, any>`**: Retorna um único objeto contendo todas as propriedades dos objetos passados. Se forem passados arrays, será retornado um array concatenado.
-
-## Exemplos
-
-```typescript
-const obj1 = { a: 1, b: 2 };
-const obj2 = { c: 3, d: 4 };
-console.log(merge(obj1, obj2)); // { a: 1, b: 2, c: 3, d: 4 }
-
-const arr1 = [1, 2];
-const arr2 = [3, 4];
-console.log(merge(arr1, arr2)); // [1, 2, 3, 4]
-```
-
-## Notas
-
-- A função sobrescreve as propriedades existentes em objetos caso elas sejam duplicadas entre os objetos passados.
-- Para arrays, os elementos são concatenados na ordem em que são passados.
+:::
 
 ## Referências
-
-- [Array.prototype.reduce() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
-- [Object.keys() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+- [Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+- [Object.keys()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)

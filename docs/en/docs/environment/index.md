@@ -1,4 +1,4 @@
-# Environment Utilities <Badge type="tip" text="1.0.0" />
+# Environment <Badge type="tip" text="1.0.0" />
 
 The **Environment** category contains utility functions that help detect and identify the environment in which the code is running, whether it's in the browser, server, or within different types of workers. These functions are useful for providing environment-specific behaviors.
 

@@ -1,10 +1,10 @@
-# Funções Utilitárias para Objetos <Badge type="tip" text="1.0.0" />
+# Object Utility Functions <Badge type="tip" text="1.0.0" />
 
-A categoria de **funções utilitárias para objetos** inclui diversas ferramentas práticas para manipulação, comparação e transformação de objetos. Essas funções simplificam muitas operações comuns no desenvolvimento com JavaScript/TypeScript ao lidar com objetos e estruturas de dados.
+The **object utility functions** category includes a variety of practical methods for object manipulation, comparison, and transformation. These functions simplify many common operations in JavaScript/TypeScript development when working with objects and data structures.
 
-## Instalação
+## Installation
 
-Para utilizar as funções desta categoria, instale o pacote **`@utilify/object`** usando o gerenciador de pacotes de sua preferência:
+To use the functions in this category, install the **`@utilify/object`** package with your preferred package manager:
 
 ### **npm**
 ```bash
@@ -21,9 +21,9 @@ yarn add @utilify/object
 pnpm add @utilify/object
 ```
 
-## Uso
+## Usage
 
-Você pode importar funções específicas conforme necessário:
+You can import specific functions as needed:
 
 ### **ESM**
 ```typescript
@@ -35,7 +35,7 @@ import { clone, deepClone, deepMerge } from '@utilify/object';
 const { clone, deepClone, deepMerge } = require('@utilify/object');
 ```
 
-## Visão Geral
+## Overview
 
 ### [clone](./clone.md)
 
@@ -44,8 +44,7 @@ function clone<T extends Record<string, any>>(value: T): T;
 function clone<T extends unknown[]>(value: T): T;
 ```
 
-Cria uma cópia rasa de um objeto ou array, copiando suas propriedades diretamente.
-
+Creates a shallow copy of an object or array by directly copying its properties.
 
 ### [deepClone](./deepClone.md)
 
@@ -54,8 +53,7 @@ function deepClone<T extends Record<string, any>>(value: T): T;
 function deepClone<T extends unknown[]>(value: T): T;
 ```
 
-Cria uma cópia profunda de um objeto ou array, incluindo todas as suas propriedades aninhadas.
-
+Creates a deep copy of an object or array, including all nested properties.
 
 ### [deepFreeze](./deepFreeze.md)
 
@@ -63,8 +61,7 @@ Cria uma cópia profunda de um objeto ou array, incluindo todas as suas propried
 function deepFreeze(obj: Record<string, any>): Record<string, any>;
 ```
 
-Congela profundamente um objeto, tornando suas propriedades e suas subpropriedades imutáveis.
-
+Deeply freezes an object, making its properties and nested properties immutable.
 
 ### [deepMerge](./deepMerge.md)
 
@@ -72,8 +69,7 @@ Congela profundamente um objeto, tornando suas propriedades e suas subpropriedad
 function deepMerge(...values: Record<string, any>[]): Record<string, any>;
 ```
 
-Realiza uma mesclagem profunda de múltiplos objetos, combinando suas propriedades e subpropriedades recursivamente.
-
+Performs a deep merge of multiple objects, combining their properties recursively.
 
 ### [flattenObj](./flattenObj.md)
 
@@ -81,8 +77,7 @@ Realiza uma mesclagem profunda de múltiplos objetos, combinando suas propriedad
 function flattenObj(obj: Record<string, any>, separator: string = "."): Record<string, any>;
 ```
 
-Achata um objeto aninhado em um formato de chave única, onde as chaves representam os caminhos das propriedades.
-
+Flattens a nested object into a single-level object with keys representing property paths.
 
 ### [freeze](./freeze.md)
 
@@ -90,8 +85,7 @@ Achata um objeto aninhado em um formato de chave única, onde as chaves represen
 function freeze<T>(obj: T): T;
 ```
 
-Congela um objeto, tornando suas propriedades imutáveis, mas não congela suas subpropriedades.
-
+Freezes an object, making its properties immutable but does not freeze nested properties.
 
 ### [interpolate](./interpolate.md)
 
@@ -99,8 +93,7 @@ Congela um objeto, tornando suas propriedades imutáveis, mas não congela suas 
 function interpolate(str: string, values: Record<string, any>): string;
 ```
 
-Substitui placeholders em uma string por valores fornecidos em um objeto.
-
+Replaces placeholders in a string with values provided in an object.
 
 ### [isDeepEqual](./isDeepEqual.md)
 
@@ -109,8 +102,7 @@ function isDeepEqual(value1: Record<string, any>, value2: Record<string, any>): 
 function isDeepEqual(value1: unknown[], value2: unknown[]): boolean;
 ```
 
-Compara dois objetos ou arrays profundamente para verificar se são estrutural e semanticamente iguais.
-
+Compares two objects or arrays deeply to determine if they are structurally and semantically equal.
 
 ### [isEqual](./isEqual.md)
 
@@ -118,8 +110,7 @@ Compara dois objetos ou arrays profundamente para verificar se são estrutural e
 function isEqual(value1: any, value2: any): boolean;
 ```
 
-Compara dois valores primitivos ou referências para verificar se são estritamente iguais usando `Object.is`.
-
+Compares two values or references to determine if they are strictly equal using `Object.is`.
 
 ### [merge](./merge.md)
 
@@ -128,8 +119,7 @@ function merge(...values: Record<string, any>[]): Record<string, any>;
 function merge(...values: unknown[][]): unknown[];
 ```
 
-Realiza uma mesclagem rasa de múltiplos objetos ou arrays, combinando suas propriedades ou elementos em um novo objeto ou array.
-
+Performs a shallow merge of multiple objects or arrays, combining their properties or elements into a new object or array.
 
 ### [omit](./omit.md)
 
@@ -137,8 +127,7 @@ Realiza uma mesclagem rasa de múltiplos objetos ou arrays, combinando suas prop
 function omit<T extends Record<string, any>, K extends keyof T>(obj: T, keys: K[]): Omit<T, K>;
 ```
 
-Cria um novo objeto a partir de um objeto fornecido, excluindo as chaves especificadas.
-
+Creates a new object from the given object, excluding the specified keys.
 
 ### [pick](./pick.md)
 
@@ -146,8 +135,7 @@ Cria um novo objeto a partir de um objeto fornecido, excluindo as chaves especif
 function pick<T extends Record<string, any>, K extends keyof T>(obj: T, keys: K[]): Pick<T, K>;
 ```
 
-Cria um novo objeto contendo apenas as chaves selecionadas de um objeto original.
-
+Creates a new object containing only the selected keys from the original object.
 
 ### [sanitizeObj](./sanitizeObj.md)
 
@@ -155,8 +143,7 @@ Cria um novo objeto contendo apenas as chaves selecionadas de um objeto original
 function sanitizeObj(obj: Record<string, any>, values: any[], replace?: any): Record<string, any>;
 ```
 
-Sanitiza um objeto, substituindo valores específicos por um valor de substituição opcional.
-
+Sanitizes an object by replacing specific values with an optional replacement value.
 
 ### [unflattenObj](./unflattenObj.md)
 
@@ -164,4 +151,4 @@ Sanitiza um objeto, substituindo valores específicos por um valor de substitui�
 function unflattenObj(obj: Record<string, any>, separator: string = "."): Record<string, any>;
 ```
 
-Transforma um objeto achatado de volta em sua estrutura aninhada original, utilizando um separador para identificar os níveis de hierarquia nas chaves.
+Transforms a flattened object back into its original nested structure using a separator to identify hierarchy levels in the keys.

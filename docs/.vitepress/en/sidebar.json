@@ -170,7 +170,6 @@
       { "text": "interpolate", "link": "/docs/object/interpolate" },
       { "text": "isDeepEqual", "link": "/docs/object/isDeepEqual" },
       { "text": "isEqual", "link": "/docs/object/isEqual" },
-      { "text": "isEqualLength", "link": "/docs/object/isEqualLength" },
       { "text": "merge", "link": "/docs/object/merge" },
       { "text": "omit", "link": "/docs/object/omit" },
       { "text": "pick", "link": "/docs/object/pick" },

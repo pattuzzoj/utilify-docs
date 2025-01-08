@@ -1,16 +1,76 @@
 # flattenObj
+A função `flattenObj` achata um objeto, transformando suas propriedades aninhadas em um único nível, utilizando um separador para indicar a hierarquia das chaves.
+
+## Sintaxe
 
 ```typescript
-import { isObject } from "../types";
+flattenObj(obj: Record<string, any>, separator: string = ".", path: string = ''): Record<string, any>;
+```
 
-function flattenObj(obj: Record<string, any>, separator: string = ".", path: string = ''): Record<string, any> {
+### Parâmetros
+
+| Parâmetro  | Tipo                          | Descrição                                                   |
+|------------|-------------------------------|-------------------------------------------------------------|
+| `obj`      | `Record<string, any>`          | O objeto a ser achatado.                                    |
+| `separator`| `string`                       | O separador utilizado para criar a chave do objeto achatado. O padrão é `"."`. |
+| `path`     | `string`                       | A chave anterior, utilizada para criar o caminho completo. O padrão é uma string vazia. |
+
+### Retorno
+
+| Tipo                          | Descrição                                                   |
+|-------------------------------|-------------------------------------------------------------|
+| `Record<string, any>`          | Um objeto achatado, com as chaves representando a hierarquia original separada pelo delimitador. |
+
+## Exemplos
+
+### Exemplo 1: Achatar um Objeto Simples
+```typescript
+const obj = { nome: "Alice", idade: 30 };
+const flatObj = flattenObj(obj);
+
+console.log(flatObj);
+// { nome: "Alice", idade: 30 }
+```
+
+### Exemplo 2: Achatar um Objeto com Propriedades Aninhadas
+```typescript
+const obj = { nome: "Alice", endereco: { cidade: "Wonderland", rua: "Rua das Flores" } };
+const flatObj = flattenObj(obj);
+
+console.log(flatObj);
+// { nome: "Alice", endereco.cidade: "Wonderland", endereco.rua: "Rua das Flores" }
+```
+
+### Exemplo 3: Achatar com Separador Personalizado
+```typescript
+const obj = { nome: "Alice", endereco: { cidade: "Wonderland", rua: "Rua das Flores" } };
+const flatObj = flattenObj(obj, "_");
+
+console.log(flatObj);
+// { nome: "Alice", endereco_cidade: "Wonderland", endereco_rua: "Rua das Flores" }
+```
+
+## Notas
+- A função percorre recursivamente todas as propriedades do objeto e cria um novo objeto com as chaves "achatadas", usando o separador especificado.
+- A função utiliza `isPlainObject` de `@utilify/types` para verificar se uma propriedade é um objeto plano, garantindo que a função possa achatar propriedades aninhadas.
+
+## Dependências
+- [`@utilify/types`](./types.md): Fornece a função `isPlainObject` para verificar se um valor é um objeto plano.
+
+## Código Fonte
+::: code-group
+
+```typescript
+import { isPlainObject } from '@utilify/types';
+
+export default function flattenObj(obj: Record<string, any>, separator: string = ".", path: string = ''): Record<string, any> {
   let flatObj: Record<string, any> = {};
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       const newPath = path ? `${path}${separator}${key}` : key;
       
-      if (isObject(obj[key])) {
+      if (isPlainObject(obj[key])) {
         Object.assign(flatObj, flattenObj(obj[key], separator, newPath));
       } else {
         flatObj[newPath] = obj[key];
@@ -22,49 +82,26 @@ function flattenObj(obj: Record<string, any>, separator: string = ".", path: str
 }
 ```
 
-A função `flattenObj` transforma um objeto aninhado em um objeto "plano", cujas chaves representam os caminhos de cada valor original, utilizando um separador entre os níveis do caminho.
+```javascript
+function flattenObj(obj, separator = ".", path = "") {
+  let flatObj = {};
 
-## Assinatura
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const newPath = path ? `${path}${separator}${key}` : key;
+      
+      if (isPlainObject(obj[key])) {
+        Object.assign(flatObj, flattenObj(obj[key], separator, newPath));
+      } else {
+        flatObj[newPath] = obj[key];
+      }
+    }
+  }
 
-```typescript
-function flattenObj(obj: Record<string, any>, separator: string = ".", path: string = ''): Record<string, any>;
+  return flatObj;
+}
 ```
-
-## Parâmetros
-
-- **`obj`** (`Record<string, any>`): O objeto a ser achatado. Pode conter objetos aninhados que serão expandidos para um formato plano.
-- **`separator`** (`string`, opcional): O separador que será usado para concatenar as chaves dos caminhos. O valor padrão é `"."`.
-- **`path`** (`string`, opcional): O caminho atual sendo construído recursivamente. Este parâmetro é usado internamente pela função para manter o estado durante a recursão.
-
-## Retorno
-
-- **`Record<string, any>`**: O objeto achatado, cujas chaves são compostas pelos caminhos para os valores originais, separados pelo `separator`.
-
-## Exemplos
-
-```typescript
-const obj = {
-  a: 1,
-  b: { x: 10, y: { z: 20 } },
-  c: [1, 2, 3],
-};
-
-const flattened = flattenObj(obj);
-console.log(flattened);
-// { a: 1, "b.x": 10, "b.y.z": 20, c: [1, 2, 3] }
-
-const customFlattened = flattenObj(obj, "_");
-console.log(customFlattened);
-// { a: 1, "b_x": 10, "b_y_z": 20, c: [1, 2, 3] }
-```
-
-## Notas
-
-- **Objetos aninhados**: A função lida com objetos aninhados e os achata, criando chaves que representam o caminho completo para cada valor.
-- **Arrays**: A função não altera arrays, mantendo-os inalterados na estrutura final.
-- **Separador personalizado**: O separador pode ser personalizado, permitindo o uso de diferentes convenções de formatação de chave (como "_" ao invés de ".").
+:::
 
 ## Referências
-
-- [Object.prototype.hasOwnProperty() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
-- [Object.assign() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+- [`isPlainObject`](./types.md)

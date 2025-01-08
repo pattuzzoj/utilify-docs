@@ -1,4 +1,4 @@
-# **Math Utilities** <Badge type="tip" text="1.0.0" />
+# Math <Badge type="tip" text="1.0.0" />
 
 The math utility functions provide methods to perform common and complex mathematical operations. These functions can be extremely helpful for number manipulation, such as calculating averages, checking prime numbers, and other mathematical tasks.
 

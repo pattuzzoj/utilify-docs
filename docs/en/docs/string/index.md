@@ -1,4 +1,4 @@
-# **String Utilities** <Badge type="tip" text="1.0.0" />
+# String<Badge type="tip" text="1.0.0" />
 
 The string utility functions provide a variety of methods for text manipulation, such as transforming, counting words, sanitizing, and formatting strings.
 

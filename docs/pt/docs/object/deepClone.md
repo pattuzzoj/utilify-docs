@@ -1,15 +1,80 @@
 # deepClone
+A função `deepClone` cria uma cópia profunda de um objeto ou array, clonando recursivamente todos os objetos e arrays aninhados.
+
+## Sintaxe
 
 ```typescript
-import { isObject } from '../types';
+deepClone<T extends Record<string, any>>(value: T): T;
+deepClone<T extends any[]>(value: T): T;
+deepClone<T>(value: T): T;
+```
 
-function deepClone<T extends Record<string, any>>(value: T): T;
-function deepClone<T extends unknown[]>(value: T): T;
-function deepClone<T>(value: T): T {
+### Parâmetros
+
+| Parâmetro | Tipo                          | Descrição                                                   |
+|-----------|-------------------------------|-------------------------------------------------------------|
+| `value`   | `T extends Record<string, any>` | Um objeto a ser clonado profundamente.                      |
+| `value`   | `T extends any[]`              | Um array a ser clonado profundamente.                       |
+| `value`   | `T`                            | Qualquer tipo a ser clonado profundamente (objeto ou array).|
+
+### Retorno
+
+| Tipo       | Descrição                                                   |
+|------------|-------------------------------------------------------------|
+| `T`        | Uma cópia profunda do valor fornecido. A cópia será do tipo do valor original. |
+
+## Exemplos
+
+### Exemplo 1: Clonando um Objeto Profundamente
+```typescript
+const usuario = { id: 1, nome: "Alice", endereco: { cidade: "Wonderland" } };
+const cloneUsuario = deepClone(usuario);
+cloneUsuario.endereco.cidade = "New Wonderland";
+
+console.log(usuario.endereco.cidade); // "Wonderland"
+console.log(cloneUsuario.endereco.cidade); // "New Wonderland"
+```
+
+### Exemplo 2: Clonando um Array Profundamente
+```typescript
+const numeros = [1, [2, 3]];
+const cloneNumeros = deepClone(numeros);
+cloneNumeros[1][0] = 4;
+
+console.log(numeros[1][0]); // 2
+console.log(cloneNumeros[1][0]); // 4
+```
+
+### Exemplo 3: Alterando o Clone
+```typescript
+const pessoa = { nome: "Bob", idade: 30, endereco: { cidade: "Paris" } };
+const clonePessoa = deepClone(pessoa);
+clonePessoa.endereco.cidade = "Londres";
+
+console.log(pessoa.endereco.cidade); // "Paris"
+console.log(clonePessoa.endereco.cidade); // "Londres"
+```
+
+## Notas
+- Esta função realiza uma cópia profunda, ou seja, ela copia recursivamente objetos e arrays aninhados.
+- Ela utiliza `isPlainObject` de `@utilify/types` para verificar se um valor é um objeto plano, garantindo que apenas objetos planos e arrays sejam clonados profundamente.
+
+## Dependências
+- [`@utilify/types`](./types.md): Fornece a função `isPlainObject` para verificar se um valor é um objeto plano.
+
+## Código Fonte
+::: code-group
+
+```typescript
+import { isPlainObject } from '@utilify/types';
+
+export default function deepClone<T extends Record<string, any>>(value: T): T;
+export default function deepClone<T extends any[]>(value: T): T;
+export default function deepClone<T>(value: T): T {
   const clonedValue = Array.isArray(value) ? ([] as T) : ({} as T);
 
   for (const key in value) {
-    if (Array.isArray(value[key]) || isObject(value[key])) {
+    if (Array.isArray(value[key]) || isPlainObject(value[key])) {
       clonedValue[key] = deepClone(value[key] as any);
     } else {
       clonedValue[key] = value[key];
@@ -20,53 +85,24 @@ function deepClone<T>(value: T): T {
 }
 ```
 
-A função `deepClone` cria uma cópia profunda (deep copy) do valor fornecido. Isso significa que ela clona não apenas o valor principal, mas também todas as suas propriedades e objetos aninhados, garantindo que as referências internas não sejam compartilhadas entre o objeto original e o clonado.
+```javascript
+function deepClone(value) {
+  const clonedValue = Array.isArray(value) ? [] : {};
 
-## Assinatura
+  for (const key in value) {
+    if (Array.isArray(value[key]) || isPlainObject(value[key])) {
+      clonedValue[key] = deepClone(value[key]);
+    } else {
+      clonedValue[key] = value[key];
+    }
+  }
 
-```typescript
-function deepClone<T extends Record<string, any>>(value: T): T;
-function deepClone<T extends unknown[]>(value: T): T;
-function deepClone<T>(value: T): T;
+  return clonedValue;
+}
 ```
-
-## Parâmetros
-
-- **`value`** (`T`): O valor que será clonado. Pode ser um objeto, um array ou qualquer outro tipo de dado.
-
-## Retorno
-
-- **`T`**: Uma nova instância de `value`, com todos os seus objetos e arrays clonados profundamente. Se o valor fornecido for um objeto ou array, suas propriedades ou elementos também serão clonados recursivamente.
-
-## Exemplos
-
-```typescript
-const obj = { a: 1, b: { c: 2, d: [3, 4] } };
-const clonedObj = deepClone(obj);
-
-console.log(clonedObj); // { a: 1, b: { c: 2, d: [3, 4] } }
-console.log(clonedObj !== obj); // true (o objeto é uma nova instância)
-console.log(clonedObj.b !== obj.b); // true (o objeto interno foi clonado)
-console.log(clonedObj.b.d !== obj.b.d); // true (o array interno foi clonado)
-
-const arr = [1, [2, 3], { a: 4 }];
-const clonedArr = deepClone(arr);
-
-console.log(clonedArr); // [1, [2, 3], { a: 4 }]
-console.log(clonedArr !== arr); // true (o array é uma nova instância)
-console.log(clonedArr[1] !== arr[1]); // true (o array interno foi clonado)
-console.log(clonedArr[2] !== arr[2]); // true (o objeto interno foi clonado)
-```
-
-## Notas
-
-- **Clonagem profunda**: Todos os objetos, arrays e valores aninhados dentro do valor original serão clonados, garantindo que não haja compartilhamento de referências entre o original e o clonado.
-- **Limitações**: A função pode não lidar com certos tipos especiais como `Map`, `Set`, ou instâncias de classes personalizadas. Além disso, propriedades não enumeráveis e símbolos não são clonados.
-- **Função auxiliar**: A função `isObject` é usada para verificar se um valor é um objeto, garantindo que apenas objetos e arrays sejam clonados de maneira profunda.
+:::
 
 ## Referências
-
-- [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
-- [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-- [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-- [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+- [Array.isArray()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+- [for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+- [`isPlainObject`](./types.md)

@@ -1,10 +1,10 @@
-# Color Utilities <Badge type="tip" text="1.0.0" />
+# Colors <Badge type="tip" text="1.0.0" />
 
-The **color utility functions** provide a variety of methods for color conversion and validation operations. These functions help simplify common tasks, such as converting between different color formats and validating color strings.
+The **colors utility functions** provide a variety of methods for color conversion and validation operations. These functions help simplify common tasks, such as converting between different color formats and validating color strings.
 
 ## Installation
 
-To install the color utility functions, use one of the following commands, depending on your package manager:
+To install the colors utility functions, use one of the following commands, depending on your package manager:
 
 ::: code-group
 

@@ -1,9 +1,68 @@
 # clone
+A função `clone` cria uma cópia superficial de um objeto ou array. Ela retorna uma nova instância, mas com os mesmos valores do original.
+
+## Sintaxe
 
 ```typescript
-function clone<T extends Record<string, any>>(value: T): T;
-function clone<T extends unknown[]>(value: T): T;
-function clone<T>(value: T): T {
+clone<T extends Record<string, any>>(value: T): T;
+clone<T extends any[]>(value: T): T;
+clone<T>(value: T): T;
+```
+
+### Parâmetros
+
+| Parâmetro | Tipo                          | Descrição                                                   |
+|-----------|-------------------------------|-------------------------------------------------------------|
+| `value`   | `T extends Record<string, any>` | Um objeto a ser clonado.                                    |
+| `value`   | `T extends any[]`              | Um array a ser clonado.                                     |
+| `value`   | `T`                            | Pode ser qualquer tipo a ser clonado (objeto ou array).     |
+
+### Retorno
+
+| Tipo       | Descrição                                                   |
+|------------|-------------------------------------------------------------|
+| `T`        | A cópia superficial do valor fornecido. A cópia será do tipo do valor original. |
+
+## Exemplos
+
+### Exemplo 1: Clonando um Objeto
+```typescript
+const usuario = { id: 1, nome: "Alice" };
+const cloneUsuario = clone(usuario);
+console.log(cloneUsuario); // { id: 1, nome: "Alice" }
+```
+
+### Exemplo 2: Clonando um Array
+```typescript
+const numeros = [1, 2, 3];
+const cloneNumeros = clone(numeros);
+console.log(cloneNumeros); // [1, 2, 3]
+```
+
+### Exemplo 3: Alterando o Clone
+```typescript
+const pessoa = { nome: "Bob", idade: 30 };
+const clonePessoa = clone(pessoa);
+clonePessoa.idade = 31;
+
+console.log(pessoa.idade); // 30
+console.log(clonePessoa.idade); // 31
+```
+
+## Notas
+- Esta função realiza uma cópia superficial (shallow copy), o que significa que os objetos ou arrays internos ainda são referenciados.
+- Para realizar uma cópia profunda (deep copy), seria necessário usar uma abordagem diferente, como recursão ou métodos especializados como `JSON.parse(JSON.stringify(value))`.
+
+## Dependências
+Nenhuma.
+
+## Código Fonte
+::: code-group
+
+```typescript
+export default function clone<T extends Record<string, any>>(value: T): T;
+export default function clone<T extends any[]>(value: T): T;
+export default function clone<T>(value: T): T {
 	const clonedValue = Array.isArray(value) ? ([] as T) : ({} as T);
 
 	for (const key in value) {
@@ -14,48 +73,19 @@ function clone<T>(value: T): T {
 }
 ```
 
-A função `clone` cria uma cópia superficial (shallow copy) do valor fornecido, preservando o tipo original, seja um objeto ou um array. Isso é útil quando se deseja duplicar uma estrutura de dados sem alterar o valor original.
+```javascript
+function clone(value) {
+	const clonedValue = Array.isArray(value) ? [] : {};
 
-## Assinatura
+	for (const key in value) {
+		clonedValue[key] = value[key];
+	}
 
-```typescript
-function clone<T extends Record<string, any>>(value: T): T;
-function clone<T extends unknown[]>(value: T): T;
-function clone<T>(value: T): T;
+	return clonedValue;
+}
 ```
+:::
 
-## Parâmetros
-
-- **`value`** (`T`): O valor que será clonado. Pode ser um objeto ou um array.
-
-## Retorno
-
-- **`T`**: Uma nova instância de `value`, mas com os mesmos dados. Se `value` for um objeto, ele será clonado superficialmente; se for um array, será clonado também superficialmente.
-
-## Exemplos
-
-```typescript
-const obj = { a: 1, b: { c: 2 } };
-const clonedObj = clone(obj);
-
-console.log(clonedObj); // { a: 1, b: { c: 2 } }
-console.log(clonedObj !== obj); // true (o objeto é uma nova instância)
-console.log(clonedObj.b !== obj.b); // false (a referência interna foi copiada)
-
-const arr = [1, 2, [3, 4]];
-const clonedArr = clone(arr);
-
-console.log(clonedArr); // [1, 2, [3, 4]]
-console.log(clonedArr !== arr); // true (o array é uma nova instância)
-console.log(clonedArr[2] !== arr[2]); // false (a referência interna foi copiada)
-```
-
-## Notas
-
-- **Clonagem superficial**: A clonagem é superficial, o que significa que, se o valor fornecido contiver objetos ou arrays aninhados, esses serão compartilhados entre o original e o clonado.
-- **Limitações**: A clonagem não trata de propriedades não enumeráveis ou símbolos, e também não lida com tipos complexos como `Map`, `Set` ou instâncias de classes personalizadas de forma profunda.
-  
 ## Referências
-
-- [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
-- [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [Array.isArray()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+- [for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)

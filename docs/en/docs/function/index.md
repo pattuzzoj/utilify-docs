@@ -1,4 +1,4 @@
-# Function Utilities <Badge type="tip" text="1.0.0" />
+# Function <Badge type="tip" text="1.0.0" />
 
 **Function utility functions** provide a variety of methods for managing and enhancing function execution. These utilities help with tasks such as debouncing, throttling, function composition, and managing async behavior, making it easier to handle function flow and optimize performance.
 

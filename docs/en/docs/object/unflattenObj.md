@@ -1,28 +1,28 @@
 # unflattenObj
-A função `unflattenObj` converte um objeto plano com chaves separadas por pontos em um objeto aninhado com base no separador.
+The `unflattenObj` function converts a flat object with dotted keys into a nested object based on the separator.
 
-## Sintaxe
+## Syntax
 
 ```typescript
 unflattenObj(obj: Record<string, any>, separator: string = "."): Record<string, any>;
 ```
 
-### Parâmetros
+### Parameters
 
-| Parâmetro | Tipo                          | Descrição                                                   |
+| Parameter | Type                          | Description                                                   |
 |-----------|-------------------------------|-------------------------------------------------------------|
-| `obj`     | `Record<string, any>`          | O objeto plano com chaves separadas por pontos a ser convertido em uma estrutura aninhada. |
-| `separator` | `string`                     | O separador usado para dividir as chaves em caminhos aninhados (o padrão é `.`). |
+| `obj`     | `Record<string, any>`          | The flat object with dotted keys to be converted into a nested structure. |
+| `separator` | `string`                     | The separator used to split the keys into nested paths (default is `.`). |
 
-### Retorno
+### Return
 
-| Tipo                          | Descrição                                                   |
+| Type                          | Description                                                   |
 |-------------------------------|-------------------------------------------------------------|
-| `Record<string, any>`          | O objeto aninhado gerado a partir do objeto plano.          |
+| `Record<string, any>`          | The nested object created from the flat object.              |
 
-## Exemplos
+## Examples
 
-### Exemplo 1: Desfazer o "Flattening" Básico
+### Example 1: Basic Unflattening
 ```typescript
 const obj = { "user.name": "Alice", "user.age": 30 };
 const result = unflattenObj(obj);
@@ -31,7 +31,7 @@ console.log(result);
 // { user: { name: "Alice", age: 30 } }
 ```
 
-### Exemplo 2: Separador Personalizado
+### Example 2: Custom Separator
 ```typescript
 const obj = { "user|name": "Alice", "user|age": 30 };
 const result = unflattenObj(obj, "|");
@@ -40,7 +40,7 @@ console.log(result);
 // { user: { name: "Alice", age: 30 } }
 ```
 
-### Exemplo 3: Desfazendo o "Flattening" de um Objeto Já Aninhado
+### Example 3: Unflattening an Already Nested Object
 ```typescript
 const obj = { "user.name": "Alice", "address.city": "Wonderland", "address.zip": 12345 };
 const result = unflattenObj(obj);
@@ -49,14 +49,14 @@ console.log(result);
 // { user: { name: "Alice" }, address: { city: "Wonderland", zip: 12345 } }
 ```
 
-## Notas
-- A função utiliza uma expressão regular para verificar chaves que contêm o separador e as divide em múltiplos níveis no objeto aninhado.
-- Se uma chave não contiver o separador, ela permanece como está no objeto resultante.
+## Notes
+- The function uses a regular expression to check for keys that contain the separator and splits them into multiple levels in a nested object.
+- If a key doesn't contain the separator, it remains as it is in the resulting object.
 
-## Dependências
-Sem dependências externas.
+## Dependencies
+No external dependencies.
 
-## Código Fonte
+## Code Source
 ::: code-group
 
 ```typescript
@@ -116,5 +116,5 @@ function unflattenObj(obj, separator = ".") {
 ```
 :::
 
-## Referências
-Sem referências externas.
+## References
+No external references.

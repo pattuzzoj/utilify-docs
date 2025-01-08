@@ -1,13 +1,75 @@
 # interpolate
+A função `interpolate` substitui os espaços reservados nas strings de um objeto pelos valores correspondentes de um objeto de dados.
+
+## Sintaxe
 
 ```typescript
-import { isObject } from "../types";
+interpolate<T extends Record<string, any>>(obj: T, data: Record<string, any>): T;
+```
 
-function interpolate<T extends Record<string, any>>(obj: T, data: Record<string, any>): T {
+### Parâmetros
+
+| Parâmetro | Tipo                          | Descrição                                                   |
+|-----------|-------------------------------|-------------------------------------------------------------|
+| `obj`     | `Record<string, any>`          | O objeto contendo valores de string com espaços reservados a serem substituídos. |
+| `data`    | `Record<string, any>`          | O objeto de dados contendo os valores para substituir os espaços reservados. |
+
+### Retorno
+
+| Tipo                          | Descrição                                                   |
+|-------------------------------|-------------------------------------------------------------|
+| `T`                             | O objeto com os valores de string interpolados.              |
+
+## Exemplos
+
+### Exemplo 1: Interpolação Básica de Strings
+```typescript
+const obj = { name: "Olá {{name}}", age: "Idade: {{age}}" };
+const data = { name: "Alice", age: 30 };
+const result = interpolate(obj, data);
+
+console.log(result);
+// { name: "Olá Alice", age: "Idade: 30" }
+```
+
+### Exemplo 2: Interpolando Objetos Aninhados
+```typescript
+const obj = { user: { name: "Olá {{name}}", age: "Idade: {{age}}" } };
+const data = { name: "Alice", age: 30 };
+const result = interpolate(obj, data);
+
+console.log(result);
+// { user: { name: "Olá Alice", age: "Idade: 30" } }
+```
+
+### Exemplo 3: Espaço Reservado Ausente nos Dados
+```typescript
+const obj = { greeting: "Olá {{name}}, bem-vindo a {{place}}!" };
+const data = { name: "Alice" };
+const result = interpolate(obj, data);
+
+console.log(result);
+// { greeting: "Olá Alice, bem-vindo a {{place}}!" }
+```
+
+## Notas
+- A função usa uma expressão regular para encontrar espaços reservados no formato `{{placeholder}}` e substituí-los pelos valores correspondentes do objeto `data`.
+- Se um espaço reservado não for encontrado em `data`, o espaço reservado original (por exemplo, `{{name}}`) será mantido no resultado.
+
+## Dependências
+- [`@utilify/types`](./types.md): Fornece a função `isPlainObject` para verificar se um valor é um objeto simples, o que garante que objetos aninhados sejam tratados de forma recursiva.
+
+## Código Fonte
+::: code-group
+
+```typescript
+import { isPlainObject } from '@utilify/types';
+
+export default function interpolate<T extends Record<string, any>>(obj: T, data: Record<string, any>): T {
   const result: T = {} as T;
 
   for (const key in obj) {
-    if (isObject(obj[key])) {
+    if (isPlainObject(obj[key])) {
       result[key] = interpolate(obj[key], data);
     } else if (typeof obj[key] === "string") {
       result[key] = obj[key].replace(/{{(\w+)}}/g, (_: string, match: string) => 
@@ -22,46 +84,26 @@ function interpolate<T extends Record<string, any>>(obj: T, data: Record<string,
 }
 ```
 
-A função `interpolate` percorre um objeto e substitui as expressões no formato `{{key}}` dentro das propriedades do objeto, usando os valores correspondentes fornecidos em outro objeto `data`. 
+```javascript
+function interpolate(obj, data) {
+  const result = {};
 
-## Assinatura
+  for (const key in obj) {
+    if (isPlainObject(obj[key])) {
+      result[key] = interpolate(obj[key], data);
+    } else if (typeof obj[key] === "string") {
+      result[key] = obj[key].replace(/{{(\w+)}}/g, (_, match) => 
+        match in data ? data[match] : `{{${match}}}`
+      );
+    } else {
+      result[key] = obj[key];
+    }
+  }
 
-```typescript
-function interpolate<T extends Record<string, any>>(obj: T, data: Record<string, any>): T;
+  return result;
+}
 ```
-
-## Parâmetros
-
-- **`obj`** (`T`): O objeto cujas propriedades podem conter expressões a serem substituídas.
-- **`data`** (`Record<string, any>`): Um objeto contendo os valores para substituir as expressões dentro do `obj`.
-
-## Retorno
-
-- **`T`**: Um novo objeto com as expressões interpoladas substituídas pelos valores de `data`. Se uma expressão não for encontrada no objeto `data`, ela será deixada intacta.
-
-## Exemplos
-
-```typescript
-const template = {
-  name: "{{firstName}} {{lastName}}",
-  greeting: "Hello, {{firstName}}!"
-};
-
-const data = {
-  firstName: "John",
-  lastName: "Doe"
-};
-
-const result = interpolate(template, data);
-console.log(result);
-// Output: { name: "John Doe", greeting: "Hello, John!" }
-```
-
-## Notas
-
-- A substituição de variáveis é feita usando expressões no formato `{{key}}`. Se a chave não for encontrada em `data`, ela será deixada sem alteração no formato original.
-- A função realiza a substituição de maneira recursiva, permitindo a interpolação de objetos aninhados.
+:::
 
 ## Referências
-
-- [String.prototype.replace() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+- [`isPlainObject`](./types.md)
