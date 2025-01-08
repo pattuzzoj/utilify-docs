@@ -14,8 +14,7 @@
       { "text": "Object", "link": "/pt/docs/object" },
       { "text": "Regex", "link": "/pt/docs/regex" },
       { "text": "String", "link": "/pt/docs/string" },
-      { "text": "Types", "link": "/pt/docs/types" },
-      { "text": "Utils", "link": "/pt/docs/utils" }
+      { "text": "Types", "link": "/pt/docs/types" }
     ]
   },
   { "text": "Licença", "link": "/pt/license" }

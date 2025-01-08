@@ -14,8 +14,7 @@
       { "text": "Object", "link": "/docs/object/" },
       { "text": "Regex", "link": "/docs/regex/" },
       { "text": "String", "link": "/docs/string/" },
-      { "text": "Types", "link": "/docs/types/" },
-      { "text": "Utils", "link": "/docs/utils/" }
+      { "text": "Types", "link": "/docs/types/" }
     ]
   },
   { "text": "License", "link": "/license" }

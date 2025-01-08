@@ -1,78 +1,92 @@
-# throttle
+# benchmark
 
-A função `throttle` limita a taxa de execução de uma função de callback, garantindo que ela seja chamada, no máximo, uma vez a cada intervalo de tempo especificado.
+Executa uma função repetidamente para medir seu desempenho, retornando o tempo médio de execução das iterações.
 
 ## Sintaxe
-
 ```typescript
-function throttle(callback: (...args: any[]) => void, wait?: number): (...args: any[]) => void
+benchmark(callback: () => void | Promise<void>, iterations: number = 1): Promise<number>
 ```
 
 ### Parâmetros
 
-| Nome      | Tipo                        | Descrição                                                       |
-|-----------|-----------------------------|-----------------------------------------------------------------|
-| callback  | `(...args: any[]) => void`  | A função que será limitada em sua taxa de execução.             |
-| wait      | `number` (opcional)         | O intervalo de tempo (em milissegundos) para esperar antes de executar novamente. O padrão é `300`. |
+| Parâmetro   | Tipo                                    | Descrição                                  |
+|-------------|-----------------------------------------|--------------------------------------------|
+| `callback`  | `() => void \| Promise<void>`            | Função a ser executada e medida. Pode ser uma função síncrona ou assíncrona. |
+| `iterations`| `number`                                | Número de vezes que a função será executada (default é 1). |
 
 ### Retorno
 
-| Tipo                        | Descrição                                                   |
-|-----------------------------|-----------------------------------------------------------|
-| `(...args: any[]) => void`  | Uma versão limitada da função de callback fornecida.       |
+| Tipo     | Descrição                                      |
+|----------|------------------------------------------------|
+| `Promise<number>` | Retorna uma promessa que resolve com o tempo médio de execução em milissegundos. |
 
 ## Exemplos
 
 ```typescript
-import throttle from "./throttle";
+import { benchmark } from "@utilify/function";
 
-// Exemplo: Limitando um evento de redimensionamento (resize)
-const aoRedimensionar = () => {
-  console.log("Evento de redimensionamento tratado em", new Date());
-};
+async function example() {
+  await new Promise(resolve => setTimeout(resolve, 100));
+}
 
-const resizeComThrottle = throttle(aoRedimensionar, 500);
-
-window.addEventListener("resize", resizeComThrottle);
+benchmark(example, 3).then(avgTime => {
+  console.log(`Tempo médio de execução: ${avgTime}ms`);
+});
 ```
 
 ## Notas
+- A função `benchmark` permite medir o desempenho de funções síncronas e assíncronas.
+- O tempo é medido usando `performance.now()` para maior precisão.
 
-- A função retornada executará o callback no máximo uma vez por intervalo de tempo especificado.
-- Útil para otimizar o desempenho em eventos de alta frequência, como `scroll`, `resize` ou `input`.
-- Garante que o callback seja executado com os argumentos mais recentes fornecidos.
+## Dependências
+[average](../math/average.md): Usado para calcular a média dos tempos de execução.
 
 ## Código Fonte
-
 ::: code-group
-```typescript
-export default function throttle(callback: (...args: any[]) => void, wait: number = 300): (...args: any[]) => void {
-  let timerId: number | null;
 
-  return (...args: any[]): void => {
-    if (!timerId) {
-      timerId = setTimeout(() => (timerId = null), wait) as any as number;
-      callback(...args);
+```typescript
+import { average } from "@utilify/math";
+
+function benchmark(callback: () => void | Promise<void>, iterations: number = 1): Promise<number> {
+  return new Promise(async (resolve) => {
+    const times: number[] = [];
+
+    for (let i = 0; i < iterations; i++) {
+      const start = performance.now();
+
+      await callback();
+
+      const end = performance.now();
+      times.push(end - start);
     }
-  };
+    
+    resolve(average(times));
+  });
 }
 ```
 
 ```javascript
-export default function throttle(callback, wait = 300) {
-  let timerId = null;
+import { average } from "@utilify/math";
 
-  return (...args) => {
-    if (!timerId) {
-      timerId = setTimeout(() => (timerId = null), wait);
-      callback(...args);
+function benchmark(callback, iterations = 1) {
+  return new Promise(async (resolve) => {
+    const times = [];
+
+    for (let i = 0; i < iterations; i++) {
+      const start = performance.now();
+
+      await callback();
+
+      const end = performance.now();
+      times.push(end - start);
     }
-  };
+
+    resolve(average(times));
+  });
 }
 ```
 :::
 
 ## Referências
-
-- [setTimeout()](https://developer.mozilla.org/pt-BR/docs/Web/API/setTimeout)
-- [clearTimeout()](https://developer.mozilla.org/pt-BR/docs/Web/API/clearTimeout)
+- [performance.now()](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
+- [average](./math.md)
