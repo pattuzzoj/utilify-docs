@@ -1,4 +1,4 @@
-# Funções Utilitárias para Objetos <Badge type="tip" text="1.0.0" />
+# Object <Badge type="tip" text="1.0.0" />
 
 A categoria de **funções utilitárias para objetos** inclui diversas ferramentas práticas para manipulação, comparação e transformação de objetos. Essas funções simplificam muitas operações comuns no desenvolvimento com JavaScript/TypeScript ao lidar com objetos e estruturas de dados.
 

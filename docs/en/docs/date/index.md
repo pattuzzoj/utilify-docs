@@ -1,4 +1,4 @@
-# Date Utilities <Badge type="tip" text="1.0.0" />
+# Date <Badge type="tip" text="1.0.0" />
 
 The `@utilify/date` package offers essential utilities for working with dates and times in JavaScript and TypeScript. These functions are designed to be intuitive, efficient, and type-safe.
 
