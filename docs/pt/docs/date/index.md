@@ -1,105 +1,130 @@
-# Utilitários Date
+# Utilitários Date <Badge type="tip" text="1.0.0" />
 
-As funções utilitárias de datas ajudam a simplificar operações comuns relacionadas à manipulação, formatação e validação de objetos `Date` no JavaScript. Abaixo está uma visão geral das funções disponíveis nesta categoria.
+O pacote `@utilify/date` oferece utilitários essenciais para manipulação de datas e tempos em JavaScript e TypeScript. Essas funções foram projetadas para serem intuitivas, eficientes e seguras por tipo.
 
-## [adjustDate](./adjustDate.md)
+## Installation
+
+To install the **Date** package, use one of the following commands:
+
+::: code-group
+
+```bash [npm]
+npm install @utilify/date
+```
+
+```bash [yarn]
+yarn add @utilify/date
+```
+
+```bash [pnpm]
+pnpm add @utilify/date
+```
+
+:::
+
+Import the functions into your project:
+
+::: code-group
+
+```typescript [esm]
+import { formatDate, isLeapYear } from '@utilify/date';
+```
+
+```javascript [cjs]
+const { formatDate, isLeapYear } = require('@utilify/date');
+```
+
+:::
+
+## Visão Geral
+
+### [adjustDate](./adjustDate.md)
+**Assinatura**:
 ```typescript
 function adjustDate(date: Date, amount: number, unit: TimeUnit): Date
 ```
-Ajusta uma data adicionando ou subtraindo uma quantidade de tempo especificada.
+Ajusta uma data adicionando ou subtraindo um intervalo de tempo.
 
----
-
-## [adjustTimezone](./adjustTimezone.md)
+### [adjustTimezone](./adjustTimezone.md)
+**Assinatura**:
 ```typescript
 function adjustTimezone(date: Date, timezoneOffset: number): Date
 ```
-Ajusta uma data para o fuso horário especificado.
+Converte uma data para um fuso horário diferente.
 
----
-
-## [convertTime](./convertTime.md)
+### [convertTimeUnit](./convertTimeUnit.md)
+**Assinatura**:
 ```typescript
-function convertTime(time: number, from: TimeUnit, to: TimeUnit): number
+function convertTimeUnit(time: number, from: TimeUnit, to: TimeUnit): number
 ```
-Converte um valor de tempo entre diferentes unidades (milissegundos, segundos, minutos, horas, dias).
+Converte unidades de tempo, como milissegundos para minutos.
 
----
-
-## [convertDate](./convertDate.md)
+### [convertDateTo](./convertDateTo.md)
+**Assinatura**:
 ```typescript
-function convertDate(date: Date, format: DateFormat): string | undefined
+function convertDateTo(date: Date, format: DateFormat): string | undefined
 ```
-Converte uma data para diferentes formatos, como UTC ou ISO.
+Converte uma data para outro formato ou representação.
 
----
-
-## [formatDate](./formatDate.md)
+### [formatDate](./formatDate.md)
+**Assinatura**:
 ```typescript
-function formatDate(date: Date, format: DateFormat, separator?: string): string | undefined
+function formatDate(date: Date, format: DateFormat = "DMY", separator: string = "/"): string | undefined
 ```
-Formata uma data em diferentes padrões, como `DD/MM/YYYY`, `MM/DD/YYYY`, ou `YYYY/MM/DD`.
+Formata uma data em uma string amigável ao usuário.
 
----
-
-## [formatDuration](./formatDuration.md)
+### [formatDuration](./formatDuration.md)
+**Assinatura**:
 ```typescript
-function formatDuration(time: number, format?: string): string
+function formatDuration(ms: number, format: string = "hh:mm:ss", autoHour: boolean = true): string
 ```
-Formata uma duração de tempo (em milissegundos) em um padrão especificado, como `hh:mm:ss`.
+Formata uma duração de tempo em uma string legível.
 
----
-
-## [formatTime](./formatTime.md)
+### [formatTime](./formatTime.md)
+**Assinatura**:
 ```typescript
-function formatTime(date: Date, format: string): string | undefined
+function formatTime(date: Date, format: string = "hh:mm:ss"): string | undefined
 ```
-Formata o horário de uma data em um padrão personalizado, com suporte a 12h ou 24h.
+Formata o componente de tempo de uma data.
 
----
-
-## [isLeapYear](./isLeapYear.md)
+### [isLeapYear](./isLeapYear.md)
+**Assinatura**:
 ```typescript
 function isLeapYear(year: number): boolean
 ```
-Determina se um ano é bissexto.
+Verifica se um ano é bissexto.
 
----
-
-## [isValidDate](./isValidDate.md)
+### [isValidDate](./isValidDate.md)
+**Assinatura**:
 ```typescript
 function isValidDate(date: Date): boolean
 ```
-Verifica se um objeto `Date` é válido.
+Valida se um objeto ou string representa uma data válida.
 
----
-
-## [isValidDateString](./isValidDateString.md)
+### [isValidDateString](./isValidDateString.md)
+**Assinatura**:
 ```typescript
 function isValidDateString(date: string): boolean
 ```
-Verifica se uma string pode ser convertida em uma data válida.
+Valida se uma string segue um formato de data reconhecido.
 
----
-
-## [isWeekday](./isWeekday.md)
+### [isWeekday](./isWeekday.md)
+**Assinatura**:
 ```typescript
 function isWeekday(date: Date): boolean | undefined
 ```
-Verifica se a data fornecida é um dia útil (de segunda a sexta-feira).
+Verifica se uma data é um dia útil (segunda a sexta-feira).
 
----
-
-## [isWeekend](./isWeekend.md)
+### [isWeekend](./isWeekend.md)
+**Assinatura**:
 ```typescript
 function isWeekend(date: Date): boolean | undefined
 ```
-Verifica se a data fornecida é um final de semana (sábado ou domingo).
+Verifica se uma data é um fim de semana (sábado ou domingo).
 
----
-
-## [parseDate](./parseDate.md)
+### [parseDate](./parseDate.md)
+**Assinatura**:
 ```typescript
-function parseDate(input: string): Date | undefined
+function parseDate(date: string): Date | undefined
 ```
-Converte uma string em um objeto `Date`, se possível. Retorna `undefined` para entradas inválidas.
+Converte uma string ou número para um objeto `Date`.

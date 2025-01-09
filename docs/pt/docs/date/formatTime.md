@@ -1,5 +1,5 @@
 # formatTime  
-Formata uma instância de `Date` em uma string com base no formato especificado. O formato padrão é `"hh:mm:ss"`.
+Formata uma instância de `Date` em uma string com base no formato especificado. O formato padrão é `"hh:mm"`.
 
 ## Sintaxe
 ```typescript
@@ -11,7 +11,7 @@ formatTime(date: Date, format?: string): string | undefined
 | Parâmetro   | Tipo     | Descrição                                                                                  |
 |-------------|----------|----------------------------------------------------------------------------------------------|
 | `date`      | `Date`   | O objeto de data que será formatado.                                                         |
-| `format`    | `string` | (Opcional) O formato desejado para a string de saída. Tokens suportados incluem `hh`, `mm`, `ss`, `ms` e `a`. Valor padrão: `"hh:mm:ss"`. |
+| `format`    | `string` | (Opcional) O formato desejado para a string de saída. Tokens suportados incluem `hh`, `mm`, `ss`, `ms` e `a`. Valor padrão: `"hh:mm"`. |
 
 ### Retorno
 
@@ -25,7 +25,7 @@ formatTime(date: Date, format?: string): string | undefined
 ### Exemplo 1: Usando o formato padrão
 ```typescript
 formatTime(new Date("2025-01-01T15:30:45")); 
-// Saída: "15:30:45"
+// Saída: "15:30"
 ```
 
 ### Exemplo 2: Formatação com AM/PM
@@ -53,7 +53,7 @@ formatTime(new Date("invalid-date"), "hh:mm:ss");
   - `ss`: Segundos (sempre com dois dígitos).
   - `ms`: Milissegundos (sempre com três dígitos).
   - `a`: Indica o período de tempo (`AM` ou `PM`) para formatos de 12 horas.
-- Caso o parâmetro `format` não seja fornecido, será utilizado o formato padrão `"hh:mm:ss"`.
+- Caso o parâmetro `format` não seja fornecido, será utilizado o formato padrão `"hh:mm"`.
 - A função usa `isValidDate` para verificar a validade do objeto `Date`.
 
 ## Dependências
@@ -65,7 +65,7 @@ typescript
 ```typescript
 import isValidDate from "./isValidDate";
 
-export default function formatTime(date: Date, format: string = "hh:mm:ss"): string | undefined {
+export default function formatTime(date: Date, format: string = "hh:mm"): string | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;
@@ -92,7 +92,7 @@ javascript
 ```javascript
 import isValidDate from "./isValidDate";
 
-export default function formatTime(date, format = "hh:mm:ss") {
+export default function formatTime(date, format = "hh:mm") {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

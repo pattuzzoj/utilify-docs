@@ -1,20 +1,77 @@
 # formatDuration
+The `formatDuration` function formats a given duration in milliseconds into a human-readable string based on the specified format.
+
+## Syntax
 
 ```typescript
-function formatDuration(time: number, format: string = "hh:mm:ss"): string {
-  let totalMilliseconds = 0;
+formatDuration(ms: number, format: string = "hh:mm:ss", autoHour: boolean = true): string
+```
 
-  if (typeof time === "number") {
-    totalMilliseconds = time;
+### Parameters
+
+| Parameter  | Type          | Description                                                        |
+|------------|---------------|--------------------------------------------------------------------|
+| `ms`       | `number`      | The duration in milliseconds to be formatted.                      |
+| `format`   | `string`      | The format string for the output. Default is `"hh:mm:ss"`.         |
+| `autoHour` | `boolean`     | If `true`, the hours part will be omitted if the duration is less than an hour. Default is `true`. |
+
+### Return
+
+| Type     | Description                                                        |
+|----------|--------------------------------------------------------------------|
+| `string` | A formatted string representing the duration, based on the format. |
+
+## Examples
+
+### Example 1: Default format
+```typescript
+console.log(formatDuration(3661000)); // "01:01:01"
+```
+
+### Example 2: Custom format (hours and minutes)
+```typescript
+console.log(formatDuration(3661000, "hh:mm:ss")); // "01:01:01"
+```
+
+### Example 3: Custom format without hours
+```typescript
+console.log(formatDuration(61000, "mm:ss")); // "01:01"
+```
+
+### Example 4: With milliseconds
+```typescript
+console.log(formatDuration(3661000, "hh:mm:ss.ms")); // "01:01:01.000"
+```
+
+### Example 5: With automatic hour removal
+```typescript
+console.log(formatDuration(61000, "hh:mm:ss", true)); // "01:01"
+```
+
+## Notes
+- The `format` string is case-insensitive.
+- The `autoHour` parameter, when set to `true`, will remove the hour portion from the output if the duration is less than one hour.
+
+## Dependencies
+- None.
+
+## Code
+::: code-group
+
+```typescript
+function formatDuration(ms: number, format: string = "hh:mm:ss", autoHour: boolean = true): string {
+  const hours = String(Math.floor(ms / 3_600_000));
+  const minutes = String(Math.floor((ms % 3_600_000) / 60_000)).padStart(2, "0");
+  const seconds = String(Math.floor((ms % 60_000) / 1000)).padStart(2, "0");
+  const milliseconds = String(ms % 1000).padStart(3, "0");
+
+  let formatedDuration = format.toLowerCase();
+
+  if (autoHour && hours === "0") {
+    formatedDuration = formatedDuration.slice(formatedDuration.indexOf("mm"));
   }
 
-  const hours = String(Math.floor(totalMilliseconds / 3_600_000));
-  const minutes = String(Math.floor((totalMilliseconds % 3_600_000) / 60_000)).padStart(2, "0");
-  const seconds = String(Math.floor((totalMilliseconds % 60_000) / 1000)).padStart(2, "0");
-  const milliseconds = String(totalMilliseconds % 1000).padStart(3, "0");
-
-  return format
-    .toLowerCase()
+  return formatedDuration
     .replace("hh", hours)
     .replace("mm", minutes)
     .replace("ss", seconds)
@@ -22,47 +79,27 @@ function formatDuration(time: number, format: string = "hh:mm:ss"): string {
 }
 ```
 
-A função `formatDuration` formata uma duração de tempo em milissegundos em uma string, de acordo com o formato desejado, que pode incluir horas, minutos, segundos e milissegundos.
+```javascript
+function formatDuration(ms, format = "hh:mm:ss", autoHour = true) {
+  const hours = String(Math.floor(ms / 3_600_000));
+  const minutes = String(Math.floor((ms % 3_600_000) / 60_000)).padStart(2, "0");
+  const seconds = String(Math.floor((ms % 60_000) / 1000)).padStart(2, "0");
+  const milliseconds = String(ms % 1000).padStart(3, "0");
 
-## Assinatura
+  let formatedDuration = format.toLowerCase();
 
-```typescript
-function formatDuration(time: number, format: string = "hh:mm:ss"): string;
+  if (autoHour && hours === "0") {
+    formatedDuration = formatedDuration.slice(formatedDuration.indexOf("mm"));
+  }
+
+  return formatedDuration
+    .replace("hh", hours)
+    .replace("mm", minutes)
+    .replace("ss", seconds)
+    .replace("ms", milliseconds);
+}
 ```
+:::
 
-### Parâmetros
-
-- **`time`** (`number`): O tempo em milissegundos a ser formatado.
-- **`format`** (`string`): O formato desejado para a duração. O formato pode incluir os seguintes tokens:
-  - **`hh`**: Horas (dois dígitos).
-  - **`mm`**: Minutos (dois dígitos).
-  - **`ss`**: Segundos (dois dígitos).
-  - **`ms`**: Milissegundos (três dígitos).
-
-### Retorno
-
-- **`string`**: A duração formatada de acordo com o padrão especificado.
-
-## Exemplos
-
-```typescript
-const duration = 3661000; // 1 hora, 1 minuto e 1 segundo em milissegundos
-
-console.log(formatDuration(duration, "hh:mm:ss")); // "01:01:01"
-console.log(formatDuration(duration, "hh:mm:ss ms")); // "01:01:01 000"
-console.log(formatDuration(duration, "mm:ss")); // "61:01"
-console.log(formatDuration(duration, "ss.ms")); // "3661.000"
-console.log(formatDuration(5000, "ss")); // "05"
-console.log(formatDuration(5000, "ss.ms")); // "05.000"
-```
-
-## Notas
-
-- A função calcula as horas, minutos, segundos e milissegundos com base no tempo fornecido em milissegundos.
-- A string de formato é insensível a maiúsculas e minúsculas.
-- Se o formato de entrada não incluir todos os componentes desejados, a função irá omitir as partes não especificadas.
-
-## Referências
-
-- [Math.floor() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
-- [String.prototype.padStart() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
+## References
+- [String.prototype.padStart()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)

@@ -73,13 +73,6 @@ A biblioteca **Utilify** é projetada para ser modular e flexível. Você pode i
   ```bash
   npm install @utilify/types
   ```  
-
-- **[@utilify/utils](./docs/utils/)**  
-  Um pacote de utilitários independente, atualmente oferecendo uma função de benchmark e um gerador simples de hash (usando o algoritmo djb2).
-  ```bash
-  npm install @utilify/utils
-  ```  
-
 ---
 
 Escolha **@utilify/core** para obter a suíte completa de ferramentas ou instale pacotes individuais para manter seu projeto mais leve e focado.

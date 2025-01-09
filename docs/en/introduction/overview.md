@@ -74,12 +74,6 @@ The **Utilify** library is designed to be modular and flexible. You can install 
   npm install @utilify/types
   ```  
 
-- **[@utilify/utils](./docs/utils/)**  
-  A standalone utility package, currently offering a benchmarking function and a simple hash generator (using the djb2 algorithm).
-  ```bash
-  npm install @utilify/utils
-  ```  
-
 ---
 
 Choose **@utilify/core** for the full suite of tools or install individual packages to keep your project lightweight and focused.
