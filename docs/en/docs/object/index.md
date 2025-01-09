@@ -6,34 +6,33 @@ The **object utility functions** category includes a variety of practical method
 
 To use the functions in this category, install the **`@utilify/object`** package with your preferred package manager:
 
-### **npm**
-```bash
+::: code-group
+```bash [npm]
 npm install @utilify/object
 ```
 
-### **Yarn**
-```bash
+```bash [yarn]
 yarn add @utilify/object
 ```
 
-### **pnpm**
-```bash
+```bash [pnpm]
 pnpm add @utilify/object
 ```
+:::
 
 ## Usage
 
 You can import specific functions as needed:
 
-### **ESM**
-```typescript
+::: code-group
+```typescript [esm]
 import { clone, deepClone, deepMerge } from '@utilify/object';
 ```
 
-### **CommonJS**
-```javascript
+```javascript [cjs]
 const { clone, deepClone, deepMerge } = require('@utilify/object');
 ```
+:::
 
 ## Overview
 

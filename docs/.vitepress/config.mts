@@ -3,7 +3,7 @@ import { pt } from './pt';
 import { en } from './en';
 
 export default defineConfig({
-  head: [['link', { rel: 'icon', href: '../logo.png' }]],
+  head: [['link', { rel: 'icon', href: '../../public/logo.png' }]],
   title: "Utilify",
   description: "A practical library of utility functions",
   lastUpdated: true,
