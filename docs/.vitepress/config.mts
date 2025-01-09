@@ -3,7 +3,22 @@ import { pt } from './pt';
 import { en } from './en';
 
 export default defineConfig({
-  head: [['link', { rel: 'icon', href: '../../public/logo.png' }]],
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }],
+    ['link', { rel: 'shortcut icon', href: '/logo.png', type: 'image/x-icon' }],
+    ['meta', { name: 'author', content: 'Júlio Pattuzzo' }],
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'keywords', content: 'Utilify, core, array, browser, colors, date, environment, function, math, object, regex, string, types, library, JavaScript, TypeScript, programming utilities, web development, tools, modular, minimalistic, secure by design, easy installation, tree-shaking, cross-platform' }],
+    ['meta', { name: 'description', content: 'Utilify is a collection of essential utilities for JavaScript and TypeScript development, providing tools for arrays, strings, math, date manipulation, and more.' }],
+    ['meta', { property: 'og:title', content: 'Utilify' }],
+    ['meta', { property: 'og:description', content: 'Utilify is a collection of essential utilities for JavaScript and TypeScript development, providing tools for arrays, strings, math, date manipulation, and more.' }],
+    ['meta', { property: 'og:image', content: '/logo.png' }],
+    ['meta', { property: 'og:image:height', content: '32px' }],
+    ['meta', { property: 'og:image:width', content: '32px' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:title', content: 'Utilify' }],
+    ['meta', { name: 'twitter:image', content: '/logo.png' }]
+  ],  
   title: "Utilify",
   description: "A practical library of utility functions",
   lastUpdated: true,
@@ -23,7 +38,7 @@ export default defineConfig({
   },
   themeConfig: {
     i18nRouting: true,
-    logo: '../logo.png',
+    logo: '/logo.png',
     search: {
       provider: 'local'
     },
