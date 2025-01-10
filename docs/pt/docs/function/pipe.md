@@ -24,8 +24,6 @@ function pipe<T>(...callbacks: ((value: T) => T)[]): (value: T) => T;
 
 ### Exemplo 1: Transformações Numéricas Simples
 ```typescript
-
-
 const somar = (x: number) => x + 2;
 const multiplicar = (x: number) => x * 3;
 

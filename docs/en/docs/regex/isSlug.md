@@ -23,8 +23,6 @@ function isSlug(value: string): boolean
 ## Examples
 
 ```typescript
-
-
 console.log(isSlug("valid-slug")); // Output: true
 console.log(isSlug("valid-slug-123")); // Output: true
 console.log(isSlug("Invalid Slug")); // Output: false

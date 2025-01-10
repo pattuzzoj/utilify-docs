@@ -31,8 +31,6 @@ async function hash(
 ## Exemplos
 
 ```typescript
-
-
 (async () => {
   const data = 'Hello, World!';
   console.log(await hash(data, 'SHA-256', 'hex'));    // Retorna o hash em formato hexadecimal

@@ -25,8 +25,6 @@ function parallel(...callbacks: (() => Promise<any>)[]): Promise<any[]>;
 ### Example 1: Fetching data from multiple APIs
 
 ```typescript
-
-
 const fetchUser = () => fetch('https://jsonplaceholder.typicode.com/users/1').then(res => res.json());
 const fetchPosts = () => fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json());
 

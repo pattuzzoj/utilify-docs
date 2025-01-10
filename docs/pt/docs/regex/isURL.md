@@ -23,8 +23,6 @@ function isURL(value: string): boolean
 ## Exemplos
 
 ```typescript
-
-
 console.log(isURL("https://example.com")); // Saída: true
 console.log(isURL("http://example.com:8080/path")); // Saída: true
 console.log(isURL("www.example.com")); // Saída: true

@@ -23,8 +23,6 @@ function isEven(value: number): boolean
 ## Examples
 
 ```typescript
-
-
 console.log(isEven(4));  // Output: true
 console.log(isEven(7));  // Output: false
 console.log(isEven(0));  // Output: true (0 is considered even)

@@ -27,8 +27,6 @@ function fibonacci(num: number): number
 ## Examples
 
 ```typescript
-
-
 console.log(fibonacci(0));  // Output: 0
 console.log(fibonacci(1));  // Output: 1
 console.log(fibonacci(6));  // Output: 8 (F(6) = 8, calculated as F(5) + F(4))

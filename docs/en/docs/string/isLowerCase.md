@@ -23,8 +23,6 @@ function isLowerCase(str: string): boolean
 ## Examples
 
 ```typescript
-
-
 console.log(isLowerCase("hello"));        // Output: true
 console.log(isLowerCase("Hello World"));  // Output: false
 console.log(isLowerCase("javaScript"));   // Output: false

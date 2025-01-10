@@ -23,8 +23,6 @@ function wordCount(str: string): number
 ## Exemplos
 
 ```typescript
-
-
 console.log(wordCount("Hello World"));           // Saída: 2
 console.log(wordCount("  JavaScript  is awesome  "));  // Saída: 3
 console.log(wordCount("  singleword "));         // Saída: 1

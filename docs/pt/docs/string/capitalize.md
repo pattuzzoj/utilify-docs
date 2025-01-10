@@ -23,8 +23,6 @@ function capitalize(str: string): string
 ## Exemplos
 
 ```typescript
-
-
 console.log(capitalize("hello"));  // Saída: "Hello"
 console.log(capitalize("world"));  // Saída: "World"
 console.log(capitalize("javaScript")); // Saída: "JavaScript"

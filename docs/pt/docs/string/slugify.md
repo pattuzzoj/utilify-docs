@@ -23,8 +23,6 @@ function slugify(str: string): string
 ## Exemplos
 
 ```typescript
-
-
 console.log(slugify("Hello World!"));            // Saída: "hello-world"
 console.log(slugify("JavaScript is fun!"));      // Saída: "javascript-is-fun"
 console.log(slugify("  Extra spaces here!  "));  // Saída: "extra-spaces-here"

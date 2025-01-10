@@ -23,8 +23,6 @@ function divisors(num: number): number[]
 ## Examples
 
 ```typescript
-
-
 console.log(divisors(12)); // Output: [1, 2, 3, 4, 6, 12]
 console.log(divisors(7));  // Output: [1, 7]
 console.log(divisors(28)); // Output: [1, 2, 4, 7, 14, 28]

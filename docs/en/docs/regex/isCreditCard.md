@@ -23,8 +23,6 @@ function isCreditCard(value: string): boolean
 ## Examples
 
 ```typescript
-
-
 console.log(isCreditCard("4111111111111111"));  // Output: true (Visa)
 console.log(isCreditCard("5105105105105100"));  // Output: true (MasterCard)
 console.log(isCreditCard("378282246310005"));   // Output: true (American Express)

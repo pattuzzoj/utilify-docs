@@ -23,8 +23,6 @@ function invertCase(str: string): string
 ## Exemplos
 
 ```typescript
-
-
 console.log(invertCase("Hello World"));  // Saída: "hELLO wORLD"
 console.log(invertCase("JavaScript"));   // Saída: "jAVAsCRIPT"
 console.log(invertCase("12345"));        // Saída: "12345" (sem alteração)

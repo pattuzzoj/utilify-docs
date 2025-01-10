@@ -25,8 +25,6 @@ function partialRight<T>(callback: (...args: any[]) => T, ...partial: any[]): (.
 
 ### Example 1: Adding numbers
 ```typescript
-
-
 const add = (x: number, y: number, z: number) => x + y + z;
 
 const addWithTen = partialRight(add, 10);

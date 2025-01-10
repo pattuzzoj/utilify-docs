@@ -25,8 +25,6 @@ function once<T>(callback: (...args: any[]) => T): (...args: any[]) => T;
 ### Example 1: Executing a function only once
 
 ```typescript
-
-
 let count = 0;
 const incrementOnce = once(() => count++);
 

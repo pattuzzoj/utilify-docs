@@ -24,8 +24,6 @@ function throttle(callback: (...args: any[]) => void, wait?: number): (...args: 
 ## Exemplos
 
 ```typescript
-
-
 // Exemplo: Limitando um evento de redimensionamento (resize)
 const aoRedimensionar = () => {
   console.log("Evento de redimensionamento tratado em", new Date());

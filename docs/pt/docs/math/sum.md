@@ -23,8 +23,6 @@ function sum(values: number[]): number
 ## Exemplos
 
 ```typescript
-
-
 console.log(sum([1, 2, 3, 4]));  // Saída: 10
 console.log(sum([10, -5, 5]));   // Saída: 10
 console.log(sum([0, 0, 0]));     // Saída: 0

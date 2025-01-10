@@ -23,8 +23,6 @@ function toCamelCase(str: string): string
 ## Exemplos
 
 ```typescript
-
-
 console.log(toCamelCase("hello world"));         // Saída: "helloWorld"
 console.log(toCamelCase("java script is fun"));  // Saída: "javaScriptIsFun"
 console.log(toCamelCase("singleword"));          // Saída: "singleword"

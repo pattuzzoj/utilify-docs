@@ -23,8 +23,6 @@ function sleep(timeout: number): Promise<void>
 ## Examples
 
 ```typescript
-
-
 async function example() {
   console.log("Waiting for 2 seconds...");
   await sleep(2000);

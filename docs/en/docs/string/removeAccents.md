@@ -23,8 +23,6 @@ function removeAccents(str: string): string
 ## Examples
 
 ```typescript
-
-
 console.log(removeAccents("Título com acentuação!")); // Output: "Titulo com acentuacao!"
 console.log(removeAccents("Café com leite"));         // Output: "Cafe com leite"
 console.log(removeAccents("Mário e João"));           // Output: "Mario e Joao"

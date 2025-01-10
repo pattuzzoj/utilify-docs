@@ -23,8 +23,6 @@ function isUUID(value: string): boolean
 ## Exemplos
 
 ```typescript
-
-
 console.log(isUUID("123e4567-e89b-12d3-a456-426614174000")); // Saída: true
 console.log(isUUID("nao-e-um-uuid")); // Saída: false
 console.log(isUUID("123e4567-e89b-12d3-a456")); // Saída: false

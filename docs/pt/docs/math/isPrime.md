@@ -23,8 +23,6 @@ function isPrime(num: number): boolean
 ## Exemplos
 
 ```typescript
-
-
 console.log(isPrime(2));   // Saída: true
 console.log(isPrime(3));   // Saída: true
 console.log(isPrime(4));   // Saída: false

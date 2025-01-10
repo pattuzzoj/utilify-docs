@@ -25,8 +25,6 @@ function partialLeft<T>(callback: (...args: any[]) => T, ...partial: any[]): (..
 
 ### Exemplo 1: Soma de números
 ```typescript
-
-
 const soma = (x: number, y: number, z: number) => x + y + z;
 
 const somaComCinco = partialLeft(soma, 5);

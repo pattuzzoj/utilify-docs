@@ -29,8 +29,6 @@ function rate(
 ## Exemplos
 
 ```typescript
-
-
 const logLimitado = rate(console.log, 3, 1000);
 
 setInterval(() => {

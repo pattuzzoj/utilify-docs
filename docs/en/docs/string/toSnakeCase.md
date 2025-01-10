@@ -23,8 +23,6 @@ function toSnakeCase(str: string): string
 ## Examples
 
 ```typescript
-
-
 console.log(toSnakeCase("Hello World"));         // Output: "hello_world"
 console.log(toSnakeCase("JavaScript is fun"));   // Output: "javascript_is_fun"
 console.log(toSnakeCase("Singleword"));          // Output: "singleword"

@@ -23,8 +23,6 @@ function factorial(value: number): number
 ## Exemplos
 
 ```typescript
-
-
 console.log(factorial(5)); // Saída: 120 (5 * 4 * 3 * 2 * 1)
 console.log(factorial(0)); // Saída: 1 (fatorial de 0 é definido como 1)
 console.log(factorial(3)); // Saída: 6 (3 * 2 * 1)
