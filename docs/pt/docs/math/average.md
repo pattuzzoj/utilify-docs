@@ -24,7 +24,7 @@ function average(values: number[]): number
 ## Exemplos
 
 ```typescript
-import average from "./average";
+
 
 const values = [10, 20, 30];
 console.log(average(values)); // Saída: 20

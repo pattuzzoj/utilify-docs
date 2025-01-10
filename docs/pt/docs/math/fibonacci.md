@@ -27,7 +27,7 @@ function fibonacci(num: number): number
 ## Exemplos
 
 ```typescript
-import fibonacci from "./fibonacci";
+
 
 console.log(fibonacci(0));  // Saída: 0
 console.log(fibonacci(1));  // Saída: 1

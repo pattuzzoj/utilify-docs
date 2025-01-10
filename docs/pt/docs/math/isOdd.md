@@ -23,7 +23,7 @@ function isOdd(value: number): boolean
 ## Exemplos
 
 ```typescript
-import isOdd from "./isOdd";
+
 
 console.log(isOdd(3));  // Saída: true
 console.log(isOdd(4));  // Saída: false

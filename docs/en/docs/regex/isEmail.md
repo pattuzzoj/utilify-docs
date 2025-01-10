@@ -23,7 +23,7 @@ function isEmail(value: string): boolean
 ## Examples
 
 ```typescript
-import isEmail from "./isEmail";
+
 
 console.log(isEmail("user@example.com"));       // Output: true
 console.log(isEmail("user.name@domain.co"));     // Output: true

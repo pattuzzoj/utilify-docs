@@ -23,7 +23,7 @@ function slugify(str: string): string
 ## Exemplos
 
 ```typescript
-import slugify from "./slugify";
+
 
 console.log(slugify("Hello World!"));            // Saída: "hello-world"
 console.log(slugify("JavaScript is fun!"));      // Saída: "javascript-is-fun"

@@ -24,7 +24,7 @@ function throttle(callback: (...args: any[]) => void, wait?: number): (...args: 
 ## Examples
 
 ```typescript
-import throttle from "./throttle";
+
 
 // Example: Throttling a resize event
 const onResize = () => {

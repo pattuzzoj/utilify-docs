@@ -23,7 +23,7 @@ function toSnakeCase(str: string): string
 ## Exemplos
 
 ```typescript
-import toSnakeCase from "./toSnakeCase";
+
 
 console.log(toSnakeCase("Hello World"));         // Saída: "hello_world"
 console.log(toSnakeCase("JavaScript is fun"));   // Saída: "javascript_is_fun"

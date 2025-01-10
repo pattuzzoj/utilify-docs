@@ -23,7 +23,7 @@ function capitalize(str: string): string
 ## Exemplos
 
 ```typescript
-import capitalize from "./capitalize";
+
 
 console.log(capitalize("hello"));  // Saída: "Hello"
 console.log(capitalize("world"));  // Saída: "World"

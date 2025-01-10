@@ -18,7 +18,7 @@ function randomUUID(): string | undefined;
 ## Examples
 
 ```typescript
-import randomUUID from './randomUUID';
+
 
 console.log(randomUUID()); // e.g., '123e4567-e89b-12d3-a456-426614174000'
 ```

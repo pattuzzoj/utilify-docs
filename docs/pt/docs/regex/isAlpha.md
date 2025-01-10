@@ -23,7 +23,7 @@ function isAlpha(value: string): boolean
 ## Exemplos
 
 ```typescript
-import isAlpha from "./isAlpha";
+
 
 console.log(isAlpha("abcABC"));      // Saída: true
 console.log(isAlpha("abc"));         // Saída: true

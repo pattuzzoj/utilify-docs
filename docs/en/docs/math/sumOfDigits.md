@@ -23,7 +23,7 @@ function sumOfDigits(num: number): number
 ## Examples
 
 ```typescript
-import sumOfDigits from "./sumOfDigits";
+
 
 console.log(sumOfDigits(123));   // Output: 6
 console.log(sumOfDigits(987));   // Output: 24

@@ -23,7 +23,7 @@ function isEven(value: number): boolean
 ## Examples
 
 ```typescript
-import isEven from "./isEven";
+
 
 console.log(isEven(4));  // Output: true
 console.log(isEven(7));  // Output: false

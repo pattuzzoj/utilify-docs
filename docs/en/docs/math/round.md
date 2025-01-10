@@ -24,7 +24,7 @@ function round(value: number, precision: number): number
 ## Examples
 
 ```typescript
-import round from "./round";
+
 
 console.log(round(3.14159, 2));  // Output: 3.14
 console.log(round(5.6789, 3));   // Output: 5.678

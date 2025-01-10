@@ -23,7 +23,7 @@ function isBase64(value: string): boolean
 ## Examples
 
 ```typescript
-import isBase64 from "./isBase64";
+
 
 console.log(isBase64("U29mdHdhcmU="));    // Output: true
 console.log(isBase64("U29m^dhd2Y="));     // Output: false

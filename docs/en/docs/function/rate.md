@@ -29,7 +29,7 @@ function rate(
 ## Examples
 
 ```typescript
-import rate from "./rate";
+
 
 const rateLimitedLog = rate(console.log, 3, 1000);
 

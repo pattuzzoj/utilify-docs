@@ -23,7 +23,7 @@ function sleep(timeout: number): Promise<void>
 ## Exemplos
 
 ```typescript
-import sleep from "./sleep";
+
 
 async function exemplo() {
   console.log("Esperando 2 segundos...");

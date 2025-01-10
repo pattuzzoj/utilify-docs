@@ -25,7 +25,7 @@ function isBetween(value: number, min: number, max: number): boolean
 ## Examples
 
 ```typescript
-import isBetween from "./isBetween";
+
 
 console.log(isBetween(5, 1, 10));  // Output: true
 console.log(isBetween(0, 1, 10));  // Output: false

@@ -23,7 +23,7 @@ function sum(values: number[]): number
 ## Exemplos
 
 ```typescript
-import sum from "./sum";
+
 
 console.log(sum([1, 2, 3, 4]));  // Saída: 10
 console.log(sum([10, -5, 5]));   // Saída: 10

@@ -53,6 +53,8 @@ function toggleFullscreen(elem: HTMLElement): void {
 ```
 
 ```javascript
+import isFullscreenEnabled from './isFullscreenEnabled';
+
 function toggleFullscreen(elem) {
   if (!isFullscreenEnabled()) return;
 

@@ -24,7 +24,7 @@ function random(min: number = 0, max: number = 10): number
 ## Examples
 
 ```typescript
-import random from "./random";
+
 
 console.log(random());        // Output: random number between 0 and 10
 console.log(random(1, 100));  // Output: random number between 1 and 100

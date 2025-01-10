@@ -23,7 +23,7 @@ function isIPV4(value: string): boolean
 ## Examples
 
 ```typescript
-import isIPV4 from "./isIPV4";
+
 
 console.log(isIPV4("192.168.1.1"));             // Output: true
 console.log(isIPV4("255.255.255.255"));         // Output: true

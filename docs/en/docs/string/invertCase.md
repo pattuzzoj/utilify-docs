@@ -23,7 +23,7 @@ function invertCase(str: string): string
 ## Examples
 
 ```typescript
-import invertCase from "./invertCase";
+
 
 console.log(invertCase("Hello World"));  // Output: "hELLO wORLD"
 console.log(invertCase("JavaScript"));   // Output: "jAVAsCRIPT"

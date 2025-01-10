@@ -23,7 +23,7 @@ function isIPV6(value: string): boolean
 ## Examples
 
 ```typescript
-import isIPV6 from "./isIPV6";
+
 
 console.log(isIPV6("2001:0db8:85a3:0000:0000:8a2e:0370:7334")); // Output: true
 console.log(isIPV6("2001:0db8:85a3::8a2e:0370:7334"));         // Output: true

@@ -23,7 +23,7 @@ function toKebabCase(str: string): string
 ## Exemplos
 
 ```typescript
-import toKebabCase from "./toKebabCase";
+
 
 console.log(toKebabCase("Hello World"));         // Saída: "hello-world"
 console.log(toKebabCase("JavaScript is fun"));   // Saída: "javascript-is-fun"

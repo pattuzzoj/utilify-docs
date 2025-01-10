@@ -23,7 +23,7 @@ function isAlphanumeric(value: string): boolean
 ## Exemplos
 
 ```typescript
-import isAlphanumeric from "./isAlphanumeric";
+
 
 console.log(isAlphanumeric("abc123"));      // Saída: true
 console.log(isAlphanumeric("abcABC123"));   // Saída: true

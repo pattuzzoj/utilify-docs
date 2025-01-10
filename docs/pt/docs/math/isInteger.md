@@ -23,7 +23,7 @@ function isInteger(value: number): boolean
 ## Exemplos
 
 ```typescript
-import isInteger from "./isInteger";
+
 
 console.log(isInteger(4));     // Saída: true
 console.log(isInteger(4.5));   // Saída: false

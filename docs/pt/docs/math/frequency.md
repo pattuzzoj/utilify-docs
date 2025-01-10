@@ -23,7 +23,7 @@ function frequency<T>(arr: T[]): Record<string, number>
 ## Exemplos
 
 ```typescript
-import frequency from "./frequency";
+
 
 console.log(frequency([1, 2, 2, 3, 3, 3, 4])); 
 // Saída: { '1': 1, '2': 2, '3': 3, '4': 1 }

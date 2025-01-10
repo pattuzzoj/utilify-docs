@@ -26,7 +26,7 @@ function maskString(str: string, mask: string, maskStart: number, maskLength: nu
 ## Exemplos
 
 ```typescript
-import maskString from "./maskString";
+
 
 console.log(maskString("123456789", "*", 3, 4)); // Saída: "1234****89"
 console.log(maskString("Hello World", "#", 6, 5)); // Saída: "Hello #####"

@@ -24,7 +24,7 @@ function truncate(text: string, size: number): string
 ## Examples
 
 ```typescript
-import truncate from "./truncate";
+
 
 console.log(truncate("Hello, World!", 5));        // Output: "Hello..."
 console.log(truncate("JavaScript", 4));            // Output: "Java..."

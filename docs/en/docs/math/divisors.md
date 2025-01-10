@@ -23,7 +23,7 @@ function divisors(num: number): number[]
 ## Examples
 
 ```typescript
-import divisors from "./divisors";
+
 
 console.log(divisors(12)); // Output: [1, 2, 3, 4, 6, 12]
 console.log(divisors(7));  // Output: [1, 7]

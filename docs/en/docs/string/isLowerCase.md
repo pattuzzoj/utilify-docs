@@ -23,7 +23,7 @@ function isLowerCase(str: string): boolean
 ## Examples
 
 ```typescript
-import isLowerCase from "./isLowerCase";
+
 
 console.log(isLowerCase("hello"));        // Output: true
 console.log(isLowerCase("Hello World"));  // Output: false

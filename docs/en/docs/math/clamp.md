@@ -25,7 +25,7 @@ function clamp(value: number, min: number, max: number): number
 ## Examples
 
 ```typescript
-import clamp from "./clamp";
+
 
 console.log(clamp(5, 1, 10));  // Output: 5 (within range)
 console.log(clamp(-3, 1, 10)); // Output: 1 (below range, clamped to min)

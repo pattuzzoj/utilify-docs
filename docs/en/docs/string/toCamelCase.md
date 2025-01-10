@@ -23,7 +23,7 @@ function toCamelCase(str: string): string
 ## Examples
 
 ```typescript
-import toCamelCase from "./toCamelCase";
+
 
 console.log(toCamelCase("hello world"));         // Output: "helloWorld"
 console.log(toCamelCase("java script is fun"));  // Output: "javaScriptIsFun"

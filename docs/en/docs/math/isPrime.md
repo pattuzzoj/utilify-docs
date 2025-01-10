@@ -23,7 +23,7 @@ function isPrime(num: number): boolean
 ## Examples
 
 ```typescript
-import isPrime from "./isPrime";
+
 
 console.log(isPrime(2));   // Output: true
 console.log(isPrime(3));   // Output: true

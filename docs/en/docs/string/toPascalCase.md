@@ -23,7 +23,7 @@ function toPascalCase(str: string): string
 ## Examples
 
 ```typescript
-import toPascalCase from "./toPascalCase";
+
 
 console.log(toPascalCase("hello world"));         // Output: "HelloWorld"
 console.log(toPascalCase("java script is fun"));  // Output: "JavaScriptIsFun"

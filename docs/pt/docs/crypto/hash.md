@@ -31,7 +31,7 @@ async function hash(
 ## Exemplos
 
 ```typescript
-import hash from './hash';
+
 
 (async () => {
   const data = 'Hello, World!';

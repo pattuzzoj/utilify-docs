@@ -23,7 +23,7 @@ function isSlug(value: string): boolean
 ## Examples
 
 ```typescript
-import isSlug from "./isSlug";
+
 
 console.log(isSlug("valid-slug")); // Output: true
 console.log(isSlug("valid-slug-123")); // Output: true

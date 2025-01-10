@@ -23,7 +23,7 @@ function isUpperCase(str: string): boolean
 ## Exemplos
 
 ```typescript
-import isUpperCase from "./isUpperCase";
+
 
 console.log(isUpperCase("HELLO"));        // Saída: true
 console.log(isUpperCase("Hello World"));  // Saída: false
