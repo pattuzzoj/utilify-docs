@@ -63,7 +63,7 @@ console.log(processString("Hi"));          // Output: "Hi" (string length <= 5, 
 
 ::: code-group
 ```typescript
-export default function guard<T, U = T>(
+function guard<T, U = T>(
   validator: (value: T) => boolean,
   callback: (value: T) => U,
   fallback: (value: T) => U
@@ -73,7 +73,7 @@ export default function guard<T, U = T>(
 ```
 
 ```javascript
-export default function guard(validator, callback, fallback) {
+function guard(validator, callback, fallback) {
   return (value) => validator(value) ? callback(value) : fallback(value);
 }
 ```

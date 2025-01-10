@@ -29,13 +29,13 @@ console.log(isSharedWorker()); // true if inside a Shared Worker, false otherwis
 
 ::: code-group
 ```typescript
-export default function isSharedWorker(): boolean {
+function isSharedWorker(): boolean {
   return typeof SharedWorkerGlobalScope !== 'undefined' && self instanceof SharedWorkerGlobalScope;
 }
 ```
 
 ```javascript
-export default function isSharedWorker() {
+function isSharedWorker() {
   return typeof SharedWorkerGlobalScope !== 'undefined' && self instanceof SharedWorkerGlobalScope;
 }
 ```

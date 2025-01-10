@@ -42,7 +42,7 @@ console.log(maskString("abcdef", "X", 1, 2)); // Saída: "aXXdef"
 
 ::: code-group
 ```typescript
-export default function maskString(str: string, mask: string, maskStart: number, maskLength: number) {
+function maskString(str: string, mask: string, maskStart: number, maskLength: number) {
   maskLength = Math.min(maskLength, str.length - maskStart);
 
   const start = str.slice(0, maskStart);
@@ -54,7 +54,7 @@ export default function maskString(str: string, mask: string, maskStart: number,
 ```
 
 ```javascript
-export default function maskString(str, mask, maskStart, maskLength) {
+function maskString(str, mask, maskStart, maskLength) {
   maskLength = Math.min(maskLength, str.length - maskStart);
 
   const start = str.slice(0, maskStart);

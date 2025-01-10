@@ -39,13 +39,13 @@ console.log(capitalize("javaScript")); // Output: "JavaScript"
 
 ::: code-group
 ```typescript
-export default function capitalize(str: string): string {
+function capitalize(str: string): string {
   return str.charAt(0).toUpperCase().concat(str.slice(1));
 }
 ```
 
 ```javascript
-export default function capitalize(str) {
+function capitalize(str) {
   return str.charAt(0).toUpperCase().concat(str.slice(1));
 }
 ```

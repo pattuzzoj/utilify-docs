@@ -41,7 +41,7 @@ console.log(toSnakeCase("  Extra spaces here ")); // Output: "extra_spaces_here"
 
 ::: code-group
 ```typescript
-export default function toSnakeCase(str: string): string {
+function toSnakeCase(str: string): string {
   return str
   .trim()
   .toLowerCase()
@@ -50,7 +50,7 @@ export default function toSnakeCase(str: string): string {
 ```
 
 ```javascript
-export default function toSnakeCase(str) {
+function toSnakeCase(str) {
   return str
   .trim()
   .toLowerCase()

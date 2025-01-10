@@ -71,13 +71,13 @@ run();
 
 ::: code-group
 ```typescript
-export default async function parallel(...callbacks: (() => Promise<any>)[]) {
+async function parallel(...callbacks: (() => Promise<any>)[]) {
   return Promise.all(callbacks.map(callback => callback()));
 }
 ```
 
 ```javascript
-export default async function parallel(...callbacks) {
+async function parallel(...callbacks) {
   return Promise.all(callbacks.map(callback => callback()));
 }
 ```

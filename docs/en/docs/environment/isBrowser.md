@@ -29,13 +29,13 @@ console.log(isBrowser()); // true if running in a browser, false if running in a
 
 ::: code-group
 ```typescript
-export default function isBrowser(): boolean {
+function isBrowser(): boolean {
   return typeof window !== "undefined" && typeof document !== "undefined";
 }
 ```
 
 ```javascript
-export default function isBrowser() {
+function isBrowser() {
   return typeof window !== "undefined" && typeof document !== "undefined";
 }
 ```

@@ -67,13 +67,13 @@ The `delayedAction` function will be executed after the current code in the call
 
 ::: code-group
 ```typescript
-export default function defer(callback: () => void): void {
+function defer(callback: () => void): void {
   Promise.resolve().then(callback);
 }
 ```
 
 ```javascript
-export default function defer(callback) {
+function defer(callback) {
   Promise.resolve().then(callback);
 }
 ```

@@ -31,7 +31,7 @@ console.log(isMobile()); // true on mobile devices, false on desktops, undefined
 ```typescript
 import isServer from './isServer';
 
-export default function isMobile(): boolean | undefined {
+function isMobile(): boolean | undefined {
   if (isServer()) return;
 
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -41,7 +41,7 @@ export default function isMobile(): boolean | undefined {
 ```javascript
 import isServer from './isServer';
 
-export default function isMobile() {
+function isMobile() {
   if (isServer()) return;
 
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

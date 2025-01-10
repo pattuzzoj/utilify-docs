@@ -41,13 +41,13 @@ console.log(truncate("Another test example", 7)); // Output: "Anothe..."
 
 ::: code-group
 ```typescript
-export default function truncate(text: string, size: number): string {
+function truncate(text: string, size: number): string {
   return text.slice(0, size).concat("...");
 }
 ```
 
 ```javascript
-export default function truncate(text, size) {
+function truncate(text, size) {
   return text.slice(0, size).concat("...");
 }
 ```

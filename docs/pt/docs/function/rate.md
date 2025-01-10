@@ -54,7 +54,7 @@ Neste exemplo:
 
 ::: code-group
 ```typescript
-export default function rate(callback: (...args: any[]) => void, limit: number, interval: number): (...args: any[]) => boolean {
+function rate(callback: (...args: any[]) => void, limit: number, interval: number): (...args: any[]) => boolean {
   let calls = 0;
 
   return (...args: any[]): boolean => {
@@ -76,7 +76,7 @@ export default function rate(callback: (...args: any[]) => void, limit: number, 
 ```
 
 ```javascript
-export default function rate(callback, limit, interval) {
+function rate(callback, limit, interval) {
   let calls = 0;
 
   return (...args) => {

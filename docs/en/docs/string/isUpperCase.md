@@ -40,13 +40,13 @@ console.log(isUpperCase("lower case"));   // Output: false
 
 ::: code-group
 ```typescript
-export default function isUpperCase(str: string): boolean {
+function isUpperCase(str: string): boolean {
   return /^(?!.*[a-z]).*[A-Z].*$/.test(str.replace(/\s+/g, ""));
 }
 ```
 
 ```javascript
-export default function isUpperCase(str) {
+function isUpperCase(str) {
   return /^(?!.*[a-z]).*[A-Z].*$/.test(str.replace(/\s+/g, ""));
 }
 ```

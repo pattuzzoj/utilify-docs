@@ -43,11 +43,11 @@ button.addEventListener("click", noop); // No action will be taken when the butt
 
 ::: code-group
 ```typescript
-export default function noop(): void {}
+function noop(): void {}
 ```
 
 ```javascript
-export default function noop() {}
+function noop() {}
 ```
 :::
 

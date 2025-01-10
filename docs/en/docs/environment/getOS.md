@@ -37,7 +37,7 @@ console.log(getOS()); // Example: "Android", "iOS", "macOS", etc.
 ```typescript
 import isServer from './isServer';
 
-export default function getOS(): string | undefined {
+function getOS(): string | undefined {
   if (!isServer()) return;
 
   if ('userAgentData' in navigator) {
@@ -59,7 +59,7 @@ export default function getOS(): string | undefined {
 ```javascript
 import isServer from './isServer';
 
-export default function getOS() {
+function getOS() {
   if (!isServer()) return;
 
   if ('userAgentData' in navigator) {

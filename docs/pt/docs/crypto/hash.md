@@ -59,7 +59,7 @@ import { isServer } from '@utilify/environment';
 type Algorithm = 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512';
 type HashOutput = 'hex' | 'base64' | 'buffer';
 
-export default async function hash(
+async function hash(
   data: string | ArrayBuffer | DataView,
   algorithm: Algorithm,
   output: HashOutput = 'buffer'

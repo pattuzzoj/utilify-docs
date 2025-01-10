@@ -49,7 +49,7 @@ isLeapYear(1900); // false
 ::: code-group
 
 ```typescript
-export default function isLeapYear(year: number): boolean {
+function isLeapYear(year: number): boolean {
   if (year % 4 === 0) {
     if (year % 100 === 0) {
       return year % 400 === 0;
@@ -61,7 +61,7 @@ export default function isLeapYear(year: number): boolean {
 ```
 
 ```javascript
-export default function isLeapYear(year) {
+function isLeapYear(year) {
   if (year % 4 === 0) {
     if (year % 100 === 0) {
       return year % 400 === 0;

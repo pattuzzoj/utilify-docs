@@ -43,13 +43,13 @@ example();
 
 ::: code-group
 ```typescript
-export default async function sleep(timeout: number): Promise<void> {
+async function sleep(timeout: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 }
 ```
 
 ```javascript
-export default async function sleep(timeout) {
+async function sleep(timeout) {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 }
 ```

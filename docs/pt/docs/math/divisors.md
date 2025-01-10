@@ -39,7 +39,7 @@ console.log(divisors(28)); // Saída: [1, 2, 4, 7, 14, 28]
 
 ::: code-group
 ```typescript
-export default function divisors(num: number): number[] {
+function divisors(num: number): number[] {
   const divisors = [1];
   const limit = Math.sqrt(num);
 
@@ -60,7 +60,7 @@ export default function divisors(num: number): number[] {
 ```
 
 ```javascript
-export default function divisors(num) {
+function divisors(num) {
   const divisors = [1];
   const limit = Math.sqrt(num);
 

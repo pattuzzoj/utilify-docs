@@ -29,13 +29,13 @@ console.log(isServiceWorker()); // true se dentro de um Service Worker, false ca
 
 ::: code-group
 ```typescript
-export default function isServiceWorker(): boolean {
+function isServiceWorker(): boolean {
   return typeof ServiceWorkerGlobalScope !== 'undefined' && self instanceof ServiceWorkerGlobalScope;
 }
 ```
 
 ```javascript
-export default function isServiceWorker() {
+function isServiceWorker() {
   return typeof ServiceWorkerGlobalScope !== 'undefined' && self instanceof ServiceWorkerGlobalScope;
 }
 ```

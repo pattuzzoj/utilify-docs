@@ -37,13 +37,13 @@ console.log(first([1, 2, 3, 4]));    // [1]
 
 ::: code-group
 ```typescript
-export default function first<T>(arr: T[], index: number = 1): T[] {
+function first<T>(arr: T[], index: number = 1): T[] {
   return arr.slice(0, index);
 }
 ```
 
 ```javascript
-export default function first(arr, index = 1) {
+function first(arr, index = 1) {
   return arr.slice(0, index);
 }
 ```

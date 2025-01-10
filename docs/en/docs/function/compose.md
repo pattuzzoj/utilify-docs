@@ -53,13 +53,13 @@ console.log(result); // Output: 3.5 (10 + 1 = 11, 11 - 3 = 8, 8 / 2 = 3.5)
 
 ::: code-group
 ```typescript
-export default function compose<T>(...callbacks: ((value: T) => T)[]): (value: T) => T {
+function compose<T>(...callbacks: ((value: T) => T)[]): (value: T) => T {
   return (value: T): T => callbacks.reduceRight((currentValue, callback) => callback(currentValue), value);
 }
 ```
 
 ```javascript
-export default function compose(...callbacks) {
+function compose(...callbacks) {
   return (value) => callbacks.reduceRight((currentValue, callback) => callback(currentValue), value);
 }
 ```

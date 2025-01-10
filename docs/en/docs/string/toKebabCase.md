@@ -41,7 +41,7 @@ console.log(toKebabCase("  Extra spaces here ")); // Output: "extra-spaces-here"
 
 ::: code-group
 ```typescript
-export default function toKebabCase(str: string): string {
+function toKebabCase(str: string): string {
   return str
   .trim()
   .toLowerCase()
@@ -50,7 +50,7 @@ export default function toKebabCase(str: string): string {
 ```
 
 ```javascript
-export default function toKebabCase(str) {
+function toKebabCase(str) {
   return str
   .trim()
   .toLowerCase()

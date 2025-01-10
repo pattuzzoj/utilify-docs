@@ -43,13 +43,13 @@ console.log(fibonacci(6));  // Output: 8 (F(6) = 8, calculated as F(5) + F(4))
 
 ::: code-group
 ```typescript
-export default function fibonacci(num: number): number {
+function fibonacci(num: number): number {
   return num <= 1 ? num : fibonacci(num - 1) + fibonacci(num - 2);
 }
 ```
 
 ```javascript
-export default function fibonacci(num) {
+function fibonacci(num) {
   return num <= 1 ? num : fibonacci(num - 1) + fibonacci(num - 2);
 }
 ```

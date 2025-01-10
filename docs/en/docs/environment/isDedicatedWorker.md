@@ -29,13 +29,13 @@ console.log(isDedicatedWorker()); // true if inside a Dedicated Worker, false ot
 
 ::: code-group
 ```typescript
-export default function isDedicatedWorker(): boolean {
+function isDedicatedWorker(): boolean {
   return typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
 }
 ```
 
 ```javascript
-export default function isDedicatedWorker() {
+function isDedicatedWorker() {
   return typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
 }
 ```

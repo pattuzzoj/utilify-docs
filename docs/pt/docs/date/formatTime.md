@@ -65,7 +65,7 @@ typescript
 ```typescript
 import isValidDate from "./isValidDate";
 
-export default function formatTime(date: Date, format: string = "hh:mm"): string | undefined {
+function formatTime(date: Date, format: string = "hh:mm"): string | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;
@@ -92,7 +92,7 @@ javascript
 ```javascript
 import isValidDate from "./isValidDate";
 
-export default function formatTime(date, format = "hh:mm") {
+function formatTime(date, format = "hh:mm") {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

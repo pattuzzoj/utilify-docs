@@ -41,13 +41,13 @@ console.log(isIPV4("192.168.1.1:8080"));       // Output: true
 
 ::: code-group
 ```typescript
-export default function isIPV4(value: string): boolean {
+function isIPV4(value: string): boolean {
   return /^((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])(?::(?:[0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]))?$/.test(value);
 }
 ```
 
 ```javascript
-export default function isIPV4(value) {
+function isIPV4(value) {
   return /^((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])(?::(?:[0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]))?$/.test(value);
 }
 ```

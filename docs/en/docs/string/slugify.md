@@ -43,7 +43,7 @@ console.log(slugify("Título com acentuação!"));  // Output: "titulo-com-acent
 
 ::: code-group
 ```typescript
-export default function slugify(str: string): string {
+function slugify(str: string): string {
   return str
   .trim()
   .replace(/[!@#$%^&*()\-=+[\]{}|\\~;:'",.<>?\/]/g, "")
@@ -55,7 +55,7 @@ export default function slugify(str: string): string {
 ```
 
 ```javascript
-export default function slugify(str) {
+function slugify(str) {
   return str
   .trim()
   .replace(/[!@#$%^&*()\-=+[\]{}|\\~;:'",.<>?\/]/g, "")

@@ -66,7 +66,7 @@ import isValidDate from "./isValidDate";
 
 type TimeUnit = "milliseconds" | "seconds" | "minutes" | "hours" | "days" | "months" | "years";
 
-export default function adjustDate(date: Date, amount: number, unit: TimeUnit): Date {
+function adjustDate(date: Date, amount: number, unit: TimeUnit): Date {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return new Date(NaN);
@@ -107,7 +107,7 @@ export default function adjustDate(date: Date, amount: number, unit: TimeUnit): 
 ```javascript
 import isValidDate from "./isValidDate";
 
-export default function adjustDate(date, amount, unit) {
+function adjustDate(date, amount, unit) {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return new Date(NaN);

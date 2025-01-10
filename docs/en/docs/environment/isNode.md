@@ -29,13 +29,13 @@ console.log(isNode()); // true if running in Node.js, false otherwise
 
 ::: code-group
 ```typescript
-export default function isNode(): boolean {
+function isNode(): boolean {
   return typeof global !== "undefined" && typeof process !== "undefined";
 }
 ```
 
 ```javascript
-export default function isNode() {
+function isNode() {
   return typeof global !== "undefined" && typeof process !== "undefined";
 }
 ```

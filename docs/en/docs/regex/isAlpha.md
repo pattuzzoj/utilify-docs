@@ -42,13 +42,13 @@ console.log(isAlpha("hello world")); // Output: false
 
 ::: code-group
 ```typescript
-export default function isAlpha(value: string): boolean {
+function isAlpha(value: string): boolean {
   return /^[a-zA-Z]+$/.test(value);
 }
 ```
 
 ```javascript
-export default function isAlpha(value) {
+function isAlpha(value) {
   return /^[a-zA-Z]+$/.test(value);
 }
 ```

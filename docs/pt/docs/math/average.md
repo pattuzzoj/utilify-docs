@@ -47,7 +47,7 @@ console.log(average([])); // Saída: 0
 ```typescript
 import sum from "./sum";
 
-export default function average(values: number[]): number {
+function average(values: number[]): number {
   return values.length ? (sum(values) / values.length) : 0;
 }
 ```
@@ -55,7 +55,7 @@ export default function average(values: number[]): number {
 ```javascript
 import sum from "./sum";
 
-export default function average(values) {
+function average(values) {
   return values.length ? (sum(values) / values.length) : 0;
 }
 ```

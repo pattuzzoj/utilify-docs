@@ -39,7 +39,7 @@ console.log(removeAccents("Mário e João"));           // Output: "Mario e Joao
 
 ::: code-group
 ```typescript
-export default function removeAccents(str: string): string {
+function removeAccents(str: string): string {
   return str
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '');
@@ -47,7 +47,7 @@ export default function removeAccents(str: string): string {
 ```
 
 ```javascript
-export default function removeAccents(str) {
+function removeAccents(str) {
   return str
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '');

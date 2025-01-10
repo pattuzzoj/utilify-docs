@@ -40,13 +40,13 @@ console.log(isLowerCase("lower case"));   // Output: true
 
 ::: code-group
 ```typescript
-export default function isLowerCase(str: string): boolean {
+function isLowerCase(str: string): boolean {
   return /^(?!.*[A-Z]).*[a-z].*$/.test(str.replace(/\s+/g, ""));
 }
 ```
 
 ```javascript
-export default function isLowerCase(str) {
+function isLowerCase(str) {
   return /^(?!.*[A-Z]).*[a-z].*$/.test(str.replace(/\s+/g, ""));
 }
 ```

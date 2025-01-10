@@ -40,13 +40,13 @@ console.log(isUUID("123e4567-e89b-12d3-a456")); // Output: false
 
 ::: code-group
 ```typescript
-export default function isUUID(value: string): boolean {
+function isUUID(value: string): boolean {
   return /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/.test(value);
 }
 ```
 
 ```javascript
-export default function isUUID(value) {
+function isUUID(value) {
   return /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/.test(value);
 }
 ```

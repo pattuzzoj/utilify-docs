@@ -43,11 +43,11 @@ button.addEventListener("click", noop); // Nenhuma ação será tomada ao clicar
 
 ::: code-group
 ```typescript
-export default function noop(): void {}
+function noop(): void {}
 ```
 
 ```javascript
-export default function noop() {}
+function noop() {}
 ```
 :::
 

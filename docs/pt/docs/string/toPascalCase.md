@@ -41,7 +41,7 @@ console.log(toPascalCase("  extra spaces here ")); // Saída: "ExtraSpacesHere"
 
 ::: code-group
 ```typescript
-export default function toPascalCase(str: string): string {
+function toPascalCase(str: string): string {
   return str.trim().split(" ").map((str) => {
     return str[0].toUpperCase().concat(str.slice(1));
   }).join(" ").replace(/\s+/g, "");
@@ -49,7 +49,7 @@ export default function toPascalCase(str: string): string {
 ```
 
 ```javascript
-export default function toPascalCase(str) {
+function toPascalCase(str) {
   return str.trim().split(" ").map((str) => {
     return str[0].toUpperCase().concat(str.slice(1));
   }).join(" ").replace(/\s+/g, "");

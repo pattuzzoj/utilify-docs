@@ -39,13 +39,13 @@ console.log(isOdd(0));  // Saída: false
 
 ::: code-group
 ```typescript
-export default function isOdd(value: number): boolean {
+function isOdd(value: number): boolean {
   return value % 2 !== 0;
 }
 ```
 
 ```javascript
-export default function isOdd(value) {
+function isOdd(value) {
   return value % 2 !== 0;
 }
 ```

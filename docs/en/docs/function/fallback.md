@@ -65,7 +65,7 @@ console.log(safeParse); // Output: { error: "Invalid JSON" }
 
 ::: code-group
 ```typescript
-export default function fallback<T, U = T>(callback: () => T, fallback: () => U): T | U {
+function fallback<T, U = T>(callback: () => T, fallback: () => U): T | U {
   try {
     return callback();
   } catch {
@@ -75,7 +75,7 @@ export default function fallback<T, U = T>(callback: () => T, fallback: () => U)
 ```
 
 ```javascript
-export default function fallback(callback, fallback) {
+function fallback(callback, fallback) {
   try {
     return callback();
   } catch {

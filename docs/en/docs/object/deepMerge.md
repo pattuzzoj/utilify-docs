@@ -72,9 +72,9 @@ console.log(merged);
 ```typescript
 import { isPlainObject } from '@utilify/types';
 
-export default function deepMerge(...values: Record<string, any>[]): Record<string, any>;
-export default function deepMerge(...values: any[][]): any[];
-export default function deepMerge(...values: any[]): any {
+function deepMerge(...values: Record<string, any>[]): Record<string, any>;
+function deepMerge(...values: any[][]): any[];
+function deepMerge(...values: any[]): any {
   return values.reduce((merged, obj) => {
     for (const key in obj) {
       if(Array.isArray(obj[key]) || isPlainObject(obj[key])) {

@@ -46,13 +46,13 @@ console.log(isURL("ftp://example.com")); // Saída: false
 
 ::: code-group
 ```typescript
-export default function isURL(value: string): boolean { 
+function isURL(value: string): boolean { 
   return /^(https?:\/\/)?(www\.)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(:[0-9]{1,5})?(\/[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=-]*)?$/.test(value);
 }
 ```
 
 ```javascript
-export default function isURL(value) { 
+function isURL(value) { 
   return /^(https?:\/\/)?(www\.)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(:[0-9]{1,5})?(\/[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=-]*)?$/.test(value);
 }
 ```

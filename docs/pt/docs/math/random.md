@@ -40,13 +40,13 @@ console.log(random(50, 60)); // Saída: número aleatório entre 50 e 60
 
 ::: code-group
 ```typescript
-export default function random(min: number = 0, max: number = 10): number {
+function random(min: number = 0, max: number = 10): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 ```
 
 ```javascript
-export default function random(min = 0, max = 10) {
+function random(min = 0, max = 10) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 ```

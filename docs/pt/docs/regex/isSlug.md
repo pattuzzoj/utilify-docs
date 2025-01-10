@@ -44,13 +44,13 @@ console.log(isSlug("slug--invalido")); // Saída: false
 
 ::: code-group
 ```typescript
-export default function isSlug(value: string): boolean {
+function isSlug(value: string): boolean {
   return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 }
 ```
 
 ```javascript
-export default function isSlug(value) {
+function isSlug(value) {
   return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 }
 ```

@@ -39,13 +39,13 @@ console.log(isEven(0));  // Output: true (0 is considered even)
 
 ::: code-group
 ```typescript
-export default function isEven(value: number): boolean {
+function isEven(value: number): boolean {
   return value % 2 === 0;
 }
 ```
 
 ```javascript
-export default function isEven(value) {
+function isEven(value) {
   return value % 2 === 0;
 }
 ```

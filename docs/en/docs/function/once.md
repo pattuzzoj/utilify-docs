@@ -62,7 +62,7 @@ fetchData().then(data => console.log(data)); // Returns the same data from the f
 
 ::: code-group
 ```typescript
-export default function once<T>(callback: (...args: any[]) => T): (...args: any[]) => T {
+function once<T>(callback: (...args: any[]) => T): (...args: any[]) => T {
   let called = false;
   let result: T;
 
@@ -78,7 +78,7 @@ export default function once<T>(callback: (...args: any[]) => T): (...args: any[
 ```
 
 ```javascript
-export default function once(callback) {
+function once(callback) {
   let called = false;
   let result;
 

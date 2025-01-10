@@ -42,7 +42,7 @@ console.log(toCamelCase("  extra spaces here ")); // Saída: "extraSpacesHere"
 
 ::: code-group
 ```typescript
-export default function toCamelCase(str: string): string {
+function toCamelCase(str: string): string {
   return str.trim().toLowerCase().split(" ").map((str, index) => {
     if(index === 0) return str;
 
@@ -52,7 +52,7 @@ export default function toCamelCase(str: string): string {
 ```
 
 ```javascript
-export default function toCamelCase(str) {
+function toCamelCase(str) {
   return str.trim().toLowerCase().split(" ").map((str, index) => {
     if(index === 0) return str;
 

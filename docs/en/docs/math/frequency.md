@@ -41,7 +41,7 @@ console.log(frequency(['apple', 'banana', 'apple', 'orange', 'banana']));
 
 ::: code-group
 ```typescript
-export default function frequency<T>(arr: T[]): Record<string, number> {
+function frequency<T>(arr: T[]): Record<string, number> {
   return arr.reduce((acc, item) => {
     acc[String(item)] = (acc[String(item)] || 0) + 1;
     return acc;
@@ -50,7 +50,7 @@ export default function frequency<T>(arr: T[]): Record<string, number> {
 ```
 
 ```javascript
-export default function frequency(arr) {
+function frequency(arr) {
   return arr.reduce((acc, item) => {
     acc[String(item)] = (acc[String(item)] || 0) + 1;
     return acc;

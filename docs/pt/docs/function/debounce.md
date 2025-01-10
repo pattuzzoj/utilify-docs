@@ -59,7 +59,7 @@ debouncedSearch('torta de maçã');  // Esta chamada cancela a anterior
 
 ::: code-group
 ```typescript
-export default function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void {
+function debounce(callback: (...args: any[]) => void, delay: number = 300): (...args: any[]) => void {
   let timerId: number;
 
   return (...args: any[]): void => {
@@ -70,7 +70,7 @@ export default function debounce(callback: (...args: any[]) => void, delay: numb
 ```
 
 ```javascript
-export default function debounce(callback, delay = 300) {
+function debounce(callback, delay = 300) {
   let timerId;
 
   return (...args) => {

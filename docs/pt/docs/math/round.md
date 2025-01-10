@@ -40,14 +40,14 @@ console.log(round(123.456, 0));  // Saída: 123
 
 ::: code-group
 ```typescript
-export default function round(value: number, precision: number) {
+function round(value: number, precision: number) {
   const factor = 10 ** precision;
   return Math.trunc(value * factor) / factor;
 }
 ```
 
 ```javascript
-export default function round(value, precision) {
+function round(value, precision) {
   const factor = 10 ** precision;
   return Math.trunc(value * factor) / factor;
 }

@@ -75,9 +75,9 @@ console.log(isDeepEqual(arr1, arr2));  // true
 ::: code-group
 
 ```typescript
-export default function isDeepEqual(value1: Record<string, any>, value2: Record<string, any>): boolean;
-export default function isDeepEqual(value1: any[], value2: any[]): boolean;
-export default function isDeepEqual(value1: any, value2: any): boolean {
+function isDeepEqual(value1: Record<string, any>, value2: Record<string, any>): boolean;
+function isDeepEqual(value1: any[], value2: any[]): boolean;
+function isDeepEqual(value1: any, value2: any): boolean {
   const keys1 = Object.keys(value1);
   const keys2 = Object.keys(value2);
 

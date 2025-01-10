@@ -48,7 +48,7 @@ console.log(parsedDate); // undefined
 ```typescript
 import isValidDateString from "./isValidDateString";
 
-export default function parseDate(date: string): Date | undefined {
+function parseDate(date: string): Date | undefined {
   if (!isValidDateString(date)) {
     console.error("Data inválida");
     return;
@@ -61,7 +61,7 @@ export default function parseDate(date: string): Date | undefined {
 ```javascript
 import isValidDateString from "./isValidDateString";
 
-export default function parseDate(date) {
+function parseDate(date) {
   if (!isValidDateString(date)) {
     console.error("Data inválida");
     return;

@@ -62,7 +62,7 @@ convertTimeUnit(86400000, "milliseconds", "days");
 ```typescript
 type TimeUnit = "milliseconds" | "seconds" | "minutes" | "hours" | "days";
 
-export default function convertTimeUnit(time: number, from: TimeUnit, to: TimeUnit): number {
+function convertTimeUnit(time: number, from: TimeUnit, to: TimeUnit): number {
   const conversionFactors: Record<TimeUnit, number> = {
     milliseconds: 1,
     seconds: 1000,
@@ -77,7 +77,7 @@ export default function convertTimeUnit(time: number, from: TimeUnit, to: TimeUn
 ```
 
 ```javascript
-export default function convertTimeUnit(time, from, to) {
+function convertTimeUnit(time, from, to) {
   const conversionFactors = {
     milliseconds: 1,
     seconds: 1000,

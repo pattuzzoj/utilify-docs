@@ -41,13 +41,13 @@ console.log(isAlphanumeric("hello_world")); // Output: false
 
 ::: code-group
 ```typescript
-export default function isAlphanumeric(value: string): boolean {
+function isAlphanumeric(value: string): boolean {
   return /^[a-zA-Z0-9]+$/.test(value);
 }
 ```
 
 ```javascript
-export default function isAlphanumeric(value) {
+function isAlphanumeric(value) {
   return /^[a-zA-Z0-9]+$/.test(value);
 }
 ```

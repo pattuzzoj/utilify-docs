@@ -59,13 +59,13 @@ console.log(addPrefix("World", "!")); // Output: "HelloWorld!"
 
 ::: code-group
 ```typescript
-export default function partialLeft<T>(callback: (...args: any[]) => T, ...partial: any[]): (...args: any[]) => T {
+function partialLeft<T>(callback: (...args: any[]) => T, ...partial: any[]): (...args: any[]) => T {
   return (...args: any[]): T => callback(...partial, ...args);
 }
 ```
 
 ```javascript
-export default function partialLeft(callback, ...partial) {
+function partialLeft(callback, ...partial) {
   return (...args) => callback(...partial, ...args);
 }
 ```

@@ -29,13 +29,13 @@ console.log(isBun()); // true if running in Bun, false otherwise
 
 ::: code-group
 ```typescript
-export default function isBun(): boolean {
+function isBun(): boolean {
   return typeof Bun === 'object' && Object.hasOwn(Bun, 'version');
 }
 ```
 
 ```javascript
-export default function isBun() {
+function isBun() {
   return typeof Bun === 'object' && Object.hasOwn(Bun, 'version');
 }
 ```

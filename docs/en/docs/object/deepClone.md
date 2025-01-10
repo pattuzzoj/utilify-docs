@@ -68,9 +68,9 @@ console.log(clonedPerson.address.city); // "London"
 ```typescript
 import { isPlainObject } from '@utilify/types';
 
-export default function deepClone<T extends Record<string, any>>(value: T): T;
-export default function deepClone<T extends any[]>(value: T): T;
-export default function deepClone<T>(value: T): T {
+function deepClone<T extends Record<string, any>>(value: T): T;
+function deepClone<T extends any[]>(value: T): T;
+function deepClone<T>(value: T): T {
   const clonedValue = Array.isArray(value) ? ([] as T) : ({} as T);
 
   for (const key in value) {

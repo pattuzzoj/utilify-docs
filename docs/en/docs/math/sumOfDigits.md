@@ -39,7 +39,7 @@ console.log(sumOfDigits(0));     // Output: 0
 
 ::: code-group
 ```typescript
-export default function sumOfDigits(num: number): number {
+function sumOfDigits(num: number): number {
   return num
     .toString()
     .split('')
@@ -48,7 +48,7 @@ export default function sumOfDigits(num: number): number {
 ```
 
 ```javascript
-export default function sumOfDigits(num) {
+function sumOfDigits(num) {
   return num
     .toString()
     .split('')

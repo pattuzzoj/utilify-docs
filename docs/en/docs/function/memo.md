@@ -60,7 +60,7 @@ setTimeout(() => {
 ```typescript
 import { djb2 } from "@utilify/utils";
 
-export default function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...args: any[]) => any {
+function memo(callback: (...args: any[]) => any, cacheTimeout?: number): (...args: any[]) => any {
   const cache = new Map();
 
   return (...args: any[]): any => {
@@ -82,7 +82,7 @@ export default function memo(callback: (...args: any[]) => any, cacheTimeout?: n
 ```javascript
 import { djb2 } from "@utilify/utils";
 
-export default function memo(callback, cacheTimeout) {
+function memo(callback, cacheTimeout) {
   const cache = new Map();
 
   return (...args) => {

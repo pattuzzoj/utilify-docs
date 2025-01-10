@@ -39,7 +39,7 @@ console.log(factorial(3)); // Saída: 6 (3 * 2 * 1)
 
 ::: code-group
 ```typescript
-export default function factorial(value: number): number {
+function factorial(value: number): number {
   let result = 1;
 
   for (let num = value; num >= 1; num--) {
@@ -51,7 +51,7 @@ export default function factorial(value: number): number {
 ```
 
 ```javascript
-export default function factorial(value) {
+function factorial(value) {
   let result = 1;
 
   for (let num = value; num >= 1; num--) {

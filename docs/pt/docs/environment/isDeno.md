@@ -29,13 +29,13 @@ console.log(isDeno()); // true se estiver rodando no Deno, false caso contrário
 
 ::: code-group
 ```typescript
-export default function isDeno(): boolean {
+function isDeno(): boolean {
   return typeof Deno === 'object' && Object.hasOwn(Deno, 'version');
 }
 ```
 
 ```javascript
-export default function isDeno() {
+function isDeno() {
   return typeof Deno === 'object' && Object.hasOwn(Deno, 'version');
 }
 ```

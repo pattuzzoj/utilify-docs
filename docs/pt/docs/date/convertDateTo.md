@@ -57,7 +57,7 @@ import isValidDate from "./isValidDate";
 
 type DateFormat = "string" | "utc" | "iso";
 
-export default function convertDateTo(date: Date, format: DateFormat): string | undefined {
+function convertDateTo(date: Date, format: DateFormat): string | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

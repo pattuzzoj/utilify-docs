@@ -43,7 +43,7 @@ console.log(invertCase("12345"));        // Output: "12345" (no change)
 import isLowerCase from "./isLowerCase";
 import isUpperCase from "./isUpperCase";
 
-export default function invertCase(str: string): string {
+function invertCase(str: string): string {
   return str.split("").map((str) => {
     if (isLowerCase(str)) {
       return str.toUpperCase();
@@ -60,7 +60,7 @@ export default function invertCase(str: string): string {
 import isLowerCase from "./isLowerCase";
 import isUpperCase from "./isUpperCase";
 
-export default function invertCase(str) {
+function invertCase(str) {
   return str.split("").map((str) => {
     if (isLowerCase(str)) {
       return str.toUpperCase();

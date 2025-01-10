@@ -52,13 +52,13 @@ console.log(result); // Output: [1, 2, 3]
 
 ::: code-group
 ```typescript
-export default function identity<T>(value: T): T {
+function identity<T>(value: T): T {
   return value;
 }
 ```
 
 ```javascript
-export default function identity(value) {
+function identity(value) {
   return value;
 }
 ```

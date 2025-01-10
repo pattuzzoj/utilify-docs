@@ -41,7 +41,7 @@ console.log(clamp(15, 1, 10)); // Output: 10 (above range, clamped to max)
 
 ::: code-group
 ```typescript
-export default function clamp(value: number, min: number, max: number): number {
+function clamp(value: number, min: number, max: number): number {
   if (value >= max) {
     return max;
   } else if (value <= min) {
@@ -53,7 +53,7 @@ export default function clamp(value: number, min: number, max: number): number {
 ```
 
 ```javascript
-export default function clamp(value, min, max) {
+function clamp(value, min, max) {
   if (value >= max) {
     return max;
   } else if (value <= min) {

@@ -52,7 +52,7 @@ console.log(isWeekend(dataInvalida)); // undefined
 ```typescript
 import isValidDate from "./isValidDate";
 
-export default function isWeekend(date: Date): boolean | undefined {
+function isWeekend(date: Date): boolean | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;
@@ -67,7 +67,7 @@ export default function isWeekend(date: Date): boolean | undefined {
 ```javascript
 import isValidDate from "./isValidDate";
 
-export default function isWeekend(date) {
+function isWeekend(date) {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

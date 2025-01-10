@@ -43,13 +43,13 @@ isValidDate("2025-01-05"); // false
 ::: code-group
 
 ```typescript
-export default function isValidDate(date: Date): boolean {
+function isValidDate(date: Date): boolean {
   return date instanceof Date && !isNaN(date.getTime());
 }
 ```
 
 ```javascript
-export default function isValidDate(date) {
+function isValidDate(date) {
   return date instanceof Date && !isNaN(date.getTime());
 }
 ```

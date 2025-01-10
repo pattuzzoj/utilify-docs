@@ -44,13 +44,13 @@ isValidDateString("01/05/2025"); // true
 ::: code-group
 
 ```typescript
-export default function isValidDateString(date: string): boolean {
+function isValidDateString(date: string): boolean {
   return !isNaN(new Date(date).getTime());
 }
 ```
 
 ```javascript
-export default function isValidDateString(date) {
+function isValidDateString(date) {
   return !isNaN(new Date(date).getTime());
 }
 ```

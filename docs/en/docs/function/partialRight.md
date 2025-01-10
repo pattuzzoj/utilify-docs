@@ -59,13 +59,13 @@ console.log(addExclamation("Hello", "World")); // Output: "HelloWorld!"
 
 ::: code-group
 ```typescript
-export default function partialRight<T>(callback: (...args: any[]) => T, ...partial: any[]): (...args: any[]) => T {
+function partialRight<T>(callback: (...args: any[]) => T, ...partial: any[]): (...args: any[]) => T {
   return (...args: any[]): T => callback(...args, ...partial);
 }
 ```
 
 ```javascript
-export default function partialRight(callback, ...partial) {
+function partialRight(callback, ...partial) {
   return (...args) => callback(...args, ...partial);
 }
 ```

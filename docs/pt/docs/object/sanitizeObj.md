@@ -63,7 +63,7 @@ console.log(result);
 ```typescript
 import { isPlainObject } from '@utilify/types';
 
-export default function sanitizeObj(obj: Record<string, any>, values: any[], replace?: any): Record<string, any> {
+function sanitizeObj(obj: Record<string, any>, values: any[], replace?: any): Record<string, any> {
   const result: Record<string, any> = {};
 
   for (const key in obj) {

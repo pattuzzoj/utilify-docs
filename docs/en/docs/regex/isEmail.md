@@ -41,13 +41,13 @@ console.log(isEmail("user@domain"));             // Output: false
 
 ::: code-group
 ```typescript
-export default function isEmail(value: string): boolean {
+function isEmail(value: string): boolean {
   return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
 }
 ```
 
 ```javascript
-export default function isEmail(value) {
+function isEmail(value) {
   return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
 }
 ```

@@ -58,13 +58,13 @@ console.log(shout("hello")); // Output: "HELLO!"
 
 ::: code-group
 ```typescript
-export default function pipe<T>(...callbacks: ((value: T) => T)[]): (value: T) => T {
+function pipe<T>(...callbacks: ((value: T) => T)[]): (value: T) => T {
   return (value: T): T => callbacks.reduce((currentValue, callback) => callback(currentValue), value);
 }
 ```
 
 ```javascript
-export default function pipe(...callbacks) {
+function pipe(...callbacks) {
   return (value) => callbacks.reduce((currentValue, callback) => callback(currentValue), value);
 }
 ```

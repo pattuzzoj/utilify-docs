@@ -39,13 +39,13 @@ console.log(isEven(0));  // Saída: true (0 é considerado par)
 
 ::: code-group
 ```typescript
-export default function isEven(value: number): boolean {
+function isEven(value: number): boolean {
   return value % 2 === 0;
 }
 ```
 
 ```javascript
-export default function isEven(value) {
+function isEven(value) {
   return value % 2 === 0;
 }
 ```

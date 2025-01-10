@@ -41,13 +41,13 @@ console.log(isBetween(10, 10, 10)); // Saída: true
 
 ::: code-group
 ```typescript
-export default function isBetween(value: number, min: number, max: number): boolean {
+function isBetween(value: number, min: number, max: number): boolean {
   return min <= value && value <= max;
 }
 ```
 
 ```javascript
-export default function isBetween(value, min, max) {
+function isBetween(value, min, max) {
   return min <= value && value <= max;
 }
 ```

@@ -39,13 +39,13 @@ console.log(isInteger(-3));    // Output: true
 
 ::: code-group
 ```typescript
-export default function isInteger(value: number): boolean {
+function isInteger(value: number): boolean {
   return Number.isInteger(value);
 }
 ```
 
 ```javascript
-export default function isInteger(value) {
+function isInteger(value) {
   return Number.isInteger(value);
 }
 ```

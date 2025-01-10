@@ -72,7 +72,7 @@ import isValidDate from "./isValidDate";
 
 type DateFormat = "DMY" | "MDY" | "YMD";
 
-export default function formatDate(date: Date, format: DateFormat = "DMY", separator: string = "/"): string | undefined {
+function formatDate(date: Date, format: DateFormat = "DMY", separator: string = "/"): string | undefined {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;
@@ -99,7 +99,7 @@ export default function formatDate(date: Date, format: DateFormat = "DMY", separ
 ```javascript
 import isValidDate from "./isValidDate";
 
-export default function formatDate(date, format = "DMY", separator = "/") {
+function formatDate(date, format = "DMY", separator = "/") {
   if (!isValidDate(date)) {
     console.error("Invalid date");
     return;

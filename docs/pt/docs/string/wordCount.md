@@ -41,7 +41,7 @@ console.log(wordCount(""));                      // Saída: 0
 
 ::: code-group
 ```typescript
-export default function wordCount(str: string): number {
+function wordCount(str: string): number {
   return str
   .trim()
   .replace(/\s+/g, " ")
@@ -50,7 +50,7 @@ export default function wordCount(str: string): number {
 ```
 
 ```javascript
-export default function wordCount(str) {
+function wordCount(str) {
   return str
   .trim()
   .replace(/\s+/g, " ")

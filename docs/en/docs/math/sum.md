@@ -39,13 +39,13 @@ console.log(sum([0, 0, 0]));     // Output: 0
 
 ::: code-group
 ```typescript
-export default function sum(values: number[]): number {
+function sum(values: number[]): number {
   return values.reduce((total, value) => total + value, 0);
 }
 ```
 
 ```javascript
-export default function sum(values) {
+function sum(values) {
   return values.reduce((total, value) => total + value, 0);
 }
 ```
