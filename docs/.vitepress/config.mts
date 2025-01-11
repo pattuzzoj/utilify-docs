@@ -43,7 +43,7 @@ export default defineConfig({
       provider: 'local'
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/pattuzzoj/utilis' },
+      { icon: 'github', link: 'https://github.com/pattuzzoj/utilify-docs' },
     ],
     footer: {
       message: 'Released under the MIT License.',
