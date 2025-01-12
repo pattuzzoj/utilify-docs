@@ -1,4 +1,4 @@
-# Array <Badge type="tip" text="1.0.3" />
+# Array <Badge type="tip" text="1.0.4" />
 
 **Array utility functions** provide a variety of methods for manipulating and transforming arrays. They help simplify common operations, such as splitting, flattening, shuffling, and finding differences between arrays, among others.
 

@@ -1,4 +1,4 @@
-# Utilitários Types <Badge type="tip" text="1.0.0" />
+# Utilitários Types <Badge type="tip" text="1.0.3" />
 
 As **funções utilitárias para tipos** fornecem métodos para verificar, comparar e manipular tipos de dados. Elas ajudam a identificar se um valor é de um tipo específico, como verificar se um valor é um número, uma string, uma função, ou se é um valor primitivo, além de outras verificações úteis.
 

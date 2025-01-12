@@ -1,4 +1,4 @@
-# **Utilitários de String** <Badge type="tip" text="1.0.0" />
+# **Utilitários de String** <Badge type="tip" text="1.0.2" />
 
 As funções utilitárias de string fornecem uma variedade de métodos para manipulação de texto, como transformação, contagem de palavras, sanitização e formatação.
 

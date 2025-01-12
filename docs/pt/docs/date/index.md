@@ -1,4 +1,4 @@
-# Date <Badge type="tip" text="1.0.0" />
+# Date <Badge type="tip" text="1.0.1" />
 
 O pacote `@utilify/date` oferece utilitários essenciais para manipulação de datas e tempos em JavaScript e TypeScript. Essas funções foram projetadas para serem intuitivas, eficientes e seguras por tipo.
 
@@ -39,91 +39,91 @@ const { formatDate, isLeapYear } = require('@utilify/date');
 ## Visão Geral
 
 ### [adjustDate](./adjustDate.md)
-**Assinatura**:
+
 ```typescript
 function adjustDate(date: Date, amount: number, unit: TimeUnit): Date
 ```
 Ajusta uma data adicionando ou subtraindo um intervalo de tempo.
 
 ### [adjustTimezone](./adjustTimezone.md)
-**Assinatura**:
+
 ```typescript
 function adjustTimezone(date: Date, timezoneOffset: number): Date
 ```
 Converte uma data para um fuso horário diferente.
 
 ### [convertTimeUnit](./convertTimeUnit.md)
-**Assinatura**:
+
 ```typescript
 function convertTimeUnit(time: number, from: TimeUnit, to: TimeUnit): number
 ```
 Converte unidades de tempo, como milissegundos para minutos.
 
 ### [convertDateTo](./convertDateTo.md)
-**Assinatura**:
+
 ```typescript
 function convertDateTo(date: Date, format: DateFormat): string | undefined
 ```
 Converte uma data para outro formato ou representação.
 
 ### [formatDate](./formatDate.md)
-**Assinatura**:
+
 ```typescript
 function formatDate(date: Date, format: DateFormat = "DMY", separator: string = "/"): string | undefined
 ```
 Formata uma data em uma string amigável ao usuário.
 
 ### [formatDuration](./formatDuration.md)
-**Assinatura**:
+
 ```typescript
 function formatDuration(ms: number, format: string = "hh:mm:ss", autoHour: boolean = true): string
 ```
 Formata uma duração de tempo em uma string legível.
 
 ### [formatTime](./formatTime.md)
-**Assinatura**:
+
 ```typescript
 function formatTime(date: Date, format: string = "hh:mm:ss"): string | undefined
 ```
 Formata o componente de tempo de uma data.
 
 ### [isLeapYear](./isLeapYear.md)
-**Assinatura**:
+
 ```typescript
 function isLeapYear(year: number): boolean
 ```
 Verifica se um ano é bissexto.
 
 ### [isValidDate](./isValidDate.md)
-**Assinatura**:
+
 ```typescript
 function isValidDate(date: Date): boolean
 ```
 Valida se um objeto ou string representa uma data válida.
 
 ### [isValidDateString](./isValidDateString.md)
-**Assinatura**:
+
 ```typescript
 function isValidDateString(date: string): boolean
 ```
 Valida se uma string segue um formato de data reconhecido.
 
 ### [isWeekday](./isWeekday.md)
-**Assinatura**:
+
 ```typescript
 function isWeekday(date: Date): boolean | undefined
 ```
 Verifica se uma data é um dia útil (segunda a sexta-feira).
 
 ### [isWeekend](./isWeekend.md)
-**Assinatura**:
+
 ```typescript
 function isWeekend(date: Date): boolean | undefined
 ```
 Verifica se uma data é um fim de semana (sábado ou domingo).
 
 ### [parseDate](./parseDate.md)
-**Assinatura**:
+
 ```typescript
 function parseDate(date: string): Date | undefined
 ```

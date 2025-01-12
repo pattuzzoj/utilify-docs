@@ -1,4 +1,4 @@
-# Utilitários Array <Badge type="tip" text="1.0.3" />
+# Utilitários Array <Badge type="tip" text="1.0.4" />
 
 As **funções utilitárias para arrays** fornecem uma variedade de métodos para manipular e transformar arrays. Elas ajudam a simplificar operações comuns, como dividir, achatar, embaralhar e encontrar diferenças entre arrays, entre outras.
 

@@ -1,4 +1,4 @@
-# Regex <Badge type="tip" text="1.0.0" />
+# Regex <Badge type="tip" text="1.0.2" />
 
 The **Regex Utilities** provide methods for validating common patterns such as email addresses, URLs, UUIDs, and more.
 

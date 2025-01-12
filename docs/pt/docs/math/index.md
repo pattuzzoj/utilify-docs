@@ -1,4 +1,4 @@
-# **Utilitários Math** <Badge type="tip" text="1.0.0" />
+# **Utilitários Math** <Badge type="tip" text="1.0.2" />
 
 As funções utilitárias de matemática fornecem métodos para realizar operações comuns e complexas de matemática. Essas funções podem ser extremamente úteis para operações de números, como cálculos de médias, verificação de números primos, e outras manipulações matemáticas.
 

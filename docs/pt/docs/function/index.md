@@ -1,4 +1,4 @@
-# Funções Utilitárias para Funções <Badge type="tip" text="1.0.0" />
+# Funções Utilitárias para Funções <Badge type="tip" text="1.0.1" />
 
 **Funções utilitárias para funções** oferecem uma variedade de métodos para gerenciar e aprimorar a execução de funções. Essas utilidades auxiliam em tarefas como debouncing, throttling, composição de funções e gerenciamento de comportamento assíncrono, facilitando o controle do fluxo de funções e otimizando o desempenho.
 

@@ -1,4 +1,4 @@
-# Utilitários - Crypto <Badge type="tip" text="1.0.0" />
+# Utilitários - Crypto <Badge type="tip" text="1.0.2" />
 
 A categoria **Crypto** contém funções que facilitam a geração de hashes criptográficos e a criação de identificadores únicos. Essas funções são úteis para garantir segurança e integridade dos dados em aplicações web e de back-end.
 

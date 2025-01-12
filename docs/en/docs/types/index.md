@@ -1,4 +1,4 @@
-# Types <Badge type="tip" text="1.0.0" />
+# Types <Badge type="tip" text="1.0.3" />
 
 **Types utility functions** provide methods to check, compare, and manipulate data types. They help identify if a value is of a specific type, such as checking if a value is a number, string, function, or a primitive value, as well as other useful checks.
 

@@ -1,4 +1,4 @@
-# Crypto <Badge type="tip" text="1.0.0" />
+# Crypto <Badge type="tip" text="1.0.2" />
 
 The **Crypto** category provides functions that help with generating cryptographic hashes and creating unique identifiers. These functions are useful for ensuring data security and integrity in web and back-end applications.
 

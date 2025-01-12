@@ -1,4 +1,4 @@
-# Object <Badge type="tip" text="1.0.0" />
+# Object <Badge type="tip" text="1.0.2" />
 
 The **object utility functions** category includes a variety of practical methods for object manipulation, comparison, and transformation. These functions simplify many common operations in JavaScript/TypeScript development when working with objects and data structures.
 

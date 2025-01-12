@@ -1,4 +1,4 @@
-# Regex <Badge type="tip" text="1.0.0" />
+# Regex <Badge type="tip" text="1.0.2" />
 
 As funções utilitárias de regex fornecem métodos para validação de padrões comuns, como endereços de email, URLs, UUIDs, entre outros.
 
