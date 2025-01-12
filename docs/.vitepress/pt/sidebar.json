@@ -246,17 +246,5 @@
       { "text": "isTruthy", "link": "/pt/docs/types/isTruthy" },
       { "text": "isUndefined", "link": "/pt/docs/types/isUndefined" }
     ]
-  },
-  {
-    "text": "Utils",
-    "link": "/pt/docs/utils",
-    "collapsed": true,
-    "items": [
-      { "text": "benchmark", "link": "/pt/docs/utils/benchmark" },
-      { "text": "djb2", "link": "/pt/docs/utils/djb2" },
-      { "text": "flatten", "link": "/pt/docs/utils/flatten" },
-      { "text": "isEmpty", "link": "/pt/docs/utils/isEmpty" },
-      { "text": "sanitize", "link": "/pt/docs/utils/sanitize" }
-    ]
   }
 ]
